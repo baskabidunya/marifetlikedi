@@ -1,0 +1,364 @@
+<!DOCTYPE html><html class="dark" lang="tr"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Tarot ve Kehanet Odası - Marifetli Kedi</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;family=Sora:wght@100..900&amp;display=swap" rel="stylesheet">
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        .tarot-card-inner {
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
+        }
+
+        .tarot-card.flipped .tarot-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .tarot-card-front, .tarot-card-back {
+            backface-visibility: hidden;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .tarot-card-front {
+            transform: rotateY(180deg);
+        }
+
+        .candle-glow {
+            filter: blur(40px);
+            background: radial-gradient(circle, rgba(249, 189, 34, 0.15) 0%, rgba(249, 189, 34, 0) 70%);
+            pointer-events: none;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .floating {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .nebula-bg {
+            background: radial-gradient(circle at 20% 30%, rgba(109, 59, 215, 0.15) 0%, transparent 40%),
+                        radial-gradient(circle at 80% 70%, rgba(251, 171, 255, 0.1) 0%, transparent 40%);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "inverse-primary": "#6d3bd7",
+                      "on-tertiary-fixed": "#261a00",
+                      "on-primary-fixed-variant": "#5516be",
+                      "outline": "#958ea0",
+                      "inverse-on-surface": "#283044",
+                      "surface-bright": "#31394d",
+                      "on-surface": "#dae2fd",
+                      "primary-container": "#a078ff",
+                      "on-secondary-container": "#ffd8fd",
+                      "tertiary": "#f9bd22",
+                      "secondary-fixed-dim": "#fbabff",
+                      "on-secondary-fixed": "#36003e",
+                      "surface-container": "#171f33",
+                      "secondary-fixed": "#ffd6fd",
+                      "on-tertiary-container": "#372700",
+                      "surface-tint": "#d0bcff",
+                      "surface-container-high": "#222a3d",
+                      "primary-fixed": "#e9ddff",
+                      "error": "#ffb4ab",
+                      "on-error-container": "#ffdad6",
+                      "inverse-surface": "#dae2fd",
+                      "on-surface-variant": "#cbc3d7",
+                      "on-primary": "#3c0091",
+                      "surface-container-low": "#131b2e",
+                      "surface": "#0b1326",
+                      "on-tertiary-fixed-variant": "#5c4300",
+                      "error-container": "#93000a",
+                      "surface-container-highest": "#2d3449",
+                      "on-primary-fixed": "#23005c",
+                      "tertiary-container": "#b88900",
+                      "tertiary-fixed": "#ffdf9f",
+                      "on-secondary": "#580065",
+                      "on-error": "#690005",
+                      "secondary-container": "#ae05c6",
+                      "on-primary-container": "#340080",
+                      "surface-variant": "#2d3449",
+                      "tertiary-fixed-dim": "#f9bd22",
+                      "primary": "#d0bcff",
+                      "outline-variant": "#494454",
+                      "on-background": "#dae2fd",
+                      "surface-container-lowest": "#060e20",
+                      "secondary": "#fbabff",
+                      "primary-fixed-dim": "#d0bcff",
+                      "on-secondary-fixed-variant": "#7c008e",
+                      "on-tertiary": "#402d00",
+                      "background": "#0b1326",
+                      "surface-dim": "#0b1326"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gutter": "16px",
+                      "container-padding-mobile": "20px",
+                      "unit": "8px",
+                      "container-padding-desktop": "40px",
+                      "section-gap": "64px"
+              },
+              "fontFamily": {
+                      "body-lg": ["Inter"],
+                      "caption": ["Inter"],
+                      "headline-lg-mobile": ["Sora"],
+                      "body-md": ["Inter"],
+                      "headline-md": ["Sora"],
+                      "headline-lg": ["Sora"],
+                      "display-lg": ["Sora"],
+                      "label-md": ["Inter"]
+              },
+              "fontSize": {
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "caption": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                      "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface min-h-screen flex flex-col font-body-md overflow-x-hidden selection:bg-primary/30">
+<!-- TopNavBar -->
+<header class="bg-surface/70 backdrop-blur-xl border-b border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.1)] flex justify-between items-center px-container-padding-mobile md:px-container-padding-desktop w-full h-16 z-50 fixed top-0">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<h1 class="font-display-lg text-headline-md text-primary tracking-tight">Marifetli Kedi</h1>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-300 font-label-md" href="#">Ana Sayfa</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-300 font-label-md" href="#">Burçlar</a>
+<a class="text-tertiary font-bold font-label-md" href="#">Tarot Odası</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-300 font-label-md" href="#">Ritüeller</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors active:scale-95">notifications</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-primary/30">
+<img class="w-full h-full object-cover" data-alt="A close-up high-quality avatar of a sophisticated user for a premium astrology app, featuring soft purple lighting highlights and a cosmic background. The style is modern corporate combined with ethereal glassmorphism, using a dark navy and violet color palette. Minimalist and professional." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZjoPESTDc76VaGOSOKFV0oreEDyUEL4D55T4pQjAdDZfrqN0tH2BwgSsXTtB-xYvi8sk_kk20EI26Dd-Ous_PyJ9YXb8F0YoyBRlKzwQcYpT7Us6zOAMjhZ8gZgMDg1WqJ0FCOO47cdByoEGxjyYmPytTGnR_KQwrtMxGMrg4AjcQ_WbOlCggf5cjjeZo0ckRtHbaxaj8jc3mXCqhnFvnq2XmD9UTlvZ0TCYqgFaWa-mnHVlAyo7u">
+</div>
+</div>
+</header>
+<main class="flex-grow pt-24 pb-16 relative nebula-bg overflow-hidden">
+<!-- Ambient Effects -->
+<div class="absolute top-40 left-10 candle-glow w-96 h-96"></div>
+<div class="absolute bottom-20 right-10 candle-glow w-80 h-80 opacity-60"></div>
+<!-- Header Section -->
+<div class="max-w-7xl mx-auto px-container-padding-mobile md:px-container-padding-desktop mb-12 text-center relative z-10">
+<h2 class="font-display-lg text-display-lg text-white mb-4">Kehanet Odası</h2>
+<p class="font-body-lg text-on-surface-variant max-w-2xl mx-auto">
+                Yıldızların ve kartların rehberliğinde gizemli bir yolculuğa çıkın. Sorularınızı kalbinizde hissedin ve evrenin size fısıldadığı cevabı seçin.
+            </p>
+</div>
+<!-- Main Interaction Area -->
+<div class="max-w-7xl mx-auto px-container-padding-mobile md:px-container-padding-desktop grid grid-cols-1 lg:grid-cols-12 gap-8 relative z-10">
+<!-- Opening Options Sidebar -->
+<div class="lg:col-span-3 flex flex-col gap-4">
+<button class="glass-card p-6 rounded-xl text-left border-l-4 border-tertiary transition-all hover:translate-x-2 group active:scale-95" onclick="changeSpread('daily')">
+<div class="flex items-center gap-3 mb-2">
+<span class="material-symbols-outlined text-tertiary">today</span>
+<h3 class="font-headline-md text-body-lg text-white">Günün Kartı</h3>
+</div>
+<p class="text-caption text-on-surface-variant group-hover:text-on-surface transition-colors">Bugünün enerjisini ve rehberliğini tek bir kartla keşfet.</p>
+</button>
+<button class="glass-card p-6 rounded-xl text-left border-l-4 border-primary/20 hover:border-primary transition-all hover:translate-x-2 group active:scale-95" onclick="changeSpread('three')">
+<div class="flex items-center gap-3 mb-2">
+<span class="material-symbols-outlined text-primary">filter_3</span>
+<h3 class="font-headline-md text-body-lg text-white">Üç Kart Açılımı</h3>
+</div>
+<p class="text-caption text-on-surface-variant group-hover:text-on-surface transition-colors">Geçmiş, Şimdi ve Gelecek arasındaki derin bağları incele.</p>
+</button>
+<button class="glass-card p-6 rounded-xl text-left border-l-4 border-primary/20 hover:border-primary transition-all hover:translate-x-2 group active:scale-95" onclick="changeSpread('love')">
+<div class="flex items-center gap-3 mb-2">
+<span class="material-symbols-outlined text-secondary">favorite</span>
+<h3 class="font-headline-md text-body-lg text-white">Aşk ve İlişkiler</h3>
+</div>
+<p class="text-caption text-on-surface-variant group-hover:text-on-surface transition-colors">Duygusal dünyandaki gizemleri ve potansiyelleri gör.</p>
+</button>
+<button class="glass-card p-6 rounded-xl text-left border-l-4 border-primary/20 hover:border-primary transition-all hover:translate-x-2 group active:scale-95" onclick="changeSpread('career')">
+<div class="flex items-center gap-3 mb-2">
+<span class="material-symbols-outlined text-primary">work_history</span>
+<h3 class="font-headline-md text-body-lg text-white">Kariyer ve Başarı</h3>
+</div>
+<p class="text-caption text-on-surface-variant group-hover:text-on-surface transition-colors">İş hayatın ve maddi durumunla ilgili kozmik tavsiyeler al.</p>
+</button>
+</div>
+<!-- Table / Card Area -->
+<div class="lg:col-span-9 glass-card rounded-3xl p-8 md:p-12 relative overflow-hidden flex flex-col items-center justify-center min-h-[600px] border-white/5">
+<!-- Mystical Table Elements -->
+<div class="absolute inset-0 opacity-20 pointer-events-none">
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-primary/30 rounded-full"></div>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] border border-tertiary/20 rounded-full"></div>
+</div>
+<!-- Active Cards Container -->
+<div class="flex flex-wrap justify-center gap-8 md:gap-12 relative z-20 transition-all duration-700 opacity-0 transform translate-y-10" id="card-display">
+<!-- Cards will be injected by JS based on selection -->
+</div>
+<!-- Initial State / Prompt -->
+<div class="text-center space-y-6" id="initial-prompt">
+<div class="relative w-32 h-32 mx-auto mb-8">
+<div class="absolute inset-0 bg-tertiary/20 rounded-full blur-2xl animate-pulse"></div>
+<span class="material-symbols-outlined text-7xl text-tertiary relative z-10 floating">auto_awesome</span>
+</div>
+<h3 class="font-headline-lg text-white">Kehanetine Başla</h3>
+<p class="text-body-md text-on-surface-variant max-w-sm mx-auto">Soldaki menüden bir açılım seçin ve ruhunuzu kartların enerjisine hazırlayın.</p>
+</div>
+<!-- Result Explanation (Hidden Initially) -->
+<div class="hidden mt-12 text-center max-w-xl animate-fadeIn" id="result-text">
+<h4 class="font-headline-md text-tertiary mb-4" id="reading-title">Günün Mesajı: Güneş</h4>
+<p class="text-body-md text-on-surface-variant" id="reading-desc">Bugün aydınlanma ve neşe dolu bir gün. İçinizdeki ışığı dışarı yansıtmak için mükemmel bir zaman. Karşılaştığınız zorluklar, Güneş'in sıcaklığıyla eriyip gidecek.</p>
+<button class="mt-8 bg-primary text-on-primary px-8 py-3 rounded-full font-label-md hover:bg-primary-container transition-all active:scale-95 shadow-lg shadow-primary/20" onclick="resetBoard()">
+                        Yeni Bir Kehanet
+                    </button>
+</div>
+</div>
+</div>
+<!-- Decorative Floating Elements -->
+<div class="absolute top-1/4 right-5 w-16 h-16 border border-white/10 rounded-full floating" style="animation-delay: -1s"></div>
+<div class="absolute bottom-1/3 left-5 w-24 h-24 border border-white/5 rounded-full floating" style="animation-delay: -2s"></div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest flex flex-col md:flex-row justify-between items-center px-container-padding-desktop py-section-gap w-full border-t border-white/5">
+<div class="mb-8 md:mb-0">
+<h4 class="font-display-lg text-headline-md text-tertiary mb-2">Marifetli Kedi</h4>
+<p class="font-body-md text-on-surface-variant">© 2024 Marifetli Kedi. Yıldızların rehberliğinde.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-6">
+<a class="text-on-surface-variant hover:text-tertiary-fixed transition-colors font-body-md" href="#">Doğum Haritası</a>
+<a class="text-on-surface-variant hover:text-tertiary-fixed transition-colors font-body-md" href="#">Günlük Burç</a>
+<a class="text-on-surface-variant hover:text-tertiary-fixed transition-colors font-body-md" href="#">Uyum Analizi</a>
+<a class="text-on-surface-variant hover:text-tertiary-fixed transition-colors font-body-md" href="#">Ritüeller</a>
+<a class="text-on-surface-variant hover:text-tertiary-fixed transition-colors font-body-md" href="#">Gizlilik</a>
+</div>
+</footer>
+<script>
+        const cardsData = [
+            { name: "Güneş", desc: "Aydınlanma, başarı ve yaşama sevinci sizi bekliyor.", icon: "light_mode" },
+            { name: "Ay", desc: "Sezgilerinize güvenin, gizli kalan gerçekler ortaya çıkacak.", icon: "dark_mode" },
+            { name: "Yıldız", desc: "Umut ve ilham dolu bir dönem. Hayalleriniz gerçekleşebilir.", icon: "star" },
+            { name: "Dünya", desc: "Tamamlanma ve bir döngünün başarıyla bitişi.", icon: "public" },
+            { name: "Adalet", desc: "Denge ve dürüstlük ön planda. Kararlarınızın karşılığını alacaksınız.", icon: "balance" }
+        ];
+
+        function changeSpread(type) {
+            const prompt = document.getElementById('initial-prompt');
+            const display = document.getElementById('card-display');
+            const resultText = document.getElementById('result-text');
+            
+            prompt.classList.add('hidden');
+            resultText.classList.add('hidden');
+            display.innerHTML = '';
+            display.classList.remove('opacity-0', 'translate-y-10');
+            display.classList.add('opacity-100', 'translate-y-0');
+
+            let cardCount = 1;
+            if (type === 'three') cardCount = 3;
+            if (type === 'love') cardCount = 2;
+            if (type === 'career') cardCount = 2;
+
+            for (let i = 0; i < cardCount; i++) {
+                const cardHtml = `
+                    <div class="tarot-card group cursor-pointer w-48 h-80 md:w-56 md:h-96 perspective" onclick="revealCard(this)">
+                        <div class="tarot-card-inner relative w-full h-full rounded-2xl shadow-2xl border border-white/20 overflow-hidden">
+                            <!-- Back -->
+                            <div class="tarot-card-back bg-gradient-to-br from-surface-container-highest to-surface flex items-center justify-center p-4">
+                                <div class="w-full h-full border-2 border-primary/20 rounded-xl flex items-center justify-center relative overflow-hidden">
+                                    <div class="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary via-transparent to-transparent"></div>
+                                    <span class="material-symbols-outlined text-6xl text-primary/40 group-hover:scale-110 transition-transform duration-500">auto_awesome</span>
+                                </div>
+                            </div>
+                            <!-- Front -->
+                            <div class="tarot-card-front bg-surface-container-low flex flex-col items-center justify-center p-6 text-center">
+                                <div class="w-24 h-24 mb-6 rounded-full bg-primary/10 flex items-center justify-center">
+                                    <span class="material-symbols-outlined text-5xl text-tertiary">star</span>
+                                </div>
+                                <h4 class="font-headline-md text-white mb-2">Gizemli Kart</h4>
+                                <div class="w-12 h-0.5 bg-primary/30 mb-4"></div>
+                                <p class="text-caption text-on-surface-variant italic">Evrenin mesajı yükleniyor...</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                display.innerHTML += cardHtml;
+            }
+        }
+
+        function revealCard(element) {
+            if (element.classList.contains('flipped')) return;
+            
+            element.classList.add('flipped');
+            const randomCard = cardsData[Math.floor(Math.random() * cardsData.length)];
+            
+            // Update the front content of the clicked card
+            const front = element.querySelector('.tarot-card-front');
+            front.innerHTML = `
+                <div class="w-24 h-24 mb-6 rounded-full bg-tertiary/10 flex items-center justify-center animate-pulse">
+                    <span class="material-symbols-outlined text-5xl text-tertiary" style="font-variation-settings: 'FILL' 1;">${randomCard.icon}</span>
+                </div>
+                <h4 class="font-headline-md text-white mb-2">${randomCard.name}</h4>
+                <div class="w-12 h-0.5 bg-tertiary/30 mb-4"></div>
+                <p class="text-body-md text-on-surface-variant">${randomCard.desc}</p>
+            `;
+
+            // Check if all cards in the display are flipped
+            const allCards = document.querySelectorAll('.tarot-card');
+            const flippedCards = document.querySelectorAll('.tarot-card.flipped');
+            
+            if (allCards.length === flippedCards.length) {
+                setTimeout(() => {
+                    const resultText = document.getElementById('result-text');
+                    resultText.classList.remove('hidden');
+                    document.getElementById('reading-title').innerText = "Evrenin Sesini Dinleyin";
+                    document.getElementById('reading-desc').innerText = "Seçtiğiniz kartlar ruhunuzun o anki enerjisini yansıtıyor. Bu mesajları kalbinizle yorumlayın.";
+                    resultText.scrollIntoView({ behavior: 'smooth', block: 'end' });
+                }, 1000);
+            }
+        }
+
+        function resetBoard() {
+            const prompt = document.getElementById('initial-prompt');
+            const display = document.getElementById('card-display');
+            const resultText = document.getElementById('result-text');
+            
+            display.classList.add('opacity-0', 'translate-y-10');
+            setTimeout(() => {
+                display.innerHTML = '';
+                resultText.classList.add('hidden');
+                prompt.classList.remove('hidden');
+            }, 300);
+        }
+    </script>
+</body></html>

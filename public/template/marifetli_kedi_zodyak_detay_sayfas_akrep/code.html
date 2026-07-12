@@ -1,0 +1,373 @@
+<!DOCTYPE html><html class="dark" lang="tr" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Marifetli Kedi | Akrep Burcu Detayları</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Sora:wght@600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-fixed-variant": "#5c4300",
+                    "on-surface-variant": "#cbc3d7",
+                    "surface-container-high": "#222a3d",
+                    "secondary-fixed": "#ffd6fd",
+                    "secondary": "#fbabff",
+                    "surface-tint": "#d0bcff",
+                    "surface-bright": "#31394d",
+                    "surface-container": "#171f33",
+                    "surface-container-highest": "#2d3449",
+                    "on-secondary-fixed": "#36003e",
+                    "surface-container-lowest": "#060e20",
+                    "surface": "#0b1326",
+                    "primary": "#d0bcff",
+                    "on-secondary-container": "#ffd8fd",
+                    "tertiary": "#f9bd22",
+                    "on-primary-container": "#340080",
+                    "inverse-on-surface": "#283044",
+                    "outline": "#958ea0",
+                    "on-secondary-fixed-variant": "#7c008e",
+                    "inverse-primary": "#6d3bd7",
+                    "tertiary-fixed-dim": "#f9bd22",
+                    "on-tertiary-fixed": "#261a00",
+                    "on-error-container": "#ffdad6",
+                    "tertiary-fixed": "#ffdf9f",
+                    "error-container": "#93000a",
+                    "secondary-container": "#ae05c6",
+                    "surface-variant": "#2d3449",
+                    "on-secondary": "#580065",
+                    "tertiary-container": "#b88900",
+                    "surface-dim": "#0b1326",
+                    "outline-variant": "#494454",
+                    "error": "#ffb4ab",
+                    "on-primary": "#3c0091",
+                    "background": "#0b1326",
+                    "on-tertiary": "#402d00",
+                    "secondary-fixed-dim": "#fbabff",
+                    "on-primary-fixed": "#23005c",
+                    "on-error": "#690005",
+                    "inverse-surface": "#dae2fd",
+                    "primary-container": "#a078ff",
+                    "on-primary-fixed-variant": "#5516be",
+                    "surface-container-low": "#131b2e",
+                    "primary-fixed-dim": "#d0bcff",
+                    "on-background": "#dae2fd",
+                    "on-tertiary-container": "#372700",
+                    "primary-fixed": "#e9ddff",
+                    "on-surface": "#dae2fd"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "16px",
+                    "container-padding-desktop": "40px",
+                    "unit": "8px",
+                    "section-gap": "64px",
+                    "container-padding-mobile": "20px"
+            },
+            "fontFamily": {
+                    "label-md": ["Inter"],
+                    "headline-md": ["Sora"],
+                    "body-lg": ["Inter"],
+                    "headline-lg": ["Sora"],
+                    "caption": ["Inter"],
+                    "headline-lg-mobile": ["Sora"],
+                    "body-md": ["Inter"],
+                    "display-lg": ["Sora"]
+            },
+            "fontSize": {
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "caption": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(30, 41, 59, 0.5);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+        }
+        .star-bg {
+            background-image: radial-gradient(white 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+        .nebula-glow {
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            background: radial-gradient(circle at 20% 30%, rgba(110, 59, 215, 0.2) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 70%, rgba(251, 171, 255, 0.15) 0%, transparent 50%);
+            z-index: -1;
+            pointer-events: none;
+        }
+        .shimmer {
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+            background-size: 200% 100%;
+            animation: shimmer 3s infinite;
+        }
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface selection:bg-primary selection:text-on-primary">
+<div class="nebula-glow"></div>
+<div class="star-bg fixed inset-0 opacity-10 pointer-events-none"></div>
+<!-- Top Navigation Shell -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-gutter h-16 bg-surface/70 backdrop-blur-xl dark:bg-surface/70 border-b border-white/10 shadow-2xl shadow-black/40">
+<div class="max-w-[1280px] mx-auto w-full flex justify-between items-center">
+<h1 class="text-headline-md font-headline-md font-bold text-primary dark:text-primary tracking-tight">Marifetli Kedi</h1>
+<nav class="hidden md:flex gap-8">
+<a class="text-label-md font-label-md text-on-surface-variant hover:text-on-surface transition-colors" href="#">Günlük</a>
+<a class="text-label-md font-label-md text-on-surface-variant hover:text-on-surface transition-colors" href="#">Haftalık</a>
+<a class="text-label-md font-label-md text-on-surface-variant hover:text-on-surface transition-colors" href="#">Aylık</a>
+<a class="text-label-md font-label-md text-tertiary border-b-2 border-tertiary pb-1" href="#">Uyumluluk</a>
+<a class="text-label-md font-label-md text-on-surface-variant hover:text-on-surface transition-colors" href="#">Yükselen</a>
+</nav>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary text-2xl cursor-pointer hover:bg-surface-container-highest/50 p-2 rounded-lg transition-all active:scale-95 duration-200">account_circle</span>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-32 px-gutter max-w-[1280px] mx-auto">
+<!-- Hero Section -->
+<section class="relative rounded-[2rem] overflow-hidden mb-16 h-[400px] md:h-[500px] flex flex-col items-center justify-center text-center p-8 group">
+<div class="absolute inset-0 bg-cover bg-center z-0 scale-105 group-hover:scale-100 transition-transform duration-700" data-alt="A mesmerizing cosmic scene featuring a glowing purple Scorpio zodiac symbol at the center of a swirling nebula. The space background is deep navy blue with sparkling gold stars and distant celestial planets. The lighting is ethereal and mystical, with cinematic glows in fuchsia and teal, reflecting a sophisticated astrology app aesthetic." style="background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuDHG5F-YZlEgAxM4WwE3czHvEw7wlcnUf53yrB_4ygi7qlyrg0a9CbBIyzID1yrUQrq9gesrD-cs9bWx86FKALpm3pMAlhw4cn7OhNbqo4nLNNznh4PvgWuSzcqKT-Gws0k7ztjT2eCqmHGTOyhsn9ajpeUP11gmK7mY58c7kLVcYlaQDxXci6mn4GzhfuGk6MSlSyFbswZE4peXwMXn_RC7EmhWb77m-ArNQRQ0IjQefrpfvZJCX7d&quot;);"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface via-surface/40 to-transparent z-10"></div>
+<div class="relative z-20 space-y-4">
+<div class="w-24 h-24 mx-auto glass-card rounded-full flex items-center justify-center mb-4 border-tertiary/30 animate-pulse">
+<span class="material-symbols-outlined text-6xl text-tertiary" style="font-variation-settings: &quot;FILL&quot; 1;">scorpio</span>
+</div>
+<h2 class="text-display-lg font-headline-lg-mobile md:text-display-lg font-display-lg text-primary tracking-widest uppercase">Akrep</h2>
+<p class="text-headline-md font-headline-md text-secondary">23 Ekim - 21 Kasım</p>
+<div class="flex gap-2 justify-center mt-6">
+<span class="px-4 py-1.5 glass-card rounded-full text-label-md font-label-md text-on-surface/80">Su Elementi</span>
+<span class="px-4 py-1.5 glass-card rounded-full text-label-md font-label-md text-on-surface/80">Sabit Nitelik</span>
+</div>
+</div>
+</section>
+<!-- Bento Grid Stats & Analysis -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6 mb-section-gap">
+<!-- Burç Künyesi Card -->
+<div class="md:col-span-4 glass-card p-8 rounded-3xl border-white/5 space-y-6" style="--mouse-x: 267px; --mouse-y: 247px;">
+<h3 class="text-headline-md font-headline-md text-primary flex items-center gap-2">
+<span class="material-symbols-outlined">auto_awesome</span> Burç Künyesi
+                </h3>
+<div class="space-y-4">
+<div class="flex items-center justify-between p-4 bg-surface-container-low/50 rounded-2xl">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-tertiary">water_drop</span>
+<span class="text-body-md font-body-md">Element</span>
+</div>
+<span class="text-label-md font-label-md text-tertiary">Su</span>
+</div>
+<div class="flex items-center justify-between p-4 bg-surface-container-low/50 rounded-2xl">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary">diamond</span>
+<span class="text-body-md font-body-md">Nitelik</span>
+</div>
+<span class="text-label-md font-label-md text-secondary">Sabit</span>
+</div>
+<div class="flex items-center justify-between p-4 bg-surface-container-low/50 rounded-2xl">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">public</span>
+<span class="text-body-md font-body-md">Yönetici</span>
+</div>
+<span class="text-label-md font-label-md text-primary">Mars &amp; Plüton</span>
+</div>
+</div>
+</div>
+<!-- Karakter Analizi Card -->
+<div class="md:col-span-8 glass-card p-8 rounded-3xl border-white/5 relative overflow-hidden" style="--mouse-x: 18px; --mouse-y: 217px;">
+<div class="absolute top-0 right-0 p-8 opacity-10">
+<span class="material-symbols-outlined text-[120px]">psychology</span>
+</div>
+<h3 class="text-headline-md font-headline-md text-primary mb-6">Karakter Analizi</h3>
+<div class="flex flex-wrap gap-2 mb-8">
+<span class="px-4 py-2 bg-primary-container text-on-primary-container rounded-xl text-label-md font-label-md">Derin</span>
+<span class="px-4 py-2 bg-secondary-container text-on-secondary-container rounded-xl text-label-md font-label-md">Gizemli</span>
+<span class="px-4 py-2 bg-tertiary-container text-on-tertiary-container rounded-xl text-label-md font-label-md">Tutkulu</span>
+<span class="px-4 py-2 bg-surface-container-highest/50 rounded-xl text-label-md font-label-md">Stratejik</span>
+</div>
+<p class="text-body-lg font-body-lg text-on-surface-variant leading-relaxed max-w-2xl">
+                    Akrep burçları Zodyak'ın en gizemli ve güçlü karakterleridir. Yüzeysel olan her şeyden nefret ederler ve hayatın derinliklerine inmek, gerçeği her ne pahasına olursa olsun bulmak isterler. Güçlü sezgileri sayesinde insanların maskelerinin ardını görebilirler. Sadakat onlar için her şeydir, ancak bir kez güvenleri kırıldığında geri dönüşü yoktur.
+                </p>
+</div>
+</div>
+<!-- Kozmik Takvim - Tabbed Content -->
+<section class="mb-section-gap">
+<div class="flex items-center justify-between mb-8">
+<h3 class="text-headline-lg font-headline-lg text-primary">Kozmik Takvim</h3>
+<div class="flex p-1 bg-surface-container rounded-2xl glass-card">
+<button class="px-6 py-2 rounded-xl text-label-md font-label-md bg-primary text-on-primary shadow-lg">Günlük</button>
+<button class="px-6 py-2 rounded-xl text-label-md font-label-md text-on-surface-variant hover:text-on-surface transition-all">Haftalık</button>
+<button class="px-6 py-2 rounded-xl text-label-md font-label-md text-on-surface-variant hover:text-on-surface transition-all">Aylık</button>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<div class="lg:col-span-2 glass-card p-8 rounded-3xl border-white/5 space-y-6" style="--mouse-x: 261px; --mouse-y: 344.75px;">
+<div class="flex items-center justify-between border-b border-white/10 pb-4">
+<span class="text-headline-md font-headline-md text-tertiary">Bugünkü Kehanet</span>
+<span class="text-caption font-label-md opacity-60">12 Mayıs 2024</span>
+</div>
+<p class="text-body-lg font-body-lg text-on-surface-variant italic">
+                        "Bugün Ay'ın konumu, gizli kalmış duygularınızı tetikleyebilir. Finansal konularda sezgilerinize güvenin, ancak ani kararlardan kaçının. Mars'ın desteğiyle iş yerindeki bir krizi fırsata çevirebilirsiniz."
+                    </p>
+<div class="flex gap-4 pt-4">
+<div class="flex-1 p-4 bg-surface-container rounded-2xl text-center">
+<p class="text-caption font-label-md uppercase text-on-surface-variant mb-1">Aşk</p>
+<div class="h-1 w-full bg-white/10 rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-[85%]"></div>
+</div>
+<span class="text-label-md font-label-md text-secondary mt-2 inline-block">85%</span>
+</div>
+<div class="flex-1 p-4 bg-surface-container rounded-2xl text-center">
+<p class="text-caption font-label-md uppercase text-on-surface-variant mb-1">Kariyer</p>
+<div class="h-1 w-full bg-white/10 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[70%]"></div>
+</div>
+<span class="text-label-md font-label-md text-primary mt-2 inline-block">70%</span>
+</div>
+<div class="flex-1 p-4 bg-surface-container rounded-2xl text-center">
+<p class="text-caption font-label-md uppercase text-on-surface-variant mb-1">Sağlık</p>
+<div class="h-1 w-full bg-white/10 rounded-full overflow-hidden">
+<div class="h-full bg-tertiary w-[95%]"></div>
+</div>
+<span class="text-label-md font-label-md text-tertiary mt-2 inline-block">95%</span>
+</div>
+</div>
+</div>
+<!-- Şanslı Ritüeller Card -->
+<div class="glass-card p-8 rounded-3xl border-white/5 flex flex-col justify-between" style="--mouse-x: 241px; --mouse-y: 356.75px;">
+<h4 class="text-headline-md font-headline-md text-primary mb-6">Şanslı Ritüeller</h4>
+<div class="space-y-4">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center text-on-surface">
+<span class="material-symbols-outlined">palette</span>
+</div>
+<div>
+<p class="text-caption font-label-md text-on-surface-variant">Uğurlu Renk</p>
+<p class="text-label-md font-label-md">Bordo &amp; Gece Mavisi</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center text-on-surface">
+<span class="material-symbols-outlined">diamond</span>
+</div>
+<div>
+<p class="text-caption font-label-md text-on-surface-variant">Değerli Taş</p>
+<p class="text-label-md font-label-md">Obsidyen &amp; Topaz</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center text-on-surface">
+<span class="material-symbols-outlined">self_improvement</span>
+</div>
+<div>
+<p class="text-caption font-label-md text-on-surface-variant">Günün Aktivitesi</p>
+<p class="text-label-md font-label-md">Derin Meditasyon</p>
+</div>
+</div>
+</div>
+<button class="mt-8 w-full py-4 rounded-2xl bg-gradient-to-r from-primary to-secondary text-on-primary font-label-md flex items-center justify-center gap-2 group overflow-hidden relative">
+<span class="relative z-10">Ritüeli Başlat</span>
+<span class="material-symbols-outlined relative z-10 group-hover:translate-x-2 transition-transform">arrow_forward</span>
+<div class="absolute inset-0 shimmer opacity-50"></div>
+</button>
+</div>
+</div>
+</section>
+<!-- İlişki Uyumu -->
+<section class="mb-section-gap">
+<h3 class="text-headline-lg font-headline-lg text-primary mb-8">İlişki Uyumu</h3>
+<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4"><div class="glass-card p-6 rounded-3xl border-white/5 text-center group cursor-pointer hover:-translate-y-2 transition-all">
+<span class="material-symbols-outlined text-4xl text-secondary mb-3">flare</span>
+<p class="text-label-md font-label-md">Yengeç</p>
+<p class="text-caption font-label-md text-secondary mt-1">98% Uyumluluk</p>
+</div>
+<div class="glass-card p-6 rounded-3xl border-white/5 text-center group cursor-pointer hover:-translate-y-2 transition-all border-tertiary/20">
+<span class="material-symbols-outlined text-4xl text-tertiary mb-3">water</span>
+<p class="text-label-md font-label-md">Balık</p>
+<p class="text-caption font-label-md text-tertiary mt-1">95% Uyumluluk</p>
+</div>
+<div class="glass-card p-6 rounded-3xl border-white/5 text-center group cursor-pointer hover:-translate-y-2 transition-all">
+<span class="material-symbols-outlined text-4xl text-primary mb-3">category</span>
+<p class="text-label-md font-label-md">Oğlak</p>
+<p class="text-caption font-label-md text-primary mt-1">88% Uyumluluk</p>
+</div>
+<div class="glass-card p-6 rounded-3xl border-white/5 text-center group cursor-pointer hover:-translate-y-2 transition-all">
+<span class="material-symbols-outlined text-4xl text-primary mb-3">pets</span>
+<p class="text-label-md font-label-md">Boğa</p>
+<p class="text-caption font-label-md text-on-surface-variant mt-1">82% Uyumluluk</p>
+</div>
+<div class="glass-card p-6 rounded-3xl border-white/5 text-center group cursor-pointer hover:-translate-y-2 transition-all">
+<span class="material-symbols-outlined text-4xl text-primary mb-3">face</span>
+<p class="text-label-md font-label-md">Başak</p>
+<p class="text-caption font-label-md text-on-surface-variant mt-1">80% Uyumluluk</p>
+</div>
+<div class="glass-card p-6 rounded-3xl border-white/5 text-center group cursor-pointer hover:-translate-y-2 transition-all opacity-50 grayscale hover:grayscale-0 hover:opacity-100">
+<span class="material-symbols-outlined text-4xl text-primary mb-3">brightness_high</span>
+<p class="text-label-md font-label-md">Aslan</p>
+<p class="text-caption font-label-md text-error mt-1">45% Uyumluluk</p>
+</div></div>
+</section>
+</main>
+<!-- Bottom Navigation Shell -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 flex justify-around items-center h-16 pb-safe px-4 bg-surface-container/80 backdrop-blur-2xl dark:bg-surface-container/80 border-t border-white/5 shadow-[0_-8px_30px_rgb(0,0,0,0.5)] rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all active:scale-90 duration-300" href="#">
+<span class="material-symbols-outlined">explore</span>
+<span class="text-caption font-label-md">Keşfet</span>
+</a>
+<a class="flex flex-col items-center justify-center text-tertiary hover:text-primary transition-all active:scale-90 duration-300" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1;">auto_awesome</span>
+<span class="text-caption font-label-md">Çember</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all active:scale-90 duration-300" href="#">
+<span class="material-symbols-outlined">favorite</span>
+<span class="text-caption font-label-md">Uyumluluk</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all active:scale-90 duration-300" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-caption font-label-md">Profil</span>
+</a>
+</nav>
+<!-- FAB (Conditional: Only for main actions) -->
+<button class="fixed bottom-24 right-6 w-14 h-14 bg-tertiary rounded-full shadow-2xl flex items-center justify-center text-on-tertiary z-40 active:scale-90 transition-transform md:hidden">
+<span class="material-symbols-outlined text-3xl">chat</span>
+</button>
+<script>
+        // Micro-interaction for cards
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+    </script>
+
+
+
+</body></html>

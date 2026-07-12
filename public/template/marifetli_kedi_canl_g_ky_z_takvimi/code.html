@@ -1,0 +1,446 @@
+<!DOCTYPE html><html class="dark" lang="tr"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Canlı Gökyüzü Takvimi | Marifetli Kedi</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&amp;family=Inter:wght@400;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;family=Sora:wght@100..900&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-primary": "#6d3bd7",
+                        "on-tertiary-fixed": "#261a00",
+                        "on-primary-fixed-variant": "#5516be",
+                        "outline": "#958ea0",
+                        "inverse-on-surface": "#283044",
+                        "surface-bright": "#31394d",
+                        "on-surface": "#dae2fd",
+                        "primary-container": "#a078ff",
+                        "on-secondary-container": "#ffd8fd",
+                        "tertiary": "#f9bd22",
+                        "secondary-fixed-dim": "#fbabff",
+                        "on-secondary-fixed": "#36003e",
+                        "surface-container": "#171f33",
+                        "secondary-fixed": "#ffd6fd",
+                        "on-tertiary-container": "#372700",
+                        "surface-tint": "#d0bcff",
+                        "surface-container-high": "#222a3d",
+                        "primary-fixed": "#e9ddff",
+                        "error": "#ffb4ab",
+                        "on-error-container": "#ffdad6",
+                        "inverse-surface": "#dae2fd",
+                        "on-surface-variant": "#cbc3d7",
+                        "on-primary": "#3c0091",
+                        "surface-container-low": "#131b2e",
+                        "surface": "#0b1326",
+                        "on-tertiary-fixed-variant": "#5c4300",
+                        "error-container": "#93000a",
+                        "surface-container-highest": "#2d3449",
+                        "on-primary-fixed": "#23005c",
+                        "tertiary-container": "#b88900",
+                        "tertiary-fixed": "#ffdf9f",
+                        "on-secondary": "#580065",
+                        "on-error": "#690005",
+                        "secondary-container": "#ae05c6",
+                        "on-primary-container": "#340080",
+                        "surface-variant": "#2d3449",
+                        "tertiary-fixed-dim": "#f9bd22",
+                        "primary": "#d0bcff",
+                        "outline-variant": "#494454",
+                        "on-background": "#dae2fd",
+                        "surface-container-lowest": "#060e20",
+                        "secondary": "#fbabff",
+                        "primary-fixed-dim": "#d0bcff",
+                        "on-secondary-fixed-variant": "#7c008e",
+                        "on-tertiary": "#402d00",
+                        "background": "#0b1326",
+                        "surface-dim": "#0b1326"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "16px",
+                        "container-padding-mobile": "20px",
+                        "unit": "8px",
+                        "container-padding-desktop": "40px",
+                        "section-gap": "64px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "caption": ["Inter"],
+                        "headline-lg-mobile": ["Sora"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Sora"],
+                        "headline-lg": ["Sora"],
+                        "display-lg": ["Sora"],
+                        "label-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "caption": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+        }
+        .nebula-bg {
+            background: radial-gradient(circle at 20% 30%, rgba(109, 59, 215, 0.15) 0%, transparent 40%),
+                        radial-gradient(circle at 80% 70%, rgba(251, 171, 255, 0.1) 0%, transparent 40%),
+                        #0b1326;
+        }
+        .star-field {
+            background-image: radial-gradient(1px 1px at 20px 30px, white, rgba(0,0,0,0)),
+                              radial-gradient(1px 1px at 40px 70px, white, rgba(0,0,0,0)),
+                              radial-gradient(2px 2px at 50px 160px, white, rgba(0,0,0,0)),
+                              radial-gradient(1px 1px at 90px 40px, white, rgba(0,0,0,0)),
+                              radial-gradient(1px 1px at 130px 80px, white, rgba(0,0,0,0)),
+                              radial-gradient(2px 2px at 160px 120px, white, rgba(0,0,0,0));
+            background-repeat: repeat;
+            background-size: 200px 200px;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+            height: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #a078ff;
+            border-radius: 10px;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background nebula-bg star-field min-h-screen font-body-md overflow-x-hidden">
+<!-- TopNavBar -->
+<header class="bg-surface/70 backdrop-blur-xl border-b border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.1)] fixed top-0 left-0 right-0 z-50 h-16 flex justify-between items-center px-container-padding-mobile md:px-container-padding-desktop w-full">
+<div class="flex items-center gap-4">
+<span class="font-display-lg text-headline-md text-primary tracking-tight">Marifetli Kedi</span>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-300 font-label-md" href="#">Gökyüzü</a>
+<a class="text-tertiary font-bold transition-colors duration-300 font-label-md" href="#">Takvim</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-300 font-label-md" href="#">Ritüeller</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-300 font-label-md" href="#">Burçlar</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="active:scale-95 transition-transform text-primary">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="active:scale-95 transition-transform text-primary">
+<span class="material-symbols-outlined">auto_awesome</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-primary/30">
+<img class="w-full h-full object-cover" data-alt="A sophisticated close-up portrait of a young woman with a calm, mystical expression, wearing celestial-themed jewelry. The lighting is soft and ethereal, with purple and gold highlights reflecting off her face, suggesting she is looking at a glowing cosmic screen. The background is a blurred dark navy with subtle star-like sparkles, maintaining a premium glassmorphic aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMSNmuydZG7755hLNkvkmYcBIBvfPLDi8b8RQjuL43syaSyOmoCPn4NOjUQMpW3H8Sk1JTSzNWMABxZ2Fz9F6ffQVHb0EgW4gCc4Z4nhlR-CY_ut2vu3FCMmgxobABgEXBlcY9Q-AOHT_z4r_4DUrJpUJzPkfiAAGXvg5rvBJTgE15GGew0VIN_AqzLxfnGhLRJZ6OKuFkjjJ9duMa4ZLfZQnm3-3AcTBiX0KIAXTUHts0GSuAbM4r">
+</div>
+</div>
+</header>
+<main class="pt-24 pb-section-gap px-container-padding-mobile md:px-container-padding-desktop max-w-[1280px] mx-auto">
+<!-- Hero Section -->
+<section class="mb-section-gap text-center relative">
+<div class="absolute -top-12 left-1/2 -translate-x-1/2 w-96 h-96 bg-primary/20 blur-[120px] -z-10"></div>
+<h1 class="font-display-lg text-headline-lg-mobile md:text-display-lg mb-4 bg-gradient-to-r from-primary via-tertiary to-secondary bg-clip-text text-transparent">Canlı Gökyüzü Takvimi</h1>
+<p class="font-body-lg text-on-surface-variant max-w-2xl mx-auto">Kozmik döngüleri takip edin, gezegenlerin dansını keşfedin ve evrenin ritmine uyum sağlayın. Sizin için hazırlanan özel zaman tüneli.</p>
+</section>
+<!-- Time Slider (Interaktif Zaman Tüneli) -->
+<section class="mb-12 glass-card rounded-xl p-6 overflow-hidden">
+<div class="flex items-center justify-between mb-8">
+<h2 class="font-headline-md text-headline-md text-primary flex items-center gap-2">
+<span class="material-symbols-outlined">timeline</span>
+                    Zaman Tüneli: Ekim 2024
+                </h2>
+<div class="flex gap-2">
+<button class="p-2 glass-card rounded-full hover:bg-primary-container transition-colors"><span class="material-symbols-outlined">chevron_left</span></button>
+<button class="p-2 glass-card rounded-full hover:bg-primary-container transition-colors"><span class="material-symbols-outlined">chevron_right</span></button>
+</div>
+</div>
+<div class="flex gap-4 overflow-x-auto pb-4 custom-scrollbar snap-x snap-mandatory">
+<!-- Day Card Active -->
+<div class="min-w-[100px] flex flex-col items-center p-4 rounded-xl border-2 border-tertiary bg-tertiary/10 snap-center transition-all">
+<span class="font-label-md text-tertiary">Bugün</span>
+<span class="font-display-lg text-headline-md text-tertiary">14</span>
+<span class="font-caption text-on-surface-variant">Pazartesi</span>
+</div>
+<!-- Day Cards -->
+<div class="min-w-[100px] flex flex-col items-center p-4 rounded-xl glass-card snap-center hover:border-primary/50 transition-all cursor-pointer">
+<span class="font-label-md text-on-surface-variant">Eki</span>
+<span class="font-headline-md text-headline-md text-on-surface">15</span>
+<span class="font-caption text-on-surface-variant">Salı</span>
+</div>
+<div class="min-w-[100px] flex flex-col items-center p-4 rounded-xl glass-card snap-center hover:border-primary/50 transition-all cursor-pointer relative">
+<span class="font-label-md text-on-surface-variant">Eki</span>
+<span class="font-headline-md text-headline-md text-on-surface">16</span>
+<span class="font-caption text-on-surface-variant">Çarşamba</span>
+<div class="absolute -top-1 right-2 w-2 h-2 bg-error rounded-full animate-pulse"></div>
+</div>
+<div class="min-w-[100px] flex flex-col items-center p-4 rounded-xl glass-card snap-center hover:border-primary/50 transition-all cursor-pointer">
+<span class="font-label-md text-on-surface-variant">Eki</span>
+<span class="font-headline-md text-headline-md text-on-surface">17</span>
+<span class="font-caption text-on-surface-variant">Perşembe</span>
+</div>
+<div class="min-w-[100px] flex flex-col items-center p-4 rounded-xl glass-card snap-center hover:border-primary/50 transition-all cursor-pointer relative">
+<span class="font-label-md text-on-surface-variant">Eki</span>
+<span class="font-headline-md text-headline-md text-on-surface">18</span>
+<span class="font-caption text-on-surface-variant">Cuma</span>
+<div class="absolute -top-1 right-2 w-2 h-2 bg-tertiary rounded-full"></div>
+</div>
+<div class="min-w-[100px] flex flex-col items-center p-4 rounded-xl glass-card snap-center hover:border-primary/50 transition-all cursor-pointer">
+<span class="font-label-md text-on-surface-variant">Eki</span>
+<span class="font-headline-md text-headline-md text-on-surface">19</span>
+<span class="font-caption text-on-surface-variant">Cumartesi</span>
+</div>
+<div class="min-w-[100px] flex flex-col items-center p-4 rounded-xl glass-card snap-center hover:border-primary/50 transition-all cursor-pointer">
+<span class="font-label-md text-on-surface-variant">Eki</span>
+<span class="font-headline-md text-headline-md text-on-surface">20</span>
+<span class="font-caption text-on-surface-variant">Pazar</span>
+</div>
+<div class="min-w-[100px] flex flex-col items-center p-4 rounded-xl glass-card snap-center hover:border-primary/50 transition-all cursor-pointer">
+<span class="font-label-md text-on-surface-variant">Eki</span>
+<span class="font-headline-md text-headline-md text-on-surface">21</span>
+<span class="font-caption text-on-surface-variant">Pazartesi</span>
+</div>
+</div>
+</section>
+<!-- Main Content Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+<!-- Planetary Retrogrades Column (Bento Card) -->
+<div class="md:col-span-4 flex flex-col gap-8">
+<div class="glass-card rounded-xl p-6 flex-1 relative overflow-hidden group">
+<div class="absolute -right-8 -top-8 w-24 h-24 bg-error/10 blur-2xl group-hover:bg-error/20 transition-colors"></div>
+<h3 class="font-headline-md text-headline-md text-error mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined">rotate_right</span>
+                        Retro Dönemleri
+                    </h3>
+<div class="space-y-4">
+<div class="p-4 rounded-lg bg-surface-container-high border border-error/20">
+<div class="flex justify-between items-center mb-2">
+<span class="font-label-md text-on-surface">Merkür Retrosu</span>
+<span class="text-caption px-2 py-1 bg-error/10 text-error rounded-full">Devam Ediyor</span>
+</div>
+<p class="font-caption text-on-surface-variant mb-2">10 Ekim - 2 Kasım</p>
+<div class="w-full bg-surface-container-lowest h-1.5 rounded-full overflow-hidden">
+<div class="bg-error h-full" style="width: 35%"></div>
+</div>
+</div>
+<div class="p-4 rounded-lg bg-surface-container-low border border-white/5">
+<div class="flex justify-between items-center mb-2">
+<span class="font-label-md text-on-surface">Jüpiter Retrosu</span>
+<span class="text-caption px-2 py-1 bg-on-surface-variant/10 text-on-surface-variant rounded-full">9 Ekim'de Başladı</span>
+</div>
+<p class="font-caption text-on-surface-variant">İçsel genişleme ve ruhsal sorgulama dönemi.</p>
+</div>
+</div>
+</div>
+<div class="glass-card rounded-xl p-6 border-l-4 border-tertiary">
+<h4 class="font-label-md text-tertiary mb-2 uppercase tracking-widest">Kozmik Tavsiye</h4>
+<p class="font-body-md text-on-surface italic">"Merkür retrosu altındayken eski projelerinizi gözden geçirin ama yeni bir sözleşmeye imza atmak için Kasım ayını bekleyin. Kelimelerinize dikkat edin."</p>
+</div>
+</div>
+<!-- Central Live Calendar Canvas -->
+<div class="md:col-span-8 glass-card rounded-xl overflow-hidden relative min-h-[500px]">
+<div class="absolute inset-0 z-0">
+
+</div>
+<div class="relative z-10 p-8 h-full flex flex-col">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
+<div>
+<h3 class="font-headline-lg text-headline-lg text-primary">Gezegensel Transitler</h3>
+<p class="text-on-surface-variant">Yıldızların anlık konumlarını ve gelecek etkilerini takip edin.</p>
+</div>
+<div class="flex gap-2">
+<span class="px-3 py-1 bg-primary/20 text-primary text-caption rounded-full border border-primary/30">Bilimsel Veri</span>
+<span class="px-3 py-1 bg-tertiary/20 text-tertiary text-caption rounded-full border border-tertiary/30">Mistik Gözlem</span>
+</div>
+</div>
+<!-- Interactive Calendar View (Mockup) -->
+<div class="grid grid-cols-7 gap-px bg-white/10 rounded-lg overflow-hidden flex-1 border border-white/10">
+<!-- Header Days -->
+<div class="bg-surface-container-highest p-3 text-center font-label-md text-primary">Pzt</div>
+<div class="bg-surface-container-highest p-3 text-center font-label-md text-primary">Sal</div>
+<div class="bg-surface-container-highest p-3 text-center font-label-md text-primary">Çar</div>
+<div class="bg-surface-container-highest p-3 text-center font-label-md text-primary">Per</div>
+<div class="bg-surface-container-highest p-3 text-center font-label-md text-primary">Cum</div>
+<div class="bg-surface-container-highest p-3 text-center font-label-md text-primary">Cmt</div>
+<div class="bg-surface-container-highest p-3 text-center font-label-md text-primary">Paz</div>
+<!-- Calendar Grid Cells -->
+<!-- Row 1 (Simplified for Demo) -->
+<div class="bg-surface-container-low/50 aspect-square p-2 group cursor-pointer hover:bg-primary/10 transition-colors">
+<span class="text-caption text-on-surface-variant">1</span>
+</div>
+<div class="bg-surface-container-low/50 aspect-square p-2 group cursor-pointer hover:bg-primary/10 transition-colors relative">
+<span class="text-caption text-on-surface-variant">2</span>
+<div class="absolute bottom-2 left-2 right-2">
+<div class="w-full h-1 bg-secondary rounded-full"></div>
+<span class="text-[8px] text-secondary block mt-0.5">Yeni Ay</span>
+</div>
+</div>
+<div class="bg-surface-container-low/50 aspect-square p-2 group cursor-pointer hover:bg-primary/10 transition-colors"><span class="text-caption text-on-surface-variant">3</span></div>
+<div class="bg-surface-container-low/50 aspect-square p-2 group cursor-pointer hover:bg-primary/10 transition-colors"><span class="text-caption text-on-surface-variant">4</span></div>
+<div class="bg-surface-container-low/50 aspect-square p-2 group cursor-pointer hover:bg-primary/10 transition-colors"><span class="text-caption text-on-surface-variant">5</span></div>
+<div class="bg-surface-container-low/50 aspect-square p-2 group cursor-pointer hover:bg-primary/10 transition-colors"><span class="text-caption text-on-surface-variant">6</span></div>
+<div class="bg-surface-container-low/50 aspect-square p-2 group cursor-pointer hover:bg-primary/10 transition-colors"><span class="text-caption text-on-surface-variant">7</span></div>
+<!-- Row 2 (Active Focus) -->
+<div class="bg-surface-container-low/50 aspect-square p-2 group cursor-pointer hover:bg-primary/10 transition-colors"><span class="text-caption text-on-surface-variant">8</span></div>
+<div class="bg-surface-container-low/50 aspect-square p-2 group cursor-pointer hover:bg-primary/10 transition-colors relative">
+<span class="text-caption text-on-surface-variant">9</span>
+<div class="absolute bottom-2 left-2 right-2">
+<div class="w-full h-1 bg-error rounded-full"></div>
+<span class="text-[8px] text-error block mt-0.5">Jüpiter Retro</span>
+</div>
+</div>
+<div class="bg-surface-container-low/50 aspect-square p-2 group cursor-pointer hover:bg-primary/10 transition-colors relative">
+<span class="text-caption text-on-surface-variant">10</span>
+<div class="absolute bottom-2 left-2 right-2">
+<div class="w-full h-1 bg-error rounded-full"></div>
+<span class="text-[8px] text-error block mt-0.5">Merkür Retro</span>
+</div>
+</div>
+<div class="bg-surface-container-low/50 aspect-square p-2 group cursor-pointer hover:bg-primary/10 transition-colors"><span class="text-caption text-on-surface-variant">11</span></div>
+<div class="bg-surface-container-low/50 aspect-square p-2 group cursor-pointer hover:bg-primary/10 transition-colors"><span class="text-caption text-on-surface-variant">12</span></div>
+<div class="bg-surface-container-low/50 aspect-square p-2 group cursor-pointer hover:bg-primary/10 transition-colors"><span class="text-caption text-on-surface-variant">13</span></div>
+<div class="bg-surface-container-high aspect-square p-2 border-2 border-tertiary relative">
+<span class="text-caption text-tertiary font-bold">14</span>
+<div class="absolute inset-0 bg-tertiary/5 animate-pulse"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Moon Phases Grid -->
+<section class="mt-12">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-8">Ay Fazları &amp; Enerjiler</h3>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<!-- Phase Card -->
+<div class="glass-card p-6 rounded-xl text-center group hover:-translate-y-1 transition-transform">
+<div class="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-surface-variant to-black border border-white/20 flex items-center justify-center relative overflow-hidden">
+<div class="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<span class="material-symbols-outlined text-on-surface-variant text-4xl">dark_mode</span>
+</div>
+<h5 class="font-label-md text-on-surface">Yeni Ay</h5>
+<p class="text-caption text-on-surface-variant">Terazi Burcunda</p>
+<p class="text-caption text-tertiary mt-2">2 Ekim</p>
+</div>
+<!-- Phase Card -->
+<div class="glass-card p-6 rounded-xl text-center group hover:-translate-y-1 transition-transform border-b-2 border-primary/50">
+<div class="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-primary/40 to-black border border-primary/50 flex items-center justify-center relative shadow-[0_0_15px_rgba(208,188,255,0.3)]">
+<span class="material-symbols-outlined text-primary text-4xl">brightness_2</span>
+</div>
+<h5 class="font-label-md text-primary">İlk Dördün</h5>
+<p class="text-caption text-on-surface-variant">Oğlak Burcunda</p>
+<p class="text-caption text-primary mt-2">10 Ekim</p>
+</div>
+<!-- Phase Card -->
+<div class="glass-card p-6 rounded-xl text-center group hover:-translate-y-1 transition-transform border-b-2 border-tertiary">
+<div class="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-tertiary/60 to-white/20 border border-tertiary flex items-center justify-center relative shadow-[0_0_20px_rgba(249,189,34,0.4)]">
+<span class="material-symbols-outlined text-on-tertiary-fixed text-4xl" style="font-variation-settings: 'FILL' 1;">brightness_high</span>
+</div>
+<h5 class="font-label-md text-tertiary">Dolunay</h5>
+<p class="text-caption text-on-surface-variant">Koç Burcunda</p>
+<p class="text-caption text-tertiary mt-2">17 Ekim</p>
+</div>
+<!-- Phase Card -->
+<div class="glass-card p-6 rounded-xl text-center group hover:-translate-y-1 transition-transform">
+<div class="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-surface-variant to-black border border-white/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant text-4xl">brightness_3</span>
+</div>
+<h5 class="font-label-md text-on-surface">Son Dördün</h5>
+<p class="text-caption text-on-surface-variant">Yengeç Burcunda</p>
+<p class="text-caption text-on-surface-variant mt-2">24 Ekim</p>
+</div>
+</div>
+</section>
+<!-- CTA / Ritual Section -->
+<section class="mt-section-gap glass-card rounded-2xl overflow-hidden flex flex-col md:flex-row items-stretch border border-primary/20">
+<div class="md:w-1/2 p-10 flex flex-col justify-center bg-gradient-to-br from-primary-container/20 to-transparent">
+<h3 class="font-headline-lg text-headline-lg mb-4 text-on-primary-fixed">Kozmik Ajandanı Özelleştir</h3>
+<p class="font-body-md text-on-surface-variant mb-8">Kendi doğum haritanızla gökyüzü takvimini senkronize edin. Kişisel transitlerinizi ve size özel kritik günleri kaçırmayın.</p>
+<div class="flex flex-wrap gap-4">
+<button class="bg-primary text-on-primary px-8 py-3 rounded-full font-label-md hover:bg-primary-container transition-all shadow-lg shadow-primary/20 active:scale-95">Ücretsiz Eşleştir</button>
+<button class="border border-primary/30 text-primary px-8 py-3 rounded-full font-label-md hover:bg-primary/10 transition-all active:scale-95">Daha Fazla Bilgi</button>
+</div>
+</div>
+<div class="md:w-1/2 min-h-[300px] bg-surface-container-highest relative">
+<img class="w-full h-full object-cover opacity-80" data-alt="A magical and minimalist aesthetic digital workspace. A tablet on a dark wooden desk shows a glowing golden star map interface. Surrounding the tablet are a small crystal quartz, a cup of steaming herbal tea, and a single dried flower. The lighting is low and atmospheric with soft blue and amber hues, creating a sense of focus, ritual, and modern mysticism." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCblY4KrpEGb3eMP7dnPrnTqyEv2rpaEJe-TF1Ad3JTbSz9wsOcYs2Z_ixFHAQ0H70m6a50t_p25MfucnLmDpHdqTQWP_sIowUPIgN8sPXQRIgv77sw6cwsB0PAySJOP75tCPlvCh2TaRxTrp2yt7E5beoX8sozE8wkVUSgeCX982I6R9c1dnrj7e1DAhunK8dpWPmOP_Wq166YvpMEIhOE5_b_vXBaXVYy59-ukYEbYOVXRasVDe_A">
+<div class="absolute inset-0 bg-gradient-to-l from-transparent to-surface-container-highest/60 md:to-transparent"></div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest border-t border-white/5 w-full">
+<div class="flex flex-col md:flex-row justify-between items-center px-container-padding-desktop py-section-gap w-full max-w-[1280px] mx-auto">
+<div class="mb-8 md:mb-0">
+<span class="font-display-lg text-headline-md text-tertiary block mb-2">Marifetli Kedi</span>
+<p class="font-body-md text-on-surface-variant max-w-xs">Yıldızların rehberliğinde, modern bir ruhla geleceği keşfedin.</p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-3 gap-8">
+<div class="flex flex-col gap-3">
+<a class="text-on-surface-variant hover:text-tertiary-fixed transition-colors font-body-md" href="#">Doğum Haritası</a>
+<a class="text-on-surface-variant hover:text-tertiary-fixed transition-colors font-body-md" href="#">Günlük Burç</a>
+</div>
+<div class="flex flex-col gap-3">
+<a class="text-on-surface-variant hover:text-tertiary-fixed transition-colors font-body-md" href="#">Uyumluluk</a>
+<a class="text-on-surface-variant hover:text-tertiary-fixed transition-colors font-body-md" href="#">Ritüeller</a>
+</div>
+<div class="flex flex-col gap-3">
+<a class="text-on-surface-variant hover:text-tertiary-fixed transition-colors font-body-md" href="#">Kozmik Haber</a>
+<a class="text-on-surface-variant hover:text-tertiary-fixed transition-colors font-body-md" href="#">Gizlilik</a>
+</div>
+</div>
+</div>
+<div class="text-center py-8 border-t border-white/5 opacity-60">
+<p class="font-caption text-on-surface-variant">© 2024 Marifetli Kedi. Guided by the Stars.</p>
+</div>
+</footer>
+<!-- Floating Interaction (Optional but adds value) -->
+<div class="fixed bottom-6 right-6 z-40">
+<button class="w-14 h-14 bg-tertiary text-on-tertiary-fixed rounded-full flex items-center justify-center shadow-2xl shadow-tertiary/30 hover:scale-110 active:scale-95 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">magic_button</span>
+</button>
+</div>
+<script>
+        // Simple scroll interaction for the header
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 20) {
+                header.classList.add('shadow-xl');
+            } else {
+                header.classList.remove('shadow-xl');
+            }
+        });
+
+        // Basic calendar cell interaction mockup
+        document.querySelectorAll('.aspect-square').forEach(cell => {
+            cell.addEventListener('click', () => {
+                const day = cell.querySelector('span')?.innerText;
+                if(day) {
+                    // Logic to update a side panel could go here
+                    console.log(`Date selected: ${day} October`);
+                }
+            });
+        });
+    </script>
+</body></html>

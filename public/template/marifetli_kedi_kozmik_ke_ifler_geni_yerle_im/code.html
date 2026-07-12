@@ -1,0 +1,424 @@
+<!DOCTYPE html><html lang="tr" class="dark" style=""><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Sora:wght@600;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet"><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">try{try{
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary": "#f9bd22",
+                    "surface-container-high": "#222a3d",
+                    "tertiary-fixed": "#ffdf9f",
+                    "on-tertiary": "#402d00",
+                    "secondary-container": "#ae05c6",
+                    "primary": "#d0bcff",
+                    "primary-container": "#a078ff",
+                    "outline-variant": "#494454",
+                    "on-tertiary-fixed": "#261a00",
+                    "on-surface": "#dae2fd",
+                    "surface-variant": "#2d3449",
+                    "on-primary": "#3c0091",
+                    "on-secondary-fixed": "#36003e",
+                    "on-primary-fixed": "#23005c",
+                    "tertiary-container": "#b88900",
+                    "on-background": "#dae2fd",
+                    "inverse-surface": "#dae2fd",
+                    "surface-container": "#171f33",
+                    "background": "#0b1326",
+                    "inverse-primary": "#6d3bd7",
+                    "error": "#ffb4ab",
+                    "surface-container-low": "#131b2e",
+                    "on-secondary-fixed-variant": "#7c008e",
+                    "on-primary-container": "#340080",
+                    "on-tertiary-fixed-variant": "#5c4300",
+                    "tertiary-fixed-dim": "#f9bd22",
+                    "error-container": "#93000a",
+                    "outline": "#958ea0",
+                    "secondary": "#fbabff",
+                    "surface-container-lowest": "#060e20",
+                    "surface-container-highest": "#2d3449",
+                    "surface-bright": "#31394d",
+                    "on-error": "#690005",
+                    "inverse-on-surface": "#283044",
+                    "surface-dim": "#0b1326",
+                    "on-secondary-container": "#ffd8fd",
+                    "on-tertiary-container": "#372700",
+                    "on-surface-variant": "#cbc3d7",
+                    "on-secondary": "#580065",
+                    "on-error-container": "#ffdad6",
+                    "surface-tint": "#d0bcff",
+                    "primary-fixed-dim": "#d0bcff",
+                    "primary-fixed": "#e9ddff",
+                    "on-primary-fixed-variant": "#5516be",
+                    "secondary-fixed": "#ffd6fd",
+                    "secondary-fixed-dim": "#fbabff",
+                    "surface": "#0b1326"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-padding-desktop": "40px",
+                    "section-gap": "64px",
+                    "unit": "8px",
+                    "container-padding-mobile": "20px",
+                    "gutter": "16px"
+            },
+            "fontFamily": {
+                    "label-md": ["Inter"],
+                    "headline-md": ["Sora"],
+                    "display-lg": ["Sora"],
+                    "headline-lg": ["Sora"],
+                    "headline-lg-mobile": ["Sora"],
+                    "body-md": ["Inter"],
+                    "caption": ["Inter"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "caption": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    }catch(_e){}}catch(_e){}</script><meta charset="utf-8"></head><body class="bg-background text-on-background selection:bg-primary/30 min-h-screen font-body-md overflow-x-hidden">
+<div class="nebula-glow"></div>
+<!-- Navigation Shells -->
+<header class="sticky top-0 z-50 w-full flex flex-col bg-surface/70 backdrop-blur-xl dark:bg-surface/70 border-b border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.4)]">
+<div class="flex justify-between items-center px-container-padding-mobile md:px-container-padding-desktop h-16">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary cursor-pointer lg:hidden">menu</span>
+<h1 class="font-headline-md text-headline-md font-bold text-primary tracking-tight">Marifetli Kedi</h1>
+</div>
+<div class="hidden md:flex items-center gap-6">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[18px]" style="font-variation-settings: &quot;FILL&quot; 1;">auto_awesome</span>
+</div>
+<p class="font-label-md text-tertiary">Kozmik Portal</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant hover:bg-white/5 transition-all duration-300 p-2 rounded-full cursor-pointer">notifications</span>
+<span class="material-symbols-outlined text-on-surface-variant hover:bg-white/5 transition-all duration-300 p-2 rounded-full cursor-pointer">account_circle</span>
+</div>
+</div>
+<!-- Sub Navigation Bar -->
+<nav class="w-full bg-surface-container-low/50 border-t border-white/5 overflow-x-auto custom-scrollbar py-3">
+<div class="flex items-center gap-2 px-container-padding-mobile md:px-container-padding-desktop py-2 min-w-max gap-4">
+<a href="#" class="flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary border border-primary/20 hover:bg-primary/20 transition-all cursor-pointer px-6 py-3 text-[16px] duration-300 hover:shadow-[0_0_15px_rgba(208,188,255,0.3)] backdrop-blur-md">
+<span class="material-symbols-outlined text-[20px]" style="font-size: 24px; text-shadow: currentcolor 0px 0px 12px;">auto_fix_high</span>
+<span class="font-label-md text-sm whitespace-nowrap text-[16px]">Keşfet</span>
+</a>
+<a href="#" class="flex items-center gap-2 px-4 py-2 rounded-full text-on-surface-variant hover:bg-white/5 transition-all cursor-pointer px-6 py-3 text-[16px] duration-300 hover:shadow-[0_0_15px_rgba(208,188,255,0.3)] backdrop-blur-md">
+<span class="material-symbols-outlined text-[20px]" style="font-size: 24px; text-shadow: currentcolor 0px 0px 12px;">flare</span>
+<span class="font-label-md text-sm whitespace-nowrap text-[16px]">Gündemde</span>
+</a>
+<a href="#" class="flex items-center gap-2 px-4 py-2 rounded-full text-on-surface-variant hover:bg-white/5 transition-all cursor-pointer px-6 py-3 text-[16px] duration-300 hover:shadow-[0_0_15px_rgba(208,188,255,0.3)] backdrop-blur-md">
+<span class="material-symbols-outlined text-[20px]" style="font-size: 24px; text-shadow: currentcolor 0px 0px 12px;">cyclone</span>
+<span class="font-label-md text-sm whitespace-nowrap text-[16px]">Çok Konuşulanlar</span>
+</a>
+<a href="#" class="flex items-center gap-2 px-4 py-2 rounded-full text-on-surface-variant hover:bg-white/5 transition-all cursor-pointer px-6 py-3 text-[16px] duration-300 hover:shadow-[0_0_15px_rgba(208,188,255,0.3)] backdrop-blur-md">
+<span class="material-symbols-outlined text-[20px]" style="font-size: 24px; text-shadow: currentcolor 0px 0px 12px;">eye_tracking</span>
+<span class="font-label-md text-sm whitespace-nowrap text-[16px]">Göz At</span>
+</a>
+<a href="#" class="flex items-center gap-2 px-4 py-2 rounded-full text-on-surface-variant hover:bg-white/5 transition-all cursor-pointer px-6 py-3 text-[16px] duration-300 hover:shadow-[0_0_15px_rgba(208,188,255,0.3)] backdrop-blur-md">
+<span class="material-symbols-outlined text-[20px]" style="font-size: 24px; text-shadow: currentcolor 0px 0px 12px;">workspace_premium</span>
+<span class="font-label-md text-sm whitespace-nowrap text-[16px]">Editörün Seçtikleri</span>
+</a>
+<a href="#" class="flex items-center gap-2 px-4 py-2 rounded-full text-on-surface-variant hover:bg-white/5 transition-all cursor-pointer px-6 py-3 text-[16px] duration-300 hover:shadow-[0_0_15px_rgba(208,188,255,0.3)] backdrop-blur-md">
+<span class="material-symbols-outlined text-[20px]" style="font-size: 24px; text-shadow: currentcolor 0px 0px 12px;">favorite</span>
+<span class="font-label-md text-sm whitespace-nowrap text-[16px]">Senin İçin Seçtik</span>
+</a>
+<a href="#" class="flex items-center gap-2 px-4 py-2 rounded-full text-on-surface-variant hover:bg-white/5 transition-all cursor-pointer px-6 py-3 text-[16px] duration-300 hover:shadow-[0_0_15px_rgba(208,188,255,0.3)] backdrop-blur-md">
+<span class="material-symbols-outlined text-[20px]" style="font-size: 24px; text-shadow: currentcolor 0px 0px 12px;">alarm_on</span>
+<span class="font-label-md text-sm whitespace-nowrap text-[16px]">Kaçırma</span>
+</a>
+<a href="#" class="flex items-center gap-2 px-4 py-2 rounded-full text-on-surface-variant hover:bg-white/5 transition-all cursor-pointer px-6 py-3 text-[16px] duration-300 hover:shadow-[0_0_15px_rgba(208,188,255,0.3)] backdrop-blur-md">
+<span class="material-symbols-outlined text-[20px]" style="font-size: 24px; text-shadow: currentcolor 0px 0px 12px;">bolt</span>
+<span class="font-label-md text-sm whitespace-nowrap text-[16px]">Trendler</span>
+</a>
+</div>
+</nav>
+</header>
+
+<div class="flex">
+<!-- Main Content Area -->
+<main class="flex-1 px-container-padding-mobile md:px-container-padding-desktop py-8 max-w-7xl mx-auto w-full">
+<!-- Hero Section: Manşet -->
+<section class="grid grid-cols-1 md:grid-cols-12 gap-gutter mb-section-gap">
+<div class="md:col-span-8 group relative h-[500px] rounded-3xl overflow-hidden glass-card">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" data-alt="A cinematic, ultra-detailed wide shot of a glowing celestial galaxy with vibrant swirls of deep purple, gold, and indigo nebulae. In the foreground, a mystical oracle figure is partially visible through ethereal fog, looking at a floating holographic zodiac wheel. The lighting is dramatic with high contrast, reflecting a premium dark-mode portal aesthetic with cosmic wonder." style="background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuCv7b591dMlz0XWC7FIlmuI5lpgRByUKJqeDWHfFwgtjdYE7EN1h18fP5S0bXHfM8lNFTJw05YRS0GOaFZBAD0gsEgj1ObKD8rr6pb9NQzDdM4p4T2sJq1yvRVtgTBZ2IDyrwaI2Z1rwrfrC2bEtSvDNeAqKor16_cA4xbojns3pLNtEsJIaSffIx_aSP0ZCFpCduntrCb_X6Uvd0NFbSir3dHV2N3tiQY02jXZEKs5X-DhvTMNXUAH&quot;);"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent"></div>
+<div class="absolute bottom-0 p-8 w-full">
+<span class="px-3 py-1 rounded-full bg-tertiary text-on-tertiary font-label-md text-[10px] uppercase tracking-widest mb-4 inline-block">Günün Keşfi</span>
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg mb-4 leading-tight">2024 Burç Yorumları: Yıldızlar Senin İçin Ne Diyor?</h2>
+<p class="text-on-surface-variant line-clamp-2 max-w-2xl mb-6">Gelecek yılın enerjileri, aşk, kariyer ve sağlık alanındaki büyük değişimler için kozmik rehberimiz hazır. Burcunu seç ve yolculuğa başla.</p>
+<div class="flex items-center gap-4">
+<button class="bg-primary text-on-primary px-6 py-3 rounded-full font-label-md flex items-center gap-2 hover:bg-primary-container transition-colors">
+                                Devamını Oku <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<span class="text-caption text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">schedule</span> 15 Dakika Önce
+                            </span>
+</div>
+</div>
+</div>
+<div class="md:col-span-4 flex flex-col gap-gutter">
+<div class="flex-1 glass-card rounded-2xl overflow-hidden group relative">
+<div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500" data-alt="A close-up artistic rendering of a moon phase calendar glowing with a soft golden light against a dark navy star-filled background. The image has a mystical, clean, and modern glassmorphic feel with sharp details and magical sparkles around the lunar crescent." style="background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuDtWJUcCjG5Sx2kiiBJXL42B5BarOMxszis2XxClq6kFh7wl0o3_pXhS4OaoaN9kMSNXVG-Vc-7Humgo6q7RRN-f4sam22Gc8_x4FCdAjhofzDH2RM5j9iJc-ZDl_Q0ZKWn9W3J1WZhEC03OTKljqFvkV4zcKoEeXJE77nrq2--5xL-UTkEqD8w3fcCQT1C6HVouY8RSNtM4IyWjGa0tR5QGnmFBaUNVac5i6tpXitRekNBK_kB5V67&quot;);"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent"></div>
+<div class="absolute bottom-4 left-4 right-4">
+<h3 class="font-headline-md text-label-md text-white">Retro Döneminde Yapılmaması Gereken 5 Şey</h3>
+</div>
+</div>
+<div class="flex-1 glass-card rounded-2xl overflow-hidden group relative">
+<div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500" data-alt="A high-end, aesthetic photography of a set of ornate gold-foiled Tarot cards spread on a dark velvet surface with burning incense and crystals nearby. The color palette is rich in deep purples and golds, reflecting a professional mystical portal brand identity." style="background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuBzleRLzwUwBK2ltmkm1lBWeNJh0x6OqCqRosWE2fqGqPYB5l1ZQf4MBYCl9FL67teYCZkV57mYnvgyCAQgeZCSbTHjILcOPIXV0pZoMxedYFgrhE9pOAqkg0YkNocizjNOMSQuSAJs6unSaZ_5HaCCqv6heqFS1Q7xFuvE-WkRQEvrIU98kl0aMNWkZrthPS6lu3tlrXnOuwID1MZ8FR2YspXE6a0p8Bw66Et2LzvzL7BniriF4dKE&quot;);"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent"></div>
+<div class="absolute bottom-4 left-4 right-4">
+<h3 class="font-headline-md text-label-md text-white">Tarot Açılımı: Geleceğin Şifrelerini Çöz</h3>
+</div>
+</div>
+</div>
+</section>
+<!-- 🔥 Gündemde: Horizontal Scroll -->
+<section class="mb-section-gap">
+<div class="flex justify-between items-center mb-6">
+<h2 class="font-headline-md text-headline-md flex items-center gap-2">
+<span class="text-error">🔥</span> Gündemde
+                    </h2>
+<a class="text-primary font-label-md hover:underline" href="#">Tümünü Gör</a>
+</div>
+<div class="flex gap-gutter overflow-x-auto pb-4 custom-scrollbar snap-x">
+<!-- Trending Card 1 -->
+<div class="min-w-[280px] md:min-w-[320px] snap-start glass-card p-4 rounded-2xl">
+<div class="aspect-video rounded-xl mb-4 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="An artistic digital illustration showing the impact of a lunar eclipse with waves of purple energy emanating from a blood-red moon into a cosmic sky. The style is ethereal, high-tech mysticism with glassmorphic layers." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAiaxx1pDp5inbABLyrgeVZWD7MewKea0t962o21HebCch1BBr3SU8VPEpx3d86aml6Yf0wCAu9p_9vOYUcViWaUu-of0JNfuFzi-U_8LW0i16J4dQ5EAuNLSIfQMmuWDlEzH01NX3eVVX4Qo9W0Joq-LilI2PkBqBslOwKfCkAjtUE8Ev6-uHNkwaitUbIb6S5_EYsBa8q47qJj_J-rt6JOEDtwZoovFpudfMuhdB2zsqQZRAXSdJI">
+</div>
+<h4 class="font-label-md text-on-surface mb-2 line-clamp-2">Ay Tutulmasının Burçlar Üzerindeki Etkisi: Büyük Değişim Kapıda</h4>
+<div class="flex items-center justify-between">
+<span class="text-caption text-on-surface-variant">42.5k Okunma</span>
+<span class="material-symbols-outlined text-tertiary">trending_up</span>
+</div>
+</div>
+<!-- Trending Card 2 -->
+<div class="min-w-[280px] md:min-w-[320px] snap-start glass-card p-4 rounded-2xl">
+<div class="aspect-video rounded-xl mb-4 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A modern minimalist graphic of planet Mars in a dark starry void, surrounded by a glowing red aura and crystalline star clusters. High definition, sleek digital art style with luxury brand feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwn7v1qj56eNlKEt_IY0mTvxx14oHj8soIvB6gLpQzSn-OZTeZg8RjXQB1l0xgSkHUWJk2lBkdjWPTYK4lR91tYphbiaVbTapnpgR3xFClcX8E3mxo1hbCS7pLCw3DWjKLGtX924-HDVKIcFrr-kouujHHJby1cp3FVssQr2ihsHfFovY8e1deANHYhL9RcDlzxqCvFjML3wOw8kq86Ee1g2C4j3MM2ACJ_4mDGNEwlkMrd4yOWDcf">
+</div>
+<h4 class="font-label-md text-on-surface mb-2 line-clamp-2">Mars Retrosu Başlıyor: Enerjini Korumak İçin İpuçları</h4>
+<div class="flex items-center justify-between">
+<span class="text-caption text-on-surface-variant">38.2k Okunma</span>
+<span class="material-symbols-outlined text-tertiary">trending_up</span>
+</div>
+</div>
+<!-- Trending Card 3 -->
+<div class="min-w-[280px] md:min-w-[320px] snap-start glass-card p-4 rounded-2xl">
+<div class="aspect-video rounded-xl mb-4 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A beautiful spiritual illustration of two hands holding a glowing nebula cloud. Soft pink and indigo tones, magical floating dust motes, and a sophisticated mystical aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXVMTwGoCuwQ5EEPmt6E3oO5omGKVR9vTXKAHPu9L1NcbAjvd_1xON-90jtvyVPoE-P0wHRzzpb1VauZiJxdwQdxX7pyW-lcwjgLPRbJxfZ7EJMguE3hk3YQVQzLvEvZuxlwlHOyKgVgZCXgNLr7WIt3x02_7CwlG5lq9zPr81o2RMi8r1RMB2dmKDN_WETQ9ye0Xd18C1Js26-1gXPMKKRYIoXqXNhG9wUsPU0jswZUmxiW4cXOL5">
+</div>
+<h4 class="font-label-md text-on-surface mb-2 line-clamp-2">İçsel Huzur İçin Yıldızlardan Gelen 7 Mesaj</h4>
+<div class="flex items-center justify-between">
+<span class="text-caption text-on-surface-variant">29.9k Okunma</span>
+<span class="material-symbols-outlined text-tertiary">trending_up</span>
+</div>
+</div>
+<!-- Trending Card 4 -->
+<div class="min-w-[280px] md:min-w-[320px] snap-start glass-card p-4 rounded-2xl">
+<div class="aspect-video rounded-xl mb-4 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A creative collage of modern zodiac symbols rendered in polished rose gold 3D material against a dark matte background. Luxury, high-end design for an astrology portal." src="https://lh3.googleusercontent.com/aida-public/AB6AXuClbsUTDMW0VEX82j_gOE4nkq3tuTqXF-g0v-bIkQqx2SQDsdUaBPj-t1_9eT1oLL_iDRGu0m7yHjGg-GiSTDidqBBsHxuGG5_wcJq4o41OSt1qWi2KEf7XuWj_K1OmZ9WqR8zKxjjO1FB7BMpSeFH0IgawgKbN2-mXrlDQhfiocK493IvcBgAoxWavhlnN5c4LY5lkG9MwLMn0xKFOX77X9dPGPfJbZdA_dQGX7W9dvb0IIXwkWQzZ">
+</div>
+<h4 class="font-label-md text-on-surface mb-2 line-clamp-2">Hangi Element Seni Tanımlıyor? Testi Çöz!</h4>
+<div class="flex items-center justify-between">
+<span class="text-caption text-on-surface-variant">15.1k Okunma</span>
+<span class="material-symbols-outlined text-tertiary">trending_up</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Grid Layout: Editörün Seçtikleri & Sidebar -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-10 mb-section-gap">
+<!-- ⭐ Editörün Seçtikleri -->
+<section class="lg:col-span-8">
+<h2 class="font-headline-md text-headline-md flex items-center gap-2 mb-6">
+<span class="text-tertiary">⭐</span> Editörün Seçtikleri
+                    </h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<!-- Article 1 -->
+<div class="glass-card rounded-2xl overflow-hidden">
+<div class="h-48 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="An atmospheric photo of a crystal ball sitting on a wooden table, reflecting a beautiful twilight sky with stars. The lighting is dreamy and warm with soft bokehs, creating an enchanting mood for a magic portal." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmXWUlnS7aqK5pyHoqiLO7R2ZW3yx_osHHec_ucWBUlB4rGOAy0iV0VjAs1gE2N9XdR3vtqT4kMdtN_mBph5dBA6eEwq3kurV7odZDoRtg67zM4fmA1EUfFt7Yhtv6BKKSCmWerxA600eCINYcDbHxlmCeTZyQDnIJ6i7Fo-wY0Kg5qsYhpU6sKdgtzEbH-mh2G82IOQHvLNJgxXCVIA9XluPvz7w2mGRTNFRtTeySrunQxmVcu11_">
+</div>
+<div class="p-6">
+<span class="text-[10px] font-label-md text-primary bg-primary/10 px-2 py-1 rounded uppercase mb-3 inline-block">Derinlemesine</span>
+<h3 class="font-headline-md text-[20px] mb-3 leading-tight">Yıldız Haritanızda Gizlenen Yetenekler</h3>
+<p class="text-caption text-on-surface-variant mb-4">Her doğum haritası eşsiz bir potansiyel barındırır. Sizin haritanızdaki saklı hazine hangisi?</p>
+<a class="text-primary font-label-md flex items-center gap-1 hover:gap-2 transition-all" href="#">
+                                    Okumaya Başla <span class="material-symbols-outlined text-[18px]">arrow_right_alt</span>
+</a>
+</div>
+</div>
+<!-- Article 2 -->
+<div class="glass-card rounded-2xl overflow-hidden">
+<div class="h-48 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A creative digital art piece representing planetary alignment as glowing concentric rings in space. The rings are neon purple and gold, with tiny star particles orbiting them. High-tech mystical aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9VdcRIQ80YNyELSQVG4p6i_UM5crJff6nC9Bf9EsqGHs92k70-sQWVXhSfJyXtWbfPtAOgkeN4kjhT_TrvIh6qmGE5CxEKfBfyQZcLCN_ON2beBf_HbFzHyA0v6kxDhJ7XDuWOcR0vMOc-x_oRqEULM8kJBjG03CGCUwCPUNljFgCc8GH1L4l4PE-AqOKdh7_nEAH6sEB6nUqTab_MRMjaaZreOV8Y9ax5Weummmu8MflgL0pyqTP">
+</div>
+<div class="p-6">
+<span class="text-[10px] font-label-md text-primary bg-primary/10 px-2 py-1 rounded uppercase mb-3 inline-block">Analiz</span>
+<h3 class="font-headline-md text-[20px] mb-3 leading-tight">Gezegen Dizilimleri ve Toplumsal Etkiler</h3>
+<p class="text-caption text-on-surface-variant mb-4">Tarihteki büyük olaylar ve gezegen hareketleri arasındaki şaşırtıcı bağlar.</p>
+<a class="text-primary font-label-md flex items-center gap-1 hover:gap-2 transition-all" href="#">
+                                    Okumaya Başla <span class="material-symbols-outlined text-[18px]">arrow_right_alt</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- 💫 Çok Konuşulanlar Sidebar -->
+<aside class="lg:col-span-4">
+<h2 class="font-headline-md text-headline-md flex items-center gap-2 mb-6">
+<span class="text-secondary">💫</span> Çok Konuşulanlar
+                    </h2>
+<div class="space-y-4">
+<div class="glass-card p-4 rounded-xl flex gap-4 items-center">
+<div class="text-headline-md font-bold text-outline-variant opacity-30">01</div>
+<div class="flex-1">
+<h4 class="font-label-md text-sm line-clamp-2">"Merkür retrosu beni mahvetti" diyenler burada mı?</h4>
+<div class="flex items-center gap-3 mt-2 text-[10px] text-on-surface-variant">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[12px]" style="font-variation-settings: &quot;FILL&quot; 1;">favorite</span> 12.4k</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[12px]" style="font-variation-settings: &quot;FILL&quot; 1;">chat_bubble</span> 856</span>
+</div>
+</div>
+</div>
+<div class="glass-card p-4 rounded-xl flex gap-4 items-center">
+<div class="text-headline-md font-bold text-outline-variant opacity-30">02</div>
+<div class="flex-1">
+<h4 class="font-label-md text-sm line-clamp-2">Burçlara Göre Tatil Rotaları: Nereye Gitmelisin?</h4>
+<div class="flex items-center gap-3 mt-2 text-[10px] text-on-surface-variant">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[12px]" style="font-variation-settings: &quot;FILL&quot; 1;">favorite</span> 8.9k</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[12px]" style="font-variation-settings: &quot;FILL&quot; 1;">chat_bubble</span> 243</span>
+</div>
+</div>
+</div>
+<div class="glass-card p-4 rounded-xl flex gap-4 items-center">
+<div class="text-headline-md font-bold text-outline-variant opacity-30">03</div>
+<div class="flex-1">
+<h4 class="font-label-md text-sm line-clamp-2">Ritüeller Gerçekten İşe Yarıyor mu? Bilim ve Ezoterizm</h4>
+<div class="flex items-center gap-3 mt-2 text-[10px] text-on-surface-variant">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[12px]" style="font-variation-settings: &quot;FILL&quot; 1;">favorite</span> 7.2k</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[12px]" style="font-variation-settings: &quot;FILL&quot; 1;">chat_bubble</span> 512</span>
+</div>
+</div>
+</div>
+</div>
+</aside>
+</div>
+<!-- 💜 Senin İçin Seçtik: Recommendation Grid -->
+<section class="mb-section-gap">
+<h2 class="font-headline-md text-headline-md flex items-center gap-2 mb-6">
+<span class="text-primary">💜</span> Senin İçin Seçtik
+                </h2>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-gutter">
+<div class="glass-card p-4 rounded-2xl border-primary/20 shadow-[0_0_20px_rgba(208,188,255,0.15)] group">
+<div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined text-primary">psychology</span>
+</div>
+<h4 class="font-label-md text-sm mb-2">Mental Sağlık ve Ay Döngüleri</h4>
+<p class="text-[10px] text-on-surface-variant">Duygusal dengeni gezegenlerle uyumla.</p>
+</div>
+<div class="glass-card p-4 rounded-2xl border-primary/20 shadow-[0_0_20px_rgba(208,188,255,0.15)] group">
+<div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined text-primary">diamond</span>
+</div>
+<h4 class="font-label-md text-sm mb-2">Şans Getiren Kristallerin</h4>
+<p class="text-[10px] text-on-surface-variant">Burcuna en uygun taşları keşfet.</p>
+</div>
+<div class="glass-card p-4 rounded-2xl border-primary/20 shadow-[0_0_20px_rgba(208,188,255,0.15)] group">
+<div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined text-primary">coffee</span>
+</div>
+<h4 class="font-label-md text-sm mb-2">Kozmik Sabah Rutini</h4>
+<p class="text-[10px] text-on-surface-variant">Güne enerjik başlatan meditasyonlar.</p>
+</div>
+<div class="glass-card p-4 rounded-2xl border-primary/20 shadow-[0_0_20px_rgba(208,188,255,0.15)] group">
+<div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined text-primary">nightlight</span>
+</div>
+<h4 class="font-label-md text-sm mb-2">Uyku Hijyeni ve Yıldızlar</h4>
+<p class="text-[10px] text-on-surface-variant">Daha derin uyku için astrolojik tüyolar.</p>
+</div>
+</div>
+</section>
+<!-- 🚀 Kaçırma: Alerts -->
+<section class="mb-section-gap">
+<div class="bg-gradient-to-r from-surface-container-high/50 to-primary/10 p-8 rounded-3xl border border-white/5 relative overflow-hidden">
+<div class="absolute right-[-50px] top-[-50px] opacity-20">
+<span class="material-symbols-outlined text-[200px] text-primary">rocket_launch</span>
+</div>
+<div class="relative z-10">
+<h2 class="font-headline-md text-headline-md flex items-center gap-2 mb-2">
+<span class="text-secondary">🚀</span> Kaçırma
+                        </h2>
+<p class="text-on-surface-variant mb-6 font-body-md">Gökyüzündeki kritik olayları anında takip et.</p>
+<div class="flex flex-col md:flex-row gap-4">
+<div class="flex-1 flex items-center gap-4 bg-surface/50 backdrop-blur-md p-4 rounded-2xl border border-error/30">
+<div class="w-10 h-10 rounded-full bg-error/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-error">warning</span>
+</div>
+<div>
+<p class="font-label-md text-error">Merkür Retrosu Uyarısı</p>
+<p class="text-caption text-on-surface-variant">Başlangıç: 2 saat sonra. İletişime dikkat!</p>
+</div>
+</div>
+<div class="flex-1 flex items-center gap-4 bg-surface/50 backdrop-blur-md p-4 rounded-2xl border border-tertiary/30">
+<div class="w-10 h-10 rounded-full bg-tertiary/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary">brightness_4</span>
+</div>
+<div>
+<p class="font-label-md text-tertiary">Yeni Ay Yarın</p>
+<p class="text-caption text-on-surface-variant">Yeni niyetler ve başlangıçlar için ideal zaman.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+</div>
+<!-- Footer -->
+<footer class="w-full py-section-gap bg-surface-container-lowest dark:bg-surface-container-lowest border-t border-white/5 flex flex-col items-center justify-center gap-4 px-container-padding-mobile text-center">
+<h3 class="font-headline-md text-headline-md text-on-surface">Kozmik Keşifler</h3>
+<nav class="flex flex-wrap justify-center gap-6 font-caption text-caption">
+<a class="text-on-surface-variant hover:text-on-surface transition-opacity duration-200" href="#">Hakkımızda</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-opacity duration-200" href="#">Gizlilik Politikası</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-opacity duration-200" href="#">Reklam</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-opacity duration-200" href="#">İletişim</a>
+</nav>
+<p class="font-caption text-caption text-tertiary max-w-md">
+            © 2024 Marifetli Kedi - Kozmik Keşifler Portal. Yıldızların Rehberliğinde.
+        </p>
+<div class="flex gap-4 mt-4">
+<div class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center hover:bg-white/10 cursor-pointer transition-colors">
+<span class="material-symbols-outlined text-[18px]">share</span>
+</div>
+<div class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center hover:bg-white/10 cursor-pointer transition-colors">
+<span class="material-symbols-outlined text-[18px]">mail</span>
+</div>
+</div>
+</footer>
+<script class="">
+        // Micro-interactions and atmospheric effects
+        document.addEventListener('mousemove', (e) => {
+            const glow = document.querySelector('.nebula-glow');
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            
+            glow.style.background = `
+                radial-gradient(circle at ${x</script></body></html>

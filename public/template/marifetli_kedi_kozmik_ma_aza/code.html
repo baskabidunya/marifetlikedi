@@ -1,0 +1,461 @@
+<!DOCTYPE html><html class="dark" lang="tr"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Kozmik Mağaza | Marifetli Kedi</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&amp;family=Inter:wght@400;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-primary": "#6d3bd7",
+                    "on-tertiary-fixed": "#261a00",
+                    "on-primary-fixed-variant": "#5516be",
+                    "outline": "#958ea0",
+                    "inverse-on-surface": "#283044",
+                    "surface-bright": "#31394d",
+                    "on-surface": "#dae2fd",
+                    "primary-container": "#a078ff",
+                    "on-secondary-container": "#ffd8fd",
+                    "tertiary": "#f9bd22",
+                    "secondary-fixed-dim": "#fbabff",
+                    "on-secondary-fixed": "#36003e",
+                    "surface-container": "#171f33",
+                    "secondary-fixed": "#ffd6fd",
+                    "on-tertiary-container": "#372700",
+                    "surface-tint": "#d0bcff",
+                    "surface-container-high": "#222a3d",
+                    "primary-fixed": "#e9ddff",
+                    "error": "#ffb4ab",
+                    "on-error-container": "#ffdad6",
+                    "inverse-surface": "#dae2fd",
+                    "on-surface-variant": "#cbc3d7",
+                    "on-primary": "#3c0091",
+                    "surface-container-low": "#131b2e",
+                    "surface": "#0b1326",
+                    "on-tertiary-fixed-variant": "#5c4300",
+                    "error-container": "#93000a",
+                    "surface-container-highest": "#2d3449",
+                    "on-primary-fixed": "#23005c",
+                    "tertiary-container": "#b88900",
+                    "tertiary-fixed": "#ffdf9f",
+                    "on-secondary": "#580065",
+                    "on-error": "#690005",
+                    "secondary-container": "#ae05c6",
+                    "on-primary-container": "#340080",
+                    "surface-variant": "#2d3449",
+                    "tertiary-fixed-dim": "#f9bd22",
+                    "primary": "#d0bcff",
+                    "outline-variant": "#494454",
+                    "on-background": "#dae2fd",
+                    "surface-container-lowest": "#060e20",
+                    "secondary": "#fbabff",
+                    "primary-fixed-dim": "#d0bcff",
+                    "on-secondary-fixed-variant": "#7c008e",
+                    "on-tertiary": "#402d00",
+                    "background": "#0b1326",
+                    "surface-dim": "#0b1326"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "16px",
+                    "container-padding-mobile": "20px",
+                    "unit": "8px",
+                    "container-padding-desktop": "40px",
+                    "section-gap": "64px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Inter"],
+                    "caption": ["Inter"],
+                    "headline-lg-mobile": ["Sora"],
+                    "body-md": ["Inter"],
+                    "headline-md": ["Sora"],
+                    "headline-lg": ["Sora"],
+                    "display-lg": ["Sora"],
+                    "label-md": ["Inter"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "caption": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #0b1326;
+            color: #dae2fd;
+            overflow-x: hidden;
+        }
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .glass-card:hover {
+            border-color: #f9bd22;
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+        .gold-glow {
+            box-shadow: 0 0 15px rgba(249, 189, 34, 0.3);
+        }
+        .star-field {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            background: radial-gradient(circle at 50% 50%, #171f33 0%, #0b1326 100%);
+        }
+        .nebula {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.2;
+            z-index: -1;
+            animation: drift 20s infinite alternate linear;
+        }
+        @keyframes drift {
+            from { transform: translate(-10%, -10%); }
+            to { transform: translate(10%, 10%); }
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-filter {
+            background: #a078ff;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body class="font-body-md">
+<div class="star-field">
+<div class="nebula bg-primary top-[-10%] left-[-10%]"></div>
+<div class="nebula bg-secondary bottom-[-10%] right-[-10%]"></div>
+</div>
+<!-- TopNavBar -->
+<header class="bg-surface/70 backdrop-blur-xl text-primary font-headline-md text-headline-md docked full-width top-0 border-b border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.1)] flex justify-between items-center px-container-padding-mobile md:px-container-padding-desktop w-full h-16 z-50 fixed">
+<div class="font-display-lg text-headline-md text-primary tracking-tight">Marifetli Kedi</div>
+<nav class="hidden md:flex gap-8 items-center">
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-300 font-label-md text-label-md" href="#">Ana Sayfa</a>
+<a class="text-tertiary font-bold hover:text-primary transition-colors duration-300 font-label-md text-label-md" href="#">Kozmik Mağaza</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-300 font-label-md text-label-md" href="#">Burçlar</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-300 font-label-md text-label-md" href="#">Ritüeller</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined active:scale-95 transition-transform text-on-surface-variant hover:text-primary">search</button>
+<button class="material-symbols-outlined active:scale-95 transition-transform text-on-surface-variant hover:text-primary">shopping_cart</button>
+<button class="material-symbols-outlined active:scale-95 transition-transform text-on-surface-variant hover:text-primary">notifications</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-primary/30">
+<img class="w-full h-full object-cover" data-alt="A stylized profile portrait of a modern user in an ethereal setting, with cosmic lighting and a soft purple aesthetic, reflecting the mysticism of the brand Marifetli Kedi. The background features subtle stars and a soft nebula glow." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnj4cozgTqPhOqP9sVRUecKATOyOjzU2Xmb64Ve8pD_8sOreKq8BoeGVvytOXwToB3Wuo0dsi-UwuQvsOL21xJSFh40jCdidamiUYol6qg1_DO2y5oOg3BTssbfknPzqtjfNjSJota8zzn-12ZZBB68zbh-2zNcnuBUVWwJJTMEFlFrUN-c8GTNUk7n2sVEJqfJ8Oi_s_RxG6FqZMjAz3TZXEFiR7tZkaLnfgMVqHKtpGKmvX1isNy">
+</div>
+</div>
+</header>
+<main class="pt-24 pb-section-gap px-container-padding-mobile md:px-container-padding-desktop max-w-[1280px] mx-auto">
+<!-- Hero Section / Sana Özel Seçkiler -->
+<section class="mb-section-gap">
+<div class="flex flex-col md:flex-row justify-between items-end mb-8 gap-4">
+<div>
+<h1 class="font-display-lg text-display-lg text-primary mb-2">Kozmik Mağaza</h1>
+<p class="text-on-surface-variant font-body-lg text-body-lg">Yıldızların rehberliğinde seçilmiş mistik hazineler.</p>
+</div>
+<div class="flex gap-2 bg-surface-container rounded-full p-1 border border-white/5">
+<button class="px-6 py-2 rounded-full font-label-md text-label-md active-filter transition-all">Tümü</button>
+<button class="px-6 py-2 rounded-full font-label-md text-label-md text-on-surface-variant hover:text-primary transition-all">Kristaller</button>
+<button class="px-6 py-2 rounded-full font-label-md text-label-md text-on-surface-variant hover:text-primary transition-all">Ritüeller</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<div class="md:col-span-8 relative rounded-3xl overflow-hidden h-[400px] group">
+<div class="absolute inset-0 bg-gradient-to-t from-surface to-transparent z-10"></div>
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A premium ritual kit for cosmic manifestations, featuring high-quality incense, a raw amethyst cluster, gold-foil tarot cards, and a leather-bound journal. The scene is illuminated by soft candlelight and deep purple cosmic rays, creating a magical and luxurious atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-TrUW-BrRA84_yatTx6oG5A3iZnB7VYtr9CRoS5IFu_iNroUbA796Xkqi8vI6mvNBNHp4JUHQaeUW4QRWDnTDhUm80vzC-qtpO36hIeNk7RLhqJTG21tC68hlnFsHJgto-yq4-ul7x9DZwms1lApW-MwMYSy8_kATj-5MEMGAHV_cChDbri_FaKVZtwkJaMPRrq4q4gxZViKoVYfxEe2dJERi02qKsErUcM-bv0HCrmBTLf2TS_Pr">
+<div class="absolute bottom-0 left-0 p-8 z-20">
+<span class="bg-tertiary text-on-tertiary-fixed px-3 py-1 rounded-full font-label-md text-caption mb-4 inline-block uppercase tracking-wider">Haftanın Seçkisi</span>
+<h2 class="font-headline-lg text-headline-lg text-white mb-2">Yeni Ay Ritüel Seti</h2>
+<p class="text-on-surface-variant max-w-md mb-6">Niyetlerinizi gökyüzünün enerjisiyle mühürlemek için ihtiyacınız olan her şey bu özel kutuda.</p>
+<button class="bg-primary hover:bg-primary-container text-on-primary px-8 py-3 rounded-full font-label-md text-label-md transition-all gold-glow">Hemen İncele</button>
+</div>
+</div>
+<div class="md:col-span-4 glass-card rounded-3xl p-8 flex flex-col justify-center border-tertiary/20">
+<div class="mb-6">
+<span class="material-symbols-outlined text-tertiary text-4xl mb-4">auto_awesome</span>
+<h3 class="font-headline-md text-headline-md text-tertiary mb-2">Sana Özel Seçkiler</h3>
+<p class="text-on-surface-variant">Doğum haritana göre bu hafta Akrep burcu enerjisini dengeleyecek kristaller senin için listelendi.</p>
+</div>
+<div class="space-y-4">
+<div class="flex items-center gap-4 p-3 rounded-xl bg-white/5 hover:bg-white/10 transition-colors cursor-pointer group">
+<div class="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">diamond</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Obsidyen Koruması</p>
+<p class="text-caption text-on-surface-variant">Negatif enerjiyi uzaklaştırır</p>
+</div>
+<span class="material-symbols-outlined ml-auto text-on-surface-variant group-hover:text-primary transition-colors">chevron_right</span>
+</div>
+<div class="flex items-center gap-4 p-3 rounded-xl bg-white/5 hover:bg-white/10 transition-colors cursor-pointer group">
+<div class="w-12 h-12 rounded-lg bg-tertiary/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary">water_drop</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Ay Suyu Ritüeli</p>
+<p class="text-caption text-on-surface-variant">Duygusal arınma rehberi</p>
+</div>
+<span class="material-symbols-outlined ml-auto text-on-surface-variant group-hover:text-primary transition-colors">chevron_right</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Filtreleme Sembolleri -->
+<section class="mb-16">
+<h3 class="text-center font-label-md text-label-md text-on-surface-variant uppercase tracking-[0.2em] mb-8">Elementine Göre Keşfet</h3>
+<div class="flex justify-center flex-wrap gap-8 md:gap-16">
+<button class="flex flex-col items-center gap-3 group">
+<div class="w-16 h-16 rounded-full border border-white/10 flex items-center justify-center group-hover:border-error transition-all group-hover:bg-error/10">
+<span class="material-symbols-outlined text-error text-3xl">local_fire_department</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant group-hover:text-error">Ateş</span>
+</button>
+<button class="flex flex-col items-center gap-3 group">
+<div class="w-16 h-16 rounded-full border border-white/10 flex items-center justify-center group-hover:border-primary transition-all group-hover:bg-primary/10">
+<span class="material-symbols-outlined text-primary text-3xl">water_drop</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant group-hover:text-primary">Su</span>
+</button>
+<button class="flex flex-col items-center gap-3 group">
+<div class="w-16 h-16 rounded-full border border-white/10 flex items-center justify-center group-hover:border-tertiary transition-all group-hover:bg-tertiary/10">
+<span class="material-symbols-outlined text-tertiary text-3xl">air</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant group-hover:text-tertiary">Hava</span>
+</button>
+<button class="flex flex-col items-center gap-3 group">
+<div class="w-16 h-16 rounded-full border border-white/10 flex items-center justify-center group-hover:border-secondary transition-all group-hover:bg-secondary/10">
+<span class="material-symbols-outlined text-secondary text-3xl">eco</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant group-hover:text-secondary">Toprak</span>
+</button>
+</div>
+</section>
+<!-- En Popüler Mistik Ürünler -->
+<section class="mb-section-gap">
+<div class="flex justify-between items-center mb-8">
+<h2 class="font-headline-lg text-headline-lg text-white">En Popüler Mistik Ürünler</h2>
+<a class="text-tertiary hover:underline font-label-md text-label-md flex items-center gap-2" href="#">Tümünü Gör <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- Ürün 1 -->
+<div class="glass-card rounded-2xl p-4 group">
+<div class="aspect-square rounded-xl overflow-hidden mb-4 relative">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A raw rose quartz crystal on a dark velvet surface. The crystal has a gentle pink glow, surrounded by small golden stars and soft mystical smoke. The lighting is elegant, emphasizing the crystal's natural facets and deep spiritual energy." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2xUh0LOACP_E6Ebw_ZwuuGql0eMzeMRCmymJuBQ4jTs4kulgGTEKTfTX0uQMp_xecIs7OeOEYhIMGF60EpkQDl6rZBxEV_PjXcMpovGX5-gSj2xm4P_YJkDIZF_hANNbmUINYNats7zX2jnEQu_GkwxOZdGyjHqwIK-AgDuiN_i5yjW6z-TTRIGnVJwbRMMN8oVAKJVaXAHLCLhdIDFlLI5quTJfUqNkM4lzyD82ZNHy_E39OvBvN">
+<button class="absolute top-3 right-3 w-10 h-10 bg-surface/50 backdrop-blur-md rounded-full flex items-center justify-center text-white hover:text-error transition-colors">
+<span class="material-symbols-outlined">favorite</span>
+</button>
+</div>
+<h4 class="font-headline-md text-body-lg text-on-surface mb-1">Pembe Kuvars Kristali</h4>
+<p class="text-caption text-on-surface-variant mb-4">Koşulsuz sevgi ve huzur taşı.</p>
+<div class="flex justify-between items-center">
+<span class="font-bold text-tertiary text-headline-md">450 ₺</span>
+<button class="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-all">
+<span class="material-symbols-outlined">add_shopping_cart</span>
+</button>
+</div>
+</div>
+<!-- Ürün 2 -->
+<div class="glass-card rounded-2xl p-4 group">
+<div class="aspect-square rounded-xl overflow-hidden mb-4 relative">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A luxury digital birth chart report visualization, showing intricate planetary alignments and zodiac wheel in glowing gold lines against a deep space background. The interface looks professional, high-tech, and magically informative, with a focus on sophisticated design and astrological precision." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGVqqBj9SnyYaLSzfZGAEV_CPQ_heEhhTGMIyHQoAhKRZ7S5Q4lAo3e_122LMd2GYBC-PUvJzhmS1f3MNXe0nfGsNtygb_kaa8iUL5PwXfeXFMMGXXuVnV6LPvMGS1e4TqUbrhrCB2IiUdTXPIitTrW8RKgO5wFbIoEgyrwqVIVvFNBdhKMLhOqw4G66mWTP35sn4uluAQ5bYaBXFQNDfY_LUIIQZPmg0modfHXIiQfUaRWbmVYjdB">
+<div class="absolute top-3 left-3 bg-tertiary/20 text-tertiary px-2 py-1 rounded text-[10px] font-bold uppercase tracking-widest backdrop-blur-md">Dijital</div>
+<button class="absolute top-3 right-3 w-10 h-10 bg-surface/50 backdrop-blur-md rounded-full flex items-center justify-center text-white hover:text-error transition-colors">
+<span class="material-symbols-outlined">favorite</span>
+</button>
+</div>
+<h4 class="font-headline-md text-body-lg text-on-surface mb-1">Doğum Haritası Raporu</h4>
+<p class="text-caption text-on-surface-variant mb-4">Kişiye özel 50 sayfalık analiz.</p>
+<div class="flex justify-between items-center">
+<span class="font-bold text-tertiary text-headline-md">890 ₺</span>
+<button class="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-all">
+<span class="material-symbols-outlined">download</span>
+</button>
+</div>
+</div>
+<!-- Ürün 3 -->
+<div class="glass-card rounded-2xl p-4 group">
+<div class="aspect-square rounded-xl overflow-hidden mb-4 relative">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Exotic Palo Santo sticks and white sage smudge bundles tied with golden thread, resting on a handcrafted ceramic plate with mystical symbols. Wisps of white smoke curl upwards into a dark, star-lit room, conveying a sense of purification and sacred ritual space." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxCSVH4ze_z47mhgTAt7w6PU2YSONGPi1JCbQw41tXRhscwLwlEUdMT9B-7ZV-c4NA7GmXQJhzQfNIaHIP3QnbwsAsYWcm90kBg839hro1h8_o5nTGCgAIg_MHXb7noaafI8ivlSbwNXrxfhKShmeIPhhKPEvkRz9dkS4WmDxjfjBbEylatgkIlshpL0fY4NepLY7bywJkuTA6sMpV31POc5iK_8pjVj1vbs37W1JdAJL3DmCptF3x">
+<button class="absolute top-3 right-3 w-10 h-10 bg-surface/50 backdrop-blur-md rounded-full flex items-center justify-center text-white hover:text-error transition-colors">
+<span class="material-symbols-outlined">favorite</span>
+</button>
+</div>
+<h4 class="font-headline-md text-body-lg text-on-surface mb-1">Adaçayı Tütsü Seti</h4>
+<p class="text-caption text-on-surface-variant mb-4">Mekan temizliği ve dinginlik.</p>
+<div class="flex justify-between items-center">
+<span class="font-bold text-tertiary text-headline-md">220 ₺</span>
+<button class="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-all">
+<span class="material-symbols-outlined">add_shopping_cart</span>
+</button>
+</div>
+</div>
+<!-- Ürün 4 -->
+<div class="glass-card rounded-2xl p-4 group">
+<div class="aspect-square rounded-xl overflow-hidden mb-4 relative">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A mystical zodiac candle for the Leo sign, featuring a metallic gold container with sun symbols. The candle is surrounded by citrine stones and dried marigolds on a dark, moody background. Warm golden light emanates from the flame, reflecting off the shiny surfaces for a luxurious feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAy_vb5woiBO_FypACa-NTy9qDPRN3SGzWMstjW5hMKvbaT8ZL9--QQ1n6FDsY40RC_Pn3Gp4Uw0JvCc2EKF5GG6Gf-gTeUew0Y8xWTL0h3wnWiTYBB_wg0FMETv5y1bM1nEIrnUe7ozgZMegsdi_yddO9L30bVXLH0okBlC9MNzzkmsP7nJJtAOJ9rtrzRnAygzTWRYGsf6u9gHMBsDAVqNpiedclMeV3VoqW6IoiMwWpQIKT4l1Vh">
+<button class="absolute top-3 right-3 w-10 h-10 bg-surface/50 backdrop-blur-md rounded-full flex items-center justify-center text-white hover:text-error transition-colors">
+<span class="material-symbols-outlined">favorite</span>
+</button>
+</div>
+<h4 class="font-headline-md text-body-lg text-on-surface mb-1">Aslan Burcu Mumu</h4>
+<p class="text-caption text-on-surface-variant mb-4">Soya mumu ve sitrin taşı ile.</p>
+<div class="flex justify-between items-center">
+<span class="font-bold text-tertiary text-headline-md">580 ₺</span>
+<button class="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-all">
+<span class="material-symbols-outlined">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Hediye Rehberi Bento Grid -->
+<section class="mb-section-gap">
+<h2 class="font-headline-lg text-headline-lg text-white mb-8">Kozmik Hediye Rehberi</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter h-auto md:h-[600px]">
+<div class="md:row-span-2 glass-card rounded-3xl overflow-hidden relative group">
+<img class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-all duration-700" data-alt="A collection of various crystals and tarot cards arranged beautifully for a spiritual gift box. The lighting is ethereal with floating dust motes and soft blue and gold sparkles, creating an aura of magic and mystery. Perfectly composed for a high-end gift guide." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-x4XzVr_4X1sIAzabOAnChA9yS_9eF3tZRBJJFVTPQzdJbsf8JW11louH0sXUNyvRh7yTw4yi1cgwQEC3boCCboItTtb4wvVVN4IsqVIhDscBwxv7aosMCoiyiPyZDPHITv0BTkYmMTUWaDxj1nQv0p8-vJUf-D1GK-GmOkwwRgvQNj88eRgLRizQQthoTT5Ik8z10oJjQKXAH487KZaBv0GqavVXfJCxGa9tPBOJccSlVvR3OFZa">
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-highest via-transparent to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-8">
+<h3 class="font-headline-md text-headline-md text-tertiary mb-2">Başlangıç Setleri</h3>
+<p class="text-on-surface-variant mb-4">Mistik yolculuğa yeni başlayanlar için özenle seçilmiş ürünler.</p>
+<button class="bg-white/10 hover:bg-white/20 backdrop-blur-md px-6 py-2 rounded-full border border-white/20 transition-all font-label-md">Keşfet</button>
+</div>
+</div>
+<div class="glass-card rounded-3xl p-8 flex flex-col justify-end bg-gradient-to-br from-secondary/10 to-transparent border-secondary/20">
+<span class="material-symbols-outlined text-secondary text-5xl mb-4">celebration</span>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">Doğum Günü Hediyeleri</h3>
+<p class="text-on-surface-variant">Burcuna özel en anlamlı sürprizler.</p>
+</div>
+<div class="glass-card rounded-3xl p-8 flex flex-col justify-end bg-gradient-to-br from-primary/10 to-transparent border-primary/20">
+<span class="material-symbols-outlined text-primary text-5xl mb-4">all_inclusive</span>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">Ruh Eşi Paketleri</h3>
+<p class="text-on-surface-variant">Bağınızı kuvvetlendirecek ritüel kitleri.</p>
+</div>
+<div class="md:col-span-2 glass-card rounded-3xl flex flex-col md:flex-row items-center overflow-hidden border-tertiary/20">
+<div class="p-8 md:w-1/2">
+<h3 class="font-headline-md text-headline-md text-tertiary mb-2">Hediye Kartları</h3>
+<p class="text-on-surface-variant mb-6">Bırakın onlar kendi kozmik yolunu seçsinler. Dijital hediye çekleri şimdi satışta.</p>
+<button class="bg-tertiary text-on-tertiary-fixed px-6 py-2 rounded-full font-label-md transition-all">Kart Satın Al</button>
+</div>
+<div class="h-full md:w-1/2 min-h-[200px]">
+<img class="w-full h-full object-cover" data-alt="An elegant, glowing digital gift card design featuring the Marifetli Kedi logo with celestial constellations and a shimmering gold finish. The card floats in a 3D space with soft lens flares and a deep midnight blue background, looking like a premium digital asset." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPgcNnJSmyYrWsxCWW-hkhOkXobtQbOFV-WAw_lPSfkCqy0Cio6ikolMN2bDog3yr9LQkvpJhZblIIh3MgxlXNAbnJHiHD9ehYjusm4HViE8JwSVE58Y6qax-MC5q8IJfUiyIBPiPYnFX2fWP4OX6D25A9v4Nje8nCOb5Hlz1X0sgido-YhFi2ZBd_i6ff7waNj5tMJtB9lwBhiPPr9eNmq1-1GR8DNMIq5u8phuLE14Jaz967FIXD">
+</div>
+</div>
+</div>
+</section>
+<!-- Üyelik / Newsletter -->
+<section class="glass-card rounded-[3rem] p-12 text-center relative overflow-hidden">
+<div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-primary/10 blur-[120px] -z-10 rounded-full"></div>
+<div class="max-w-2xl mx-auto">
+<span class="material-symbols-outlined text-primary text-5xl mb-6">mail</span>
+<h2 class="font-display-lg text-headline-lg text-white mb-4">Gezegen Hareketlerinden Haberdar Ol</h2>
+<p class="text-on-surface-variant font-body-lg mb-8">Haftalık astroloji bültenimize abone ol, mağazamızdaki yeni ritüel kitlerinden ve indirimlerden ilk sen haberdar ol.</p>
+<form class="flex flex-col sm:flex-row gap-4">
+<input class="flex-1 bg-surface-container-highest border border-white/10 rounded-full px-6 py-4 focus:ring-2 focus:ring-primary focus:border-transparent outline-none text-on-surface" placeholder="E-posta adresini yaz..." type="email">
+<button class="bg-primary text-on-primary px-8 py-4 rounded-full font-bold hover:bg-primary-container transition-all whitespace-nowrap">Kayıt Ol</button>
+</form>
+<p class="text-caption text-on-surface-variant mt-4">Kayıt olarak Gizlilik Politikamızı kabul etmiş olursun.</p>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest text-primary font-body-md text-body-md full-width border-t border-white/5 flex flex-col md:flex-row justify-between items-center px-container-padding-desktop py-section-gap w-full">
+<div class="flex flex-col gap-4 items-center md:items-start mb-8 md:mb-0">
+<div class="font-display-lg text-headline-md text-tertiary">Marifetli Kedi</div>
+<p class="text-on-surface-variant max-w-xs text-center md:text-left">Yıldızların bilgeliğini modern yaşamla buluşturan dijital mabet.</p>
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-tertiary/20 transition-all text-on-surface-variant hover:text-tertiary" href="#">
+<span class="material-symbols-outlined">public</span>
+</a>
+<a class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-tertiary/20 transition-all text-on-surface-variant hover:text-tertiary" href="#">
+<span class="material-symbols-outlined">mail</span>
+</a>
+</div>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-8 mb-8 md:mb-0">
+<div class="flex flex-col gap-3">
+<span class="text-on-surface font-bold mb-2">Mağaza</span>
+<a class="text-on-surface-variant hover:text-tertiary-fixed transition-colors" href="#">Kristaller</a>
+<a class="text-on-surface-variant hover:text-tertiary-fixed transition-colors" href="#">Tütsüler</a>
+<a class="text-on-surface-variant hover:text-tertiary-fixed transition-colors" href="#">Ritüel Setleri</a>
+</div>
+<div class="flex flex-col gap-3">
+<span class="text-on-surface font-bold mb-2">Servisler</span>
+<a class="text-on-surface-variant hover:text-tertiary-fixed transition-colors" href="#">Doğum Haritası</a>
+<a class="text-on-surface-variant hover:text-tertiary-fixed transition-colors" href="#">Uyumluluk</a>
+<a class="text-on-surface-variant hover:text-tertiary-fixed transition-colors" href="#">Günlük Fal</a>
+</div>
+<div class="flex flex-col gap-3">
+<span class="text-on-surface font-bold mb-2">Yasal</span>
+<a class="text-on-surface-variant hover:text-tertiary-fixed transition-colors" href="#">Gizlilik</a>
+<a class="text-on-surface-variant hover:text-tertiary-fixed transition-colors" href="#">Şartlar</a>
+<a class="text-on-surface-variant hover:text-tertiary-fixed transition-colors" href="#">İade</a>
+</div>
+</div>
+<div class="text-on-surface-variant text-center md:text-right border-t border-white/5 md:border-none pt-8 md:pt-0 w-full md:w-auto">
+<p class="mb-2">© 2024 Marifetli Kedi. Guided by the Stars.</p>
+<p class="text-caption opacity-60">Yıldız tozundan sevgiyle yapıldı.</p>
+</div>
+</footer>
+<!-- Mobile Navigation Bar -->
+<div class="md:hidden fixed bottom-0 left-0 right-0 h-16 bg-surface/80 backdrop-blur-xl border-t border-white/10 z-[100] flex justify-around items-center px-4">
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px]">Ana Sayfa</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-tertiary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">storefront</span>
+<span class="text-[10px]">Mağaza</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">auto_awesome</span>
+<span class="text-[10px]">Burçlar</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px]">Profil</span>
+</button>
+</div>
+<script>
+        // Micro-interaction for glass cards
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+    </script>
+</body></html>

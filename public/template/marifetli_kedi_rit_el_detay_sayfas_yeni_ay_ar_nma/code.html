@@ -1,0 +1,350 @@
+<!DOCTYPE html><html class="dark" lang="tr"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Ritüel Detayı | Marifetli Kedi</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&amp;family=Inter:wght@400;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-lowest": "#060e20",
+                    "outline": "#958ea0",
+                    "error": "#ffb4ab",
+                    "surface-dim": "#0b1326",
+                    "on-primary-container": "#340080",
+                    "tertiary-container": "#b88900",
+                    "tertiary": "#f9bd22",
+                    "surface-container-high": "#222a3d",
+                    "primary": "#d0bcff",
+                    "on-tertiary-fixed-variant": "#5c4300",
+                    "secondary-container": "#ae05c6",
+                    "surface-variant": "#2d3449",
+                    "surface-tint": "#d0bcff",
+                    "primary-container": "#a078ff",
+                    "on-primary-fixed-variant": "#5516be",
+                    "background": "#0b1326",
+                    "surface-container-low": "#131b2e",
+                    "on-secondary-container": "#ffd8fd",
+                    "surface": "#0b1326",
+                    "on-surface": "#dae2fd",
+                    "secondary": "#fbabff",
+                    "on-error": "#690005",
+                    "error-container": "#93000a",
+                    "on-primary": "#3c0091",
+                    "surface-bright": "#31394d",
+                    "on-tertiary-fixed": "#261a00",
+                    "tertiary-fixed": "#ffdf9f",
+                    "primary-fixed": "#e9ddff",
+                    "inverse-primary": "#6d3bd7",
+                    "primary-fixed-dim": "#d0bcff",
+                    "on-secondary": "#580065",
+                    "on-tertiary": "#402d00",
+                    "inverse-surface": "#dae2fd",
+                    "outline-variant": "#494454",
+                    "on-secondary-fixed-variant": "#7c008e",
+                    "on-secondary-fixed": "#36003e",
+                    "on-tertiary-container": "#372700",
+                    "inverse-on-surface": "#283044",
+                    "tertiary-fixed-dim": "#f9bd22",
+                    "surface-container": "#171f33",
+                    "on-error-container": "#ffdad6",
+                    "surface-container-highest": "#2d3449",
+                    "on-surface-variant": "#cbc3d7",
+                    "on-background": "#dae2fd",
+                    "on-primary-fixed": "#23005c",
+                    "secondary-fixed-dim": "#fbabff",
+                    "secondary-fixed": "#ffd6fd"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-padding-desktop": "40px",
+                    "unit": "8px",
+                    "gutter": "16px",
+                    "container-padding-mobile": "20px",
+                    "section-gap": "64px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Sora"],
+                    "body-md": ["Inter"],
+                    "caption": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "display-lg": ["Sora"],
+                    "label-md": ["Inter"],
+                    "headline-md": ["Sora"],
+                    "headline-lg-mobile": ["Sora"]
+            },
+            "fontSize": {
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "caption": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #0b1326;
+            color: #dae2fd;
+            overflow-x: hidden;
+        }
+        .glass-card {
+            background: rgba(30, 41, 59, 0.4);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+        .inner-glow {
+            border: 1px solid transparent;
+            background-image: linear-gradient(rgba(30, 41, 59, 0.7), rgba(30, 41, 59, 0.7)), radial-gradient(circle at top left, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
+            background-origin: border-box;
+            background-clip: padding-box, border-box;
+        }
+        .celestial-gradient-btn {
+            background: linear-gradient(135deg, #ae05c6 0%, #fbabff 100%);
+            transition: all 0.3s ease;
+        }
+        .celestial-gradient-btn:hover {
+            box-shadow: 0 0 20px rgba(174, 5, 198, 0.5);
+            transform: translateY(-2px);
+        }
+        .step-active {
+            border-color: #f9bd22;
+            color: #f9bd22;
+        }
+        .step-inactive {
+            border-color: #494454;
+            color: #958ea0;
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md">
+<!-- Background Nebula -->
+<div class="fixed inset-0 -z-10 overflow-hidden">
+
+<div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(109,59,215,0.1),transparent_70%)]"></div>
+</div>
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/70 backdrop-blur-xl dark:bg-surface/70 border-b border-white/10 shadow-2xl h-16 flex justify-between items-center px-container-padding-mobile md:px-container-padding-desktop">
+<div class="font-headline-md text-headline-md font-bold text-tertiary drop-shadow-[0_0_8px_rgba(249,189,34,0.4)]">Marifetli Kedi</div>
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:text-tertiary transition-colors duration-300 scale-95 active:scale-90 transition-transform">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-tertiary transition-colors duration-300 scale-95 active:scale-90 transition-transform">
+<span class="material-symbols-outlined">auto_awesome</span>
+</button>
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary/20">
+<img class="w-full h-full object-cover" data-alt="A professional and mystical profile portrait of a user with soft celestial lighting, glowing eyes, and ethereal background blurs. The style is modern digital painting with a deep navy and purple color palette, reflecting a sense of cosmic wisdom and personal transformation." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvc74JO1mze_KjhzYjMnfy-5dJmwdUwbqjfEnM7AJqGka8zHSUG66V8lbEh1Pjn4JdJ7VLOcAYaIuEK8iTNGcBUH8_fRhu_BbExbjFhQHVbOqGeq1u-uyFkFxCn_qtN_nXi1tlzAqrClzH7uuIKx9sCz2lzFKPk4PaKbxVrcxTJiqH1qt8XL01pN_aqUYuNvlrm0k2HxPVak3r-ZfXb1HtSqWNGKAoybcgsBTkxIH8jRUeE4srqnYX">
+</div>
+</div>
+</header>
+<main class="pt-24 pb-32 px-container-padding-mobile md:px-container-padding-desktop max-w-7xl mx-auto">
+<!-- Hero Section -->
+<section class="relative mb-section-gap rounded-[32px] overflow-hidden glass-card min-h-[400px] flex flex-col justify-end p-8 md:p-12">
+<div class="absolute inset-0 -z-10">
+<div class="w-full h-full bg-cover bg-center" data-alt="A breathtaking cosmic scene depicting the new moon phase in a deep indigo sky filled with shimmering stars and swirling purple nebulae. A subtle golden crescent shines at the center, radiating a soft, cleansing light that permeates the entire ethereal atmosphere. The visual style is highly detailed, atmospheric, and magical, creating a sense of new beginnings and spiritual purification." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDpj2vEkTLNQPTzWh9mYkgfxfllKEgMLTqF_5qMD4aI0yz6HjIok7N4AsGJxhduEls0296IpUwxuMQqJJGQkvk9761fe43SmS8nVVzKhafH6WvLdWAlKfc2imY3Qh4bdC54HDk73jWYCzanHTY6Y-ccydj7Pgs-7-kk50TV1ZiKbNKuU011BTwsiTgGW7VSOb_7Snx0y5CMz-K3Yw6lXARPnxxVXOU0-tunasmNM6Bzg8Jgwehhnpmx')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent"></div>
+</div>
+<div class="max-w-2xl">
+<span class="inline-block px-4 py-1 rounded-full bg-tertiary/20 text-tertiary font-label-md text-label-md mb-4 backdrop-blur-md">Ayın Gücü</span>
+<h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg mb-4 text-on-surface">Yeni Ay Arınma Ritüeli</h1>
+<p class="text-on-surface-variant font-body-lg text-body-lg leading-relaxed italic">"Eski olanı sevgiyle uğurluyor, kalbimde yeni niyetlere temiz bir alan açıyorum."</p>
+</div>
+</section>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Preparations (Hazırlık) -->
+<aside class="lg:col-span-4 space-y-gutter">
+<div class="glass-card p-6 rounded-xl inner-glow">
+<h2 class="font-headline-md text-headline-md mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary">inventory_2</span>
+                        Hazırlık
+                    </h2>
+<ul class="space-y-6">
+<li class="flex gap-4">
+<div class="w-12 h-12 rounded-lg bg-surface-variant flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary">local_fire_department</span>
+</div>
+<div>
+<h3 class="font-semibold text-on-surface">Beyaz Mum</h3>
+<p class="text-caption text-outline">Saflığı ve yeni başlangıçları temsil eder.</p>
+</div>
+</li>
+<li class="flex gap-4">
+<div class="w-12 h-12 rounded-lg bg-surface-variant flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary">diamond</span>
+</div>
+<div>
+<h3 class="font-semibold text-on-surface">Ametist Kristali</h3>
+<p class="text-caption text-outline">Zihinsel berraklık ve koruma sağlar.</p>
+</div>
+</li>
+<li class="flex gap-4">
+<div class="w-12 h-12 rounded-lg bg-surface-variant flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary">air</span>
+</div>
+<div>
+<h3 class="font-semibold text-on-surface">Adaçayı Tütsüsü</h3>
+<p class="text-caption text-outline">Alanınızdaki negatif enerjiyi temizler.</p>
+</div>
+</li>
+</ul>
+</div>
+<!-- Music Player Widget -->
+<div class="glass-card p-6 rounded-xl inner-glow border-tertiary/20">
+<div class="flex items-center justify-between mb-4">
+<span class="text-label-md font-label-md text-tertiary uppercase tracking-widest">Mistik Frekans</span>
+<span class="material-symbols-outlined text-tertiary text-[20px]" style="font-variation-settings: 'FILL' 1">graphic_eq</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 rounded-full celestial-gradient-btn flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined">play_arrow</span>
+</button>
+<div class="flex-1">
+<div class="h-1 w-full bg-outline-variant rounded-full overflow-hidden">
+<div class="h-full w-1/3 bg-tertiary rounded-full"></div>
+</div>
+<p class="text-[10px] mt-1 text-outline">528Hz Mucize Frekansı</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Steps (Adımlar) -->
+<div class="lg:col-span-8 space-y-gutter">
+<div class="glass-card p-8 rounded-xl inner-glow">
+<div class="flex flex-col gap-10">
+<!-- Step 1 -->
+<div class="relative flex gap-6">
+<div class="flex flex-col items-center">
+<div class="w-10 h-10 rounded-full border-2 step-active flex items-center justify-center bg-background z-10">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1">check</span>
+</div>
+<div class="w-0.5 h-full bg-tertiary/30 -mt-2"></div>
+</div>
+<div class="pb-8">
+<h3 class="font-headline-md text-headline-md text-tertiary mb-2">1. Odaklanma ve Temizlik</h3>
+<p class="text-on-surface-variant leading-relaxed mb-4">Alanınızı adaçayı ile tütsüleyin. Derin nefesler alarak zihninizdeki karmaşayı dağıtın. Mumu yakın ve alevine odaklanın.</p>
+<div class="flex gap-3">
+<button class="px-6 py-2 rounded-full border border-tertiary/30 text-tertiary text-label-md font-label-md hover:bg-tertiary/10 transition-all">
+                                        Tamamlandı
+                                    </button>
+</div>
+</div>
+</div>
+<!-- Step 2 (Active) -->
+<div class="relative flex gap-6">
+<div class="flex flex-col items-center">
+<div class="w-10 h-10 rounded-full border-2 border-primary text-primary flex items-center justify-center bg-background shadow-[0_0_15px_rgba(208,188,255,0.4)] z-10">
+<span class="text-label-md">2</span>
+</div>
+<div class="w-0.5 h-full bg-outline-variant -mt-2"></div>
+</div>
+<div class="pb-8">
+<h3 class="font-headline-md text-headline-md text-primary mb-2">2. Niyet Belirleme</h3>
+<p class="text-on-surface mb-6 leading-relaxed">Önümüzdeki ay için gerçekleşmesini istediğiniz en önemli niyetinizi bir kağıda yazın. Bu niyeti kalbinizde hissedin.</p>
+<div class="space-y-4">
+<div class="relative">
+<textarea class="w-full bg-surface-container-low border border-outline-variant rounded-xl p-4 text-on-surface focus:border-primary focus:ring-1 focus:ring-primary transition-all placeholder:text-outline" placeholder="Niyetinizi buraya dökün..." rows="3"></textarea>
+<button class="absolute bottom-3 right-3 celestial-gradient-btn px-4 py-1.5 rounded-lg text-label-md font-label-md text-on-primary">
+                                            Niyetimi Kaydet
+                                        </button>
+</div>
+<button class="w-full py-4 rounded-xl celestial-gradient-btn font-bold text-on-primary flex items-center justify-center gap-2">
+                                        Adımı Tamamla
+                                        <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="relative flex gap-6">
+<div class="flex flex-col items-center">
+<div class="w-10 h-10 rounded-full border-2 step-inactive flex items-center justify-center bg-background z-10">
+<span class="text-label-md">3</span>
+</div>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-outline mb-2">3. Serbest Bırakma</h3>
+<p class="text-outline/60 leading-relaxed italic">"Niyetim evrenin sonsuz bilgeliğine emanettir."</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Final Action -->
+<div class="flex justify-end gap-4 pt-8">
+<button class="px-8 py-3 rounded-full border border-white/10 text-on-surface hover:bg-white/5 transition-all font-label-md">
+                        Ritüeli İptal Et
+                    </button>
+<button class="px-12 py-3 rounded-full glass-card border-tertiary/40 text-tertiary font-bold hover:bg-tertiary/10 transition-all shadow-lg">
+                        Ritüeli Bitir
+                    </button>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full mt-section-gap bg-surface-container-lowest dark:bg-surface-container-lowest w-full py-12 px-container-padding-mobile flex flex-col items-center gap-4 bg-gradient-to-t from-surface-dim to-transparent">
+<div class="font-headline-md text-headline-md text-primary font-bold">Marifetli Kedi</div>
+<div class="flex gap-6">
+<a class="text-outline font-caption text-caption hover:text-primary transition-colors opacity-80 hover:opacity-100" href="#">Gizlilik Politikası</a>
+<a class="text-outline font-caption text-caption hover:text-primary transition-colors opacity-80 hover:opacity-100" href="#">Kullanım Şartları</a>
+<a class="text-outline font-caption text-caption hover:text-primary transition-colors opacity-80 hover:opacity-100" href="#">İletişim</a>
+</div>
+<p class="text-outline font-caption text-caption opacity-80">© 2024 Marifetli Kedi - Yıldızların Rehberliğinde</p>
+</footer>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center py-3 px-4 bg-surface-container/80 backdrop-blur-lg dark:bg-surface-container/80 rounded-t-xl border-t border-white/5 shadow-[0_-4px_20px_rgba(0,0,0,0.4)] z-50">
+<a class="flex flex-col items-center justify-center text-outline font-label-md text-label-md hover:bg-white/5 active:scale-95 transition-all" href="#">
+<span class="material-symbols-outlined">bedtime</span>
+<span>Gökyüzü</span>
+</a>
+<a class="flex flex-col items-center justify-center text-tertiary drop-shadow-[0_0_5px_rgba(249,189,34,0.6)] font-label-md text-label-md hover:bg-white/5 active:scale-95 transition-all" href="#">
+<span class="material-symbols-outlined">magic_button</span>
+<span>Ritüeller</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline font-label-md text-label-md hover:bg-white/5 active:scale-95 transition-all" href="#">
+<span class="material-symbols-outlined">psychiatry</span>
+<span>Fal</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline font-label-md text-label-md hover:bg-white/5 active:scale-95 transition-all" href="#">
+<span class="material-symbols-outlined">person</span>
+<span>Profil</span>
+</a>
+</nav>
+<script>
+        // Micro-interactions and simple state management
+        document.querySelectorAll('textarea').forEach(el => {
+            el.addEventListener('focus', () => {
+                el.parentElement.classList.add('ring-2', 'ring-primary/20');
+            });
+            el.addEventListener('blur', () => {
+                el.parentElement.classList.remove('ring-2', 'ring-primary/20');
+            });
+        });
+
+        // Toggle music play state (Visual only)
+        const musicBtn = document.querySelector('.celestial-gradient-btn');
+        let playing = false;
+        if(musicBtn) {
+            musicBtn.addEventListener('click', () => {
+                playing = !playing;
+                musicBtn.querySelector('span').textContent = playing ? 'pause' : 'play_arrow';
+            });
+        }
+    </script>
+</body></html>

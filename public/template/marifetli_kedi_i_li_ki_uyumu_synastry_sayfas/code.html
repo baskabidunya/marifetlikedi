@@ -1,0 +1,416 @@
+<!DOCTYPE html><html class="dark" lang="tr"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>İlişki Uyumu (Synastry) | Marifetli Kedi</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-primary": "#6d3bd7",
+                    "on-tertiary-fixed": "#261a00",
+                    "on-primary-fixed-variant": "#5516be",
+                    "outline": "#958ea0",
+                    "inverse-on-surface": "#283044",
+                    "surface-bright": "#31394d",
+                    "on-surface": "#dae2fd",
+                    "primary-container": "#a078ff",
+                    "on-secondary-container": "#ffd8fd",
+                    "tertiary": "#f9bd22",
+                    "secondary-fixed-dim": "#fbabff",
+                    "on-secondary-fixed": "#36003e",
+                    "surface-container": "#171f33",
+                    "secondary-fixed": "#ffd6fd",
+                    "on-tertiary-container": "#372700",
+                    "surface-tint": "#d0bcff",
+                    "surface-container-high": "#222a3d",
+                    "primary-fixed": "#e9ddff",
+                    "error": "#ffb4ab",
+                    "on-error-container": "#ffdad6",
+                    "inverse-surface": "#dae2fd",
+                    "on-surface-variant": "#cbc3d7",
+                    "on-primary": "#3c0091",
+                    "surface-container-low": "#131b2e",
+                    "surface": "#0b1326",
+                    "on-tertiary-fixed-variant": "#5c4300",
+                    "error-container": "#93000a",
+                    "surface-container-highest": "#2d3449",
+                    "on-primary-fixed": "#23005c",
+                    "tertiary-container": "#b88900",
+                    "tertiary-fixed": "#ffdf9f",
+                    "on-secondary": "#580065",
+                    "on-error": "#690005",
+                    "secondary-container": "#ae05c6",
+                    "on-primary-container": "#340080",
+                    "surface-variant": "#2d3449",
+                    "tertiary-fixed-dim": "#f9bd22",
+                    "primary": "#d0bcff",
+                    "outline-variant": "#494454",
+                    "on-background": "#dae2fd",
+                    "surface-container-lowest": "#060e20",
+                    "secondary": "#fbabff",
+                    "primary-fixed-dim": "#d0bcff",
+                    "on-secondary-fixed-variant": "#7c008e",
+                    "on-tertiary": "#402d00",
+                    "background": "#0b1326",
+                    "surface-dim": "#0b1326"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "16px",
+                    "container-padding-mobile": "20px",
+                    "unit": "8px",
+                    "container-padding-desktop": "40px",
+                    "section-gap": "64px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Inter"],
+                    "caption": ["Inter"],
+                    "headline-lg-mobile": ["Sora"],
+                    "body-md": ["Inter"],
+                    "headline-md": ["Sora"],
+                    "headline-lg": ["Sora"],
+                    "display-lg": ["Sora"],
+                    "label-md": ["Inter"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "caption": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+        }
+        .celestial-glow {
+            box-shadow: 0 0 40px rgba(208, 188, 255, 0.2);
+        }
+        .nebula-bg {
+            background: radial-gradient(circle at 50% 50%, #1e1b4b 0%, #0b1326 100%);
+        }
+        @keyframes rotate-sphere {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .animate-slow-rotate {
+            animation: rotate-sphere 60s linear infinite;
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #d0bcff 0%, #fbabff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface nebula-bg min-h-screen selection:bg-primary/30">
+<!-- TopNavBar -->
+<header class="fixed top-0 left-0 right-0 z-50 bg-surface/70 backdrop-blur-xl border-b border-white/10 flex justify-between items-center px-container-padding-mobile md:px-container-padding-desktop w-full h-16 shadow-[0_4px_30px_rgba(0,0,0,0.1)]">
+<div class="font-display-lg text-headline-md text-primary tracking-tight">Marifetli Kedi</div>
+<nav class="hidden md:flex gap-8 items-center">
+<a class="text-on-surface-variant font-body-md hover:text-primary transition-colors duration-300" href="#">Doğum Haritası</a>
+<a class="text-tertiary font-bold font-body-md transition-colors duration-300" href="#">İlişki Laboratuvarı</a>
+<a class="text-on-surface-variant font-body-md hover:text-primary transition-colors duration-300" href="#">Ritüeller</a>
+<a class="text-on-surface-variant font-body-md hover:text-primary transition-colors duration-300" href="#">Haberler</a>
+</nav>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors duration-300" data-icon="notifications">notifications</span>
+<span class="material-symbols-outlined text-primary cursor-pointer active:scale-95 transition-transform" data-icon="auto_awesome">auto_awesome</span>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-primary/30">
+<img class="w-full h-full object-cover" data-alt="A high-end portrait of a sophisticated user in a dark mode digital environment with subtle purple rim lighting. The user's profile picture is framed by a glowing celestial ring, blending with the cosmic aesthetic of Marifetli Kedi's premium interface. Professional photography style with deep shadows and soft bokeh effects." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKiCHYxtn2YHmghpZ7xZZMpjXMLNH3lh8F7j1veeFGEIiAhvDn1fVnZ-TlI_jmI_FMgmAmdJdeO_t95nYXeILkzjpo3tgDQN7WOCvtL6eSWxowJWoafwErqSNabsJlIMAUmUvPcUWKPwU031SHMcEP7Lx2nOHKZUNpnaKFeKsYplfcWvrRxfsgGiK6RgupZMdTBzQAtDQLBZSlIomkwd5nTUWL91j-wVh9gatbtJVaS_Y0MDXjQweu">
+</div>
+</div>
+</header>
+<main class="pt-24 pb-20 px-container-padding-mobile md:px-container-padding-desktop max-w-[1280px] mx-auto">
+<!-- Hero Section: The Soul Connection -->
+<section class="flex flex-col items-center text-center mb-section-gap">
+<h1 class="font-headline-lg text-headline-lg md:text-display-lg mb-4 gradient-text">İlişki Laboratuvarı</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+                Yıldızların rehberliğinde ruh eşinizi keşfedin. İki haritanın dansı, aşkın ve uyumun gizli kodlarını açığa çıkarıyor.
+            </p>
+</section>
+<!-- Synastry Sphere & Score Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter items-start">
+<!-- Left Panel: Profile A -->
+<div class="md:col-span-3 glass-card rounded-xl p-6 flex flex-col items-center gap-4 text-center">
+<div class="w-24 h-24 rounded-full border-2 border-primary p-1">
+<img class="w-full h-full object-cover rounded-full" data-alt="Minimalist artistic illustration of the Leo zodiac sign represented as a majestic golden lion silhouette amidst a purple and navy galaxy background. The style is clean, modern, and mystical with sharp lines and ethereal dust particles, fitting the Marifetli Kedi cosmic visual language." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnv1pbNx6QpM1_LOicqpW14GhtZAWyPluSp4vJ--PUN0YrtpqKM7P2GGy7loKs4bbsXuBSBWvX6FVj8ejylPRINw0VPcnOYLSrfplOU-iUsP04ctznwZxdGXTE-IvEkX9vsRVLRnJoXuRZV30Xh-jdG8WQgg1juO_hAhRlCsnRETumfsSMAl-e8b_cB68up44AxFJMHp8INHxTVj_2VJSJcfPMaFxozKwSbkIO3ncEpFxjjSp3ahzY">
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-primary">Canan</h3>
+<p class="font-label-md text-label-md text-tertiary">Aslan (Yükselen Akrep)</p>
+</div>
+<div class="grid grid-cols-2 gap-2 w-full mt-4">
+<div class="bg-surface-container rounded-lg p-2">
+<span class="text-caption block text-outline">Güneş</span>
+<span class="text-label-md">Aslan 15°</span>
+</div>
+<div class="bg-surface-container rounded-lg p-2">
+<span class="text-caption block text-outline">Ay</span>
+<span class="text-label-md">Boğa 2°</span>
+</div>
+</div>
+</div>
+<!-- Middle: The Interaction Sphere -->
+<div class="md:col-span-6 relative flex flex-col items-center justify-center min-h-[400px]">
+<!-- Background Glow -->
+<div class="absolute inset-0 flex items-center justify-center opacity-30">
+<div class="w-80 h-80 bg-primary blur-[100px] rounded-full"></div>
+</div>
+<!-- Rotating Sphere Placeholder -->
+<div class="relative w-72 h-72 md:w-96 md:h-96 flex items-center justify-center">
+<div class="absolute inset-0 animate-slow-rotate">
+
+</div>
+<div class="glass-card w-40 h-40 md:w-56 md:h-56 rounded-full flex flex-col items-center justify-center celestial-glow z-10 border-white/20">
+<span class="text-display-lg font-display-lg text-tertiary">%88</span>
+<span class="text-label-md text-on-surface-variant">Genel Uyum</span>
+</div>
+<!-- Connecting Lines (Decorative) -->
+<svg class="absolute inset-0 w-full h-full pointer-events-none opacity-40" viewBox="0 0 100 100">
+<circle cx="50" cy="50" fill="none" r="48" stroke="url(#lineGrad)" stroke-dasharray="2 2" stroke-width="0.5"></circle>
+<defs>
+<linearGradient id="lineGrad" x1="0%" x2="100%" y1="0%" y2="100%">
+<stop offset="0%" style="stop-color:#d0bcff;stop-opacity:1"></stop>
+<stop offset="100%" style="stop-color:#fbabff;stop-opacity:1"></stop>
+</linearGradient>
+</defs>
+</svg>
+</div>
+<div class="mt-8 flex gap-4">
+<button class="bg-primary hover:bg-inverse-primary text-on-primary font-label-md px-6 py-3 rounded-full transition-all active:scale-95 shadow-lg shadow-primary/20">
+                        Detaylı Analiz
+                    </button>
+<button class="glass-card hover:bg-white/10 text-on-surface font-label-md px-6 py-3 rounded-full transition-all active:scale-95 border border-white/20">
+                        Paylaş
+                    </button>
+</div>
+</div>
+<!-- Right Panel: Profile B -->
+<div class="md:col-span-3 glass-card rounded-xl p-6 flex flex-col items-center gap-4 text-center">
+<div class="w-24 h-24 rounded-full border-2 border-secondary p-1">
+<img class="w-full h-full object-cover rounded-full" data-alt="Minimalist digital art of the Pisces zodiac sign showing two ethereal turquoise fish swimming in a circular motion. The background is a deep navy space with glowing nebula clouds in fuchsia and purple. The overall mood is dreamlike and mystical, representing the water element in a modern astrology context." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-f44RTH-zGZbaTC8WNzlmLtsFlo7zgRy2mJlwa8GTP0wUZDSwqaAJ_nN_WxKO5iKSNJfhAAsNIL6NMnkZEdzfkRqGqzYayjvFt_qziGMqa9rUg5L1citJibPjtOQ9fbwmGVMVcZlLzpEFDJvmnGAiglsWKsJ_IMdCQGKOK4eQpaGVOZNrfR-UUE0259m6onl4aMLzCYk41GKDMa7o42bpmrbyOqyBTWqd2JSHO17W22Eq3D1_WGDH">
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-secondary">Mert</h3>
+<p class="font-label-md text-label-md text-tertiary">Balık (Yükselen Başak)</p>
+</div>
+<div class="grid grid-cols-2 gap-2 w-full mt-4">
+<div class="bg-surface-container rounded-lg p-2">
+<span class="text-caption block text-outline">Güneş</span>
+<span class="text-label-md">Balık 21°</span>
+</div>
+<div class="bg-surface-container rounded-lg p-2">
+<span class="text-caption block text-outline">Ay</span>
+<span class="text-label-md">Yengeç 11°</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Uyum Kategorileri (Score Grid) -->
+<section class="mt-section-gap grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<div class="glass-card p-6 rounded-xl relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-30 transition-opacity">
+<span class="material-symbols-outlined text-4xl" data-icon="favorite">favorite</span>
+</div>
+<h4 class="text-outline font-label-md mb-2">Duygusal Uyum</h4>
+<div class="flex items-end gap-2">
+<span class="text-headline-lg font-headline-lg text-secondary">94</span>
+<span class="text-caption mb-2 text-on-surface-variant">/100</span>
+</div>
+<div class="w-full bg-surface-container h-1 rounded-full mt-4">
+<div class="bg-secondary h-full rounded-full" style="width: 94%"></div>
+</div>
+<p class="text-caption mt-4 text-on-surface-variant">Ruhsal derinlikte mükemmel bir örtüşme söz konusu.</p>
+</div>
+<div class="glass-card p-6 rounded-xl relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-30 transition-opacity">
+<span class="material-symbols-outlined text-4xl" data-icon="forum">forum</span>
+</div>
+<h4 class="text-outline font-label-md mb-2">İletişim</h4>
+<div class="flex items-end gap-2">
+<span class="text-headline-lg font-headline-lg text-primary">72</span>
+<span class="text-caption mb-2 text-on-surface-variant">/100</span>
+</div>
+<div class="w-full bg-surface-container h-1 rounded-full mt-4">
+<div class="bg-primary h-full rounded-full" style="width: 72%"></div>
+</div>
+<p class="text-caption mt-4 text-on-surface-variant">Düşünce yapıları farklı olsa da ortak dil bulunabilir.</p>
+</div>
+<div class="glass-card p-6 rounded-xl relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-30 transition-opacity">
+<span class="material-symbols-outlined text-4xl" data-icon="local_fire_department">local_fire_department</span>
+</div>
+<h4 class="text-outline font-label-md mb-2">Tutku</h4>
+<div class="flex items-end gap-2">
+<span class="text-headline-lg font-headline-lg text-tertiary">89</span>
+<span class="text-caption mb-2 text-on-surface-variant">/100</span>
+</div>
+<div class="w-full bg-surface-container h-1 rounded-full mt-4">
+<div class="bg-tertiary h-full rounded-full" style="width: 89%"></div>
+</div>
+<p class="text-caption mt-4 text-on-surface-variant">Yüksek çekim gücü ve manyetik bir enerji alanı.</p>
+</div>
+<div class="glass-card p-6 rounded-xl relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-30 transition-opacity">
+<span class="material-symbols-outlined text-4xl" data-icon="timeline">timeline</span>
+</div>
+<h4 class="text-outline font-label-md mb-2">Gelecek Potansiyeli</h4>
+<div class="flex items-end gap-2">
+<span class="text-headline-lg font-headline-lg text-on-surface">65</span>
+<span class="text-caption mb-2 text-on-surface-variant">/100</span>
+</div>
+<div class="w-full bg-surface-container h-1 rounded-full mt-4">
+<div class="bg-on-surface h-full rounded-full" style="width: 65%"></div>
+</div>
+<p class="text-caption mt-4 text-on-surface-variant">Karmik dersler ve büyüme fırsatları içeriyor.</p>
+</div>
+</section>
+<!-- Detailed Planet Interactions -->
+<section class="mt-section-gap">
+<div class="flex items-center gap-4 mb-8">
+<span class="material-symbols-outlined text-tertiary" data-icon="stars">stars</span>
+<h2 class="font-headline-md text-headline-md">Gezegen Etkileşimleri</h2>
+</div>
+<div class="space-y-4">
+<div class="glass-card p-6 rounded-xl flex flex-col md:flex-row md:items-center justify-between gap-6 hover:bg-white/5 transition-colors cursor-pointer border-l-4 border-primary">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="sunny">sunny</span>
+</div>
+<div>
+<h5 class="font-label-md text-on-surface">Güneş - Ay Kavuşumu</h5>
+<p class="text-caption text-on-surface-variant">Ruhsal Bütünlük ve Anlayış</p>
+</div>
+</div>
+<div class="flex-1 md:px-12">
+<p class="text-body-md text-on-surface-variant line-clamp-2">
+                            Canan'ın Güneşi ile Mert'in Ayı arasındaki uyumlu açı, ilişkide doğal bir "ev" hissi yaratıyor. Birbirinizin ihtiyaçlarını kelimeler olmadan anlayabiliyorsunuz.
+                        </p>
+</div>
+<div class="flex items-center gap-2">
+<span class="px-3 py-1 bg-primary/10 text-primary text-caption rounded-full font-bold">POZİTİF</span>
+<span class="material-symbols-outlined text-outline" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+<div class="glass-card p-6 rounded-xl flex flex-col md:flex-row md:items-center justify-between gap-6 hover:bg-white/5 transition-colors cursor-pointer border-l-4 border-secondary">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-secondary/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary" data-icon="favorite">favorite</span>
+</div>
+<div>
+<h5 class="font-label-md text-on-surface">Venüs - Mars Karesi</h5>
+<p class="text-caption text-on-surface-variant">Tutku ve Sürtüşme</p>
+</div>
+</div>
+<div class="flex-1 md:px-12">
+<p class="text-body-md text-on-surface-variant line-clamp-2">
+                            İlişkideki fiziksel çekim oldukça yüksek olsa da, değer yargıları ve isteklerin ifadesinde zaman zaman çatışmalar yaşanabilir. Bu enerji yaratıcılığa dönüştürülebilir.
+                        </p>
+</div>
+<div class="flex items-center gap-2">
+<span class="px-3 py-1 bg-secondary/10 text-secondary text-caption rounded-full font-bold">YOĞUN</span>
+<span class="material-symbols-outlined text-outline" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+<div class="glass-card p-6 rounded-xl flex flex-col md:flex-row md:items-center justify-between gap-6 hover:bg-white/5 transition-colors cursor-pointer border-l-4 border-tertiary">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-tertiary/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary" data-icon="brightness_7">brightness_7</span>
+</div>
+<div>
+<h5 class="font-label-md text-on-surface">Jüpiter Üçgeni</h5>
+<p class="text-caption text-on-surface-variant">Şans ve Büyüme</p>
+</div>
+</div>
+<div class="flex-1 md:px-12">
+<p class="text-body-md text-on-surface-variant line-clamp-2">
+                            Birbirinizin hayatına bereket ve şans getiriyorsunuz. Ortak hedeflere ulaşmak ve dünyayı birlikte keşfetmek için harika bir yerleşim.
+                        </p>
+</div>
+<div class="flex items-center gap-2">
+<span class="px-3 py-1 bg-tertiary/10 text-tertiary text-caption rounded-full font-bold">ŞANSLI</span>
+<span class="material-symbols-outlined text-outline" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="mt-section-gap mb-12">
+<div class="relative rounded-3xl overflow-hidden p-8 md:p-12 flex flex-col md:flex-row items-center gap-8 bg-gradient-to-br from-surface-container-high to-surface">
+<div class="absolute top-0 left-0 w-full h-full opacity-20 pointer-events-none">
+
+</div>
+<div class="z-10 flex-1">
+<h2 class="font-headline-lg text-headline-lg mb-4">Daha Derin Bir Analiz İster Misiniz?</h2>
+<p class="text-body-lg text-on-surface-variant mb-6">
+                        Uzman astrologlarımız tarafından hazırlanan 20 sayfalık kişiselleştirilmiş Synastry raporuyla ilişkinizin tüm katmanlarını keşfedin. Karma, gelecek öngörüleri ve çözüm önerileri dahil.
+                    </p>
+<button class="bg-tertiary hover:bg-tertiary-fixed-dim text-on-tertiary-fixed font-label-md px-8 py-4 rounded-xl transition-all shadow-xl shadow-tertiary/20">
+                        Tam Raporu Al (₺299)
+                    </button>
+</div>
+<div class="z-10 w-full md:w-1/3 glass-card p-6 rounded-2xl flex flex-col items-center gap-4">
+<div class="flex -space-x-4">
+<div class="w-12 h-12 rounded-full border-2 border-surface bg-primary/20 flex items-center justify-center text-primary text-xs font-bold">C</div>
+<div class="w-12 h-12 rounded-full border-2 border-surface bg-secondary/20 flex items-center justify-center text-secondary text-xs font-bold">M</div>
+<div class="w-12 h-12 rounded-full border-2 border-surface bg-tertiary/20 flex items-center justify-center text-tertiary text-xs font-bold">+</div>
+</div>
+<div class="text-center">
+<p class="text-label-md font-bold text-on-surface">Karmik Bağ Analizi</p>
+<p class="text-caption text-on-surface-variant">Ruhlarınızın geçmiş yaşam hikayesi</p>
+</div>
+<span class="material-symbols-outlined text-4xl text-primary animate-pulse" data-icon="auto_fix_high" style="font-variation-settings: 'FILL' 1;">auto_fix_high</span>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest border-t border-white/5 flex flex-col md:flex-row justify-between items-center px-container-padding-desktop py-section-gap w-full">
+<div class="mb-8 md:mb-0">
+<div class="font-display-lg text-headline-md text-tertiary mb-2">Marifetli Kedi</div>
+<p class="text-on-surface-variant font-body-md opacity-80 hover:opacity-100">© 2024 Marifetli Kedi. Yıldızların rehberliğinde.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-6 md:gap-12">
+<a class="text-on-surface-variant font-body-md hover:text-tertiary-fixed transition-colors" href="#">Birth Chart</a>
+<a class="text-on-surface-variant font-body-md hover:text-tertiary-fixed transition-colors" href="#">Daily Horoscope</a>
+<a class="text-on-surface-variant font-body-md hover:text-tertiary-fixed transition-colors" href="#">Compatibility</a>
+<a class="text-on-surface-variant font-body-md hover:text-tertiary-fixed transition-colors" href="#">Rituals</a>
+<a class="text-on-surface-variant font-body-md hover:text-tertiary-fixed transition-colors" href="#">Cosmic News</a>
+<a class="text-on-surface-variant font-body-md hover:text-tertiary-fixed transition-colors" href="#">Privacy</a>
+</div>
+</footer>
+<script>
+        // Simple interactive effect for categories
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+    </script>
+</body></html>
