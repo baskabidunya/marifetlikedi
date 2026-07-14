@@ -28,9 +28,10 @@ interface Props {
     start_date: string;
     end_date: string | null;
   } | null;
+  aiData?: { title?: string; message?: string } | null;
 }
 
-export default function AnnouncementModal({ open, onClose, announcement }: Props) {
+export default function AnnouncementModal({ open, onClose, announcement, aiData }: Props) {
   const router = useRouter();
   const formRef = useRef<HTMLFormElement>(null);
   const [pending, setPending] = useState(false);
@@ -91,7 +92,7 @@ export default function AnnouncementModal({ open, onClose, announcement }: Props
             <label className={labelCls}>Başlık</label>
             <input
               name="title"
-              defaultValue={announcement?.title || ""}
+              defaultValue={announcement?.title || aiData?.title || ""}
               required
               placeholder="Duyuru başlığı"
               className={inputCls}
@@ -155,7 +156,7 @@ export default function AnnouncementModal({ open, onClose, announcement }: Props
             <label className={labelCls}>Mesaj</label>
             <textarea
               name="message"
-              defaultValue={announcement?.message || ""}
+              defaultValue={announcement?.message || aiData?.message || ""}
               required
               rows={4}
               placeholder="Duyuru mesajı..."

@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { ZODIAC_SIGNS, ZODIAC_DATA } from "@/lib/astro-utils";
 import { updateSignContent, getSignContentBySign } from "@/lib/admin";
+import AIGenerateButton from "@/components/admin/AIGenerateButton";
 
 type SignContent = {
   sign: string;
@@ -27,8 +28,24 @@ const emptyContent = (sign: string): SignContent => ({
 function SignEditor({ sign, initial }: { sign: string; initial: SignContent }) {
   const [dirty, setDirty] = useState(false);
   const [saving, setSaving] = useState(false);
+  const [fields, setFields] = useState(initial);
 
   const info = ZODIAC_DATA[sign as keyof typeof ZODIAC_DATA];
+
+  function handleAI(data: { title?: string; content?: string }) {
+    if (data.content) {
+      setFields(prev => ({ ...prev, description: data.content || prev.description }));
+    }
+    if (data.title) {
+      setFields(prev => ({ ...prev, daily_prophecy: data.title }));
+    }
+    setDirty(true);
+  }
+
+  function updateField(key: keyof SignContent, value: string) {
+    setFields(prev => ({ ...prev, [key]: value }));
+    setDirty(true);
+  }
 
   async function action(formData: FormData) {
     setSaving(true);
@@ -53,48 +70,51 @@ function SignEditor({ sign, initial }: { sign: string; initial: SignContent }) {
             <p className="text-caption text-outline">{info.element} · {info.quality} · {info.ruler}</p>
           </div>
         </div>
-        <button type="submit" disabled={!dirty || saving}
-          className={`px-6 py-2.5 rounded-xl font-label-md transition-all ${
-            dirty && !saving
-              ? "bg-gradient-to-r from-primary to-secondary text-on-primary shadow-lg hover:shadow-xl"
-              : "bg-white/5 text-outline cursor-not-allowed"
-          }`}>
-          {saving ? "Kaydediliyor..." : dirty ? "Kaydet" : "Kaydedildi"}
-        </button>
+        <div className="flex items-center gap-3">
+          <AIGenerateButton type="burc" onGenerated={handleAI} />
+          <button type="submit" disabled={!dirty || saving}
+            className={`px-6 py-2.5 rounded-xl font-label-md transition-all ${
+              dirty && !saving
+                ? "bg-gradient-to-r from-primary to-secondary text-on-primary shadow-lg hover:shadow-xl"
+                : "bg-white/5 text-outline cursor-not-allowed"
+            }`}>
+            {saving ? "Kaydediliyor..." : dirty ? "Kaydet" : "Kaydedildi"}
+          </button>
+        </div>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <div className="space-y-5">
           <div>
             <label className="block text-label-md text-on-surface-variant mb-2">Açıklama</label>
-            <textarea name="description" defaultValue={initial.description} rows={4} onChange={() => setDirty(true)}
+            <textarea name="description" value={fields.description} rows={4} onChange={(e) => updateField("description", e.target.value)}
               className="w-full bg-surface-container border border-white/10 rounded-2xl p-4 text-body-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary transition-all placeholder:text-outline resize-none" />
           </div>
           <div>
             <label className="block text-label-md text-on-surface-variant mb-2">Günlük Kehanet</label>
-            <textarea name="daily_prophecy" defaultValue={initial.daily_prophecy} rows={4} onChange={() => setDirty(true)}
+            <textarea name="daily_prophecy" value={fields.daily_prophecy} rows={4} onChange={(e) => updateField("daily_prophecy", e.target.value)}
               className="w-full bg-surface-container border border-white/10 rounded-2xl p-4 text-body-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary transition-all placeholder:text-outline resize-none" />
           </div>
         </div>
         <div className="space-y-5">
           <div>
             <label className="block text-label-md text-on-surface-variant mb-2">Uğurlu Renk</label>
-            <input name="lucky_color" defaultValue={initial.lucky_color} onChange={() => setDirty(true)}
+            <input name="lucky_color" value={fields.lucky_color} onChange={(e) => updateField("lucky_color", e.target.value)}
               className="w-full bg-surface-container border border-white/10 rounded-2xl px-5 py-3.5 text-body-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary transition-all placeholder:text-outline" />
           </div>
           <div>
             <label className="block text-label-md text-on-surface-variant mb-2">Değerli Taş</label>
-            <input name="lucky_stone" defaultValue={initial.lucky_stone} onChange={() => setDirty(true)}
+            <input name="lucky_stone" value={fields.lucky_stone} onChange={(e) => updateField("lucky_stone", e.target.value)}
               className="w-full bg-surface-container border border-white/10 rounded-2xl px-5 py-3.5 text-body-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary transition-all placeholder:text-outline" />
           </div>
           <div>
             <label className="block text-label-md text-on-surface-variant mb-2">Günün Aktivitesi</label>
-            <input name="lucky_activity" defaultValue={initial.lucky_activity} onChange={() => setDirty(true)}
+            <input name="lucky_activity" value={fields.lucky_activity} onChange={(e) => updateField("lucky_activity", e.target.value)}
               className="w-full bg-surface-container border border-white/10 rounded-2xl px-5 py-3.5 text-body-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary transition-all placeholder:text-outline" />
           </div>
           <div>
             <label className="block text-label-md text-on-surface-variant mb-2">Hero Görsel URL</label>
-            <input name="hero_image" defaultValue={initial.hero_image} onChange={() => setDirty(true)}
+            <input name="hero_image" value={fields.hero_image} onChange={(e) => updateField("hero_image", e.target.value)}
               className="w-full bg-surface-container border border-white/10 rounded-2xl px-5 py-3.5 text-body-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary transition-all placeholder:text-outline" />
           </div>
         </div>

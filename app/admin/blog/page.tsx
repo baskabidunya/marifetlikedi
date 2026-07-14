@@ -1,23 +1,14 @@
 import Link from "next/link";
 import { getBlogPosts, deleteBlogPost } from "@/lib/admin";
 import ConfirmButton from "@/components/admin/ConfirmButton";
+import BlogPageHeader from "./BlogPageHeader";
 
 export default async function AdminBlogPage() {
   const posts = await getBlogPosts();
 
   return (
     <div>
-      <div className="flex items-center justify-between mb-4">
-        <div>
-          <h1 className="text-headline-md font-headline-md text-on-surface">Blog</h1>
-          <p className="text-caption text-outline mt-0.5">{posts.length} yazı</p>
-        </div>
-        <Link href="/admin/blog/yeni"
-          className="px-4 py-2 rounded-xl bg-gradient-to-r from-primary to-secondary text-on-primary font-label-md shadow-lg hover:shadow-xl transition-all flex items-center gap-1.5 text-sm">
-          <span className="material-symbols-outlined text-[18px]">add</span>
-          Yeni Yazı
-        </Link>
-      </div>
+      <BlogPageHeader count={posts.length} />
 
       <div className="bg-surface-container/50 rounded-2xl overflow-hidden border border-white/5">
         <table className="w-full text-left">

@@ -17,6 +17,7 @@ const ReactQuill = dynamic(() => import("react-quill-new"), {
 interface Props {
   value?: string;
   name?: string;
+  onChange?: (html: string) => void;
 }
 
 const FORMATS = [
@@ -24,7 +25,7 @@ const FORMATS = [
   "list", "blockquote", "link", "image",
 ];
 
-export default function RichTextEditor({ value = "", name = "content" }: Props) {
+export default function RichTextEditor({ value = "", name = "content", onChange }: Props) {
   const quillRef = useRef<any>(null);
   const hiddenRef = useRef<HTMLTextAreaElement>(null);
   const [content, setContent] = useState(value || "");
@@ -32,6 +33,7 @@ export default function RichTextEditor({ value = "", name = "content" }: Props) 
   function handleChange(html: string) {
     setContent(html);
     if (hiddenRef.current) hiddenRef.current.value = html;
+    onChange?.(html);
   }
 
   function imageHandler() {

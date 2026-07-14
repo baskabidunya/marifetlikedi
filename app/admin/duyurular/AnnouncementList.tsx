@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { deleteAnnouncement, toggleAnnouncementActive } from "@/lib/admin";
 import ConfirmButton from "@/components/admin/ConfirmButton";
 import AnnouncementModal from "./AnnouncementModal";
+import AIGenerateButton from "@/components/admin/AIGenerateButton";
 
 const TYPE_BADGE: Record<string, { label: string; cls: string }> = {
   info: { label: "Bilgi", cls: "bg-primary/15 text-primary border-primary/30" },
@@ -58,6 +59,7 @@ export default function AnnouncementList({ items }: { items: Announcement[] }) {
   const [statusFilter, setStatusFilter] = useState("all");
   const [modalOpen, setModalOpen] = useState(false);
   const [editing, setEditing] = useState<Announcement | null>(null);
+  const [aiData, setAiData] = useState<{ title?: string; message?: string } | null>(null);
 
   const filtered = items.filter((a) => {
     const matchesSearch = a.title.toLowerCase().includes(search.toLowerCase());
@@ -72,6 +74,13 @@ export default function AnnouncementList({ items }: { items: Announcement[] }) {
   });
 
   function openNew() {
+    setEditing(null);
+    setAiData(null);
+    setModalOpen(true);
+  }
+
+  function handleAI(data: { title?: string; message?: string }) {
+    setAiData(data);
     setEditing(null);
     setModalOpen(true);
   }
@@ -91,13 +100,16 @@ export default function AnnouncementList({ items }: { items: Announcement[] }) {
             {items.length} duyuru, {filtered.length} tanesi listeleniyor
           </p>
         </div>
-        <button
-          onClick={openNew}
-          className="px-5 py-2.5 rounded-lg bg-primary text-on-primary text-label-md hover:shadow-[0_0_15px_rgba(208,188,255,0.3)] transition-all flex items-center gap-2 cursor-pointer shrink-0"
-        >
-          <span className="material-symbols-outlined text-lg">add</span>
-          Yeni Duyuru
-        </button>
+        <div className="flex items-center gap-3">
+          <AIGenerateButton type="announcement" onGenerated={handleAI} />
+          <button
+            onClick={openNew}
+            className="px-5 py-2.5 rounded-lg bg-primary text-on-primary text-label-md hover:shadow-[0_0_15px_rgba(208,188,255,0.3)] transition-all flex items-center gap-2 cursor-pointer shrink-0"
+          >
+            <span className="material-symbols-outlined text-lg">add</span>
+            Yeni Duyuru
+          </button>
+        </div>
       </div>
 
       {/* Search + Filter */}
@@ -217,6 +229,7 @@ export default function AnnouncementList({ items }: { items: Announcement[] }) {
         open={modalOpen}
         onClose={() => setModalOpen(false)}
         announcement={editing}
+        aiData={aiData}
       />
     </>
   );
