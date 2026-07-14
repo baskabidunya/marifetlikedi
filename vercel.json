@@ -1,3 +1,9 @@
 {
-  "buildCommand": "next build"
+  "buildCommand": "next build",
+  "build": {
+    "env": {
+      "NEXT_TURBOPACK_USE_WORKER": "0",
+      "NODE_OPTIONS": "--max-old-space-size=6144"
+    }
+  }
 }
