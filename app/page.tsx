@@ -1,0 +1,46 @@
+import HeroSection from "@/components/home/HeroSection";
+import DailyEnergy from "@/components/home/DailyEnergy";
+import ZodiacWheel from "@/components/home/ZodiacWheel";
+import DailyMessage from "@/components/home/DailyMessage";
+import CelestialCalendar from "@/components/home/CelestialCalendar";
+import TrendingContent from "@/components/home/TrendingContent";
+import RelationshipLab from "@/components/home/RelationshipLab";
+import PlanetTools from "@/components/home/PlanetTools";
+import FeaturedContent from "@/components/home/FeaturedContent";
+import Testimonials from "@/components/home/Testimonials";
+import Newsletter from "@/components/home/Newsletter";
+
+export default async function Home({
+  searchParams,
+}: {
+  searchParams: Promise<{ km?: string; ky?: string }>;
+}) {
+  const sp = await searchParams;
+  const now = new Date();
+  const monthParam = sp.km !== undefined ? Number(sp.km) : NaN;
+  const yearParam = sp.ky !== undefined ? Number(sp.ky) : NaN;
+  const month =
+    Number.isInteger(monthParam) && monthParam >= 0 && monthParam <= 11
+      ? monthParam
+      : now.getMonth();
+  const year =
+    Number.isInteger(yearParam) && yearParam >= 1970 && yearParam <= 2100
+      ? yearParam
+      : now.getFullYear();
+
+  return (
+    <main className="pt-20">
+      <HeroSection />
+      <DailyEnergy />
+      <ZodiacWheel />
+      <DailyMessage />
+      <CelestialCalendar year={year} month={month} />
+      <TrendingContent />
+      <RelationshipLab />
+      <PlanetTools />
+      <FeaturedContent />
+      <Testimonials />
+      <Newsletter />
+    </main>
+  );
+}

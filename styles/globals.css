@@ -1,0 +1,379 @@
+@import "tailwindcss";
+
+@theme {
+  /* Font Families - references next/font CSS variables from layout.tsx */
+  --font-family-sans: var(--font-inter);
+  --font-family-sora: var(--font-sora);
+  --font-family-inter: var(--font-inter);
+
+  /* Font Sizes */
+  --font-size-display-lg: 48px;
+  --font-size-display-lg--line-height: 1.1;
+  --font-size-display-lg--letter-spacing: -0.02em;
+  --font-size-display-lg-mobile: 32px;
+
+  --font-size-headline-lg: 40px;
+  --font-size-headline-lg--line-height: 1.2;
+  --font-size-headline-lg-mobile: 28px;
+
+  --font-size-headline-md: 30px;
+  --font-size-headline-md--line-height: 1.3;
+  --font-size-headline-md-mobile: 24px;
+
+  --font-size-headline-sm: 24px;
+  --font-size-headline-sm--line-height: 1.35;
+  --font-size-headline-sm-mobile: 20px;
+
+  /* Core Colors */
+  --color-surface: #0b1326;
+  --color-surface-dim: #0b1326;
+  --color-surface-bright: #31394d;
+  --color-surface-container-lowest: #060e20;
+  --color-surface-container-low: #131b2e;
+  --color-surface-container: #171f33;
+  --color-surface-container-high: #222a3d;
+  --color-surface-container-highest: #2d3449;
+  --color-on-surface: #dae2fd;
+  --color-on-surface-variant: #cbc3d7;
+  --color-background: #0b1326;
+  --color-on-background: #dae2fd;
+  --color-outline: #958ea0;
+  --color-outline-variant: #494454;
+
+  /* Primary (Purple) */
+  --color-primary: #d0bcff;
+  --color-on-primary: #3c0091;
+  --color-primary-container: #a078ff;
+  --color-on-primary-container: #340080;
+
+  /* Secondary (Fuchsia) */
+  --color-secondary: #fbabff;
+  --color-on-secondary: #580065;
+  --color-secondary-container: #ae05c6;
+  --color-on-secondary-container: #ffd8fd;
+
+  /* Tertiary (Gold) */
+  --color-tertiary: #f9bd22;
+  --color-on-tertiary: #402d00;
+  --color-tertiary-container: #b88900;
+  --color-on-tertiary-container: #372700;
+
+  /* Error */
+  --color-error: #ffb4ab;
+  --color-on-error: #690005;
+  --color-error-container: #93000a;
+  --color-on-error-container: #ffdad6;
+
+  /* Border Radius */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-full: 9999px;
+
+  /* Spacing */
+  --spacing-container-padding-mobile: 20px;
+  --spacing-container-padding-desktop: 40px;
+  --spacing-gutter: 16px;
+  --spacing-section-gap: 64px;
+}
+
+@layer utilities {
+  .text-display-lg {
+    font-size: 48px;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+
+  .text-display-lg-mobile {
+    font-size: 32px;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+
+  .text-headline-lg {
+    font-size: 40px;
+    line-height: 1.2;
+  }
+
+  .text-headline-lg-mobile {
+    font-size: 28px;
+    line-height: 1.2;
+  }
+
+  .text-headline-md {
+    font-size: 30px;
+    line-height: 1.3;
+  }
+
+  .text-headline-md-mobile {
+    font-size: 24px;
+    line-height: 1.3;
+  }
+
+  .text-headline-sm {
+    font-size: 24px;
+    line-height: 1.35;
+  }
+
+  .text-headline-sm-mobile {
+    font-size: 20px;
+    line-height: 1.35;
+  }
+
+  .text-body-lg {
+    font-size: 18px;
+    line-height: 1.75;
+  }
+
+  .text-body-md {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .text-label-md {
+    font-size: 14px;
+    line-height: 1.25;
+    letter-spacing: 0.05em;
+  }
+
+  .text-caption {
+    font-size: 12px;
+    line-height: 1.25;
+  }
+
+  .glass-card {
+    background: rgba(30, 41, 59, 0.7);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  }
+
+  .glass-input {
+    background: rgba(6, 14, 32, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+  }
+
+  .nebula-bg {
+    background:
+      radial-gradient(circle at 20% 30%, rgba(109, 59, 215, 0.15) 0%, transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(251, 171, 255, 0.1) 0%, transparent 40%);
+  }
+
+  .cta-glow {
+    background: linear-gradient(135deg, #d0bcff, #fbabff);
+    box-shadow: 0 0 20px rgba(208, 188, 255, 0.3);
+  }
+}
+
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+}
+
+.star-field {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: #dae2fd;
+  border-radius: 50%;
+  animation: twinkle var(--duration, 3s) ease-in-out infinite;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.2; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+.font-sora {
+  font-family: "Sora", sans-serif;
+}
+
+.glass {
+  background: rgba(30, 41, 59, 0.7);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.inner-glow {
+  box-shadow: inset 0 0 30px rgba(208, 188, 255, 0.05);
+}
+
+.cosmic-card {
+  perspective: 1000px;
+}
+
+.cosmic-card.flipped {
+  transform: rotateY(180deg);
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes pulse-soft {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; }
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 3s ease-in-out infinite;
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.duration-\[3s\] {
+  animation-duration: 3s;
+}
+
+.duration-\[4s\] {
+  animation-duration: 4s;
+}
+
+.duration-\[5s\] {
+  animation-duration: 5s;
+}
+
+/* Tarot Card Styles */
+.tarot-card-inner {
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.tarot-card.flipped .tarot-card-inner {
+  transform: rotateY(180deg);
+}
+
+.tarot-card-front,
+.tarot-card-back {
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.tarot-card-front {
+  transform: rotateY(180deg);
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(208, 188, 255, 0.1) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+@keyframes gold-pulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.8; }
+}
+
+.gold-foil {
+  background: linear-gradient(
+    135deg,
+    #f9bd22 0%,
+    #ffdf9f 25%,
+    #f9bd22 50%,
+    #b88900 75%,
+    #f9bd22 100%
+  );
+  background-size: 200% 200%;
+  animation: gold-pulse 4s ease-in-out infinite;
+}
+
+@keyframes reveal-glow {
+  0% { box-shadow: 0 0 0 rgba(208, 188, 255, 0); }
+  100% { box-shadow: 0 0 40px rgba(208, 188, 255, 0.3), 0 0 80px rgba(249, 189, 34, 0.15); }
+}
+
+.card-revealed {
+  animation: reveal-glow 1s ease-out forwards;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* ── Quill rich text editor (dark theme) ── */
+.ql-toolbar.ql-snow,
+.ql-container.ql-snow {
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+.ql-toolbar.ql-snow {
+  background: var(--color-surface-container-high);
+  border-top-left-radius: 0.75rem;
+  border-top-right-radius: 0.75rem;
+}
+.ql-container.ql-snow {
+  background: var(--color-surface-container);
+  border-bottom-left-radius: 0.75rem;
+  border-bottom-right-radius: 0.75rem;
+  font-family: var(--font-inter);
+}
+.ql-editor {
+  color: var(--color-on-surface);
+  min-height: 320px;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+.ql-editor.ql-blank::before {
+  color: var(--color-outline);
+  font-style: normal;
+}
+.ql-snow .ql-stroke {
+  stroke: var(--color-on-surface-variant);
+}
+.ql-snow .ql-fill,
+.ql-snow .ql-stroke.ql-fill {
+  fill: var(--color-on-surface-variant);
+}
+.ql-snow .ql-picker {
+  color: var(--color-on-surface-variant);
+}
+.ql-snow .ql-picker-options {
+  background: var(--color-surface-container-high);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+.ql-snow.ql-toolbar button:hover .ql-stroke,
+.ql-snow .ql-toolbar button:hover .ql-stroke,
+.ql-snow.ql-toolbar button.ql-active .ql-stroke {
+  stroke: var(--color-primary);
+}
+.ql-snow.ql-toolbar button:hover .ql-fill,
+.ql-snow .ql-toolbar button:hover .ql-fill,
+.ql-snow.ql-toolbar button.ql-active .ql-fill {
+  fill: var(--color-primary);
+}
+.ql-snow .ql-picker.ql-expanded .ql-picker-label {
+  color: var(--color-primary);
+}
+.ql-editor h1 { font-size: 1.75rem; font-weight: 700; margin: 0.6em 0 0.3em; font-family: var(--font-sora); }
+.ql-editor h2 { font-size: 1.4rem; font-weight: 700; margin: 0.6em 0 0.3em; font-family: var(--font-sora); }
+.ql-editor h3 { font-size: 1.15rem; font-weight: 700; margin: 0.5em 0 0.3em; font-family: var(--font-sora); }
+.ql-editor img { max-width: 100%; border-radius: 1rem; margin: 0.5em 0; }
+.ql-editor a { color: rgb(var(--color-primary)); text-decoration: underline; }
+.ql-editor blockquote { border-left: 3px solid rgb(var(--color-tertiary)); padding-left: 1rem; color: rgb(var(--color-on-surface-variant)); font-style: italic; }
