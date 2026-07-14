@@ -2,9 +2,8 @@ import type { Metadata } from "next";
 import { Sora, Inter } from "next/font/google";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import AnnouncementBanner from "@/components/layout/AnnouncementBanner";
 import AdNetwork from "@/components/ads/AdNetwork";
-import { getFeaturedAnnouncement, getSiteSetting } from "@/lib/public-queries";
+import { getSiteSetting } from "@/lib/public-queries";
 import { ADSENSE_CLIENT } from "@/lib/ads";
 import "@/styles/globals.css";
 
@@ -32,15 +31,13 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const featured = await getFeaturedAnnouncement();
-  const announcements = featured ? [featured] : [];
   const adsenseClient =
     ADSENSE_CLIENT || (await getSiteSetting("adsense_client_id")) || "";
 
   return (
     <html
       lang="tr"
-      className={`dark ${sora.variable} ${inter.variable} ${announcements.length > 0 ? "banner-active" : ""}`}
+      className={`dark ${sora.variable} ${inter.variable}`}
       suppressHydrationWarning
     >
       <body className="bg-surface text-on-surface font-inter antialiased">
@@ -50,7 +47,6 @@ export default async function RootLayout({
         />
         <AdNetwork clientId={adsenseClient}>
           <div className="fixed top-0 inset-x-0 z-50">
-            <AnnouncementBanner items={announcements} />
             <Header />
           </div>
           {children}
