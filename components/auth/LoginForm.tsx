@@ -1,20 +1,22 @@
 "use client";
 
 import { useActionState, useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { signIn } from "@/app/(auth)/actions";
 
 export default function LoginForm() {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const redirectTo = searchParams.get("from") || "/";
   const [state, action, pending] = useActionState(signIn, undefined);
   const [showPassword, setShowPassword] = useState(false);
 
   useEffect(() => {
     if (state?.success) {
-      router.push("/");
+      router.push(redirectTo);
     }
-  }, [state, router]);
+  }, [state, router, redirectTo]);
 
   return (
     <form action={action} className="space-y-6">

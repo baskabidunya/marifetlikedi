@@ -2,6 +2,7 @@ import LoginForm from "@/components/auth/LoginForm";
 import SocialLogin from "@/components/auth/SocialLogin";
 import StarField from "@/components/ui/StarField";
 import Link from "next/link";
+import { Suspense } from "react";
 
 export default function LoginPage() {
   return (
@@ -43,7 +44,9 @@ export default function LoginPage() {
             </p>
           </div>
 
-          <LoginForm />
+          <Suspense>
+            <LoginForm />
+          </Suspense>
 
           <div className="relative my-8">
             <div className="absolute inset-0 flex items-center">
