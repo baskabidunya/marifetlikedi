@@ -19,7 +19,7 @@ export default async function AdminLayout({ children }: { children: React.ReactN
     <div className="min-h-screen bg-background flex">
       <AdminSidebar displayName={profile.display_name || user.email || ""} />
       <main className="flex-1 min-h-screen">
-        <div className="top-clear px-4 md:px-5 py-6">
+        <div className="px-4 md:px-5 pb-6 pt-[calc(var(--header-h)+var(--banner-h))]">
           {children}
         </div>
       </main>
