@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { getTrendArticleBySlug } from "@/lib/public-queries";
+import AdSlot from "@/components/ads/AdSlot";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
@@ -16,7 +17,7 @@ export default async function TrendDetailPage({ params }: { params: Promise<{ sl
   if (!article) notFound();
 
   return (
-    <main className="pt-28 pb-32">
+    <main className="top-clear-2 pb-32">
       <article className="max-w-3xl mx-auto px-container-padding-mobile md:px-container-padding-desktop">
         <Link
           href="/trend"
@@ -41,6 +42,8 @@ export default async function TrendDetailPage({ params }: { params: Promise<{ sl
           className="prose prose-invert prose-lg max-w-none prose-headings:font-sora prose-headings:text-on-surface prose-p:text-on-surface-variant prose-img:rounded-2xl prose-img:mx-auto prose-a:text-primary prose-blockquote:border-l-tertiary prose-blockquote:text-on-surface-variant"
           dangerouslySetInnerHTML={{ __html: article.content }}
         />
+
+        <AdSlot name="content_inline" className="my-10" />
       </article>
     </main>
   );

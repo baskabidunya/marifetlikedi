@@ -9,7 +9,7 @@ export default async function SssPage() {
   const items = await getActiveFaqItems();
 
   return (
-    <main className="pt-28 pb-section-gap px-container-padding-mobile md:px-container-padding-desktop max-w-3xl mx-auto">
+    <main className="top-clear-2 pb-section-gap px-container-padding-mobile md:px-container-padding-desktop max-w-3xl mx-auto">
       <div className="text-center mb-12 space-y-4">
         <h1 className="font-sora text-headline-lg-mobile md:text-headline-lg text-white font-bold">
           Sıkça Sorulan Sorular

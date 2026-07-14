@@ -6,7 +6,7 @@ export default async function Header() {
   const navLinks = await getPublicNavLinks("header");
 
   return (
-    <header className="fixed top-0 w-full z-50 bg-surface-container/70 backdrop-blur-xl border-b border-white/10 shadow-2xl shadow-background/50">
+    <header className="bg-surface-container/70 backdrop-blur-xl border-b border-white/10 shadow-2xl shadow-background/50">
       <nav className="flex justify-between items-center px-container-padding-mobile md:px-container-padding-desktop h-20 max-w-7xl mx-auto">
         <div className="text-headline-sm md:text-headline-md tracking-tight text-primary cursor-pointer">
           <Link href="/">Marifetli Kedi</Link>

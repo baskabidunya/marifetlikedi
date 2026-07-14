@@ -9,6 +9,7 @@ import PlanetTools from "@/components/home/PlanetTools";
 import FeaturedContent from "@/components/home/FeaturedContent";
 import Testimonials from "@/components/home/Testimonials";
 import Newsletter from "@/components/home/Newsletter";
+import AdSlot from "@/components/ads/AdSlot";
 
 export default async function Home({
   searchParams,
@@ -29,8 +30,12 @@ export default async function Home({
       : now.getFullYear();
 
   return (
-    <main className="pt-20">
+    <main className="top-clear">
       <HeroSection />
+      <AdSlot
+        name="home_leaderboard"
+        className="my-12 max-w-7xl mx-auto px-container-padding-mobile md:px-container-padding-desktop"
+      />
       <DailyEnergy />
       <ZodiacWheel />
       <DailyMessage />

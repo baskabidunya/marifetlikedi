@@ -16,7 +16,37 @@ export async function getActiveAnnouncements() {
     .select("*")
     .eq("active", true)
     .lte("start_date", now)
-    .or(`end_date.is.null,end_date.gte.${now}`);
+    .or(`end_date.is.null,end_date.gte.${now}`)
+    .order("start_date", { ascending: true });
+  return data || [];
+}
+
+// Featured announcement for the top banner. Rotates through the active pool once
+// per ISO week (deterministic by date), so the banner refreshes automatically
+// without manual edits.
+export async function getFeaturedAnnouncement() {
+  const pool = await getActiveAnnouncements();
+  if (!pool || pool.length === 0) return null;
+  const weekIndex = Math.floor(Date.now() / (7 * 24 * 60 * 60 * 1000));
+  const idx = ((weekIndex % pool.length) + pool.length) % pool.length;
+  return pool[idx];
+}
+
+export async function getAnnouncementById(id: string) {
+  const supabase = await createClient();
+  const { data } = await supabase.from("announcements").select("*").eq("id", id).single();
+  return data || null;
+}
+
+// All active announcements (including upcoming scheduled ones), for the
+// announcements section listing.
+export async function getAllAnnouncements() {
+  const supabase = await createClient();
+  const { data } = await supabase
+    .from("announcements")
+    .select("*")
+    .eq("active", true)
+    .order("start_date", { ascending: true });
   return data || [];
 }
 
@@ -48,6 +78,12 @@ export async function getActiveTrendArticles() {
   const supabase = await createClient();
   const { data } = await supabase.from("trend_articles").select("*").eq("active", true).order("sort_order");
   return data || [];
+}
+
+export async function getSiteSetting(key: string): Promise<string | null> {
+  const supabase = await createClient();
+  const { data } = await supabase.from("site_settings").select("value").eq("key", key).single();
+  return data?.value ?? null;
 }
 
 export async function getTrendArticleBySlug(slug: string) {

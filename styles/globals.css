@@ -78,6 +78,15 @@
   --spacing-section-gap: 64px;
 }
 
+:root {
+  --header-h: 5rem; /* fixed header height (h-20) */
+  --banner-h: 0rem; /* announcement banner height; becomes 2.75rem when .banner-active */
+}
+
+.banner-active {
+  --banner-h: 2.75rem;
+}
+
 @layer utilities {
   .text-display-lg {
     font-size: 48px;
@@ -165,6 +174,29 @@
     background: linear-gradient(135deg, #d0bcff, #fbabff);
     box-shadow: 0 0 20px rgba(208, 188, 255, 0.3);
   }
+
+  .gradient-text {
+    background: linear-gradient(135deg, #d0bcff 0%, #fbabff 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+
+  .celestial-glow {
+    box-shadow: 0 0 40px rgba(208, 188, 255, 0.2);
+  }
+
+  .animate-spin-slow {
+    animation: spin-slow 60s linear infinite;
+  }
+
+  /* Banner-aware top offsets: clear the fixed header (+ visible announcement banner) */
+  .top-clear { padding-top: calc(var(--header-h) + var(--banner-h)); }
+  .top-clear-1 { padding-top: calc(6rem + var(--banner-h)); }
+  .top-clear-2 { padding-top: calc(7rem + var(--banner-h)); }
+  .top-clear-3 { padding-top: calc(8rem + var(--banner-h)); }
+  .top-stick { top: calc(var(--header-h) + var(--banner-h)); }
 }
 
 .material-symbols-outlined {

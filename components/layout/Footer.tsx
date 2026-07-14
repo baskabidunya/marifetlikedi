@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { getPublicNavLinks } from "@/lib/public-queries";
+import AdSlot from "@/components/ads/AdSlot";
 
 export default async function Footer() {
   const footerLinks = await getPublicNavLinks("footer");
@@ -50,6 +51,10 @@ export default async function Footer() {
           </ul>
         </div>
       </div>
+      <AdSlot
+        name="footer"
+        className="max-w-7xl mx-auto px-container-padding-mobile md:px-container-padding-desktop mb-10"
+      />
       <div className="text-center mt-12 pt-8 border-t border-white/5 text-caption text-outline">
         Yıldızlar sadece yol gösterir, seçimi sen yaparsın.
       </div>

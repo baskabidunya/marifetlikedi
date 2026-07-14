@@ -17,7 +17,7 @@ export default async function StaticPage({ params }: { params: Promise<{ slug: s
   if (!page) notFound();
 
   return (
-    <main className="pt-28 pb-section-gap px-container-padding-mobile md:px-container-padding-desktop max-w-3xl mx-auto">
+    <main className="top-clear-2 pb-section-gap px-container-padding-mobile md:px-container-padding-desktop max-w-3xl mx-auto">
       <article className="space-y-6">
         <h1 className="font-sora text-headline-lg-mobile md:text-headline-lg text-white font-bold">
           {page.title}

@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function TrendPage() {
   return (
-    <main className="pt-28 pb-32">
+    <main className="top-clear-2 pb-32">
       <div className="max-w-7xl mx-auto px-container-padding-mobile md:px-container-padding-desktop">
         <h1 className="text-display-lg-mobile md:text-display-lg font-display-lg text-primary mb-4">
           Trend İçerikler

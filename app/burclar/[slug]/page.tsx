@@ -138,7 +138,7 @@ export default async function Page({
   ].filter(Boolean) as typeof ZODIAC_SIGNS;
 
   return (
-    <main className="relative min-h-screen bg-background pb-32 pt-24">
+    <main className="relative min-h-screen bg-background pb-32 top-clear-1">
       <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
         <div className="absolute w-full h-full bg-[radial-gradient(circle_at_20%_30%,rgba(110,59,215,0.2),transparent_50%),radial-gradient(circle_at_80%_70%,rgba(251,171,255,0.15),transparent_50%)]" />
         <div className="absolute inset-0 opacity-[0.03]"

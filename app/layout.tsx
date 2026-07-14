@@ -3,8 +3,9 @@ import { Sora, Inter } from "next/font/google";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import AnnouncementBanner from "@/components/layout/AnnouncementBanner";
-import { CreditProvider } from "@/components/CreditProvider";
-import { getActiveAnnouncements } from "@/lib/public-queries";
+import AdNetwork from "@/components/ads/AdNetwork";
+import { getFeaturedAnnouncement, getSiteSetting } from "@/lib/public-queries";
+import { ADSENSE_CLIENT } from "@/lib/ads";
 import "@/styles/globals.css";
 
 const sora = Sora({
@@ -31,21 +32,30 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const announcements = await getActiveAnnouncements();
+  const featured = await getFeaturedAnnouncement();
+  const announcements = featured ? [featured] : [];
+  const adsenseClient =
+    ADSENSE_CLIENT || (await getSiteSetting("adsense_client_id")) || "";
 
   return (
-    <html lang="tr" className={`dark ${sora.variable} ${inter.variable}`} suppressHydrationWarning>
+    <html
+      lang="tr"
+      className={`dark ${sora.variable} ${inter.variable} ${announcements.length > 0 ? "banner-active" : ""}`}
+      suppressHydrationWarning
+    >
       <body className="bg-surface text-on-surface font-inter antialiased">
         <link
           rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=block"
         />
-        <AnnouncementBanner items={announcements} />
-        <Header />
-        <CreditProvider>
+        <AdNetwork clientId={adsenseClient}>
+          <div className="fixed top-0 inset-x-0 z-50">
+            <AnnouncementBanner items={announcements} />
+            <Header />
+          </div>
           {children}
-        </CreditProvider>
-        <Footer />
+          <Footer />
+        </AdNetwork>
       </body>
     </html>
   );

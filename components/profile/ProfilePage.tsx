@@ -3,7 +3,6 @@
 import { useEffect, useState, useActionState } from "react";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
-import { useCredits } from "@/components/CreditProvider";
 import { getProfile, updateProfile } from "@/lib/profile";
 import { getAstroChart } from "@/lib/profile";
 import type { AstroChart } from "@/lib/astro-utils";
@@ -12,7 +11,6 @@ import PartnerSection from "./PartnerSection";
 
 export default function ProfilePage() {
   const router = useRouter();
-  const { credits, loading: creditsLoading } = useCredits();
   const [user, setUser] = useState<any>(null);
   const [profile, setProfile] = useState<any>(null);
   const [loading, setLoading] = useState(true);
@@ -84,12 +82,6 @@ export default function ProfilePage() {
               {displayName}
             </h1>
             <div className="flex flex-wrap justify-center md:justify-start gap-4">
-              <div className="flex items-center gap-2 px-4 py-2 rounded-full glass-card border-white/10">
-                <span className="material-symbols-outlined text-tertiary text-lg">diamond</span>
-                <span className="font-label-md text-tertiary">
-                  {creditsLoading ? "..." : credits} Kredi
-                </span>
-              </div>
               <div className="flex items-center gap-2 px-4 py-2 rounded-full glass-card border-white/10">
                 <span className="material-symbols-outlined text-on-surface-variant text-lg">calendar_month</span>
                 <span className="font-label-md text-on-surface-variant">

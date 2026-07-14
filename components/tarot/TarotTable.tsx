@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useCredits } from "@/components/CreditProvider";
+import AdSlot from "@/components/ads/AdSlot";
 
 type SpreadType = "daily" | "three" | "love" | "career" | null;
 
@@ -29,45 +29,27 @@ function shuffle<T>(arr: T[]): T[] {
 }
 
 export default function TarotTable({ deck }: { deck: CardData[] }) {
-  const { credits, authenticated, loading, refresh, useCredit } = useCredits();
-
   const [activeSpread, setActiveSpread] = useState<SpreadType>(null);
   const [cards, setCards] = useState<{ revealed: boolean; data: CardData | null }[]>([]);
   const [showResult, setShowResult] = useState(false);
-  const [noCredit, setNoCredit] = useState(false);
+  const [emptyDeck, setEmptyDeck] = useState(false);
 
   async function changeSpread(type: SpreadType) {
     const spread = spreads.find((s) => s.id === type);
     if (!spread) return;
 
     if (deck.length === 0) {
-      setNoCredit(true);
+      setEmptyDeck(true);
       return;
     }
 
-    if (!authenticated) {
-      setNoCredit(true);
-      return;
-    }
-
-    if (credits <= 0) {
-      setNoCredit(true);
-      return;
-    }
-
-    const result = await useCredit();
-    if (!result.success) {
-      setNoCredit(true);
-      return;
-    }
-
-    setNoCredit(false);
+    setEmptyDeck(false);
     setActiveSpread(type);
     setShowResult(false);
 
     const shuffled = shuffle(deck);
     setCards(
-      Array.from({ length: spread.cardCount }, (_, i) => ({
+      Array.from({ length: spread.cardCount }, () => ({
         revealed: false,
         data: null,
       }))
@@ -92,7 +74,7 @@ export default function TarotTable({ deck }: { deck: CardData[] }) {
     setActiveSpread(null);
     setCards([]);
     setShowResult(false);
-    setNoCredit(false);
+    setEmptyDeck(false);
   }
 
   const activeSpreadData = spreads.find((s) => s.id === activeSpread);
@@ -121,10 +103,6 @@ export default function TarotTable({ deck }: { deck: CardData[] }) {
         <p className="text-body-lg text-on-surface-variant max-w-2xl mx-auto">
           Yıldızların ve kartların rehberliğinde gizemli bir yolculuğa çıkın.
         </p>
-        <div className="flex items-center justify-center gap-2 mt-4">
-          <span className="material-symbols-outlined text-tertiary text-lg">diamond</span>
-          <span className="font-label-md text-tertiary">{loading ? "..." : credits} Kredi</span>
-        </div>
       </div>
 
       {/* Main Grid */}
@@ -147,16 +125,6 @@ export default function TarotTable({ deck }: { deck: CardData[] }) {
               <p className="text-caption text-on-surface-variant text-left">{s.desc}</p>
             </button>
           ))}
-
-          {authenticated && (
-            <div className="mt-4 p-4 glass-card rounded-xl flex items-center gap-3">
-              <span className="material-symbols-outlined text-tertiary text-lg">diamond</span>
-              <div className="text-sm text-on-surface-variant">
-                Kalan kredi:{" "}
-                <span className="text-tertiary font-bold">{loading ? "..." : credits}</span>
-              </div>
-            </div>
-          )}
         </div>
 
         {/* Card Table */}
@@ -276,7 +244,7 @@ export default function TarotTable({ deck }: { deck: CardData[] }) {
           )}
 
           {/* Initial Prompt */}
-          {!activeSpread && !noCredit && (
+          {!activeSpread && !emptyDeck && (
             <div className="text-center space-y-6 relative z-20">
               <div className="relative w-32 h-32 mx-auto mb-8">
                 <div className="absolute inset-0 bg-tertiary/20 rounded-full blur-2xl animate-pulse" />
@@ -291,54 +259,19 @@ export default function TarotTable({ deck }: { deck: CardData[] }) {
             </div>
           )}
 
-          {/* No Credit Gate */}
-          {noCredit && (
+          {/* Empty Deck Notice */}
+          {emptyDeck && (
             <div className="text-center space-y-6 relative z-20 max-w-sm">
               <div className="relative w-24 h-24 mx-auto mb-4">
                 <div className="absolute inset-0 bg-error/20 rounded-full blur-2xl animate-pulse" />
-                <span className="material-symbols-outlined text-5xl text-error relative z-10">hourglass_empty</span>
+                <span className="material-symbols-outlined text-5xl text-error relative z-10">auto_awesome</span>
               </div>
-              {!authenticated ? (
-                <>
-                  <h3 className="font-sora text-headline-md text-white font-bold">Giriş Yapmalısın</h3>
-                  <p className="text-body-md text-on-surface-variant">
-                    Kehanet odasını kullanmak için giriş yapman gerekiyor. Her gün 2 ücretsiz kredi seni bekliyor.
-                  </p>
-                  <div className="flex flex-col gap-3">
-                    <a
-                      href="/giris"
-                      className="w-full py-3 bg-primary text-on-primary font-label-md rounded-full hover:shadow-[0_0_20px_rgba(208,188,255,0.4)] transition-all text-center inline-block"
-                    >
-                      Giriş Yap
-                    </a>
-                    <a
-                      href="/kayit"
-                      className="w-full py-3 glass text-white font-label-md rounded-full hover:bg-white/10 transition-all text-center inline-block"
-                    >
-                      Kayıt Ol
-                    </a>
-                  </div>
-                </>
-              ) : (
-                <>
-                  <h3 className="font-sora text-headline-md text-white font-bold">Kredin Kalmadı</h3>
-                  <p className="text-body-md text-on-surface-variant">
-                    Günlük kredilerini tükettin. Yeni krediler yarın sıfırlanacak veya bir reklam izleyerek kredi kazanabilirsin.
-                  </p>
-                  <button
-                    disabled
-                    title="Yakında kullanıma sunulacak"
-                    className="w-full py-3 bg-gradient-to-r from-secondary-container to-primary-container text-white/60 font-label-md rounded-full cursor-not-allowed opacity-70"
-                  >
-                    <span className="flex items-center justify-center gap-2">
-                      <span className="material-symbols-outlined text-lg">play_circle</span>
-                      Reklam İzle, Kredi Kazan (Yakında)
-                    </span>
-                  </button>
-                </>
-              )}
+              <h3 className="font-sora text-headline-md text-white font-bold">Kartlar Yüklenemedi</h3>
+              <p className="text-body-md text-on-surface-variant">
+                Şu anda kart destesi müsait değil. Lütfen biraz sonra tekrar dene.
+              </p>
               <button
-                onClick={() => setNoCredit(false)}
+                onClick={() => setEmptyDeck(false)}
                 className="text-caption text-on-surface-variant hover:text-primary transition-colors cursor-pointer"
               >
                 Geri dön
@@ -369,6 +302,11 @@ export default function TarotTable({ deck }: { deck: CardData[] }) {
           )}
         </div>
       </div>
+
+      <AdSlot
+        name="tarot"
+        className="max-w-7xl mx-auto px-container-padding-mobile md:px-container-padding-desktop my-12"
+      />
 
       {/* Floating decorations */}
       <div className="absolute top-1/4 right-5 w-16 h-16 border border-white/10 rounded-full floating pointer-events-none" style={{ animationDelay: "-1s" }} />

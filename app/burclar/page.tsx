@@ -138,7 +138,7 @@ export default function BurclarPage() {
   const slide = slides[slideIdx] || { sign: "", title: "", description: "", image_url: "" };
 
   return (
-    <main className="relative min-h-screen bg-background pb-32 pt-20">
+    <main className="relative min-h-screen bg-background pb-32 top-clear">
       {/* Star Background */}
       <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(109,59,215,0.08),transparent_70%)]" />
@@ -149,7 +149,7 @@ export default function BurclarPage() {
       </div>
 
       {/* Sub Navigation */}
-      <div className="sticky top-20 z-40 bg-surface/70 backdrop-blur-xl border-b border-white/10">
+      <div className="sticky top-stick z-40 bg-surface/70 backdrop-blur-xl border-b border-white/10">
         <div className="max-w-7xl mx-auto px-container-padding-mobile md:px-container-padding-desktop py-4">
           <div className="flex items-center gap-2 overflow-x-auto no-scrollbar">
             {ELEMENTS.map(el => (

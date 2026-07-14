@@ -18,7 +18,6 @@ const NAV_LINKS = [
   { href: "/admin/duyurular", label: "Duyurular", icon: "campaign" },
   { href: "/admin/partnerler", label: "Partnerler", icon: "favorite" },
   { href: "/admin/kullanicilar", label: "Kullanıcılar", icon: "group" },
-  { href: "/admin/krediler", label: "Krediler", icon: "monetization_on" },
   { href: "/admin/newsletter", label: "Newsletter", icon: "mail" },
   { href: "/admin/yorumlar", label: "Yorumlar", icon: "rate_review" },
   { href: "/admin/menu", label: "Menü & Footer", icon: "menu" },

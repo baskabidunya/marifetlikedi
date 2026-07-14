@@ -164,105 +164,6 @@ export async function updateSetting(formData: FormData) {
   revalidatePath("/admin/ayarlar");
 }
 
-// ── Credits ──
-
-export async function getCreditsOverview() {
-  const supabase = await createClient();
-
-  // All users from profiles
-  const { data: allProfiles } = await supabase
-    .from("user_profiles").select("user_id, display_name");
-
-  // Credits (only users who claimed daily)
-  const { data: credits } = await supabase
-    .from("user_credits").select("*").order("credits", { ascending: false });
-
-  const { data: transactions } = await supabase
-    .from("credit_transactions").select("*").order("created_at", { ascending: false }).limit(100);
-
-  const creditMap = Object.fromEntries((credits || []).map(c => [c.user_id, c]));
-  const profileMap = Object.fromEntries((allProfiles || []).map(p => [p.user_id, p.display_name]));
-
-  // Merge: all users, with credits if exists
-  const merged = (allProfiles || []).map(p => {
-    const c = creditMap[p.user_id];
-    return {
-      user_id: p.user_id,
-      credits: c?.credits ?? 0,
-      last_daily_reset: c?.last_daily_reset ?? null,
-    };
-  }).sort((a, b) => b.credits - a.credits);
-
-  // Analytics
-  const totalCredits = merged.reduce((sum, c) => sum + (c.credits || 0), 0);
-  const totalUsers = merged.length;
-
-  const thirtyDaysAgo = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString();
-  const { count: newSignups } = await supabase
-    .from("user_profiles").select("*", { count: "exact", head: true })
-    .gte("created_at", thirtyDaysAgo);
-
-  const recentTx = (transactions || []).filter(t => t.created_at >= thirtyDaysAgo);
-  const dailyCredits = recentTx.filter(t => t.type === "daily").reduce((s, t) => s + t.amount, 0);
-  const adCredits = recentTx.filter(t => t.type === "ad_reward").reduce((s, t) => s + t.amount, 0);
-  const spentCredits = recentTx.filter(t => t.type === "spend").reduce((s, t) => s + Math.abs(t.amount), 0);
-
-  // Credit distribution
-  const dist = { bos: 0, az: 0, orta: 0, cok: 0 };
-  merged.forEach(c => {
-    if (c.credits === 0) dist.bos++;
-    else if (c.credits <= 5) dist.az++;
-    else if (c.credits <= 10) dist.orta++;
-    else dist.cok++;
-  });
-
-  return {
-    credits: merged,
-    recentTransactions: (transactions || []).slice(0, 30),
-    profileMap,
-    analytics: {
-      totalCredits,
-      totalUsers,
-      newSignups: newSignups || 0,
-      dailyCredits,
-      adCredits,
-      spentCredits,
-      dist,
-    },
-  };
-}
-
-export async function adjustCredits(formData: FormData) {
-  await requireAdmin();
-  const supabase = await createClient();
-  const userId = formData.get("user_id") as string;
-  const amount = parseInt(formData.get("amount") as string);
-  const description = formData.get("description") as string || "Admin düzenlemesi";
-  const type = amount >= 0 ? "daily" : "spend";
-  const { data: { user } } = await supabase.auth.getUser();
-
-  const { error: txError } = await supabase.from("credit_transactions").insert({
-    user_id: userId, amount, type, description,
-  });
-  if (txError) throw new Error(txError.message);
-
-  const { data: existing } = await supabase
-    .from("user_credits").select("credits").eq("user_id", userId).single();
-
-  if (existing) {
-    const { error } = await supabase
-      .from("user_credits").update({ credits: existing.credits + amount })
-      .eq("user_id", userId);
-    if (error) throw new Error(error.message);
-  } else {
-    const { error } = await supabase
-      .from("user_credits").insert({ user_id: userId, credits: Math.max(0, amount) });
-    if (error) throw new Error(error.message);
-  }
-
-  revalidatePath("/admin/krediler");
-}
-
 // ── Blog ──
 
 export async function getBlogPosts() {
@@ -514,8 +415,10 @@ export async function saveAnnouncement(formData: FormData) {
   const type = formData.get("type") as string || "info";
   const link = formData.get("link") as string || "";
   const active = formData.get("active") === "true";
-  const start_date = formData.get("start_date") as string || new Date().toISOString();
-  const end_date = formData.get("end_date") as string || null;
+  const startRaw = formData.get("start_date") as string;
+  const endRaw = formData.get("end_date") as string;
+  const start_date = startRaw ? new Date(startRaw).toISOString() : new Date().toISOString();
+  const end_date = endRaw ? new Date(endRaw).toISOString() : null;
 
   if (id) {
     const { error } = await supabase.from("announcements").update({

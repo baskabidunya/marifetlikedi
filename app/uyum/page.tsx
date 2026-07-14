@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function UyumPage() {
   return (
-    <main className="pt-28 pb-section-gap px-container-padding-mobile md:px-container-padding-desktop max-w-5xl mx-auto">
+    <main className="top-clear-2 pb-section-gap px-container-padding-mobile md:px-container-padding-desktop max-w-5xl mx-auto">
       <div className="text-center mb-10">
         <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass text-secondary border border-secondary/20">
           <span className="material-symbols-outlined text-sm">favorite</span>

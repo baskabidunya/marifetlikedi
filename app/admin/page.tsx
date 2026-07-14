@@ -16,7 +16,6 @@ export default async function AdminDashboard() {
     { href: "/admin/slider", label: "Slider", icon: "slideshow" },
     { href: "/admin/blog", label: "Blog", icon: "article" },
     { href: "/admin/kullanicilar", label: "Kullanıcılar", icon: "group" },
-    { href: "/admin/krediler", label: "Krediler", icon: "monetization_on" },
     { href: "/admin/ayarlar", label: "Ayarlar", icon: "settings" },
   ];
 

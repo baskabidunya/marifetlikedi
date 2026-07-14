@@ -11,10 +11,10 @@ const SETTING_META: Record<string, { label: string; type: string; desc: string }
     type: "textarea",
     desc: "Arama motorları için meta açıklama.",
   },
-  default_daily_credits: {
-    label: "Günlük Kredi",
-    type: "number",
-    desc: "Her kullanıcıya günlük verilecek varsayılan kredi miktarı.",
+  adsense_client_id: {
+    label: "Google AdSense Client ID",
+    type: "text",
+    desc: "AdSense yayıncı kimliği (ca-pub-XXXXXXXXXXXX). Boş bırakılırsa NEXT_PUBLIC_ADSENSE_CLIENT ortam değişkeni kullanılır.",
   },
   contact_email: {
     label: "İletişim E-posta",

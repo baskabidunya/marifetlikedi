@@ -30,7 +30,7 @@ export default async function BlogPage({
       : null;
 
   return (
-    <div className="max-w-7xl mx-auto px-container-padding-mobile md:px-container-padding-desktop pt-28 pb-32">
+    <div className="max-w-7xl mx-auto px-container-padding-mobile md:px-container-padding-desktop top-clear-2 pb-32">
       <h1 className="text-display-lg-mobile md:text-display-lg font-display-lg text-primary mb-4">Gök Günlüğü</h1>
       <p className="text-body-lg text-on-surface-variant mb-8">Astroloji, burç yorumları ve kozmik rehberlik</p>
 
