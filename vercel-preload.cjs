@@ -12,7 +12,23 @@ Module._load = function (request, parent, isMain) {
         throw e;
       }
     };
-    console.error("WRAPPED verifyAndRunTypeScript");
+  }
+  if (request && request.indexOf("next/dist/build/utils.js") !== -1 && mod) {
+    for (const fnName of ["isPageStatic", "hasCustomGetInitialProps", "getDefinedNamedExports"]) {
+      if (typeof mod[fnName] === "function") {
+        const orig = mod[fnName];
+        mod[fnName] = async function (...args) {
+          const page = args[0] && args[0].page;
+          console.error("STATIC_WORKER_CALL " + fnName + " page=" + page);
+          try {
+            return await orig.apply(this, args);
+          } catch (e) {
+            console.error("STATIC_WORKER_ERROR " + fnName + " page=" + page + ":\n" + (e && e.stack ? e.stack : String(e)));
+            throw e;
+          }
+        };
+      }
+    }
   }
   return mod;
 };
