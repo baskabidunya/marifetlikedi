@@ -1,7 +1,21 @@
 const Module = require("module");
 const origLoad = Module._load;
+console.error("PRELOAD LOADED pid=" + process.pid + " ppid=" + process.ppid);
 Module._load = function (request, parent, isMain) {
   const mod = origLoad.apply(this, arguments);
+  if (mod && typeof mod.getStaticInfoIncludingLayouts === "function") {
+    const orig = mod.getStaticInfoIncludingLayouts;
+    mod.getStaticInfoIncludingLayouts = async function (...args) {
+      const page = args[0] && args[0].page;
+      console.error("GET_STATIC_INFO page=" + page);
+      try {
+        return await orig.apply(this, args);
+      } catch (e) {
+        console.error("GET_STATIC_INFO_ERROR page=" + page + ":\n" + (e && e.stack ? e.stack : String(e)));
+        throw e;
+      }
+    };
+  }
   if (mod && typeof mod.isPageStatic === "function") {
     for (const fnName of ["isPageStatic", "hasCustomGetInitialProps", "getDefinedNamedExports", "exportPages"]) {
       if (typeof mod[fnName] === "function") {
