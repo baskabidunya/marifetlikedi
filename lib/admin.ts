@@ -443,6 +443,19 @@ export async function deleteAnnouncement(formData: FormData) {
   revalidatePath("/admin/duyurular");
 }
 
+export async function toggleAnnouncementActive(formData: FormData) {
+  await requireAdmin();
+  const supabase = await createClient();
+  const id = formData.get("id") as string;
+  const currentActive = formData.get("active") === "true";
+  const { error } = await supabase
+    .from("announcements")
+    .update({ active: !currentActive })
+    .eq("id", id);
+  if (error) throw new Error(error.message);
+  revalidatePath("/admin/duyurular");
+}
+
 // ── Newsletter ──
 
 export async function getNewsletterSubscribers() {
