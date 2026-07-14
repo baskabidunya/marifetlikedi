@@ -32,7 +32,7 @@ export default function AdminSidebar({ displayName }: { displayName: string }) {
     <>
       {/* Mobile toggle */}
       <button onClick={() => setMobileOpen(!mobileOpen)}
-        className="fixed top-4 left-4 z-50 md:hidden bg-surface-container p-2.5 rounded-xl border border-white/10 shadow-lg">
+        className="fixed top-stick left-4 z-50 md:hidden bg-surface-container p-2.5 rounded-xl border border-white/10 shadow-lg mt-2">
         <span className="material-symbols-outlined text-on-surface">{mobileOpen ? "close" : "menu"}</span>
       </button>
 
@@ -43,7 +43,7 @@ export default function AdminSidebar({ displayName }: { displayName: string }) {
       )}
 
       {/* Sidebar */}
-      <aside className={`fixed md:sticky top-0 z-40 h-screen w-64 bg-surface-container border-r border-white/10 flex flex-col transition-transform duration-300 ${
+      <aside className={`fixed md:sticky top-stick z-40 h-screen w-64 bg-surface-container border-r border-white/10 flex flex-col transition-transform duration-300 ${
         mobileOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"
       }`}>
         {/* Logo */}
