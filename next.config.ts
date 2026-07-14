@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import path from "node:path";
 
 const nextConfig: NextConfig = {
   typescript: {
@@ -11,6 +12,13 @@ const nextConfig: NextConfig = {
   experimental: {
     cpus: 1,
     webpackMemoryOptimizations: true,
+  },
+  webpack: (config) => {
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      "@": path.resolve(__dirname),
+    };
+    return config;
   },
 };
 
