@@ -2,7 +2,7 @@
   "buildCommand": "next build --webpack",
   "build": {
     "env": {
-      "NODE_OPTIONS": "--max-old-space-size=6144"
+      "NODE_OPTIONS": "--max-old-space-size=3072"
     }
   }
 }
