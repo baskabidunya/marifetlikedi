@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 import { getProfile, updateProfile } from "@/lib/profile";
 import { getAstroChart } from "@/lib/profile";
+import { signOut } from "@/app/(auth)/actions";
 import type { AstroChart } from "@/lib/astro-utils";
 import AstroChartComponent, { Big3Section, HousesSection, PlanetsSection, AspectsSection, DetailModal, type DetailTarget } from "./AstroChart";
 import PartnerSection from "./PartnerSection";
@@ -90,13 +91,24 @@ export default function ProfilePage() {
               </div>
             </div>
           </div>
-          <button
-            onClick={() => setEditing(!editing)}
-            className="px-6 py-3 rounded-full bg-primary text-on-primary font-label-md hover:shadow-[0_0_20px_rgba(208,188,255,0.4)] transition-all flex items-center gap-2 cursor-pointer shrink-0"
-          >
-            <span className="material-symbols-outlined text-lg">{editing ? "close" : "edit"}</span>
-            {editing ? "Kapat" : "Profili Düzenle"}
-          </button>
+          <div className="flex items-center gap-3 shrink-0">
+            <button
+              onClick={() => setEditing(!editing)}
+              className="px-6 py-3 rounded-full bg-primary text-on-primary font-label-md hover:shadow-[0_0_20px_rgba(208,188,255,0.4)] transition-all flex items-center gap-2 cursor-pointer"
+            >
+              <span className="material-symbols-outlined text-lg">{editing ? "close" : "edit"}</span>
+              {editing ? "Kapat" : "Profili Düzenle"}
+            </button>
+            <form action={signOut}>
+              <button
+                type="submit"
+                className="px-6 py-3 rounded-full border border-error/30 text-error font-label-md hover:bg-error/10 transition-all flex items-center gap-2 cursor-pointer"
+              >
+                <span className="material-symbols-outlined text-lg">logout</span>
+                Çıkış Yap
+              </button>
+            </form>
+          </div>
         </div>
         <div className="absolute top-0 right-0 p-8 opacity-10 pointer-events-none">
           <span className="material-symbols-outlined text-[120px] text-primary">stars</span>
