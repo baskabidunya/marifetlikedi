@@ -9,8 +9,14 @@ const nextConfig: NextConfig = {
     unoptimized: true,
   },
   productionBrowserSourceMaps: false,
+  serverExternalPackages: [
+    "@supabase/supabase-js",
+    "@supabase/ssr",
+    "astronomy-engine",
+  ],
   experimental: {
     cpus: 1,
+    workerThreads: true,
     webpackMemoryOptimizations: true,
   },
   webpack: (config) => {

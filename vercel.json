@@ -1,9 +1,8 @@
 {
-  "buildCommand": "next build --webpack --debug",
+  "buildCommand": "next build --webpack",
   "build": {
     "env": {
-      "NODE_OPTIONS": "--max-old-space-size=4096",
-      "NEXT_PRIVATE_DEBUG": "1"
+      "NODE_OPTIONS": "--max-old-space-size=4096"
     }
   }
 }
