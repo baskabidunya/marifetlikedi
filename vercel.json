@@ -1,8 +1,3 @@
 {
-  "buildCommand": "next build --webpack",
-  "build": {
-    "env": {
-      "NODE_OPTIONS": "--max-old-space-size=4096 --require /vercel/path0/vercel-preload.cjs"
-    }
-  }
+  "buildCommand": "next build --webpack"
 }
