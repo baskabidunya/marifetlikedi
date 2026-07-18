@@ -46,26 +46,87 @@ const PLANET_CONFIG: { name: PlanetName; body: Astronomy.Body; icon: string }[] 
 ];
 
 const TURKISH_CITIES: Record<string, { lat: number; lng: number }> = {
-  "istanbul": { lat: 41.0082, lng: 28.9784 },
-  "ankara": { lat: 39.9334, lng: 32.8597 },
-  "izmir": { lat: 38.4192, lng: 27.1287 },
-  "bursa": { lat: 40.1828, lng: 29.0568 },
-  "antalya": { lat: 36.8841, lng: 30.7056 },
   "adana": { lat: 37.0, lng: 35.3213 },
-  "konya": { lat: 37.8667, lng: 32.4833 },
-  "gaziantep": { lat: 37.0662, lng: 37.3833 },
-  "mersin": { lat: 36.8, lng: 34.6333 },
-  "diyarbakır": { lat: 37.9136, lng: 40.2172 },
-  "kayseri": { lat: 38.7333, lng: 35.4833 },
-  "eskişehir": { lat: 39.7767, lng: 30.5206 },
-  "trabzon": { lat: 41.0015, lng: 39.7168 },
-  "samsun": { lat: 41.2867, lng: 36.33 },
-  "malatya": { lat: 38.3552, lng: 38.3095 },
-  "erzurum": { lat: 39.9087, lng: 41.2769 },
-  "van": { lat: 38.4891, lng: 43.4089 },
+  "adiyaman": { lat: 37.7648, lng: 38.2786 },
+  "afyonkarahisar": { lat: 38.7507, lng: 30.5567 },
+  "agri": { lat: 39.7191, lng: 43.0503 },
+  "aksaray": { lat: 38.3687, lng: 34.0370 },
+  "amasya": { lat: 40.6499, lng: 35.8353 },
+  "ankara": { lat: 39.9334, lng: 32.8597 },
+  "antalya": { lat: 36.8841, lng: 30.7056 },
+  "ardahan": { lat: 41.1105, lng: 42.7022 },
+  "artvin": { lat: 41.1828, lng: 41.8183 },
+  "aydin": { lat: 37.8560, lng: 27.8416 },
+  "balikesir": { lat: 39.6484, lng: 27.8826 },
+  "bartin": { lat: 41.6344, lng: 32.3375 },
   "batman": { lat: 37.8812, lng: 41.1351 },
-  "kahramanmaraş": { lat: 37.5858, lng: 36.9371 },
-  "şanlıurfa": { lat: 37.1591, lng: 38.7969 },
+  "bayburt": { lat: 40.2552, lng: 40.2249 },
+  "bilecik": { lat: 40.0567, lng: 30.9773 },
+  "bingol": { lat: 38.8855, lng: 40.4966 },
+  "bitlis": { lat: 38.4005, lng: 42.1095 },
+  "bolu": { lat: 40.7360, lng: 31.6061 },
+  "burdur": { lat: 37.7203, lng: 30.2908 },
+  "bursa": { lat: 40.1828, lng: 29.0568 },
+  "canakkale": { lat: 40.1553, lng: 26.4142 },
+  "cankiri": { lat: 40.6013, lng: 33.6134 },
+  "corum": { lat: 40.5506, lng: 34.9556 },
+  "denizli": { lat: 37.7765, lng: 29.0864 },
+  "diyarbakir": { lat: 37.9136, lng: 40.2172 },
+  "duzce": { lat: 40.8438, lng: 31.1565 },
+  "edirne": { lat: 41.6818, lng: 26.5623 },
+  "elazig": { lat: 38.6810, lng: 39.2264 },
+  "erzincan": { lat: 39.7500, lng: 39.5000 },
+  "erzurum": { lat: 39.9087, lng: 41.2769 },
+  "eskisehir": { lat: 39.7767, lng: 30.5206 },
+  "gaziantep": { lat: 37.0662, lng: 37.3833 },
+  "giresun": { lat: 40.9128, lng: 38.3895 },
+  "gumushane": { lat: 40.4386, lng: 39.5086 },
+  "hakkari": { lat: 37.5833, lng: 43.7408 },
+  "hatay": { lat: 36.4018, lng: 36.3498 },
+  "igdir": { lat: 39.9167, lng: 44.0500 },
+  "isparta": { lat: 37.7648, lng: 30.5566 },
+  "istanbul": { lat: 41.0082, lng: 28.9784 },
+  "izmir": { lat: 38.4192, lng: 27.1287 },
+  "kahramanmaras": { lat: 37.5858, lng: 36.9371 },
+  "karabuk": { lat: 41.2061, lng: 32.6204 },
+  "karaman": { lat: 37.1759, lng: 33.2287 },
+  "kars": { lat: 40.6167, lng: 43.1000 },
+  "kastamonu": { lat: 41.3887, lng: 33.7827 },
+  "kayseri": { lat: 38.7333, lng: 35.4833 },
+  "kirikkale": { lat: 39.8468, lng: 33.5153 },
+  "kirklareli": { lat: 41.7333, lng: 27.2167 },
+  "kirsehir": { lat: 39.1425, lng: 34.1709 },
+  "kilis": { lat: 36.7184, lng: 37.1212 },
+  "kocaeli": { lat: 40.8533, lng: 29.8815 },
+  "konya": { lat: 37.8667, lng: 32.4833 },
+  "kutahya": { lat: 39.4167, lng: 29.9833 },
+  "malatya": { lat: 38.3552, lng: 38.3095 },
+  "manisa": { lat: 38.6191, lng: 27.4289 },
+  "mardin": { lat: 37.3212, lng: 40.7245 },
+  "mersin": { lat: 36.8, lng: 34.6333 },
+  "mugla": { lat: 37.2153, lng: 28.3636 },
+  "mus": { lat: 38.9462, lng: 41.7539 },
+  "nevsehir": { lat: 38.6244, lng: 34.6850 },
+  "nigde": { lat: 37.9667, lng: 34.6833 },
+  "ordu": { lat: 40.9839, lng: 37.8764 },
+  "osmaniye": { lat: 37.0742, lng: 36.2464 },
+  "rize": { lat: 41.0201, lng: 40.5234 },
+  "sakarya": { lat: 40.6940, lng: 30.4358 },
+  "samsun": { lat: 41.2867, lng: 36.33 },
+  "sanliurfa": { lat: 37.1591, lng: 38.7969 },
+  "siirt": { lat: 37.9333, lng: 41.9500 },
+  "sinop": { lat: 42.0231, lng: 35.1531 },
+  "sivas": { lat: 39.7477, lng: 37.0179 },
+  "sirnak": { lat: 37.4187, lng: 42.4918 },
+  "tekirdag": { lat: 41.0027, lng: 27.5127 },
+  "tokat": { lat: 40.3167, lng: 36.5500 },
+  "trabzon": { lat: 41.0015, lng: 39.7168 },
+  "tunceli": { lat: 39.1079, lng: 39.5401 },
+  "usak": { lat: 38.6823, lng: 29.4082 },
+  "van": { lat: 38.4891, lng: 43.4089 },
+  "yalova": { lat: 40.6500, lng: 29.2667 },
+  "yozgat": { lat: 39.8181, lng: 34.8147 },
+  "zonguldak": { lat: 41.4564, lng: 31.7987 },
 };
 
 export interface PlanetPosition {
@@ -109,23 +170,6 @@ function getDegreeInSign(lon: number): { degree: number; minute: number } {
     degree: Math.floor(deg),
     minute: Math.floor((deg - Math.floor(deg)) * 60),
   };
-}
-
-function getSunSignFromDate(year: number, month: number, day: number): ZodiacSign {
-  const boundaries: [number, number, ZodiacSign][] = [
-    [3, 21, "Koç"], [4, 20, "Boğa"], [5, 21, "İkizler"],
-    [6, 21, "Yengeç"], [7, 23, "Aslan"], [8, 23, "Başak"],
-    [9, 23, "Terazi"], [10, 23, "Akrep"], [11, 22, "Yay"],
-    [12, 22, "Oğlak"], [1, 20, "Kova"], [2, 19, "Balık"],
-  ];
-  const dateVal = month * 100 + day;
-  for (const [m, d, sign] of boundaries) {
-    if (m === 12) continue;
-    if (dateVal >= m * 100 + d) return sign;
-  }
-  if (dateVal >= 1222 || dateVal <= 119) return "Oğlak";
-  if (dateVal >= 120 && dateVal <= 218) return "Kova";
-  return "Balık";
 }
 
 function getEclipticLongitude(body: Astronomy.Body, time: Astronomy.AstroTime): number {
@@ -263,9 +307,11 @@ function getAspects(planets: PlanetPosition[]): AspectData[] {
 
 export function getCoordinatesFromPlace(place: string): { lat: number; lng: number } | null {
   if (!place) return null;
-  const key = place.toLowerCase().trim().replace(/[ı]/g, "i").replace(/[ş]/g, "s")
-    .replace(/[ç]/g, "c").replace(/[ö]/g, "o").replace(/[ü]/g, "u")
-    .replace(/[ğ]/g, "g").replace(/[^a-z0-9\s]/g, "");
+  const key = place.toLowerCase().trim()
+    .replace(/[ı]/g, "i").replace(/[ş]/g, "s")
+    .replace(/[ç]/g, "c").replace(/[ö]/g, "o")
+    .replace(/[ü]/g, "u").replace(/[ğ]/g, "g")
+    .replace(/[^a-z0-9\s]/g, "");
   const city = TURKISH_CITIES[key];
   if (city) return city;
   return TURKISH_CITIES["ankara"];
