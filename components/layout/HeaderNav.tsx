@@ -78,12 +78,15 @@ export default function HeaderNav({ links, isLoggedIn }: { links: NavLink[]; isL
               </button>
             </div>
             <nav className="flex flex-col gap-1">
+              {navLinks.length === 0 && (
+                <p className="px-4 py-3 text-body-md text-error">Bağlantı bulunamadı</p>
+              )}
               {navLinks.map((link) => (
                 <Link
                   key={link.id}
                   href={link.url}
                   onClick={close}
-                  className="block px-4 py-3 rounded-xl text-body-md text-on-surface-variant hover:bg-white/5 hover:text-on-surface transition-colors"
+                  className="block px-4 py-3 rounded-xl text-body-md text-tertiary hover:bg-white/10 hover:text-on-surface transition-colors"
                 >
                   {link.label}
                 </Link>
