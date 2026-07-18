@@ -343,8 +343,6 @@ export function calculateSynastry(
       return 20 + Math.round(((elScore - 3) / 5) * 80);
     };
 
-    const temel = Math.min(100, Math.max(20, Math.round((compareSigns(userChart.sun.sign, partnerChart.sun.sign) + compareSigns(userChart.moon.sign, partnerChart.moon.sign)) / 2)));
-
     const loveWeights: Record<string, number> = {
       Kavuşum: 2.5, Üçgen: 2.5, Altmışlık: 2, Kare: -1, Karşıt: 1,
     };
@@ -364,6 +362,10 @@ export function calculateSynastry(
       Kavuşum: 2.5, Üçgen: 2.5, Altmışlık: 2, Kare: -1, Karşıt: -1,
     };
     const uzunVade = computeAspectScore(growthAspects, 5, longTermWeights);
+
+    const sunMoonRaw = (compareSigns(userChart.sun.sign, partnerChart.sun.sign) + compareSigns(userChart.moon.sign, partnerChart.moon.sign)) / 2;
+    const sunMoonScore = sunMoonRaw / 10;
+    const temel = Math.min(100, Math.max(0, Math.round((ask + iletisim + tutku + uzunVade + sunMoonScore) / 5 * 10)));
 
     return { temel, ask, iletisim, tutku, uzunVade };
   })();
