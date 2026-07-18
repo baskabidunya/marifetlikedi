@@ -34,7 +34,16 @@ export default function AdSlot({
     }
   }, [clientId, slot]);
 
-  if (!clientId || !slot) return null;
+  if (!clientId || !slot) {
+    return (
+      <div
+        className={`flex items-center justify-center border-2 border-dashed border-outline/30 rounded-lg bg-surface-dim/50 min-h-[90px] text-outline/40 text-sm select-none ${className || ""}`}
+        style={style}
+      >
+        Reklam Alanı ({name.replace("_", " ")})
+      </div>
+    );
+  }
 
   return (
     <ins
