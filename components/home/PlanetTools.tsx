@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function PlanetTools() {
   return (
-    <section className="py-section-gap px-container-padding-desktop max-w-7xl mx-auto">
+    <section className="py-section-gap px-container-padding-mobile md:px-container-padding-desktop max-w-7xl mx-auto">
       <h3 className="font-sora text-headline-lg text-white mb-10 font-bold">Gezegen Etkilerini Keşfet</h3>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         <div className="glass p-8 rounded-3xl inner-glow group hover:bg-white/5 transition-all cursor-pointer">

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getAnnouncementById, getActiveAnnouncements } from "@/lib/public-queries";
+import AdSlot from "@/components/ads/AdSlot";
 
 const TYPE_META: Record<string, { label: string; icon: string; cls: string; accent: string }> = {
   info: {
@@ -87,6 +88,11 @@ export default async function AnnouncementDetailPage({
 
         </div>
       </article>
+
+      <AdSlot
+        name="duyurular_detay"
+        className="my-section-gap max-w-3xl mx-auto"
+      />
 
       {others.length > 0 && (
         <section className="mt-section-gap">

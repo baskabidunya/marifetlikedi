@@ -1,6 +1,6 @@
 export default function DailyEnergy() {
   return (
-    <section className="py-12 -mt-24 relative z-20 px-container-padding-desktop max-w-7xl mx-auto">
+    <section className="py-12 -mt-24 relative z-20 px-container-padding-mobile md:px-container-padding-desktop max-w-7xl mx-auto">
       <div className="glass p-8 md:p-12 rounded-[2rem] inner-glow relative overflow-hidden group">
         <div className="absolute top-0 right-0 p-8 text-tertiary/10 scale-150 pointer-events-none group-hover:scale-[2] transition-transform duration-700">
           <span className="material-symbols-outlined text-9xl">bedtime</span>

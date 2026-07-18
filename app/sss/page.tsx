@@ -1,4 +1,5 @@
 import { getActiveFaqItems } from "@/lib/public-queries";
+import AdSlot from "@/components/ads/AdSlot";
 
 export const metadata = {
   title: "Sıkça Sorulan Sorular - Marifetli Kedi",
@@ -42,6 +43,11 @@ export default async function SssPage() {
           ))}
         </div>
       )}
+
+      <AdSlot
+        name="sss"
+        className="my-12 max-w-3xl mx-auto"
+      />
     </main>
   );
 }

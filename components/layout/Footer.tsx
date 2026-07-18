@@ -7,12 +7,11 @@ export default async function Footer() {
 
   return (
     <footer className="bg-surface-container-lowest w-full py-12 border-t border-outline-variant/30 mt-section-gap">
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-gutter px-container-padding-desktop max-w-7xl mx-auto items-start">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-gutter px-container-padding-mobile md:px-container-padding-desktop max-w-7xl mx-auto items-start">
         <div className="space-y-4">
           <div className="text-headline-md text-primary font-bold">Marifetli Kedi</div>
           <p className="text-caption text-on-surface-variant leading-relaxed">
-            &copy; 2024 Marifetli Kedi. Guided by the stars, crafted for the soul.
-            Kozmik bilgeliği modern dünyayla buluşturuyoruz.
+            &copy; 2026 Marifetli Kedi. Kozmik bilgeliği modern dünyayla buluşturuyoruz.
           </p>
         </div>
         <div className="space-y-4">

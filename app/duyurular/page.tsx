@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getAllAnnouncements } from "@/lib/public-queries";
+import AdSlot from "@/components/ads/AdSlot";
 
 const TYPE_STYLES: Record<string, string> = {
   info: "bg-primary/15 text-primary border-primary/30",
@@ -70,6 +71,11 @@ export default async function AnnouncementsPage() {
           ))}
         </div>
       )}
+
+      <AdSlot
+        name="duyurular"
+        className="my-12 max-w-3xl mx-auto"
+      />
     </main>
   );
 }

@@ -3,6 +3,7 @@ import SocialLogin from "@/components/auth/SocialLogin";
 import StarField from "@/components/ui/StarField";
 import Link from "next/link";
 import { Suspense } from "react";
+import AdSlot from "@/components/ads/AdSlot";
 
 export default function LoginPage() {
   return (
@@ -68,9 +69,14 @@ export default function LoginPage() {
         </div>
 
         <div className="absolute bottom-6 text-xs text-outline/30 select-none">
-          MARİFETLİ KEDİ © 2024 • Kozmik Rehberin
+          MARİFETLİ KEDİ © 2026 • Kozmik Rehberin
         </div>
       </section>
+
+      <AdSlot
+        name="auth"
+        className="absolute bottom-16 left-1/2 -translate-x-1/2 w-[300px]"
+      />
     </main>
   );
 }

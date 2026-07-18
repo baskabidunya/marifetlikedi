@@ -6,6 +6,7 @@ import { createClient } from "@/lib/supabase/client";
 import { getProfile, updateProfile } from "@/lib/profile";
 import { getAstroChart } from "@/lib/profile";
 import { signOut } from "@/app/(auth)/actions";
+import { TURKISH_CITIES } from "@/lib/cities";
 import type { AstroChart } from "@/lib/astro-utils";
 import AstroChartComponent, { Big3Section, HousesSection, PlanetsSection, AspectsSection, DetailModal, type DetailTarget } from "./AstroChart";
 import PartnerSection from "./PartnerSection";
@@ -176,12 +177,16 @@ export default function ProfilePage() {
 
             <div className="space-y-2">
               <label className="text-label-md text-on-surface-variant">Doğum Yeri</label>
-              <input
+              <select
                 name="birth_place"
                 defaultValue={profile?.birth_place || ""}
-                placeholder="Örn: İstanbul"
                 className="w-full px-4 py-3 bg-background/50 border border-outline-variant rounded-xl text-on-surface focus:ring-primary focus:border-primary"
-              />
+              >
+                <option value="">Şehir seçin</option>
+                {TURKISH_CITIES.map(city => (
+                  <option key={city} value={city}>{city}</option>
+                ))}
+              </select>
             </div>
 
             <div className="md:col-span-2 flex gap-4 pt-4">

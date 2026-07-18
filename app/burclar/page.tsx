@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { ZODIAC_DATA, ZODIAC_SIGNS } from "@/lib/astro-utils";
+import AdSlot from "@/components/ads/AdSlot";
 import { signSlug } from "@/lib/sign-slugs";
 import { SIGN_TRAITS } from "@/lib/astro-narratives";
 import { RISING_SIGNS } from "@/lib/astro-interpretations";
@@ -301,6 +302,11 @@ export default function BurclarPage() {
             </div>
           </div>
         </section>
+
+        <AdSlot
+          name="burclar_listing"
+          className="my-section-gap max-w-7xl mx-auto"
+        />
 
         {/* İlişki Laboratuvarı */}
         <section className="mb-section-gap">

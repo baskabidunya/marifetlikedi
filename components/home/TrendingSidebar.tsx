@@ -13,7 +13,7 @@ export default function TrendingSidebar() {
             <h4 className="font-label-md text-sm line-clamp-2">
             &quot;Merkür retrosu beni mahvetti&quot; diyenler burada mı?
             </h4>
-            <div className="flex items-center gap-3 mt-2 text-[10px] text-on-surface-variant">
+            <div className="flex items-center gap-3 mt-2 text-xs text-on-surface-variant">
               <span className="flex items-center gap-1">
                 <span className="material-symbols-outlined text-[12px]">favorite</span> 12.4k
               </span>
@@ -31,7 +31,7 @@ export default function TrendingSidebar() {
             <h4 className="font-label-md text-sm line-clamp-2">
               Burçlara Göre Tatil Rotaları: Nereye Gitmelisin?
             </h4>
-            <div className="flex items-center gap-3 mt-2 text-[10px] text-on-surface-variant">
+            <div className="flex items-center gap-3 mt-2 text-xs text-on-surface-variant">
               <span className="flex items-center gap-1">
                 <span className="material-symbols-outlined text-[12px]">favorite</span> 8.9k
               </span>
@@ -49,7 +49,7 @@ export default function TrendingSidebar() {
             <h4 className="font-label-md text-sm line-clamp-2">
               Ritüeller Gerçekten İşe Yarıyor mu? Bilim ve Ezoterizm
             </h4>
-            <div className="flex items-center gap-3 mt-2 text-[10px] text-on-surface-variant">
+            <div className="flex items-center gap-3 mt-2 text-xs text-on-surface-variant">
               <span className="flex items-center gap-1">
                 <span className="material-symbols-outlined text-[12px]">favorite</span> 7.2k
               </span>

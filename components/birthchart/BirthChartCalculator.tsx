@@ -5,12 +5,7 @@ import Link from "next/link";
 import { calculateBirthChart, type BirthResult } from "@/app/dogum-haritasi/actions";
 import { signSlug } from "@/lib/sign-slugs";
 import { ZODIAC_UI, elementBadgeClass, SIGN_DESCRIPTIONS, RISING_DESCRIPTIONS } from "@/lib/zodiac-ui";
-
-const CITIES = [
-  "İstanbul", "Ankara", "İzmir", "Bursa", "Antalya", "Adana", "Konya",
-  "Gaziantep", "Mersin", "Diyarbakır", "Kayseri", "Eskişehir", "Trabzon",
-  "Samsun", "Malatya", "Erzurum", "Van", "Batman", "Kahramanmaraş", "Şanlıurfa",
-];
+import { TURKISH_CITIES } from "@/lib/cities";
 
 interface CardDef {
   key: string;
@@ -61,7 +56,7 @@ export default function BirthChartCalculator({ focus }: { focus?: string }) {
               className="w-full bg-background/50 border border-outline-variant rounded-xl px-4 py-3 text-on-surface focus:ring-primary focus:border-primary"
             >
               <option value="">Şehir seçin</option>
-              {CITIES.map((c) => (
+              {TURKISH_CITIES.map((c) => (
                 <option key={c} value={c}>{c}</option>
               ))}
             </select>

@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { saveBlogPost } from "@/lib/admin";
 import { getActiveBlogCategories } from "@/lib/admin";
 import { getBlogTags } from "@/lib/admin";
+import ImageUpload from "@/components/admin/ImageUpload";
 
 interface BlogValues {
   id: string; title: string; slug: string; excerpt: string; content: string;
@@ -118,9 +119,12 @@ export default function BlogEditor({ defaultValues }: { defaultValues: BlogValue
         )}
 
         <div>
-          <label className="block text-label-md text-on-surface-variant mb-2">Kapak Görsel URL</label>
-          <input name="cover_image" defaultValue={defaultValues.cover_image}
-            className="w-full bg-surface-container border border-white/10 rounded-2xl px-5 py-3.5 text-body-md text-on-surface focus:border-primary transition-all" />
+          <ImageUpload
+            name="cover_image"
+            defaultValue={defaultValues.cover_image}
+            folder="blog"
+            label="Kapak Görsel"
+          />
         </div>
 
         <div>

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import CompatibilityCalculator from "@/components/compatibility/CompatibilityCalculator";
+import AdSlot from "@/components/ads/AdSlot";
 
 export const metadata: Metadata = {
   title: "Uyum Hesapla - Marifetli Kedi",
@@ -24,6 +25,11 @@ export default function UyumPage() {
       </div>
 
       <CompatibilityCalculator />
+
+      <AdSlot
+        name="uyum"
+        className="my-12 max-w-5xl mx-auto"
+      />
     </main>
   );
 }

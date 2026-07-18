@@ -122,7 +122,7 @@ export default function CelestialCalendar({
                   className="w-9 h-9 md:w-10 md:h-10 drop-shadow-[0_0_6px_rgba(255,255,255,0.15)]"
                 />
                 {phase?.isKey && (
-                  <span className={`text-[10px] uppercase font-bold tracking-tighter ${labelCls}`}>
+                  <span className={`text-xs uppercase font-bold tracking-tighter ${labelCls}`}>
                     {phase.name}
                   </span>
                 )}

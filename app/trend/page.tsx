@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import TrendingGrid from "@/components/trending/TrendingGrid";
+import AdSlot from "@/components/ads/AdSlot";
 
 export const metadata: Metadata = {
   title: "Trend İçerikler - Marifetli Kedi",
@@ -17,6 +18,8 @@ export default function TrendPage() {
           En çok okunan ve paylaşılan eğlenceli astroloji rehberlerimiz.
         </p>
         <TrendingGrid />
+
+        <AdSlot name="trend_listing" className="mt-12" />
       </div>
     </main>
   );

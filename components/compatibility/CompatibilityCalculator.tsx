@@ -1,16 +1,9 @@
 "use client";
 
-import { useActionState } from "react";
+import { useRef } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { calculateCompatibility } from "@/app/uyum/actions";
-import SynastryContent from "@/components/profile/SynastryContent";
-import type { SynastryResult } from "@/lib/astro-synastry";
-
-const CITIES = [
-  "İstanbul", "Ankara", "İzmir", "Bursa", "Antalya", "Adana", "Konya",
-  "Gaziantep", "Mersin", "Diyarbakır", "Kayseri", "Eskişehir", "Trabzon",
-  "Samsun", "Malatya", "Erzurum", "Van", "Batman", "Kahramanmaraş", "Şanlıurfa",
-];
+import { TURKISH_CITIES } from "@/lib/cities";
 
 function BirthFields({ prefix, title }: { prefix: string; title: string }) {
   return (
@@ -51,7 +44,7 @@ function BirthFields({ prefix, title }: { prefix: string; title: string }) {
           className="w-full bg-background/50 border border-outline-variant rounded-xl px-4 py-3 text-on-surface focus:ring-primary focus:border-primary"
         >
           <option value="">Şehir seçin</option>
-          {CITIES.map((c) => (
+          {TURKISH_CITIES.map((c) => (
             <option key={c} value={c}>{c}</option>
           ))}
         </select>
@@ -61,40 +54,43 @@ function BirthFields({ prefix, title }: { prefix: string; title: string }) {
 }
 
 export default function CompatibilityCalculator() {
-  const [state, action, pending] = useActionState(calculateCompatibility, undefined);
-  const result = state?.result as SynastryResult | undefined;
+  const router = useRouter();
+  const formRef = useRef<HTMLFormElement>(null);
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const fd = new FormData(e.currentTarget);
+    const params = new URLSearchParams();
+    const fields = [
+      "user_birth_date", "user_birth_time", "user_birth_place",
+      "partner_name", "partner_birth_date", "partner_birth_time", "partner_birth_place",
+    ];
+    for (const f of fields) {
+      const v = fd.get(f);
+      if (v) params.set(f, v as string);
+    }
+    router.push(`/uyum/sonuc?${params.toString()}`);
+  };
 
   return (
     <div className="space-y-10">
-      <form action={action} className="space-y-6">
+      <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <BirthFields prefix="user" title="Senin Bilgilerin" />
           <BirthFields prefix="partner" title="Partnerinin Bilgileri" />
         </div>
-        {state?.error && (
-          <div className="p-3 rounded-xl bg-error-container/50 border border-error/30 text-error text-sm">
-            {state.error}
-          </div>
-        )}
         <button
           type="submit"
-          disabled={pending}
-          className="w-full py-4 rounded-xl cta-glow text-on-primary font-bold flex items-center justify-center gap-2 disabled:opacity-50 cursor-pointer"
+          className="w-full py-4 rounded-xl cta-glow text-on-primary font-bold flex items-center justify-center gap-2 cursor-pointer"
         >
           <span className="material-symbols-outlined">favorite</span>
-          {pending ? "Hesaplanıyor..." : "Uyumumuzu Hesapla"}
+          Uyumumuzu Hesapla
         </button>
       </form>
 
-      {result && (
-        <SynastryContent synastry={result} partnerName={state?.partnerName || "Partnerin"} />
-      )}
-
-      {!result && (
-        <p className="text-center text-caption text-outline">
-          Analiz, <Link href="/dogum-haritasi" className="text-primary hover:underline">doğum haritası</Link> hesaplamalarıyla aynı astrolojik modele dayanır.
-        </p>
-      )}
+      <p className="text-center text-caption text-outline">
+        Analiz, <Link href="/dogum-haritasi" className="text-primary hover:underline">doğum haritası</Link> hesaplamalarıyla aynı astrolojik modele dayanır.
+      </p>
     </div>
   );
 }

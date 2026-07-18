@@ -3,7 +3,7 @@
 import { useState } from "react";
 import AdSlot from "@/components/ads/AdSlot";
 
-type SpreadType = "daily" | "three" | "love" | "career" | null;
+type SpreadType = "daily" | "three" | "love" | "career";
 
 type CardData = {
   name: string;
@@ -12,11 +12,11 @@ type CardData = {
   icon: string;
 };
 
-const spreads: { id: SpreadType; icon: string; title: string; desc: string; cardCount: number }[] = [
-  { id: "daily", icon: "today", title: "Günün Kartı", desc: "Bugünün enerjisini ve rehberliğini tek bir kartla keşfet.", cardCount: 1 },
-  { id: "three", icon: "filter_3", title: "Üç Kart Açılımı", desc: "Geçmiş, Şimdi ve Gelecek arasındaki derin bağları incele.", cardCount: 3 },
-  { id: "love", icon: "favorite", title: "Aşk ve İlişkiler", desc: "Duygusal dünyandaki gizemleri ve potansiyelleri gör.", cardCount: 2 },
-  { id: "career", icon: "work_history", title: "Kariyer ve Başarı", desc: "İş hayatın ve maddi durumunla ilgili kozmik tavsiyeler al.", cardCount: 2 },
+const spreads: { id: SpreadType; icon: string; title: string; desc: string; cardCount: number; labels: string[] }[] = [
+  { id: "daily", icon: "today", title: "Günün Kartı", desc: "Bugünün enerjisini ve rehberliğini tek bir kartla keşfet.", cardCount: 1, labels: ["Günün Kartı"] },
+  { id: "three", icon: "filter_3", title: "Üç Kart Açılımı", desc: "Geçmiş, Şimdi ve Gelecek arasındaki derin bağları incele.", cardCount: 3, labels: ["Geçmiş", "Şimdi", "Gelecek"] },
+  { id: "love", icon: "favorite", title: "Aşk ve İlişkiler", desc: "Duygusal dünyandaki gizemleri ve potansiyelleri gör.", cardCount: 2, labels: ["Siz", "Partner"] },
+  { id: "career", icon: "work_history", title: "Kariyer ve Başarı", desc: "İş hayatın ve maddi durumunla ilgili kozmik tavsiyeler al.", cardCount: 1, labels: ["Kariyer"] },
 ];
 
 function shuffle<T>(arr: T[]): T[] {
@@ -29,59 +29,44 @@ function shuffle<T>(arr: T[]): T[] {
 }
 
 export default function TarotTable({ deck }: { deck: CardData[] }) {
-  const [activeSpread, setActiveSpread] = useState<SpreadType>(null);
-  const [cards, setCards] = useState<{ revealed: boolean; data: CardData | null }[]>([]);
-  const [showResult, setShowResult] = useState(false);
-  const [emptyDeck, setEmptyDeck] = useState(false);
-
-  async function changeSpread(type: SpreadType) {
-    const spread = spreads.find((s) => s.id === type);
-    if (!spread) return;
-
-    if (deck.length === 0) {
-      setEmptyDeck(true);
-      return;
-    }
-
-    setEmptyDeck(false);
-    setActiveSpread(type);
-    setShowResult(false);
-
-    const shuffled = shuffle(deck);
-    setCards(
-      Array.from({ length: spread.cardCount }, () => ({
-        revealed: false,
-        data: null,
-      }))
-    );
-  }
-
-  function revealCard(index: number) {
-    if (cards[index].revealed) return;
-
-    const shuffled = shuffle(deck);
-    const updated = [...cards];
-    updated[index] = { revealed: true, data: shuffled[0] };
-    setCards(updated);
-
-    const allRevealed = updated.every((c) => c.revealed);
-    if (allRevealed) {
-      setTimeout(() => setShowResult(true), 800);
-    }
-  }
-
-  function resetBoard() {
-    setActiveSpread(null);
-    setCards([]);
-    setShowResult(false);
-    setEmptyDeck(false);
-  }
+  const [activeSpread, setActiveSpread] = useState<SpreadType | null>(null);
+  const [shuffledDeck, setShuffledDeck] = useState<CardData[]>([]);
+  const [selectedIndices, setSelectedIndices] = useState<number[]>([]);
+  const [showModal, setShowModal] = useState(false);
 
   const activeSpreadData = spreads.find((s) => s.id === activeSpread);
+  const allSelected = activeSpreadData ? selectedIndices.length >= activeSpreadData.cardCount : false;
+
+  function selectSpread(type: SpreadType) {
+    if (deck.length === 0) return;
+    setActiveSpread(type);
+    setSelectedIndices([]);
+    setShuffledDeck(shuffle(deck));
+  }
+
+  function handleCardClick(deckIndex: number) {
+    if (!activeSpreadData) return;
+    if (selectedIndices.includes(deckIndex)) return;
+    if (allSelected) return;
+
+    setSelectedIndices([...selectedIndices, deckIndex]);
+  }
+
+  function resetAll() {
+    setActiveSpread(null);
+    setSelectedIndices([]);
+    setShuffledDeck([]);
+    setShowModal(false);
+  }
+
+  const selectedCards = selectedIndices.map((idx, i) => ({
+    deckIndex: idx,
+    data: shuffledDeck[idx],
+    label: activeSpreadData?.labels[i] || "",
+  }));
 
   return (
     <main className="flex-grow pt-24 pb-16 relative overflow-hidden nebula-bg min-h-screen">
-      {/* Ambient candle glows */}
       <div
         className="absolute top-40 left-10 w-96 h-96 pointer-events-none"
         style={{
@@ -97,218 +82,215 @@ export default function TarotTable({ deck }: { deck: CardData[] }) {
         }}
       />
 
-      {/* Header */}
-      <div className="max-w-7xl mx-auto px-container-padding-mobile md:px-container-padding-desktop mb-12 text-center relative z-10">
-        <h1 className="font-sora text-headline-lg text-white mb-4 font-bold">Kehanet Odası</h1>
-        <p className="text-body-lg text-on-surface-variant max-w-2xl mx-auto">
+      <div className="max-w-7xl mx-auto px-4 md:px-8 mb-10 text-center relative z-10">
+        <h1 className="font-sora text-3xl md:text-4xl text-white mb-3 font-bold">Kehanet Odası</h1>
+        <p className="text-base text-on-surface-variant max-w-2xl mx-auto">
           Yıldızların ve kartların rehberliğinde gizemli bir yolculuğa çıkın.
         </p>
       </div>
 
-      {/* Main Grid */}
-      <div className="max-w-7xl mx-auto px-container-padding-mobile md:px-container-padding-desktop grid grid-cols-1 lg:grid-cols-12 gap-8 relative z-10">
-        {/* Spread Options Sidebar */}
-        <div className="lg:col-span-3 flex flex-col gap-4">
+      <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10">
+        {/* Spread Selector */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
           {spreads.map((s) => (
             <button
               key={s.id}
-              onClick={() => changeSpread(s.id)}
-              disabled={cards.length > 0 && !showResult}
-              className={`glass-card p-6 rounded-xl text-left border-l-4 transition-all hover:translate-x-2 active:scale-95 disabled:opacity-40 disabled:pointer-events-none cursor-pointer ${
-                activeSpread === s.id ? "border-tertiary" : "border-primary/20 hover:border-primary"
+              onClick={() => selectSpread(s.id)}
+              className={`glass-card p-5 rounded-xl text-center border transition-all hover:scale-[1.02] active:scale-95 cursor-pointer ${
+                activeSpread === s.id
+                  ? "border-primary/60 shadow-lg shadow-primary/10"
+                  : "border-white/10 hover:border-primary/40"
               }`}
             >
-              <div className="flex items-center gap-3 mb-2">
-                <span className="material-symbols-outlined text-tertiary">{s.icon}</span>
-                <h3 className="font-sora text-body-lg text-white font-semibold">{s.title}</h3>
-              </div>
-              <p className="text-caption text-on-surface-variant text-left">{s.desc}</p>
+              <span className="material-symbols-outlined text-3xl text-tertiary mb-2 block">{s.icon}</span>
+              <h3 className="font-sora text-sm text-white font-semibold mb-1">{s.title}</h3>
+              <p className="text-xs text-on-surface-variant">{s.desc}</p>
             </button>
           ))}
         </div>
 
-        {/* Card Table */}
-        <div className="lg:col-span-9 glass-card rounded-3xl p-8 md:p-12 relative overflow-hidden flex flex-col items-center justify-center min-h-[600px] border-white/5">
-          {/* Mystical circles */}
-          <div className="absolute inset-0 opacity-20 pointer-events-none">
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-primary/30 rounded-full" />
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] border border-tertiary/20 rounded-full" />
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200px] h-[200px] border border-secondary/10 rounded-full" />
+        {/* Active Spread Info */}
+        {activeSpread && activeSpreadData && (
+          <div className="text-center mb-6">
+            <div className="flex items-center justify-center gap-2 mb-1">
+              <span className="material-symbols-outlined text-tertiary text-xl">{activeSpreadData.icon}</span>
+              <h2 className="font-sora text-xl text-white font-bold">{activeSpreadData.title}</h2>
+            </div>
+            <p className="text-sm text-on-surface-variant">
+              Lütfen {activeSpreadData.cardCount} kart seçin
+              {!allSelected && selectedIndices.length > 0 && ` — ${activeSpreadData.cardCount - selectedIndices.length} kart kaldı`}
+            </p>
           </div>
+        )}
 
-          {/* Cards Display */}
-          {cards.length > 0 && activeSpreadData && (
-            <div className="flex flex-wrap justify-center gap-8 md:gap-12 relative z-20 transition-all duration-700">
-              {activeSpreadData.id === "three" &&
-                ["Geçmiş", "Şimdi", "Gelecek"].map((label, i) => (
-                  cards[i]?.revealed && (
-                    <div key={label} className="absolute top-4 text-caption text-primary/60 uppercase tracking-widest">
-                      {label}
-                    </div>
-                  )
-                ))}
+        {/* Card Grid - Only card backs shown */}
+        {activeSpread && shuffledDeck.length > 0 && (
+          <div className="mb-8">
+            <div className="flex flex-wrap justify-center gap-2 md:gap-3 max-w-5xl mx-auto">
+              {shuffledDeck.map((_, i) => {
+                const isSelected = selectedIndices.includes(i);
 
-              {cards.map((card, i) => (
-                <div
-                  key={i}
-                  onClick={() => revealCard(i)}
-                  className={`tarot-card cursor-pointer w-48 h-80 md:w-56 md:h-96 ${card.revealed ? "flipped card-revealed" : "hover:-translate-y-2"}`}
-                  style={{ perspective: "1000px", transition: "all 0.3s ease" }}
-                >
+                return (
                   <div
-                    className="tarot-card-inner relative w-full h-full rounded-2xl shadow-2xl overflow-hidden"
+                    key={i}
+                    onClick={() => handleCardClick(i)}
+                    className={`tarot-card relative transition-all duration-200 ${
+                      isSelected
+                        ? "ring-2 ring-primary/60 scale-105 shadow-[0_0_20px_rgba(249,189,34,0.3)]"
+                        : "hover:-translate-y-1 hover:shadow-[0_0_15px_rgba(208,188,255,0.2)]"
+                    } ${!isSelected && !allSelected ? "cursor-pointer" : "cursor-default"}`}
                     style={{
-                      transform: card.revealed ? "rotateY(180deg)" : "",
-                      borderColor: card.revealed ? "rgba(249,189,34,0.4)" : "rgba(255,255,255,0.15)",
-                      borderWidth: "2px",
-                      boxShadow: card.revealed
-                        ? "0 0 40px rgba(208,188,255,0.3), 0 0 80px rgba(249,189,34,0.15)"
-                        : "0 8px 32px rgba(0,0,0,0.4)",
+                      width: "clamp(48px, 8vw, 72px)",
+                      height: "clamp(72px, 12vw, 108px)",
+                      borderRadius: "8px",
                     }}
                   >
-                    {/* Card Back */}
-                    <div className="tarot-card-back bg-gradient-to-br from-indigo-900 via-surface to-purple-900 flex items-center justify-center p-4">
-                      <div className="w-full h-full rounded-xl flex items-center justify-center relative overflow-hidden">
-                        {/* Mandala pattern */}
-                        <div className="absolute inset-0 opacity-20">
-                          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 border-2 border-primary/30 rounded-full" />
-                          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 border border-tertiary/20 rounded-full" />
-                          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 border border-secondary/10 rounded-full" />
-                          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-primary/10 rounded-full" />
-                          {/* Star points */}
-                          {[0, 45, 90, 135, 180, 225, 270, 315].map((deg) => (
+                    {/* Realistic Tarot Card Back */}
+                    <div className="w-full h-full rounded-lg overflow-hidden relative" style={{
+                      background: "linear-gradient(135deg, #1a1040 0%, #2d1b69 30%, #1a1040 60%, #0f0a2e 100%)",
+                      border: "2px solid rgba(249,189,34,0.35)",
+                      boxShadow: "0 4px 20px rgba(0,0,0,0.5), inset 0 0 30px rgba(0,0,0,0.3)",
+                    }}>
+                      {/* Inner border */}
+                      <div className="absolute inset-1 rounded-md border border-primary/20" />
+                      {/* Center mandala */}
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="relative w-3/4 h-3/4">
+                          {/* Outer circle */}
+                          <div className="absolute inset-0 rounded-full border-2 border-primary/25" />
+                          {/* Middle circle */}
+                          <div className="absolute inset-[15%] rounded-full border border-tertiary/30" />
+                          {/* Inner circle */}
+                          <div className="absolute inset-[30%] rounded-full border border-primary/20" />
+                          {/* Star pattern */}
+                          {[0, 30, 60, 90, 120, 150].map((deg) => (
                             <div
                               key={deg}
-                              className="absolute top-1/2 left-1/2 w-px h-16 bg-primary/20"
-                              style={{ transform: `translate(-50%, -100%) rotate(${deg}deg)`, transformOrigin: "bottom center" }}
+                              className="absolute top-1/2 left-1/2 w-px h-full bg-primary/15"
+                              style={{ transform: `translate(-50%, -50%) rotate(${deg}deg)` }}
                             />
                           ))}
+                          {/* Center dot */}
+                          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-primary/30" />
+                          {/* Corner diamonds */}
+                          <div className="absolute top-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rotate-45 bg-primary/20" />
+                          <div className="absolute bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rotate-45 bg-primary/20" />
+                          <div className="absolute left-1 top-1/2 -translate-y-1/2 w-1.5 h-1.5 rotate-45 bg-primary/20" />
+                          <div className="absolute right-1 top-1/2 -translate-y-1/2 w-1.5 h-1.5 rotate-45 bg-primary/20" />
                         </div>
-                        {/* Shimmer overlay */}
-                        <div className="absolute inset-0 animate-shimmer" />
-                        {/* Center symbol */}
-                        <span className="material-symbols-outlined text-5xl md:text-6xl text-primary/60 gold-foil bg-clip-text text-transparent relative z-10">
-                          auto_awesome
-                        </span>
                       </div>
-                      {/* Gold border accent */}
-                      <div className="absolute inset-3 rounded-xl border border-tertiary/10 pointer-events-none" />
-                    </div>
-
-                    {/* Card Front */}
-                    <div className="tarot-card-front bg-gradient-to-b from-surface-container-high via-surface-container to-surface-container-low flex flex-col items-center justify-center p-6 text-center">
-                      {card.revealed && card.data ? (
-                        <>
-                          <div className="w-20 h-20 mb-4 rounded-full bg-gradient-to-br from-tertiary/20 to-primary/20 flex items-center justify-center shadow-[0_0_20px_rgba(249,189,34,0.2)]">
-                            <span className="material-symbols-outlined text-4xl text-tertiary">
-                              {card.data.icon}
-                            </span>
-                          </div>
-                          <h4 className="font-sora text-headline-md text-white mb-1 font-bold leading-tight">
-                            {card.data.name}
-                          </h4>
-                          <p className="text-caption text-tertiary mb-3 uppercase tracking-widest">
-                            {card.data.desc}
-                          </p>
-                          <div className="w-8 h-0.5 gold-foil rounded-full mb-3" />
-                          <p className="text-caption text-on-surface-variant leading-relaxed">
-                            {card.data.detail}
-                          </p>
-                        </>
-                      ) : (
-                        <>
-                          <div className="w-20 h-20 mb-4 rounded-full bg-gradient-to-br from-primary/10 to-secondary/10 flex items-center justify-center">
-                            <span className="material-symbols-outlined text-4xl text-primary/60">
-                              star
-                            </span>
-                          </div>
-                          <h4 className="font-sora text-headline-md text-white mb-2 font-semibold">
-                            Gizemli Kart
-                          </h4>
-                          <div className="w-12 h-0.5 bg-primary/30 mb-4" />
-                          <p className="text-caption text-on-surface-variant italic">
-                            Dokunarak çevir...
-                          </p>
-                        </>
+                      {/* Gold shimmer */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-tertiary/5" />
+                      {/* Selected indicator */}
+                      {isSelected && (
+                        <div className="absolute inset-0 flex items-center justify-center bg-black/40 rounded-lg">
+                          <span className="material-symbols-outlined text-primary text-2xl">check_circle</span>
+                        </div>
                       )}
-                      {/* Decorative corners */}
-                      <div className="absolute top-3 left-3 w-6 h-6 border-t-2 border-l-2 border-tertiary/20 rounded-tl" />
-                      <div className="absolute top-3 right-3 w-6 h-6 border-t-2 border-r-2 border-tertiary/20 rounded-tr" />
-                      <div className="absolute bottom-3 left-3 w-6 h-6 border-b-2 border-l-2 border-tertiary/20 rounded-bl" />
-                      <div className="absolute bottom-3 right-3 w-6 h-6 border-b-2 border-r-2 border-tertiary/20 rounded-br" />
                     </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        )}
+
+        {/* Complete Button */}
+        {activeSpread && allSelected && (
+          <div className="text-center animate-fadeIn mb-8">
+            <button
+              onClick={() => setShowModal(true)}
+              className="bg-primary text-on-primary px-10 py-3 rounded-full text-sm font-semibold hover:bg-primary-container transition-all active:scale-95 shadow-lg shadow-primary/20 cursor-pointer"
+            >
+              Seçimi Tamamla
+            </button>
+          </div>
+        )}
+
+        {/* Empty state */}
+        {!activeSpread && deck.length === 0 && (
+          <div className="text-center space-y-6 py-20">
+            <span className="material-symbols-outlined text-6xl text-error">error</span>
+            <h3 className="font-sora text-xl text-white font-bold">Kartlar Yüklenemedi</h3>
+            <p className="text-sm text-on-surface-variant">Lütfen biraz sonra tekrar deneyin.</p>
+          </div>
+        )}
+      </div>
+
+      {/* Modal - Cards revealed here */}
+      {showModal && activeSpreadData && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4" onClick={() => setShowModal(false)}>
+          <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" />
+          <div
+            className="relative bg-surface-container rounded-3xl border border-white/10 max-w-4xl w-full max-h-[90vh] overflow-y-auto p-6 md:p-10 shadow-2xl animate-fadeIn"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={() => setShowModal(false)}
+              className="absolute top-4 right-4 text-on-surface-variant hover:text-white transition-colors cursor-pointer z-10"
+            >
+              <span className="material-symbols-outlined text-2xl">close</span>
+            </button>
+
+            <div className="text-center mb-8">
+              <div className="flex items-center justify-center gap-2 mb-2">
+                <span className="material-symbols-outlined text-tertiary text-xl">{activeSpreadData.icon}</span>
+                <h2 className="font-sora text-2xl text-white font-bold">{activeSpreadData.title}</h2>
+              </div>
+              <div className="w-16 h-0.5 gold-foil rounded-full mx-auto" />
+            </div>
+
+            <div className={`grid gap-6 mb-8 ${
+              selectedCards.length === 1 ? "grid-cols-1 max-w-md mx-auto" :
+              selectedCards.length === 2 ? "grid-cols-1 md:grid-cols-2 max-w-2xl mx-auto" :
+              "grid-cols-1 md:grid-cols-3"
+            }`}>
+              {selectedCards.map((sc) => (
+                <div key={sc.deckIndex} className="glass-card rounded-2xl overflow-hidden border border-white/10">
+                  {/* Card Image */}
+                  <div className="relative h-56 overflow-hidden" style={{
+                    background: "linear-gradient(135deg, #1a1040 0%, #2d1b69 40%, #4a2c8a 70%, #1a1040 100%)",
+                  }}>
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <span className="material-symbols-outlined text-7xl text-primary/40">{sc.data.icon}</span>
+                    </div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-surface-container via-transparent to-transparent" />
+                    {/* Card number overlay */}
+                    <div className="absolute top-3 left-3 bg-black/40 backdrop-blur-sm rounded-full px-3 py-1">
+                      <span className="text-xs text-primary font-semibold">{sc.label}</span>
+                    </div>
+                  </div>
+                  {/* Card Info */}
+                  <div className="p-5 text-center">
+                    <h4 className="font-sora text-lg text-white mb-1 font-bold">{sc.data.name}</h4>
+                    <p className="text-xs text-tertiary mb-3 uppercase tracking-wider">{sc.data.desc}</p>
+                    <div className="w-8 h-0.5 gold-foil rounded-full mx-auto mb-3" />
+                    <p className="text-sm text-on-surface-variant leading-relaxed">{sc.data.detail}</p>
                   </div>
                 </div>
               ))}
             </div>
-          )}
 
-          {/* Initial Prompt */}
-          {!activeSpread && !emptyDeck && (
-            <div className="text-center space-y-6 relative z-20">
-              <div className="relative w-32 h-32 mx-auto mb-8">
-                <div className="absolute inset-0 bg-tertiary/20 rounded-full blur-2xl animate-pulse" />
-                <span className="material-symbols-outlined text-7xl text-tertiary relative z-10 floating">
-                  auto_awesome
-                </span>
-              </div>
-              <h3 className="font-sora text-headline-md text-white font-bold">Kehanetine Başla</h3>
-              <p className="text-body-md text-on-surface-variant max-w-sm mx-auto">
-                Soldaki menüden bir açılım seçin ve ruhunuzu kartların enerjisine hazırlayın.
-              </p>
-            </div>
-          )}
-
-          {/* Empty Deck Notice */}
-          {emptyDeck && (
-            <div className="text-center space-y-6 relative z-20 max-w-sm">
-              <div className="relative w-24 h-24 mx-auto mb-4">
-                <div className="absolute inset-0 bg-error/20 rounded-full blur-2xl animate-pulse" />
-                <span className="material-symbols-outlined text-5xl text-error relative z-10">auto_awesome</span>
-              </div>
-              <h3 className="font-sora text-headline-md text-white font-bold">Kartlar Yüklenemedi</h3>
-              <p className="text-body-md text-on-surface-variant">
-                Şu anda kart destesi müsait değil. Lütfen biraz sonra tekrar dene.
-              </p>
-              <button
-                onClick={() => setEmptyDeck(false)}
-                className="text-caption text-on-surface-variant hover:text-primary transition-colors cursor-pointer"
-              >
-                Geri dön
-              </button>
-            </div>
-          )}
-
-          {/* Result */}
-          {showResult && (
-            <div className="mt-12 text-center max-w-xl z-20 relative animate-fadeIn">
-              <div className="flex items-center justify-center gap-2 mb-2">
-                <span className="material-symbols-outlined text-tertiary text-xl">auto_awesome</span>
-                <h4 className="font-sora text-headline-md text-white font-semibold">
-                  Evrenin Sesini Dinleyin
-                </h4>
-              </div>
-              <div className="w-16 h-0.5 gold-foil rounded-full mx-auto mb-4" />
-              <p className="text-body-md text-on-surface-variant">
+            <div className="text-center">
+              <p className="text-sm text-on-surface-variant mb-4">
                 Seçtiğiniz kartlar ruhunuzun o anki enerjisini yansıtıyor. Bu mesajları kalbinizle yorumlayın.
               </p>
               <button
-                onClick={resetBoard}
-                className="mt-8 bg-primary text-on-primary px-8 py-3 rounded-full font-label-md hover:bg-primary-container transition-all active:scale-95 shadow-lg shadow-primary/20 cursor-pointer"
+                onClick={resetAll}
+                className="bg-primary text-on-primary px-8 py-3 rounded-full text-sm font-semibold hover:bg-primary-container transition-all active:scale-95 shadow-lg shadow-primary/20 cursor-pointer"
               >
-                Yeni Bir Kehanet
+                Yeni Kart Seç
               </button>
             </div>
-          )}
+          </div>
         </div>
-      </div>
+      )}
 
       <AdSlot
         name="tarot"
-        className="max-w-7xl mx-auto px-container-padding-mobile md:px-container-padding-desktop my-12"
+        className="max-w-7xl mx-auto px-4 md:px-8 my-12"
       />
 
-      {/* Floating decorations */}
       <div className="absolute top-1/4 right-5 w-16 h-16 border border-white/10 rounded-full floating pointer-events-none" style={{ animationDelay: "-1s" }} />
       <div className="absolute bottom-1/3 left-5 w-24 h-24 border border-white/5 rounded-full floating pointer-events-none" style={{ animationDelay: "-2s" }} />
 
@@ -319,10 +301,10 @@ export default function TarotTable({ deck }: { deck: CardData[] }) {
         }
         .floating { animation: float 4s ease-in-out infinite; }
         @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(10px); }
-          to { opacity: 1; transform: translateY(0); }
+          from { opacity: 0; transform: translateY(10px) scale(0.98); }
+          to { opacity: 1; transform: translateY(0) scale(1); }
         }
-        .animate-fadeIn { animation: fadeIn 0.5s ease-out forwards; }
+        .animate-fadeIn { animation: fadeIn 0.4s ease-out forwards; }
       `}</style>
     </main>
   );

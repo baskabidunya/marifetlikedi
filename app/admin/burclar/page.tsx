@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { ZODIAC_SIGNS, ZODIAC_DATA } from "@/lib/astro-utils";
 import { updateSignContent, getSignContentBySign } from "@/lib/admin";
 import AIGenerateButton from "@/components/admin/AIGenerateButton";
+import ImageUpload from "@/components/admin/ImageUpload";
 
 type SignContent = {
   sign: string;
@@ -113,9 +114,12 @@ function SignEditor({ sign, initial }: { sign: string; initial: SignContent }) {
               className="w-full bg-surface-container border border-white/10 rounded-2xl px-5 py-3.5 text-body-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary transition-all placeholder:text-outline" />
           </div>
           <div>
-            <label className="block text-label-md text-on-surface-variant mb-2">Hero Görsel URL</label>
-            <input name="hero_image" value={fields.hero_image} onChange={(e) => updateField("hero_image", e.target.value)}
-              className="w-full bg-surface-container border border-white/10 rounded-2xl px-5 py-3.5 text-body-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary transition-all placeholder:text-outline" />
+            <ImageUpload
+              name="hero_image"
+              defaultValue={fields.hero_image}
+              folder="burclar"
+              label="Hero Görsel"
+            />
           </div>
         </div>
       </div>

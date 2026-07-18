@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { getPublishedPosts } from "@/lib/blog-public";
+import AdSlot from "@/components/ads/AdSlot";
 
 export const metadata: Metadata = {
   title: "Gök Günlüğü - Marifetli Kedi",
@@ -57,6 +58,8 @@ export default async function BlogPage({
           </span>
         )}
       </div>
+
+      <AdSlot name="blog_listing" className="mb-12" />
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {posts.map(p => (

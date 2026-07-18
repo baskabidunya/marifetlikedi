@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import BirthChartCalculator from "@/components/birthchart/BirthChartCalculator";
+import AdSlot from "@/components/ads/AdSlot";
 
 export const metadata: Metadata = {
   title: "Doğum Haritası Hesapla - Marifetli Kedi",
@@ -30,6 +31,11 @@ export default async function DogumHaritasiPage({
       </div>
 
       <BirthChartCalculator focus={focus} />
+
+      <AdSlot
+        name="dogum_haritasi"
+        className="my-12 max-w-5xl mx-auto"
+      />
     </main>
   );
 }

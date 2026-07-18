@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { getPageBySlug } from "@/lib/admin";
+import AdSlot from "@/components/ads/AdSlot";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
@@ -27,6 +28,11 @@ export default async function StaticPage({ params }: { params: Promise<{ slug: s
           {page.content}
         </div>
       </article>
+
+      <AdSlot
+        name="static_page"
+        className="my-12 max-w-3xl mx-auto"
+      />
     </main>
   );
 }

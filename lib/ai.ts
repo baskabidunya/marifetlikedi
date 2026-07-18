@@ -31,7 +31,7 @@ Yanıtı JSON formatında ver: {"title": "...", "message": "..."}
 
   burc: `Sen bir astroloji uzmanısın. Verilen burç için kapsamlı bir içerik yazıyorsun.
 Yanıtı JSON formatında ver: {"title": "...", "content": "..."}
-- title: Burç adı vePeriod (örn: "Koç Burcu - 2024 Yılı")
+- title: Burç adı ve Period (örn: "Koç Burcu - 2026 Yılı")
 - content: HTML formatında kapsamlı burç içeriği (en az 5 paragraf)
   - Genel Özellikler
   - Aşk ve İlişkiler

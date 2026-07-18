@@ -2,6 +2,7 @@
 
 import { useState, useActionState, useEffect } from "react";
 import { getPartners, addPartner, updatePartner, deletePartner, getAllPartnerScores } from "@/lib/partners";
+import { TURKISH_CITIES } from "@/lib/cities";
 import type { CompatibilityScores } from "@/lib/astro-synastry";
 import Link from "next/link";
 
@@ -51,8 +52,13 @@ function PartnerForm({ partner, onDone }: { partner?: PartnerProfile | null; onD
       </div>
       <div className="space-y-2">
         <label className="text-label-md text-on-surface-variant">Doğum Yeri</label>
-        <input name="birth_place" defaultValue={partner?.birth_place || ""} placeholder="Örn: İstanbul"
-          className="w-full px-4 py-3 bg-background/50 border border-outline-variant rounded-xl text-on-surface focus:ring-primary focus:border-primary" />
+        <select name="birth_place" defaultValue={partner?.birth_place || ""}
+          className="w-full px-4 py-3 bg-background/50 border border-outline-variant rounded-xl text-on-surface focus:ring-primary focus:border-primary">
+          <option value="">Şehir seçin</option>
+          {TURKISH_CITIES.map(city => (
+            <option key={city} value={city}>{city}</option>
+          ))}
+        </select>
       </div>
       <div className="flex gap-3 pt-2">
         <button type="submit" disabled={pending}

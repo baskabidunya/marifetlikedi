@@ -1,4 +1,5 @@
 import { getSettings, updateSetting } from "@/lib/admin";
+import LogoUploader from "./LogoUploader";
 
 const SETTING_META: Record<string, { label: string; type: string; desc: string }> = {
   site_title: {
@@ -10,6 +11,11 @@ const SETTING_META: Record<string, { label: string; type: string; desc: string }
     label: "Site Açıklaması",
     type: "textarea",
     desc: "Arama motorları için meta açıklama.",
+  },
+  site_logo: {
+    label: "Site Logosu",
+    type: "logo",
+    desc: "Header'da görünen logo görseli. Boş bırakılırsa \"Marifetli Kedi\" yazısı gösterilir.",
   },
   adsense_client_id: {
     label: "Google AdSense Client ID",
@@ -36,6 +42,15 @@ export default async function AdminAyarlarPage() {
       <div className="space-y-4">
         {Object.entries(SETTING_META).map(([key, meta]) => {
           const value = settings[key] || "";
+
+          if (meta.type === "logo") {
+            return (
+              <div key={key} className="glass-card p-6 md:p-8 rounded-3xl">
+                <LogoUploader currentValue={value} />
+              </div>
+            );
+          }
+
           return (
             <form key={key} action={updateSetting}
               className="glass-card p-6 md:p-8 rounded-3xl">

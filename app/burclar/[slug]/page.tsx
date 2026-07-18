@@ -4,6 +4,7 @@ import { ZODIAC_DATA, ZODIAC_SIGNS } from "@/lib/astro-utils";
 import { SIGN_TRAITS } from "@/lib/astro-narratives";
 import { RISING_SIGNS } from "@/lib/astro-interpretations";
 import KozmikTakvim from "@/components/profile/KozmikTakvim";
+import AdSlot from "@/components/ads/AdSlot";
 
 type ZodiacSign = (typeof ZODIAC_SIGNS)[number];
 
@@ -173,6 +174,8 @@ export default async function Page({
             </div>
           </div>
         </section>
+
+        <AdSlot name="burc_detail" className="mb-section-gap" />
 
         {/* Bento Grid */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6 mb-section-gap">

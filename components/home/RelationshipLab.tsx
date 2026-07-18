@@ -13,7 +13,7 @@ export default function RelationshipLab() {
         />
         <div className="absolute inset-0 bg-gradient-to-r from-background via-background/40 to-transparent" />
       </div>
-      <div className="container mx-auto px-container-padding-desktop relative z-10">
+      <div className="container mx-auto px-container-padding-mobile md:px-container-padding-desktop relative z-10">
         <div className="max-w-2xl space-y-8">
           <h2 className="font-sora text-headline-lg text-white font-bold">İlişki Laboratuvarı</h2>
           <p className="text-body-lg text-on-surface-variant">

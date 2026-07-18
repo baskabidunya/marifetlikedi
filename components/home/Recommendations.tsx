@@ -39,7 +39,7 @@ export default function Recommendations() {
               </span>
             </div>
             <h4 className="font-label-md text-sm mb-2">{item.title}</h4>
-            <p className="text-[10px] text-on-surface-variant">{item.desc}</p>
+            <p className="text-xs text-on-surface-variant">{item.desc}</p>
           </div>
         ))}
       </div>

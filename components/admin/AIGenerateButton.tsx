@@ -23,10 +23,10 @@ const TYPE_LABELS: Record<ContentType, string> = {
 };
 
 const TYPE_PLACEHOLDERS: Record<ContentType, string> = {
-  blog: "Örn: 2024'te Mars Retrosu Burçları Nasıl Etkileyecek?",
+  blog: "Örn: 2026'da Mars Retrosu Burçları Nasıl Etkileyecek?",
   trend: "Örn: Bu Hafta En Çok Konuşulan Astrolojik Olaylar",
   announcement: "Örn: Venüs-Neptün Kavuşumu Yaklaşıyor",
-  burc: "Örn: Koç Burcu 2024 Yılı",
+  burc: "Örn: Koç Burcu 2026 Yılı",
 };
 
 export default function AIGenerateButton({ type, onGenerated }: Props) {
@@ -71,7 +71,7 @@ export default function AIGenerateButton({ type, onGenerated }: Props) {
       </button>
 
       {open && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center">
+        <div className="fixed inset-0 z-[100] flex items-center justify-center">
           <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setOpen(false)} />
           <div className="relative bg-surface-container rounded-2xl border border-white/10 shadow-2xl w-full max-w-md mx-4">
             <div className="border-b border-white/10 px-6 py-4 flex items-center justify-between rounded-t-2xl">
