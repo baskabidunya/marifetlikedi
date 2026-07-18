@@ -195,14 +195,36 @@ function isRetrograde(body: Astronomy.Body, time: Astronomy.AstroTime): boolean 
   return diff < -180 || (diff >= 0 && diff < 180) ? false : true;
 }
 
-function makeTime(dateStr: string, timeStr: string): Astronomy.AstroTime {
+function getUtcOffsetForTurkey(): number {
+  return 3;
+}
+
+function makeTime(dateStr: string, timeStr: string, coords?: { lat: number; lng: number } | null): Astronomy.AstroTime {
   const [h, m] = (timeStr || "12:00").split(":").map(Number);
-  const d = new Date(`${dateStr}T${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:00`);
-  return Astronomy.MakeTime(d);
+
+  let utcOffset: number;
+  if (coords) {
+    if (coords.lat >= 36 && coords.lat <= 42 && coords.lng >= 26 && coords.lng <= 45) {
+      utcOffset = getUtcOffsetForTurkey();
+    } else {
+      utcOffset = Math.round(coords.lng / 15);
+    }
+  } else {
+    utcOffset = getUtcOffsetForTurkey();
+  }
+
+  const localMs = Date.UTC(
+    parseInt(dateStr.split("-")[0]),
+    parseInt(dateStr.split("-")[1]) - 1,
+    parseInt(dateStr.split("-")[2]),
+    h, m, 0
+  );
+  const utcMs = localMs - utcOffset * 3600 * 1000;
+  return Astronomy.MakeTime(new Date(utcMs));
 }
 
 function getRisingSign(birthDate: string, birthTime: string, lat: number, lng: number): { sign: ZodiacSign; degree: number; minute: number } {
-  const time = makeTime(birthDate, birthTime);
+  const time = makeTime(birthDate, birthTime, { lat, lng });
   const gst = Astronomy.SiderealTime(time);
   const ramcDeg = normalizeDeg(gst * 15 + lng);
   const φ = lat * DEG;
@@ -218,8 +240,8 @@ function getRisingSign(birthDate: string, birthTime: string, lat: number, lng: n
   return { sign: getSignFromLongitude(asc), degree, minute };
 }
 
-function getPlanetPositions(birthDate: string, birthTime: string): PlanetPosition[] {
-  const time = makeTime(birthDate, birthTime);
+function getPlanetPositions(birthDate: string, birthTime: string, coords?: { lat: number; lng: number } | null): PlanetPosition[] {
+  const time = makeTime(birthDate, birthTime, coords);
   return PLANET_CONFIG.map(({ name, body, icon }) => {
     const lon = getEclipticLongitude(body, time);
     const { degree, minute } = getDegreeInSign(lon);
@@ -236,8 +258,8 @@ function getPlanetPositions(birthDate: string, birthTime: string): PlanetPositio
   });
 }
 
-function getSunPlanet(birthDate: string, birthTime: string): PlanetPosition {
-  const time = makeTime(birthDate, birthTime);
+function getSunPlanet(birthDate: string, birthTime: string, coords?: { lat: number; lng: number } | null): PlanetPosition {
+  const time = makeTime(birthDate, birthTime, coords);
   const lon = getEclipticLongitude(Astronomy.Body.Sun, time);
   const { degree, minute } = getDegreeInSign(lon);
   return {
@@ -250,8 +272,8 @@ function getSunPlanet(birthDate: string, birthTime: string): PlanetPosition {
   };
 }
 
-function getMoonPlanet(birthDate: string, birthTime: string): PlanetPosition {
-  const time = makeTime(birthDate, birthTime);
+function getMoonPlanet(birthDate: string, birthTime: string, coords?: { lat: number; lng: number } | null): PlanetPosition {
+  const time = makeTime(birthDate, birthTime, coords);
   const lon = getEclipticLongitude(Astronomy.Body.Moon, time);
   const { degree, minute } = getDegreeInSign(lon);
   return {
@@ -322,9 +344,9 @@ export function calculateAstroChart(birthDate: string, birthTime: string, birthP
 
   const coords = getCoordinatesFromPlace(birthPlace);
 
-  const sun = getSunPlanet(birthDate, birthTime);
-  const moon = getMoonPlanet(birthDate, birthTime);
-  const planets = getPlanetPositions(birthDate, birthTime).filter(p => p.name !== "Güneş" && p.name !== "Ay");
+  const sun = getSunPlanet(birthDate, birthTime, coords);
+  const moon = getMoonPlanet(birthDate, birthTime, coords);
+  const planets = getPlanetPositions(birthDate, birthTime, coords).filter(p => p.name !== "Güneş" && p.name !== "Ay");
 
   let rising: PlanetPosition = {
     name: "Yükselen",
