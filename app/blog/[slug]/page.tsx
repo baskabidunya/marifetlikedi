@@ -55,9 +55,10 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         <p className="text-body-lg text-on-surface-variant italic mb-8 leading-relaxed">{post.excerpt}</p>
       )}
 
-      <div className="prose prose-invert prose-lg max-w-none text-body-lg text-on-surface-variant leading-relaxed whitespace-pre-wrap">
-        {post.content}
-      </div>
+      <div
+        className="prose prose-invert prose-lg max-w-none prose-headings:font-sora prose-headings:text-on-surface prose-p:text-on-surface-variant prose-img:rounded-2xl prose-img:mx-auto prose-a:text-primary prose-blockquote:border-l-tertiary prose-blockquote:text-on-surface-variant"
+        dangerouslySetInnerHTML={{ __html: post.content }}
+      />
 
       <AdSlot name="content_inline" className="my-10" />
     </div>
