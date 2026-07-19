@@ -1,8 +1,9 @@
 import Link from "next/link";
 import { getActiveTrendArticles } from "@/lib/public-queries";
 
-export default async function TrendingGrid() {
+export default async function TrendingGrid({ limit }: { limit?: number }) {
   const articles = await getActiveTrendArticles();
+  const displayed = limit ? articles.slice(0, limit) : articles;
 
   if (articles.length === 0) {
     return (
@@ -15,7 +16,7 @@ export default async function TrendingGrid() {
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-      {articles.map((c) => (
+      {displayed.map((c) => (
         <Link
           key={c.id}
           href={`/trend/${c.slug}`}

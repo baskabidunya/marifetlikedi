@@ -18,7 +18,7 @@ export default function TrendingContent() {
           Tümünü Gör
         </Link>
       </div>
-      <TrendingGrid />
+      <TrendingGrid limit={4} />
     </section>
   );
 }
