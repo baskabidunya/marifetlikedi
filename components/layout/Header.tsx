@@ -28,7 +28,7 @@ export default async function Header() {
             ...navLinks,
             {
               id: "eglenceli-testler",
-              title: "Eğlenceli Testler",
+              label: "Eğlenceli Testler",
               url: "/eglenceli-testler",
               position: "header",
               sort_order: 99,
