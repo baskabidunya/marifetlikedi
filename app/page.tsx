@@ -7,6 +7,7 @@ import TrendingContent from "@/components/home/TrendingContent";
 import RelationshipLab from "@/components/home/RelationshipLab";
 import PlanetTools from "@/components/home/PlanetTools";
 import FeaturedContent from "@/components/home/FeaturedContent";
+import FunTestsSection from "@/components/home/FunTestsSection";
 import Testimonials from "@/components/home/Testimonials";
 import Newsletter from "@/components/home/Newsletter";
 import AdSlot from "@/components/ads/AdSlot";
@@ -43,6 +44,7 @@ export default async function Home({
       <TrendingContent />
       <RelationshipLab />
       <PlanetTools />
+      <FunTestsSection />
       <FeaturedContent />
       <Testimonials />
       <Newsletter />
