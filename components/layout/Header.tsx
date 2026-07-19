@@ -23,7 +23,20 @@ export default async function Header() {
             )}
           </Link>
         </div>
-        <HeaderNav links={navLinks} isLoggedIn={!!user} />
+        <HeaderNav
+          links={[
+            ...navLinks,
+            {
+              id: "eglenceli-testler",
+              title: "Eğlenceli Testler",
+              url: "/eglenceli-testler",
+              position: "header",
+              sort_order: 99,
+              active: true,
+            },
+          ]}
+          isLoggedIn={!!user}
+        />
         <div className="flex items-center gap-3 md:gap-6">
           {user ? (
             <Link
