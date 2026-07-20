@@ -5,6 +5,8 @@ import { getPublishedPostBySlug } from "@/lib/blog-public";
 import { renderMarkdown, extractFaqItems } from "@/lib/markdown";
 import AdSlot from "@/components/ads/AdSlot";
 
+export const dynamic = "force-dynamic";
+
 const AUTHOR = {
   name: "Başka bir Dünya Astroloji Ekibi",
   bio: "Marifetli Kedi, Başka bir Dünya (baskabidunya.com) bünyesinde; astroloji, mitoloji ve kişisel gelişim alanında deneyimli bir ekip tarafından hazırlanır. İçeriklerimiz gök bilimsel hareketleri, klasik astroloji geleneğini ve günümüzün yaşam pratiklerini bir araya getirir.",
