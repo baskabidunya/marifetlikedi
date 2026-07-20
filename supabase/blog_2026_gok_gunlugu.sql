@@ -1,4 +1,4 @@
--- Blog: 2026 Gok Gunlugu (OneDio tarzi, ozgun Turkce)
+-- Blog: 2026 Gok Gunlugu (OneDio tarzi, ozgun Turkce - proper Turkce karakterlerle)
 -- Baslik + spot + 12 H2 alt baslik + kapak gorsel + ic link
 
 DO $body$
@@ -8,62 +8,62 @@ IF NOT EXISTS (SELECT 1 FROM blog_posts WHERE slug = '2026-gok-gunlugu-astroloji
 INSERT INTO blog_posts (id, title, slug, excerpt, content, cover_image, category, author_name, published, created_at)
 VALUES (
   gen_random_uuid(),
-  '2026 Gok Gunlugu: Yili Astrolojik Olaylarla Sekillendiren Takvim',
+  '2026 Gök Günlüğü: Yılı Astrolojik Olaylarla Şekillendiren Takvim',
   '2026-gok-gunlugu-astroloji-takvimi',
-  'Merkur retrosundan tutulmalara, Jupıter''in yolculugundan yeni ay ritmine kadar 2026''nin gokyuzu neler hazirliyor? Yil boyu sizi bekleyen donum noktalarini ay ay bu rehberde bulabilirsiniz.',
+  'Merkür retrosundan tutulmalara, Jüpiter''in yolculuğundan yeni ay ritmine kadar 2026''nın gökyüzü neler hazırlıyor? Yıl boyu sizi bekleyen dönüm noktalarını ay ay bu rehberde bulabilirsiniz.',
   $cnt$![2026 Gök Günlüğü](/images/blog/2026-gok-gunlugu.jpg)
 
-Astroloji sevenler icin 2026, gokyuzundeki hareketlerin en yogun hissedilecegi yillardan biri olmaya aday. Gunes, ay ve gezegenlerin dansi bu yil bize hem sabir gerektiren duraklamalari hem de kapilari ardina kadar acan ilerlemeleri sunuyor. Eger yil boyunca ne zaman adim atmalı, ne zaman beklemeniz gerektigini merak ediyorsaniz, bu gok gunlugu tam size gore.
+Astroloji sevenler için 2026, gökyüzündeki hareketlerin en yoğun hissedileceği yıllardan biri olmaya aday. Güneş, ay ve gezegenlerin dansı bu yıl bize hem sabır gerektiren duraklamaları hem de kapıları ardına kadar açan ilerlemeleri sunuyor. Eğer yıl boyunca ne zaman adım atmalı, ne zaman beklemeniz gerektiğini merak ediyorsanız, bu gök günlüğü tam size göre.
 
-## Ocak: Yeni Yila Saturndan Bir Dersle Baslamak
+## Ocak: Yeni Yıla Satürn''den Bir Dersle Başlamak
 
-Yilin ilk ayı, sorumlulukların yüzeye cıktığı bir enerjiyle aciliyor. Satürn etkisi altında verilen kararlar uzun vadeli sonuclar doguruyor. Bu ayda aceleye getirilmis planlar yerine saglam temeller atmak daha dogru olacak. Kisinin kendi sinirlariyla yuzlesmesi gereken bir donem.
+Yılın ilk ayı, sorumlulukların yüzeye çıktığı bir enerjiyle açılıyor. Satürn etkisi altında verilen kararlar uzun vadeli sonuçlar doğuruyor. Bu ayda aceleye getirilmiş planlar yerine sağlam temeller atmak daha doğru olacak. Kişinin kendi sınırlarıyla yüzleşmesi gereken bir dönem.
 
-## Subat: Balik Dolunayi ve Sezgi Tepkileri
+## Şubat: Balık Dolunay''ı ve Sezgi Tepkileri
 
-Subat ayinda gerceklesecek Balik dolunayi, sezgilerin zirveye ciktigi anlardan biri. Rüyalariniza ve ic sesinize daha cok kulak verin. Sanatsal ugraslar bu ayda sizi sifalandirabilir. Duygusal baglari gozden gecirmek icin ideal bir zaman.
+Şubat ayında gerçekleşecek Balık dolunay''ı, sezgilerin zirveye çıktığı anlardan biri. Rüyalarınıza ve iç sesinize daha çok kulak verin. Sanatsal uğraşlar bu ayda sizi şifalandırabilir. Duygusal bağları gözden geçirmek için ideal bir zaman.
 
-## Mart: Mars Retrosuyla Enerji Yavasliyor
+## Mart: Mars Retrosu''yla Enerji Yavaşlıyor
 
-Mart, Mars''in geri hareketine gectigi aylardan biri. Fiziksel enerji dususte olabilir, bu yuzden kendinizi zorlamak yerine toparlanmaya vakit ayrin. Ertelenen isler bu ayda tekrar masaya yatirilabilir. Sabir, Mart''in anahtar kelimesi.
+Mart, Mars''ın geri hareketine geçtiği aylardan biri. Fiziksel enerji düşüşte olabilir, bu yüzden kendinizi zorlamak yerine toparlanmaya vakit ayırın. Ertelenen işler bu ayda tekrar masaya yatırılabilir. Sabır, Mart''ın anahtar kelimesi.
 
-## Nisan: Kosucu Merkur ve Iletisim Penceresi
+## Nisan: Koşucu Merkür ve İletişim Penceresi
 
-Nisan ayinda Merkur normale doner ve iletisim kanallari acilir. Uzun suredir konusulamayan konular icin en verimli ay budur. Yeni projelerin duyurulmasi, anlasmaların imzalanmasi icin gokyuzu size yesil isik yakiyor.
+Nisan ayında Merkür normale döner ve iletişim kanalları açılır. Uzun süredir konuşulamayan konular için en verimli ay budur. Yeni projelerin duyurulması, anlaşmaların imzalanması için gökyüzü size yeşil ışık yakıyor.
 
-## Mayis: Tutulma Mevsimi ve Donum Noktalari
+## Mayıs: Tutulma Mevsimi ve Dönüm Noktaları
 
-Mayis, yilın en guclu tutulmalarından birine sahne oluyor. Tutulmalar hayatımızda kapanması gereken kapilari kapatır, acilmasi gerekenleri acar. Bu ayda ani degisikliklere hazir olun; kader size surprizler hazirlamis olabilir.
+Mayıs, yılın en güçlü tutulmalarından birine sahne oluyor. Tutulmalar hayatımızda kapanması gereken kapıları kapatır, açılması gerekenleri açar. Bu ayda ani değişikliklere hazır olun; kader size sürprizler hazırlamış olabilir.
 
-## Haziran: Jüpiter''in Bereketli Gecisi
+## Haziran: Jüpiter''in Bereketli Geçişi
 
-Haziran ayinda Jüpiter yeni bir burca adim atiyor ve bereket kapilarini araliyor. Genisleme, sans ve ogrenme temalari on plana cikiyor. Bu ayda yeni bir egitime baslamak ya da yurtdisi planlari yapmak icin olumlu bir enerji var.
+Haziran ayında Jüpiter yeni bir burca adım atıyor ve bereket kapılarını aralıyor. Genişleme, şans ve öğrenme temaları ön plana çıkıyor. Bu ayda yeni bir eğitime başlamak ya da yurt dışı planları yapmak için olumlu bir enerji var.
 
 ## Temmuz: Yeni Ay ile Niyetleri Tazelemek
 
-Temmuz''daki yeni ay, yilın ortasında niyetleri yenilemek icin harika bir firsat. Yari yil degerlendirmesi yapip, ikinci yariya daha net hedeflerle girmek isteyenler icin aydinlik bir pencere aciliyor. [Aylik burc yorumlari](/burclar) ile kendi burcunuzu da takip edebilirsiniz.
+Temmuz''daki yeni ay, yılın ortasında niyetleri yenilemek için harika bir fırsat. Yarı yıl değerlendirmesi yapıp, ikinci yarıya daha net hedeflerle girmek isteyenler için aydınlık bir pencere açılıyor. [Aylık burç yorumları](/burclar) ile kendi burcunuzu da takip edebilirsiniz.
 
-## Agustos: Venüs Retrosu ve Ask Muhasebesi
+## Ağustos: Venüs Retrosu ve Aşk Muhasebesi
 
-Agustos, Venüs''ün geri hareketine gectigi ay. Iliskilerde gecmis konulara donus, eski baglari sorgulama zamani. Yeni bir aşka baslamak yerine mevcut baglari onarmak bu ayda daha saglikli olur. Kendinize karsi sevginizi de gozden gecirin.
+Ağustos, Venüs''ün geri hareketine geçtiği ay. İlişkilerde geçmiş konulara dönüş, eski bağları sorgulama zamanı. Yeni bir aşka başlamak yerine mevcut bağları onarmak bu ayda daha sağlıklı olur. Kendinize karşı sevginizi de gözden geçirin.
 
-## Eylül: Basak Mevsimi ve Pratik Cozumler
+## Eylül: Başak Mevsimi ve Pratik Çözümler
 
-Eylül ayı analitik enerjinin yukseldigi donem. Detaylara inmek, duzeni saglamak ve saglik rutinlerini elden gecirmek icin birebir. Daginan dosyalari toparlamak bu ayda size huzur verecek.
+Eylül ayı analitik enerjinin yükseldiği dönem. Detaylara inmek, düzeni sağlamak ve sağlık rutinlerini elden geçirmek için birebir. Dağınık dosyaları toparlamak bu ayda size huzur verecek.
 
-## Ekim: Terazi Dengesi ve Iliski Uyumu
+## Ekim: Terazi Dengesi ve İlişki Uyumu
 
-Ekim''de Terazi etkisi iliskileri dengeye cagiriyor. Ortakliklar, evlilik ve is birlikleri gundeme gelebilir. Uyum arayanlar icin [burc uyumu rehberi](/uyum) size yol gosterebilir. Adalet duygusunun on planda oldugu bir ay.
+Ekim''de Terazi etkisi ilişkileri dengeye çağırıyor. Ortaklıklar, evlilik ve iş birlikleri gündeme gelebilir. Uyum arayanlar için [burç uyumu rehberi](/uyum) size yol gösterebilir. Adalet duygusunun ön planda olduğu bir ay.
 
-## Kasim: Skorpio Derinligi ve Donusum
+## Kasım: Akrep Derinliği ve Dönüşüm
 
-Kasim ayı, Akrep''in yogun enerjisiyle yuzeyin altina inme zamani. Eski aliskanliklari birakip yenilenmek icin guclu bir donusum penceresi aciliyor. Psikolojik farkindalik bu ayda en buyuk kazancınız olabilir.
+Kasım ayı, Akrep''in yoğun enerjisiyle yüzeyin altına inme zamanı. Eski alışkanlıkları bırakıp yenilenmek için güçlü bir dönüşüm penceresi açılıyor. Psikolojik farkındalık bu ayda en büyük kazancınız olabilir.
 
-## Aralik: Yilsonu Yansimasi ve Plüton Etkisi
+## Aralık: Yılsonu Yansıması ve Plüton Etkisi
 
-Aralik, Plüton''un uzun vadeli etkisiyle kisinin ic gucunu test ettigi ay. Yil boyu ogrendiklerinizi sindirmek, 2027''ye daha bilge girmek icin son firsat. Kapanislar yapip, kutlamalari hak ettiginiz sekilde yasayin.
+Aralık, Plüton''un uzun vadeli etkisiyle kişinin iç gücünü test ettiği ay. Yıl boyu öğrendiklerinizi sindirmek, 2027''ye daha bilge girmek için son fırsat. Kapanışlar yapıp, kutlamaları hak ettiğiniz şekilde yaşayın.
 
-2026''nin gokyuzu size hem sabri hem de cesareti ogretmeye geliyor. Bu takvimi burclarınızla birlestirerek okumak icin [tum burc yorumlari](/burclar) sayfamizi ziyaret edebilirsiniz. Gokyuzu rehberdir, karar sizindir.$cnt$,
+2026''nın gökyüzü size hem sabrı hem de cesareti öğretmeye geliyor. Bu takvimi burçlarınızla birleştirerek okumak için [tüm burç yorumları](/burclar) sayfamızı ziyaret edebilirsiniz. Gökyüzü rehberdir, karar sizindir.$cnt$,
   '/images/blog/2026-gok-gunlugu.jpg',
   'astroloji',
   'Marifetli Kedi',
