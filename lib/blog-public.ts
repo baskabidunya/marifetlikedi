@@ -17,6 +17,7 @@ export type PostWithTags = {
   category: string;
   author_name: string | null;
   created_at: string;
+  updated_at: string | null;
   tags: BlogTag[];
 };
 

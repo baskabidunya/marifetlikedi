@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { getPageBySlug } from "@/lib/admin";
+import { renderMarkdown } from "@/lib/markdown";
 import AdSlot from "@/components/ads/AdSlot";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
@@ -24,9 +25,10 @@ export default async function StaticPage({ params }: { params: Promise<{ slug: s
           {page.title}
         </h1>
         <div className="w-20 h-1 bg-gradient-to-r from-transparent via-primary to-transparent" />
-        <div className="prose-cosmic text-body-lg text-on-surface-variant leading-relaxed whitespace-pre-wrap">
-          {page.content}
-        </div>
+        <div
+          className="article-content"
+          dangerouslySetInnerHTML={{ __html: renderMarkdown(page.content) }}
+        />
       </article>
 
       <AdSlot

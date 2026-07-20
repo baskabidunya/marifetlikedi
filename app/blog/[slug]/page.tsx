@@ -2,8 +2,13 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { getPublishedPostBySlug } from "@/lib/blog-public";
-import { renderMarkdown } from "@/lib/markdown";
+import { renderMarkdown, extractFaqItems } from "@/lib/markdown";
 import AdSlot from "@/components/ads/AdSlot";
+
+const AUTHOR = {
+  name: "Başka bir Dünya Astroloji Ekibi",
+  bio: "Marifetli Kedi, Başka bir Dünya (baskabidunya.com) bünyesinde; astroloji, mitoloji ve kişisel gelişim alanında deneyimli bir ekip tarafından hazırlanır. İçeriklerimiz gök bilimsel hareketleri, klasik astroloji geleneğini ve günümüzün yaşam pratiklerini bir araya getirir.",
+};
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
@@ -18,8 +23,33 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   if (!post) notFound();
   const html = renderMarkdown(post.content);
 
+  const authorName = post.author_name || AUTHOR.name;
+  const faqItems = extractFaqItems(post.content);
+  const faqJsonLd = faqItems.length
+    ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: faqItems.map((f) => ({
+          "@type": "Question",
+          name: f.question,
+          acceptedAnswer: { "@type": "Answer", text: f.answer },
+        })),
+      }
+    : null;
+
+  const updatedAt = post.updated_at && post.updated_at !== post.created_at
+    ? new Date(post.updated_at).toLocaleDateString("tr-TR")
+    : null;
+
   return (
     <div className="max-w-4xl mx-auto px-container-padding-mobile md:px-container-padding-desktop top-clear-2 pb-32">
+      {faqJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        />
+      )}
+
       <Link href="/blog"
         className="inline-flex items-center gap-2 text-label-md text-outline hover:text-on-surface transition-colors mb-8">
         <span className="material-symbols-outlined text-lg">arrow_back</span>
@@ -34,8 +64,11 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
       <div className="flex items-center gap-4 mb-6 flex-wrap">
         <span className="px-4 py-1.5 rounded-xl bg-primary/15 text-primary text-caption font-label-md">{post.category}</span>
-        <span className="text-caption text-outline">{post.author_name || "Marifetli Kedi"}</span>
+        <span className="text-caption text-outline">{authorName}</span>
         <span className="text-caption text-outline">{new Date(post.created_at).toLocaleDateString("tr-TR")}</span>
+        {updatedAt && (
+          <span className="text-caption text-outline">· Güncelleme: {updatedAt}</span>
+        )}
         {post.tags.length > 0 && (
           <div className="flex flex-wrap gap-2 w-full mt-2">
             {post.tags.map((t) => (
@@ -61,6 +94,14 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         className="article-content"
         dangerouslySetInnerHTML={{ __html: html }}
       />
+
+      <div className="mt-12 rounded-2xl border border-white/10 bg-surface-container/40 p-5 flex items-start gap-4">
+        <span className="material-symbols-outlined text-primary text-[28px]">auto_awesome</span>
+        <div>
+          <p className="text-label-md text-on-surface font-label-md">{authorName}</p>
+          <p className="text-caption text-on-surface-variant mt-1 leading-relaxed">{AUTHOR.bio}</p>
+        </div>
+      </div>
 
       <AdSlot name="content_inline" className="my-10" />
     </div>

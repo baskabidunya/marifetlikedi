@@ -72,6 +72,11 @@ export default async function Footer() {
       <div className="text-center mt-12 pt-8 border-t border-white/5 text-caption text-outline">
         Yıldızlar sadece yol gösterir, seçimi sen yaparsın.
       </div>
+      <div className="text-center mt-3 px-container-padding-mobile md:px-container-padding-desktop">
+        <p className="text-caption text-outline/70">
+          Marifetli Kedi, bir <span className="text-on-surface-variant">Başka bir Dünya</span> (baskabidunya.com) sitesidir.
+        </p>
+      </div>
       <div className="text-center mt-4 px-container-padding-mobile md:px-container-padding-desktop max-w-4xl mx-auto">
         <p className="text-caption text-outline/70 leading-relaxed">
           Marifetli Kedi&apos;ndeki tüm burç yorumları, tarot ve uyum analizleri{" "}
