@@ -18,6 +18,7 @@ export default function TrendForm() {
   const [tagColor, setTagColor] = useState("text-tertiary");
   const [excerpt, setExcerpt] = useState("");
   const [content, setContent] = useState("");
+  const [open, setOpen] = useState(false);
 
   function handleAI(data: { title: string; excerpt?: string; content?: string }) {
     if (data.title) {
@@ -32,8 +33,17 @@ export default function TrendForm() {
     <div className="space-y-3">
       <div className="flex items-center justify-between">
         <h2 className="text-title-md text-on-surface">Yeni İçerik</h2>
-        <AIGenerateButton type="trend" onGenerated={handleAI} />
+        <div className="flex items-center gap-2">
+          {!open && (
+            <button type="button" onClick={() => setOpen(true)}
+              className="px-4 py-2 rounded-lg bg-primary/20 text-primary text-caption font-label-md hover:bg-primary/30 transition-all">
+              + Ekle
+            </button>
+          )}
+          <AIGenerateButton type="trend" onGenerated={(d) => { handleAI(d); setOpen(true); }} />
+        </div>
       </div>
+      {open && (
       <form action={saveTrendArticle} className="bg-surface-container/60 rounded-2xl p-4 space-y-3 border border-white/5">
         <input type="hidden" name="active" value="true" />
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -71,13 +81,18 @@ export default function TrendForm() {
           <label className="block text-caption text-outline mb-1">İçerik</label>
           <RichTextEditor value={content} folder="trend" name="content" onChange={setContent} />
         </div>
-        <div className="flex items-end">
+        <div className="flex items-end gap-2">
           <button type="submit"
             className="px-4 py-2 rounded-lg bg-primary/20 text-primary text-caption font-label-md hover:bg-primary/30 transition-all">
             + Ekle
           </button>
+          <button type="button" onClick={() => setOpen(false)}
+            className="px-4 py-2 rounded-lg border border-white/10 text-on-surface-variant text-caption font-label-md hover:bg-white/5 transition-all">
+            İptal
+          </button>
         </div>
       </form>
+      )}
     </div>
   );
 }
