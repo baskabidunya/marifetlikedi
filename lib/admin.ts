@@ -1,6 +1,7 @@
 "use server";
 
 import { createClient } from "@/lib/supabase/server";
+import { getSunSignFromDate } from "@/lib/astro-utils";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
@@ -94,7 +95,7 @@ export async function getUsers() {
     last_sign_in_at: null,
     display_name: p.display_name,
     role: p.role || "user",
-    sun_sign: p.sun_sign,
+    sun_sign: p.sun_sign || getSunSignFromDate(p.birth_date),
   }));
 }
 
@@ -118,7 +119,7 @@ export async function deleteUser(formData: FormData) {
   const userId = formData.get("user_id") as string;
   const { error } = await supabase
     .from("user_profiles")
-    .update({ role: "user", display_name: null, sun_sign: null, birth_date: null, birth_time: null, birth_place: null })
+    .delete()
     .eq("user_id", userId);
   if (error) throw new Error(error.message);
   revalidatePath("/admin/kullanicilar");

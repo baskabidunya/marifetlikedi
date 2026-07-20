@@ -385,4 +385,25 @@ export const ZODIAC_DATA: Record<ZodiacSign, {
   Balık: { element: "Su", ruler: "Neptün", quality: "Değişken", symbol: "Balık", emoji: "♓︎", dateRange: "19 Şub - 20 Mar" },
 };
 
+export function getSunSignFromDate(date: string | Date | null | undefined): ZodiacSign | null {
+  if (!date) return null;
+  const d = typeof date === "string" ? new Date(date) : date;
+  if (isNaN(d.getTime())) return null;
+  const m = d.getMonth() + 1;
+  const day = d.getDate();
+
+  if ((m === 3 && day >= 21) || (m === 4 && day <= 19)) return "Koç";
+  if ((m === 4 && day >= 20) || (m === 5 && day <= 20)) return "Boğa";
+  if ((m === 5 && day >= 21) || (m === 6 && day <= 20)) return "İkizler";
+  if ((m === 6 && day >= 21) || (m === 7 && day <= 22)) return "Yengeç";
+  if ((m === 7 && day >= 23) || (m === 8 && day <= 22)) return "Aslan";
+  if ((m === 8 && day >= 23) || (m === 9 && day <= 22)) return "Başak";
+  if ((m === 9 && day >= 23) || (m === 10 && day <= 22)) return "Terazi";
+  if ((m === 10 && day >= 23) || (m === 11 && day <= 21)) return "Akrep";
+  if ((m === 11 && day >= 22) || (m === 12 && day <= 21)) return "Yay";
+  if ((m === 12 && day >= 22) || (m === 1 && day <= 19)) return "Oğlak";
+  if ((m === 1 && day >= 20) || (m === 2 && day <= 18)) return "Kova";
+  return "Balık";
+}
+
 export { TURKISH_CITIES, ZODIAC_SIGNS, PLANET_CONFIG, ZODIAC_ICONS };
