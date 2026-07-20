@@ -19,6 +19,7 @@ interface Article {
   tag_color: string;
   excerpt: string;
   content: string;
+  cover_image?: string;
   sort_order: number;
   active: boolean;
   created_at: string;
@@ -110,6 +111,11 @@ export default function TrendArticleList({ articles }: { articles: Article[] }) 
                                 <option key={opt.value} value={opt.value}>{opt.label}</option>
                               ))}
                             </select>
+                          </div>
+                          <div className="md:col-span-2">
+                            <label className="block text-caption text-outline mb-1">Kapak Görseli URL (public/images/trend/ altına indirilmiş olmalı)</label>
+                            <input name="cover_image" defaultValue={c.cover_image || ""} placeholder="/images/trend/boga-erkegi.jpg"
+                              className="w-full bg-surface-container border border-white/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all" />
                           </div>
                           <div>
                             <label className="block text-caption text-outline mb-1">Sıra</label>

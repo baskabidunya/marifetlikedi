@@ -711,18 +711,19 @@ export async function saveTrendArticle(formData: FormData) {
   const tag_color = formData.get("tag_color") as string || "text-tertiary";
   const excerpt = formData.get("excerpt") as string || "";
   const content = formData.get("content") as string || "";
+  const cover_image = formData.get("cover_image") as string || "";
   const sort_order = parseInt(formData.get("sort_order") as string) || 0;
   const active = formData.get("active") === "true";
 
   if (id) {
     const { error } = await supabase.from("trend_articles").update({
-      title, slug, tag, tag_color, excerpt, content, sort_order, active,
+      title, slug, tag, tag_color, excerpt, content, cover_image, sort_order, active,
       updated_at: new Date().toISOString(),
     }).eq("id", id);
     if (error) throw new Error(error.message);
   } else {
     const { error } = await supabase.from("trend_articles").insert({
-      title, slug, tag, tag_color, excerpt, content, sort_order, active,
+      title, slug, tag, tag_color, excerpt, content, cover_image, sort_order, active,
     });
     if (error) throw new Error(error.message);
   }
