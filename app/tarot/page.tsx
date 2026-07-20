@@ -36,7 +36,6 @@ export default async function TarotPage() {
           <span className="material-symbols-outlined text-xs">chevron_right</span>
           <span className="text-on-surface-variant">Tarot</span>
         </nav>
-        <h1 className="font-sora text-headline-lg-mobile md:text-headline-lg text-white font-bold mb-8">Kehanet Odası</h1>
       </div>
       <TarotTable deck={cards} />
       <div className="max-w-5xl mx-auto px-container-padding-mobile md:px-container-padding-desktop pb-16">

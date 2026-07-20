@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import HeroSection from "@/components/home/HeroSection";
 import DailyEnergy from "@/components/home/DailyEnergy";
 import ZodiacWheel from "@/components/home/ZodiacWheel";
@@ -11,6 +12,10 @@ import FunTestsSection from "@/components/home/FunTestsSection";
 import Testimonials from "@/components/home/Testimonials";
 import Newsletter from "@/components/home/Newsletter";
 import AdSlot from "@/components/ads/AdSlot";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 export default async function Home({
   searchParams,
