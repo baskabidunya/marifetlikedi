@@ -36,21 +36,24 @@ export default function TrendArticleList({ articles }: { articles: Article[] }) 
             {/* Summary row */}
             <div className="flex items-center gap-3 p-4">
               <div className={`w-2.5 h-2.5 rounded-full shrink-0 ${c.active ? "bg-tertiary" : "bg-outline/40"}`} />
-              <div className="flex-1 min-w-0">
-                <h3 className="font-sora text-body-lg text-on-surface font-semibold truncate">{c.title}</h3>
+                <div className="flex-1 min-w-0">
+                <h3 className="font-sora text-title-sm text-on-surface font-semibold truncate">{c.title}</h3>
                 <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mt-1 text-caption text-outline">
                   <span className={`px-2 py-0.5 rounded-full bg-background/60 ${c.tag_color}`}>{c.tag || "Genel"}</span>
                   <span>{new Date(c.created_at).toLocaleDateString("tr-TR")}</span>
                   <span className={c.active ? "text-tertiary" : "text-outline"}>{c.active ? "Yayında" : "Pasif"}</span>
                 </div>
               </div>
-              <button
-                type="button"
-                onClick={() => setOpenId(open ? null : c.id)}
-                className="px-4 py-2 rounded-lg bg-primary/20 text-primary text-caption font-label-md hover:bg-primary/30 transition-all shrink-0"
-              >
-                {open ? "Kapat" : "Düzenle"}
-              </button>
+              <div className="flex items-center gap-2 shrink-0">
+                <button
+                  type="button"
+                  onClick={() => setOpenId(open ? null : c.id)}
+                  className="px-4 py-2 rounded-lg bg-primary/20 text-primary text-caption font-label-md hover:bg-primary/30 transition-all"
+                >
+                  {open ? "Kapat" : "Düzenle"}
+                </button>
+                <ConfirmButton formAction={deleteTrendArticle} name="id" value={c.id} label="Sil" />
+              </div>
             </div>
 
             {/* Expandable edit form */}
@@ -110,7 +113,6 @@ export default function TrendArticleList({ articles }: { articles: Article[] }) 
                     className="px-4 py-1.5 rounded-lg bg-primary/20 text-primary text-caption font-label-md hover:bg-primary/30 transition-all">
                     Kaydet
                   </button>
-                  <ConfirmButton formAction={deleteTrendArticle} name="id" value={c.id} label="Sil" />
                 </div>
               </form>
             )}
