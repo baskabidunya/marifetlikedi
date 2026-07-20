@@ -11,8 +11,8 @@ export default async function Header() {
 
   return (
     <header className="bg-surface-container/70 backdrop-blur-xl border-b border-white/10 shadow-2xl shadow-background/50">
-      <nav className="relative flex justify-between items-center px-container-padding-mobile md:px-container-padding-desktop h-20 max-w-7xl mx-auto">
-        <div className="cursor-pointer">
+      <nav className="relative flex items-center px-container-padding-mobile md:px-container-padding-desktop h-20 max-w-7xl mx-auto">
+        <div className="cursor-pointer shrink-0">
           <Link href="/">
             {logo ? (
               <img src={logo} alt="Marifetli Kedi" className="h-12 w-auto object-contain" />
@@ -46,7 +46,7 @@ export default async function Header() {
           ]}
           isLoggedIn={!!user}
         />
-        <div className="flex items-center gap-3 md:gap-6">
+        <div className="flex items-center gap-3 md:gap-6 ml-auto">
           {user ? (
             <Link
               href="/profil"
