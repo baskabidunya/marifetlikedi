@@ -2,8 +2,23 @@ import Link from "next/link";
 import { getPublicNavLinks } from "@/lib/public-queries";
 import AdSlot from "@/components/ads/AdSlot";
 
+// Footer menüsü tek veri kaynağından (navigation_links) gruplanır; böylece
+// aynı bağlantı iki kez görünmez ve başlık/altlık menüleri çakışmaz.
+const QUICK_URLS = ["/", "/burclar", "/tarot", "/blog", "/sss", "/duyurular"];
+const CORPORATE_URLS = [
+  "/hakkimizda",
+  "/iletisim",
+  "/gizlilik-politikasi",
+  "/kvkk",
+  "/kullanim-kosullari",
+  "/cerez-politikasi",
+];
+
 export default async function Footer() {
   const footerLinks = await getPublicNavLinks("footer");
+
+  const quickLinks = footerLinks.filter((l) => QUICK_URLS.includes(l.url));
+  const corporateLinks = footerLinks.filter((l) => CORPORATE_URLS.includes(l.url));
 
   return (
     <footer className="bg-surface-container-lowest w-full py-12 border-t border-outline-variant/30 mt-section-gap">
@@ -17,7 +32,7 @@ export default async function Footer() {
         <div className="space-y-4">
           <h5 className="text-label-md text-white">Hızlı Linkler</h5>
           <ul className="space-y-2">
-            {footerLinks.slice(0, 5).map(link => (
+            {quickLinks.map((link) => (
               <li key={link.id}>
                 <Link className="text-body-md text-on-surface-variant hover:text-tertiary transition-colors" href={link.url}>
                   {link.label}
@@ -29,27 +44,7 @@ export default async function Footer() {
         <div className="space-y-4">
           <h5 className="text-label-md text-white">Kurumsal</h5>
           <ul className="space-y-2">
-            <li>
-              <Link className="text-body-md text-on-surface-variant hover:text-tertiary transition-colors" href="/hakkimizda">
-                Hakkımızda
-              </Link>
-            </li>
-            <li>
-              <Link className="text-body-md text-on-surface-variant hover:text-tertiary transition-colors" href="/iletisim">
-                İletişim
-              </Link>
-            </li>
-            <li>
-              <Link className="text-body-md text-on-surface-variant hover:text-tertiary transition-colors" href="/gizlilik-politikasi">
-                Gizlilik Politikası
-              </Link>
-            </li>
-            <li>
-              <Link className="text-body-md text-on-surface-variant hover:text-tertiary transition-colors" href="/kvkk">
-                KVKK Aydınlatma Metni
-              </Link>
-            </li>
-            {footerLinks.slice(5, 10).map(link => (
+            {corporateLinks.map((link) => (
               <li key={link.id}>
                 <Link className="text-body-md text-on-surface-variant hover:text-tertiary transition-colors" href={link.url}>
                   {link.label}
