@@ -23,8 +23,8 @@ export default async function TrendingGrid({ limit }: { limit?: number }) {
           className="glass p-4 rounded-3xl inner-glow group hover:bg-white/5 transition-all flex flex-col h-full cursor-pointer"
         >
           <div className="relative h-48 rounded-2xl overflow-hidden mb-4">
-            {c.image_url ? (
-              <img src={c.image_url} alt={c.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            {c.cover_image ? (
+              <img src={c.cover_image} alt={c.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
             ) : (
               <div className="w-full h-full bg-surface-bright/20 flex items-center justify-center">
                 <span className="material-symbols-outlined text-4xl text-outline/30">image</span>
