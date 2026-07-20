@@ -473,3 +473,12 @@
     display: block;
   }
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* TOC active state on scroll */
+:target {
+  scroll-margin-top: 100px;
+}

@@ -6,12 +6,49 @@ marked.setOptions({
 });
 
 export function renderMarkdown(md: string): string {
-  return marked.parse(md ?? "", { async: false }) as string;
+  const renderer = new marked.Renderer();
+  renderer.heading = function ({ text, depth }: { text: string; depth: number }) {
+    const raw = typeof text === "string" ? text : String(text);
+    const id = raw
+      .toLowerCase()
+      .replace(/ğ/g, "g").replace(/ü/g, "u").replace(/ş/g, "s").replace(/ı/g, "i").replace(/ö/g, "o").replace(/ç/g, "c")
+      .replace(/İ/g, "i").replace(/Ğ/g, "g").replace(/Ü/g, "u").replace(/Ş/g, "s").replace(/Ö/g, "o").replace(/Ç/g, "c")
+      .replace(/<[^>]+>/g, "")
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/(^-|-$)/g, "");
+    return `<h${depth} id="${id}">${raw}</h${depth}>`;
+  };
+  return marked.parse(md ?? "", { async: false, renderer }) as string;
 }
 
 export interface FaqItem {
   question: string;
   answer: string;
+}
+
+export interface TocItem {
+  id: string;
+  title: string;
+}
+
+export function extractTocItems(md: string): TocItem[] {
+  if (!md) return [];
+  const lines = md.split(/\r?\n/);
+  const items: TocItem[] = [];
+  for (const line of lines) {
+    const h = line.match(/^##\s+(.+?)\s*$/);
+    if (h) {
+      const title = h[1].trim();
+      const id = title
+        .toLowerCase()
+        .replace(/ğ/g, "g").replace(/ü/g, "u").replace(/ş/g, "s").replace(/ı/g, "i").replace(/ö/g, "o").replace(/ç/g, "c")
+        .replace(/İ/g, "i").replace(/Ğ/g, "g").replace(/Ü/g, "u").replace(/Ş/g, "s").replace(/Ö/g, "o").replace(/Ç/g, "c")
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/(^-|-$)/g, "");
+      items.push({ id, title });
+    }
+  }
+  return items;
 }
 
 export function extractFaqItems(md: string, limit = 8): FaqItem[] {

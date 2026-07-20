@@ -2,7 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { getPublishedPostBySlug } from "@/lib/blog-public";
-import { renderMarkdown, extractFaqItems } from "@/lib/markdown";
+import { renderMarkdown, extractFaqItems, extractTocItems } from "@/lib/markdown";
 import AdSlot from "@/components/ads/AdSlot";
 
 export const dynamic = "force-dynamic";
@@ -38,6 +38,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
   const authorName = post.author_name || AUTHOR.name;
   const faqItems = extractFaqItems(post.content);
+  const tocItems = extractTocItems(post.content);
   const faqJsonLd = faqItems.length
     ? {
         "@context": "https://schema.org",
@@ -138,6 +139,27 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
       {post.excerpt && (
         <p className="text-body-lg text-on-surface-variant italic mb-8 leading-relaxed">{post.excerpt}</p>
+      )}
+
+      {tocItems.length >= 3 && (
+        <nav className="bg-surface-container/40 rounded-2xl border border-white/5 p-5 mb-8">
+          <h2 className="text-label-md text-on-surface font-label-md mb-3 flex items-center gap-2">
+            <span className="material-symbols-outlined text-primary text-lg">list</span>
+            İçindekiler
+          </h2>
+          <ul className="space-y-1.5">
+            {tocItems.map((item) => (
+              <li key={item.id}>
+                <a
+                  href={`#${item.id}`}
+                  className="text-body-md text-on-surface-variant hover:text-primary transition-colors block py-0.5"
+                >
+                  {item.title}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
       )}
 
       <div

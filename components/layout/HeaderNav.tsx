@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { createPortal } from "react-dom";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 interface NavLink {
   id: string;
@@ -13,8 +14,14 @@ interface NavLink {
 export default function HeaderNav({ links, isLoggedIn }: { links: NavLink[]; isLoggedIn: boolean }) {
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => { setMounted(true); }, []);
+
+  const isActive = (url: string) => {
+    if (url === "/") return pathname === "/";
+    return pathname.startsWith(url);
+  };
 
   const close = useCallback(() => setOpen(false), []);
 
@@ -53,9 +60,16 @@ export default function HeaderNav({ links, isLoggedIn }: { links: NavLink[]; isL
           <Link
             key={link.id}
             href={link.url}
-            className="text-body-md font-medium text-on-surface-variant hover:text-on-surface transition-colors"
+            className={`relative text-body-md font-medium transition-colors ${
+              isActive(link.url)
+                ? "text-on-surface"
+                : "text-on-surface-variant hover:text-on-surface"
+            }`}
           >
             {link.label}
+            {isActive(link.url) && (
+              <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full" />
+            )}
           </Link>
         ))}
       </div>
@@ -86,7 +100,11 @@ export default function HeaderNav({ links, isLoggedIn }: { links: NavLink[]; isL
                   key={link.id}
                   href={link.url}
                   onClick={close}
-                  className="block px-4 py-3 rounded-xl text-body-md text-tertiary hover:bg-white/10 hover:text-on-surface transition-colors"
+                  className={`block px-4 py-3 rounded-xl text-body-md transition-colors ${
+                    isActive(link.url)
+                      ? "bg-primary/15 text-primary font-medium"
+                      : "text-tertiary hover:bg-white/10 hover:text-on-surface"
+                  }`}
                 >
                   {link.label}
                 </a>
