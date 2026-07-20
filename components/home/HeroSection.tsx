@@ -53,7 +53,7 @@ export default async function HeroSection() {
         <div className="hidden lg:block relative group">
           <div className="absolute -inset-4 bg-tertiary/20 blur-3xl rounded-full opacity-30 group-hover:opacity-50 transition-opacity" />
           <img
-            alt="Celestial Illustration"
+            alt="" loading="lazy"
             className="relative z-10 w-full drop-shadow-2xl animate-float"
             src={heroImage}
           />

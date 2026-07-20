@@ -70,6 +70,7 @@ export default function SlideCard({
           <img
             src={slide.image_url}
             alt=""
+            loading="lazy"
             className="w-10 h-10 rounded-lg object-cover border border-white/10"
           />
         )}

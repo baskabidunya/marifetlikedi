@@ -15,7 +15,7 @@ export default async function Header() {
         <div className="cursor-pointer shrink-0">
           <Link href="/">
             {logo ? (
-              <img src={logo} alt="Marifetli Kedi" className="h-12 w-auto object-contain" />
+              <img src={logo} alt="Marifetli Kedi" loading="lazy" className="h-12 w-auto object-contain" />
             ) : (
               <span className="text-headline-sm md:text-headline-md tracking-tight text-primary">
                 Marifetli Kedi

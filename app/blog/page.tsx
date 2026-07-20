@@ -87,7 +87,7 @@ export default async function BlogPage({
           <article key={p.id} className="glass-card rounded-3xl overflow-hidden hover:-translate-y-1 transition-all group">
             {p.cover_image && (
               <Link href={`/blog/${p.slug}`} className="block h-48 overflow-hidden">
-                <img src={p.cover_image} alt={p.title}
+                <img src={p.cover_image} alt={p.title} loading="lazy"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
               </Link>
             )}

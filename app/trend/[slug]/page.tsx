@@ -38,7 +38,7 @@ export default async function TrendDetailPage({ params }: { params: Promise<{ sl
 
         <div className="relative h-64 md:h-80 rounded-3xl overflow-hidden mb-10 bg-surface-bright/10">
           {article.cover_image ? (
-            <img src={article.cover_image} alt={article.title} className="w-full h-full object-cover" />
+            <img src={article.cover_image} alt={article.title} loading="lazy" className="w-full h-full object-cover" />
           ) : (
             <div className="w-full h-full flex items-center justify-center">
               <span className="material-symbols-outlined text-6xl text-outline/30">image</span>

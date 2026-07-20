@@ -119,6 +119,7 @@ export default function CelestialCalendar({
                   alt={phase.name}
                   width={36}
                   height={36}
+                  loading="lazy"
                   className="w-9 h-9 md:w-10 md:h-10 drop-shadow-[0_0_6px_rgba(255,255,255,0.15)]"
                 />
                 {phase?.isKey && (
@@ -135,7 +136,7 @@ export default function CelestialCalendar({
           {legend.map((l) => (
             <div key={l.key} className="flex items-center gap-2">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={`/moon/${l.key}.svg`} alt={l.label} width={20} height={20} className="w-5 h-5" />
+              <img src={`/moon/${l.key}.svg`} alt={l.label} width={20} height={20} loading="lazy" className="w-5 h-5" />
               <span className="text-caption text-on-surface-variant">{l.label}</span>
             </div>
           ))}

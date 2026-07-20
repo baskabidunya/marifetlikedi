@@ -79,6 +79,7 @@ export default function ImageUpload({
         <img
           src={preview}
           alt="Önizleme"
+          loading="lazy"
           className="w-20 h-20 rounded-xl object-cover border border-white/10 mt-2"
           onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}
           onLoad={(e) => { (e.target as HTMLImageElement).style.display = "block"; }}

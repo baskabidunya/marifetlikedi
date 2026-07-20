@@ -111,7 +111,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
       {post.cover_image && (
         <div className="w-full h-64 md:h-96 rounded-3xl overflow-hidden mb-8">
-          <img src={post.cover_image} alt={post.title} className="w-full h-full object-cover" />
+          <img src={post.cover_image} alt={post.title} loading="lazy" className="w-full h-full object-cover" />
         </div>
       )}
 
@@ -192,7 +192,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               >
                 {rp.cover_image && (
                   <div className="h-36 overflow-hidden">
-                    <img src={rp.cover_image} alt={rp.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                    <img src={rp.cover_image} alt={rp.title} loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                   </div>
                 )}
                 <div className="p-4">
