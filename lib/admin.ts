@@ -1,6 +1,6 @@
 "use server";
 
-import { createClient, createAdminClient } from "@/lib/supabase/server";
+import { createClient } from "@/lib/supabase/server";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
@@ -87,23 +87,9 @@ export async function getDashboardStats() {
 export async function getUsers() {
   const supabase = await createClient();
   const { data: profiles } = await supabase.from("user_profiles").select("*").order("created_at", { ascending: false });
-
-  // Gerçek e-postalar auth.users tablosunda tutulur; servis-rol istemcisiyle
-  // admin API üzerinden çekip profillerle eşliyoruz.
-  const admin = createAdminClient();
-  const emailMap = new Map<string, string>();
-  let page = 1;
-  while (true) {
-    const { data: authData, error } = await admin.auth.admin.listUsers({ page, perPage: 200 });
-    if (error || !authData?.users?.length) break;
-    for (const u of authData.users) emailMap.set(u.id, u.email ?? "");
-    if (authData.users.length < 200) break;
-    page++;
-  }
-
   return (profiles || []).map(p => ({
     id: p.user_id,
-    email: emailMap.get(p.user_id) || p.display_name || p.user_id.slice(0, 8),
+    email: p.email || p.display_name || p.user_id.slice(0, 8),
     created_at: p.created_at,
     last_sign_in_at: null,
     display_name: p.display_name,
