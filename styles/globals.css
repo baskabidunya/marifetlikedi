@@ -409,3 +409,64 @@
 .ql-editor img { max-width: 100%; border-radius: 1rem; margin: 0.5em 0; }
 .ql-editor a { color: rgb(var(--color-primary)); text-decoration: underline; }
 .ql-editor blockquote { border-left: 3px solid rgb(var(--color-tertiary)); padding-left: 1rem; color: rgb(var(--color-on-surface-variant)); font-style: italic; }
+/* Article content (trend & blog) — Typography plugin yok, manuel stiller */
+.article-content {
+  color: rgb(var(--color-on-surface-variant));
+  font-size: 1.0625rem;
+  line-height: 1.9;
+  letter-spacing: 0.01em;
+}
+.article-content p {
+  margin: 0 0 1.4em;
+}
+.article-content h2 {
+  font-family: var(--font-sora);
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: rgb(var(--color-on-surface));
+  margin: 2.4em 0 0.9em;
+  padding-bottom: 0.4em;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+.article-content h3 {
+  font-family: var(--font-sora);
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1.4;
+  color: rgb(var(--color-on-surface));
+  margin: 1.8em 0 0.7em;
+}
+.article-content a {
+  color: rgb(var(--color-primary));
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.article-content strong {
+  color: rgb(var(--color-on-surface));
+  font-weight: 700;
+}
+.article-content ul,
+.article-content ol {
+  margin: 0 0 1.4em;
+  padding-left: 1.4em;
+}
+.article-content li {
+  margin: 0.4em 0;
+}
+.article-content ul { list-style: disc; }
+.article-content ol { list-style: decimal; }
+.article-content blockquote {
+  border-left: 3px solid rgb(var(--color-tertiary));
+  padding: 0.2em 0 0.2em 1.1em;
+  margin: 0 0 1.4em;
+  color: rgb(var(--color-on-surface-variant));
+  font-style: italic;
+}
+.article-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 1rem;
+  margin: 0.6em 0 1.4em;
+  display: block;
+}
