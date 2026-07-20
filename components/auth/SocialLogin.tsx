@@ -1,15 +1,15 @@
+import Link from "next/link";
+
 export default function SocialLogin() {
   return (
     <div className="w-full">
-      <form action="/api/auth/google" method="GET" className="w-full">
-        <button
-          type="submit"
-          className="flex items-center justify-center space-x-2 py-3 px-4 glass-card rounded-xl hover:bg-surface-container-high transition-all active:scale-95 w-full"
-        >
-          <GoogleIcon />
-          <span className="font-medium text-sm">Google ile Giriş Yap</span>
-        </button>
-      </form>
+      <Link
+        href="/api/auth/google"
+        className="flex items-center justify-center space-x-2 py-3 px-4 glass-card rounded-xl hover:bg-surface-container-high transition-all active:scale-95 w-full"
+      >
+        <GoogleIcon />
+        <span className="font-medium text-sm">Google ile Giriş Yap</span>
+      </Link>
     </div>
   );
 }
