@@ -34,6 +34,22 @@ export default async function Header() {
               sort_order: 99,
               active: true,
             },
+            {
+              id: "hakkimizda",
+              label: "Hakkımızda",
+              url: "/hakkimizda",
+              position: "header",
+              sort_order: 100,
+              active: true,
+            },
+            {
+              id: "iletisim",
+              label: "İletişim",
+              url: "/iletisim",
+              position: "header",
+              sort_order: 101,
+              active: true,
+            },
           ]}
           isLoggedIn={!!user}
         />

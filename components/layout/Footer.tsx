@@ -29,6 +29,26 @@ export default async function Footer() {
         <div className="space-y-4">
           <h5 className="text-label-md text-white">Kurumsal</h5>
           <ul className="space-y-2">
+            <li>
+              <Link className="text-body-md text-on-surface-variant hover:text-tertiary transition-colors" href="/hakkimizda">
+                Hakkımızda
+              </Link>
+            </li>
+            <li>
+              <Link className="text-body-md text-on-surface-variant hover:text-tertiary transition-colors" href="/iletisim">
+                İletişim
+              </Link>
+            </li>
+            <li>
+              <Link className="text-body-md text-on-surface-variant hover:text-tertiary transition-colors" href="/gizlilik-politikasi">
+                Gizlilik Politikası
+              </Link>
+            </li>
+            <li>
+              <Link className="text-body-md text-on-surface-variant hover:text-tertiary transition-colors" href="/kvkk">
+                KVKK Aydınlatma Metni
+              </Link>
+            </li>
             {footerLinks.slice(5, 10).map(link => (
               <li key={link.id}>
                 <Link className="text-body-md text-on-surface-variant hover:text-tertiary transition-colors" href={link.url}>
