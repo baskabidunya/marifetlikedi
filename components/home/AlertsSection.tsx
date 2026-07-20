@@ -9,7 +9,7 @@ export default function AlertsSection() {
         </div>
         <div className="relative z-10">
           <h2 className="text-headline-md flex items-center gap-2 mb-2">
-            <span className="text-secondary">🚀</span> Kaçırma
+            <span className="text-secondary">🚀</span> Gökyüzü Alarmları
           </h2>
           <p className="text-on-surface-variant mb-6 font-body-md">
             Gökyüzündeki kritik olayları anında takip et.

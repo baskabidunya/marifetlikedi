@@ -4,6 +4,7 @@ import Script from "next/script";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import AdNetwork from "@/components/ads/AdNetwork";
+import CookieConsent from "@/components/layout/CookieConsent";
 import { getSiteSetting } from "@/lib/public-queries";
 import { ADSENSE_CLIENT } from "@/lib/ads";
 import "@/styles/globals.css";
@@ -158,6 +159,7 @@ export default async function RootLayout({
           {children}
           <Footer />
         </AdNetwork>
+        <CookieConsent />
       </body>
     </html>
   );
