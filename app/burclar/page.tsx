@@ -8,6 +8,7 @@ import { signSlug } from "@/lib/sign-slugs";
 import { SIGN_TRAITS } from "@/lib/astro-narratives";
 import { RISING_SIGNS } from "@/lib/astro-interpretations";
 import { getActiveSlides } from "@/lib/slides-public";
+import Disclaimer from "@/components/layout/Disclaimer";
 
 type Slide = { id: string; sign: string; title: string; description: string; image_url: string; slide_index: number; active: boolean };
 
@@ -430,6 +431,9 @@ export default function BurclarPage() {
             </div>
           </div>
         </section>
+      </div>
+      <div className="max-w-7xl mx-auto px-container-padding-mobile md:px-container-padding-desktop pb-16">
+        <Disclaimer variant="box" />
       </div>
     </main>
   );

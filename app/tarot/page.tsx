@@ -1,4 +1,5 @@
 import TarotTable from "@/components/tarot/TarotTable";
+import Disclaimer from "@/components/layout/Disclaimer";
 import { getPublicTarotCards } from "@/lib/public-queries";
 
 export const metadata = {
@@ -14,5 +15,12 @@ export default async function TarotPage() {
     detail: c.description,
     icon: c.icon,
   }));
-  return <TarotTable deck={cards} />;
+  return (
+    <>
+      <TarotTable deck={cards} />
+      <div className="max-w-5xl mx-auto px-container-padding-mobile md:px-container-padding-desktop pb-16">
+        <Disclaimer variant="box" />
+      </div>
+    </>
+  );
 }
