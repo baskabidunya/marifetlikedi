@@ -30,6 +30,13 @@ export default async function TestPage({ params }: Props) {
 
   return (
     <main className="top-clear-2 pb-section-gap px-container-padding-mobile md:px-container-padding-desktop max-w-5xl mx-auto">
+      <nav className="flex items-center gap-2 text-caption text-outline mb-6 flex-wrap">
+        <Link href="/" className="hover:text-on-surface transition-colors">Ana Sayfa</Link>
+        <span className="material-symbols-outlined text-xs">chevron_right</span>
+        <Link href="/eglenceli-testler" className="hover:text-on-surface transition-colors">Eğlenceli Testler</Link>
+        <span className="material-symbols-outlined text-xs">chevron_right</span>
+        <span className="text-on-surface-variant truncate max-w-[200px]">{test.title}</span>
+      </nav>
       <div className="mb-6">
         <Link
           href="/eglenceli-testler"

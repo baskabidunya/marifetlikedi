@@ -21,13 +21,13 @@ export default async function TrendDetailPage({ params }: { params: Promise<{ sl
   return (
     <main className="top-clear-2 pb-32">
       <article className="max-w-3xl mx-auto px-container-padding-mobile md:px-container-padding-desktop">
-        <Link
-          href="/trend"
-          className="inline-flex items-center gap-2 text-label-md text-outline hover:text-on-surface transition-colors mb-8"
-        >
-          <span className="material-symbols-outlined text-lg">arrow_back</span>
-          Trend İçerikler
-        </Link>
+        <nav className="flex items-center gap-2 text-caption text-outline mb-6 flex-wrap">
+          <Link href="/" className="hover:text-on-surface transition-colors">Ana Sayfa</Link>
+          <span className="material-symbols-outlined text-xs">chevron_right</span>
+          <Link href="/trend" className="hover:text-on-surface transition-colors">Trend İçerikler</Link>
+          <span className="material-symbols-outlined text-xs">chevron_right</span>
+          <span className="text-on-surface-variant truncate max-w-[200px]">{article.title}</span>
+        </nav>
 
         <div className={`inline-block px-3 py-1 rounded-full bg-background/80 text-caption font-label-md mb-4 ${article.tag_color}`}>
           {article.tag}

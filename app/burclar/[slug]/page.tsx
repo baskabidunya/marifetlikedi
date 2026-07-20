@@ -147,6 +147,13 @@ export default async function Page({
       </div>
 
       <div className="max-w-7xl mx-auto px-container-padding-mobile md:px-container-padding-desktop">
+        <nav className="flex items-center gap-2 text-caption text-outline mb-4 pt-4 flex-wrap">
+          <Link href="/" className="hover:text-on-surface transition-colors">Ana Sayfa</Link>
+          <span className="material-symbols-outlined text-xs">chevron_right</span>
+          <Link href="/burclar" className="hover:text-on-surface transition-colors">Burçlar</Link>
+          <span className="material-symbols-outlined text-xs">chevron_right</span>
+          <span className="text-on-surface-variant">{s} Burcu</span>
+        </nav>
         {/* Hero */}
         <section className="relative rounded-[2rem] overflow-hidden mb-section-gap min-h-[400px] md:min-h-[500px] flex flex-col items-center justify-center text-center p-8 group">
           <div className="absolute inset-0 bg-cover bg-center z-0 scale-105 group-hover:scale-100 transition-transform duration-700"
@@ -259,6 +266,33 @@ export default async function Page({
                 </div>
               );
             })}
+          </div>
+        </section>
+
+        {/* Diğer Araçlar */}
+        <section className="mb-section-gap">
+          <h3 className="text-headline-lg font-headline-lg text-primary mb-6">{s} Burcu için Keşfet</h3>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <Link href="/tarot" className="glass-card p-6 rounded-3xl text-center hover:-translate-y-1 transition-all">
+              <span className="text-3xl mb-2 block">🔮</span>
+              <p className="text-label-md font-label-md text-on-surface">Tarot Falı</p>
+              <p className="text-caption text-outline mt-1">Ruhsal rehberlik al</p>
+            </Link>
+            <Link href="/uyum" className="glass-card p-6 rounded-3xl text-center hover:-translate-y-1 transition-all">
+              <span className="text-3xl mb-2 block">💞</span>
+              <p className="text-label-md font-label-md text-on-surface">Uyum Analizi</p>
+              <p className="text-caption text-outline mt-1">Partnerinle uyumunu ölç</p>
+            </Link>
+            <Link href="/dogum-haritasi" className="glass-card p-6 rounded-3xl text-center hover:-translate-y-1 transition-all">
+              <span className="text-3xl mb-2 block">🌌</span>
+              <p className="text-label-md font-label-md text-on-surface">Doğum Haritası</p>
+              <p className="text-caption text-outline mt-1">Tüm burçlarını keşfet</p>
+            </Link>
+            <Link href="/eglenceli-testler" className="glass-card p-6 rounded-3xl text-center hover:-translate-y-1 transition-all">
+              <span className="text-3xl mb-2 block">🧩</span>
+              <p className="text-label-md font-label-md text-on-surface">Eğlenceli Testler</p>
+              <p className="text-caption text-outline mt-1">Kendini test et</p>
+            </Link>
           </div>
         </section>
       </div>

@@ -37,10 +37,6 @@ export default async function TrendingGrid({ limit }: { limit?: number }) {
           <h4 className={`font-sora text-body-lg text-white mb-4 flex-1 font-semibold ${c.tag_color} transition-colors`}>
             {c.title}
           </h4>
-          <span className={`inline-flex items-center ${c.tag_color} font-label-md group-hover:gap-2 transition-all`}>
-            Devamını Oku{" "}
-            <span className="material-symbols-outlined text-sm ml-1">arrow_forward</span>
-          </span>
         </Link>
       ))}
     </div>

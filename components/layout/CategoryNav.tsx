@@ -1,14 +1,14 @@
 import Link from "next/link";
 
 const categories = [
-  { label: "Keşfet", icon: "auto_fix_high", href: "/kesfet" },
-  { label: "Gündemde", icon: "flare", href: "/gundemde" },
-  { label: "Çok Konuşulanlar", icon: "cyclone", href: "/cok-konusulanlar" },
-  { label: "Göz At", icon: "eye_tracking", href: "/goz-at" },
-  { label: "Editörün Seçtikleri", icon: "workspace_premium", href: "/editor-secimi" },
-  { label: "Senin İçin Seçtik", icon: "favorite", href: "/senin-icin" },
-  { label: "Kaçırma", icon: "alarm_on", href: "/kacirma" },
-  { label: "Trendler", icon: "bolt", href: "/trendler" },
+  { label: "Keşfet", icon: "auto_fix_high", href: "/blog" },
+  { label: "Gündemde", icon: "flare", href: "/trend" },
+  { label: "Çok Konuşulanlar", icon: "cyclone", href: "/blog" },
+  { label: "Göz At", icon: "eye_tracking", href: "/blog" },
+  { label: "Editörün Seçtikleri", icon: "workspace_premium", href: "/blog" },
+  { label: "Senin İçin Seçtik", icon: "favorite", href: "/blog" },
+  { label: "Kaçırma", icon: "alarm_on", href: "/trend" },
+  { label: "Trendler", icon: "bolt", href: "/trend" },
 ];
 
 export default function CategoryNav() {

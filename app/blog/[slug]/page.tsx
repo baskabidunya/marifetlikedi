@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { getPublishedPostBySlug } from "@/lib/blog-public";
 import { renderMarkdown, extractFaqItems, extractTocItems } from "@/lib/markdown";
+import { getRelatedPosts } from "@/lib/blog-public";
 import AdSlot from "@/components/ads/AdSlot";
 
 export const dynamic = "force-dynamic";
@@ -35,6 +36,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   const post = await getPublishedPostBySlug(slug);
   if (!post) notFound();
   const html = renderMarkdown(post.content);
+  const relatedPosts = await getRelatedPosts(post);
 
   const authorName = post.author_name || AUTHOR.name;
   const faqItems = extractFaqItems(post.content);
@@ -114,7 +116,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       )}
 
       <div className="flex items-center gap-4 mb-6 flex-wrap">
-        <span className="px-4 py-1.5 rounded-xl bg-primary/15 text-primary text-caption font-label-md">{post.category}</span>
+        <Link href={`/blog?kategori=${encodeURIComponent(post.category)}`} className="px-4 py-1.5 rounded-xl bg-primary/15 text-primary text-caption font-label-md hover:bg-primary/25 transition-colors">{post.category}</Link>
         <span className="text-caption text-outline">{authorName}</span>
         <span className="text-caption text-outline">{new Date(post.created_at).toLocaleDateString("tr-TR")}</span>
         {updatedAt && (
@@ -174,6 +176,36 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           <p className="text-caption text-on-surface-variant mt-1 leading-relaxed">{AUTHOR.bio}</p>
         </div>
       </div>
+
+      {relatedPosts.length > 0 && (
+        <section className="mt-12">
+          <h2 className="text-headline-md text-primary font-headline-md mb-6 flex items-center gap-2">
+            <span className="material-symbols-outlined text-lg">auto_stories</span>
+            Benzer Yazılar
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {relatedPosts.map((rp) => (
+              <Link
+                key={rp.id}
+                href={`/blog/${rp.slug}`}
+                className="glass-card rounded-2xl overflow-hidden group hover:-translate-y-1 transition-all"
+              >
+                {rp.cover_image && (
+                  <div className="h-36 overflow-hidden">
+                    <img src={rp.cover_image} alt={rp.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                  </div>
+                )}
+                <div className="p-4">
+                  <span className="text-caption px-2 py-0.5 rounded bg-primary/15 text-primary">{rp.category}</span>
+                  <h3 className="text-body-md font-label-md text-on-surface mt-2 group-hover:text-primary transition-colors line-clamp-2">
+                    {rp.title}
+                  </h3>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
 
       <AdSlot name="content_inline" className="my-10" />
     </div>

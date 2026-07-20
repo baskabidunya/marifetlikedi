@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import TestCard from "@/components/funtests/TestCard";
 import AdSlot from "@/components/ads/AdSlot";
 import { FUN_TESTS } from "@/lib/fun-tests";
@@ -12,6 +13,11 @@ export const metadata: Metadata = {
 export default function EglenceliTestlerPage() {
   return (
     <main className="top-clear-2 pb-section-gap px-container-padding-mobile md:px-container-padding-desktop max-w-6xl mx-auto">
+      <nav className="flex items-center gap-2 text-caption text-outline mb-6 flex-wrap">
+        <Link href="/" className="hover:text-on-surface transition-colors">Ana Sayfa</Link>
+        <span className="material-symbols-outlined text-xs">chevron_right</span>
+        <span className="text-on-surface-variant">Eğlenceli Testler</span>
+      </nav>
       <div className="mb-section-gap">
         <h1 className="text-3xl md:text-4xl font-bold text-on-surface mb-3">
           Eğlenceli Testler

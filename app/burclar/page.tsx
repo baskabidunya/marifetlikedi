@@ -150,6 +150,15 @@ export default function BurclarPage() {
           style={{ backgroundImage: "radial-gradient(white 1px, transparent 1px)", backgroundSize: "40px 40px" }} />
       </div>
 
+      {/* Breadcrumb */}
+      <div className="max-w-7xl mx-auto px-container-padding-mobile md:px-container-padding-desktop pt-4">
+        <nav className="flex items-center gap-2 text-caption text-outline mb-4 flex-wrap">
+          <Link href="/" className="hover:text-on-surface transition-colors">Ana Sayfa</Link>
+          <span className="material-symbols-outlined text-xs">chevron_right</span>
+          <span className="text-on-surface-variant">Burçlar</span>
+        </nav>
+      </div>
+
       {/* Sub Navigation */}
       <div className="sticky top-stick z-40 bg-surface/70 backdrop-blur-xl border-b border-white/10">
         <div className="max-w-7xl mx-auto px-container-padding-mobile md:px-container-padding-desktop py-4">
