@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Sora, Inter } from "next/font/google";
 import Script from "next/script";
 import Header from "@/components/layout/Header";
@@ -7,6 +7,8 @@ import AdNetwork from "@/components/ads/AdNetwork";
 import { getSiteSetting } from "@/lib/public-queries";
 import { ADSENSE_CLIENT } from "@/lib/ads";
 import "@/styles/globals.css";
+
+const SITE_URL = "https://www.marifetlikedi.com";
 
 const sora = Sora({
   subsets: ["latin"],
@@ -23,8 +25,59 @@ const inter = Inter({
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Marifetli Kedi — Kozmik Keşifler Portalı",
-  description: "Evrenin fısıltılarını keşfetmek için portalı arala.",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: "Marifetli Kedi — Kozmik Keşifler Portalı",
+    template: "%s | Marifetli Kedi",
+  },
+  description:
+    "Astroloji, burç yorumları, tarot, doğum haritası ve uyum analizleriyle kozmik rehberlik sunan eğlence ve kişisel gelişim portalı.",
+  applicationName: "Marifetli Kedi",
+  authors: [{ name: "Marifetli Kedi" }],
+  keywords: [
+    "astroloji",
+    "burç yorumları",
+    "tarot",
+    "doğum haritası",
+    "uyum analizi",
+    "burç uyumu",
+    "günlük burç",
+    "kozmik rehberlik",
+  ],
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    locale: "tr_TR",
+    url: SITE_URL,
+    siteName: "Marifetli Kedi",
+    title: "Marifetli Kedi — Kozmik Keşifler Portalı",
+    description:
+      "Astroloji, burç yorumları, tarot ve doğum haritasıyla kozmik rehberlik portalı.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Marifetli Kedi — Kozmik Keşifler Portalı",
+    description:
+      "Astroloji, burç yorumları, tarot ve doğum haritasıyla kozmik rehberlik portalı.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#0e0c1a",
 };
 
 export default async function RootLayout({
