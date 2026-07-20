@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { getPublishedPostBySlug } from "@/lib/blog-public";
+import { renderMarkdown } from "@/lib/markdown";
 import AdSlot from "@/components/ads/AdSlot";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
@@ -15,6 +16,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   const { slug } = await params;
   const post = await getPublishedPostBySlug(slug);
   if (!post) notFound();
+  const html = renderMarkdown(post.content);
 
   return (
     <div className="max-w-4xl mx-auto px-container-padding-mobile md:px-container-padding-desktop top-clear-2 pb-32">
@@ -57,7 +59,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
       <div
         className="article-content"
-        dangerouslySetInnerHTML={{ __html: post.content }}
+        dangerouslySetInnerHTML={{ __html: html }}
       />
 
       <AdSlot name="content_inline" className="my-10" />

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { getTrendArticleBySlug } from "@/lib/public-queries";
+import { renderMarkdown } from "@/lib/markdown";
 import AdSlot from "@/components/ads/AdSlot";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
@@ -15,6 +16,7 @@ export default async function TrendDetailPage({ params }: { params: Promise<{ sl
   const { slug } = await params;
   const article = await getTrendArticleBySlug(slug);
   if (!article) notFound();
+  const html = renderMarkdown(article.content);
 
   return (
     <main className="top-clear-2 pb-32">
@@ -47,7 +49,7 @@ export default async function TrendDetailPage({ params }: { params: Promise<{ sl
 
         <div
           className="article-content"
-          dangerouslySetInnerHTML={{ __html: article.content }}
+          dangerouslySetInnerHTML={{ __html: html }}
         />
 
         <AdSlot name="content_inline" className="my-10" />
