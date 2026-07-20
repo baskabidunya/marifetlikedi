@@ -14,6 +14,7 @@ export default function GizlilikPolitikasiPage() {
     <LegalPage
       title="Gizlilik Politikası"
       description="Marifetli Kedi olarak kişisel verilerinizin gizliliğine önem veriyoruz. Bu sayfa, sitemizi kullanırken hangi verileri topladığımızı ve bu verileri nasıl kullandığımızı açıklar."
+      slug="gizlilik-politikasi"
     >
       <h2 className="font-sora text-headline-sm text-white">1. Topladığımız Bilgiler</h2>
       <p>

@@ -44,9 +44,6 @@ export const metadata: Metadata = {
     "günlük burç",
     "kozmik rehberlik",
   ],
-  alternates: {
-    canonical: "/",
-  },
   openGraph: {
     type: "website",
     locale: "tr_TR",
@@ -55,12 +52,14 @@ export const metadata: Metadata = {
     title: "Marifetli Kedi — Kozmik Keşifler Portalı",
     description:
       "Astroloji, burç yorumları, tarot ve doğum haritasıyla kozmik rehberlik portalı.",
+    images: [{ url: "/og-default.png", width: 1200, height: 630, alt: "Marifetli Kedi" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Marifetli Kedi — Kozmik Keşifler Portalı",
     description:
       "Astroloji, burç yorumları, tarot ve doğum haritasıyla kozmik rehberlik portalı.",
+    images: ["/og-default.png"],
   },
   robots: {
     index: true,
@@ -95,6 +94,40 @@ export default async function RootLayout({
       suppressHydrationWarning
     >
       <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "Marifetli Kedi",
+              url: SITE_URL,
+              logo: `${SITE_URL}/logo.png`,
+              description: "Astroloji, burç yorumları, tarot, doğum haritası ve uyum analizleriyle kozmik rehberlik sunan eğlence ve kişisel gelişim portalı.",
+              publisher: {
+                "@type": "Organization",
+                name: "Başka bir Dünya",
+                url: "https://baskabidunya.com",
+              },
+            }),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              name: "Marifetli Kedi",
+              url: SITE_URL,
+              potentialAction: {
+                "@type": "SearchAction",
+                target: `${SITE_URL}/blog?q={search_term_string}`,
+                "query-input": "required name=search_term_string",
+              },
+            }),
+          }}
+        />
         <script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8173666333919708"

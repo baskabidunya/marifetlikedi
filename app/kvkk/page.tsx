@@ -14,6 +14,7 @@ export default function KvkkPage() {
     <LegalPage
       title="KVKK Aydınlatma Metni"
       description="Bu metin, 6698 sayılı Kişisel Verilerin Korunması Kanunu (&quot;KVKK&quot;) kapsamında veri sorumlusu sıfatıyla Marifetli Kedi tarafından aydınlatılmanız amacıyla hazırlanmıştır."
+      slug="kvkk"
     >
       <h2 className="font-sora text-headline-sm text-white">Veri Sorumlusu</h2>
       <p>

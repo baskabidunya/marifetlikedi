@@ -14,6 +14,7 @@ export default function HakkimizdaPage() {
     <LegalPage
       title="Hakkımızda"
       description="Yıldızların sessiz dilini herkes için anlaşılır ve keyifli hâle getirmek için yola çıktık."
+      slug="hakkimizda"
     >
       <h2 className="font-sora text-headline-sm text-white">Hikâyemiz</h2>
       <p>

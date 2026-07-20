@@ -1,16 +1,50 @@
+import Link from "next/link";
 import { getActiveFaqItems } from "@/lib/public-queries";
 import AdSlot from "@/components/ads/AdSlot";
 
 export const metadata = {
-  title: "Sıkça Sorulan Sorular - Marifetli Kedi",
-  description: "Astroloji, tarot ve kozmik rehberlik hakkında merak edilenler.",
+  title: "Sıkça Sorulan Sorular",
+  description: "Astroloji, tarot, burç yorumları ve kozmik rehberlik hakkında sıkça sorulan sorular ve yanıtları.",
+  alternates: { canonical: "/sss" },
 };
 
 export default async function SssPage() {
   const items = await getActiveFaqItems();
 
+  const faqJsonLd = items.length
+    ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: items.map((item) => ({
+          "@type": "Question",
+          name: item.question,
+          acceptedAnswer: { "@type": "Answer", text: item.answer },
+        })),
+      }
+    : null;
+
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Ana Sayfa", item: "https://www.marifetlikedi.com" },
+      { "@type": "ListItem", position: 2, name: "Sıkça Sorulan Sorular" },
+    ],
+  };
+
   return (
     <main className="top-clear-2 pb-section-gap px-container-padding-mobile md:px-container-padding-desktop max-w-3xl mx-auto">
+      {faqJsonLd && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+      )}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
+
+      <nav className="flex items-center gap-2 text-caption text-outline mb-6 flex-wrap">
+        <Link href="/" className="hover:text-on-surface transition-colors">Ana Sayfa</Link>
+        <span className="material-symbols-outlined text-xs">chevron_right</span>
+        <span className="text-on-surface-variant">Sıkça Sorulan Sorular</span>
+      </nav>
+
       <div className="text-center mb-12 space-y-4">
         <h1 className="font-sora text-headline-lg-mobile md:text-headline-lg text-white font-bold">
           Sıkça Sorulan Sorular

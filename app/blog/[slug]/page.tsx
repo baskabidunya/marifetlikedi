@@ -16,7 +16,18 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const post = await getPublishedPostBySlug(slug);
   if (!post) return { title: "Gök Günlüğü - Marifetli Kedi" };
-  return { title: `${post.title} - Marifetli Kedi`, description: post.excerpt };
+  return {
+    title: post.title,
+    description: post.excerpt,
+    alternates: { canonical: `/blog/${slug}` },
+    openGraph: {
+      title: post.title,
+      description: post.excerpt,
+      type: "article",
+      url: `/blog/${slug}`,
+      images: post.cover_image ? [{ url: post.cover_image, width: 1200, height: 630, alt: post.title }] : undefined,
+    },
+  };
 }
 
 export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -43,8 +54,43 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     ? new Date(post.updated_at).toLocaleDateString("tr-TR")
     : null;
 
+  const blogPostingJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.excerpt,
+    image: post.cover_image || undefined,
+    datePublished: post.created_at,
+    dateModified: post.updated_at || post.created_at,
+    author: { "@type": "Organization", name: authorName },
+    publisher: {
+      "@type": "Organization",
+      name: "Marifetli Kedi",
+      logo: { "@type": "ImageObject", url: "https://www.marifetlikedi.com/logo.png" },
+    },
+    mainEntityOfPage: { "@type": "WebPage", "@id": `https://www.marifetlikedi.com/blog/${slug}` },
+  };
+
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Ana Sayfa", item: "https://www.marifetlikedi.com" },
+      { "@type": "ListItem", position: 2, name: "Gök Günlüğü", item: "https://www.marifetlikedi.com/blog" },
+      { "@type": "ListItem", position: 3, name: post.title },
+    ],
+  };
+
   return (
     <div className="max-w-4xl mx-auto px-container-padding-mobile md:px-container-padding-desktop top-clear-2 pb-32">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPostingJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       {faqJsonLd && (
         <script
           type="application/ld+json"
@@ -52,11 +98,13 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         />
       )}
 
-      <Link href="/blog"
-        className="inline-flex items-center gap-2 text-label-md text-outline hover:text-on-surface transition-colors mb-8">
-        <span className="material-symbols-outlined text-lg">arrow_back</span>
-        Gök Günlüğü'ne Dön
-      </Link>
+      <nav className="flex items-center gap-2 text-caption text-outline mb-6 flex-wrap">
+        <Link href="/" className="hover:text-on-surface transition-colors">Ana Sayfa</Link>
+        <span className="material-symbols-outlined text-xs">chevron_right</span>
+        <Link href="/blog" className="hover:text-on-surface transition-colors">Gök Günlüğü</Link>
+        <span className="material-symbols-outlined text-xs">chevron_right</span>
+        <span className="text-on-surface-variant truncate max-w-[200px]">{post.title}</span>
+      </nav>
 
       {post.cover_image && (
         <div className="w-full h-64 md:h-96 rounded-3xl overflow-hidden mb-8">

@@ -4,8 +4,9 @@ import { getPublishedPosts } from "@/lib/blog-public";
 import AdSlot from "@/components/ads/AdSlot";
 
 export const metadata: Metadata = {
-  title: "Gök Günlüğü - Marifetli Kedi",
-  description: "Astroloji, burç yorumları ve kozmik rehberlik yazıları.",
+  title: "Gök Günlüğü",
+  description: "Astroloji, burç yorumları, tarot ve kozmik rehberlik yazıları. Günlük burç, burç uyumu ve kişisel gelişim.",
+  alternates: { canonical: "/blog" },
 };
 
 export default async function BlogPage({
@@ -30,8 +31,28 @@ export default async function BlogPage({
       ? allPosts.flatMap((p) => p.tags).find((t) => t.slug === etiket)?.name || etiket
       : null;
 
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Ana Sayfa", item: "https://www.marifetlikedi.com" },
+      { "@type": "ListItem", position: 2, name: "Gök Günlüğü" },
+    ],
+  };
+
   return (
     <div className="max-w-7xl mx-auto px-container-padding-mobile md:px-container-padding-desktop top-clear-2 pb-32">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+
+      <nav className="flex items-center gap-2 text-caption text-outline mb-6 flex-wrap">
+        <Link href="/" className="hover:text-on-surface transition-colors">Ana Sayfa</Link>
+        <span className="material-symbols-outlined text-xs">chevron_right</span>
+        <span className="text-on-surface-variant">Gök Günlüğü</span>
+      </nav>
+
       <h1 className="text-display-lg-mobile md:text-display-lg font-display-lg text-primary mb-4">Gök Günlüğü</h1>
       <p className="text-body-lg text-on-surface-variant mb-8">Astroloji, burç yorumları ve kozmik rehberlik</p>
 

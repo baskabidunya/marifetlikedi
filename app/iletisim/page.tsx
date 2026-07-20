@@ -14,6 +14,7 @@ export default function IletisimPage() {
     <LegalPage
       title="İletişim"
       description="Sorularınız, önerileriniz veya iş birliği talepleriniz için bizimle iletişime geçebilirsiniz."
+      slug="iletisim"
     >
       <div className="not-prose space-y-2 text-on-surface-variant">
         <p className="flex items-center gap-2">
