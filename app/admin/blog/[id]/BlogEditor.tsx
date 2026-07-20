@@ -5,6 +5,7 @@ import { saveBlogPost } from "@/lib/admin";
 import { getActiveBlogCategories } from "@/lib/admin";
 import { getBlogTags } from "@/lib/admin";
 import ImageUpload from "@/components/admin/ImageUpload";
+import RichTextEditor from "@/components/admin/RichTextEditor";
 
 interface BlogValues {
   id: string; title: string; slug: string; excerpt: string; content: string;
@@ -22,6 +23,7 @@ export default function BlogEditor({ defaultValues }: { defaultValues: BlogValue
   const [categories, setCategories] = useState<Category[]>([]);
   const [tags, setTags] = useState<Tag[]>([]);
   const [selectedTags, setSelectedTags] = useState<string[]>(defaultValues.tags || []);
+  const [content, setContent] = useState(defaultValues.content || "");
 
   useEffect(() => {
     getActiveBlogCategories().then(setCategories);
@@ -46,6 +48,7 @@ export default function BlogEditor({ defaultValues }: { defaultValues: BlogValue
   async function action(formData: FormData) {
     setSaving(true);
     try {
+      formData.set("content", content);
       selectedTags.forEach(id => formData.append("tags", id));
       await saveBlogPost(formData);
       window.location.href = "/admin/blog";
@@ -135,9 +138,8 @@ export default function BlogEditor({ defaultValues }: { defaultValues: BlogValue
 
         <div>
           <label className="block text-label-md text-on-surface-variant mb-2">İçerik</label>
-          <textarea name="content" defaultValue={defaultValues.content} rows={16}
-            className="w-full bg-surface-container border border-white/10 rounded-2xl p-4 text-body-md text-on-surface focus:border-primary transition-all font-mono resize-y" />
-          <p className="text-caption text-outline mt-1">Markdown desteklenir</p>
+          <RichTextEditor value={content} folder="blog" name="content" onChange={setContent} />
+          <p className="text-caption text-outline mt-1">Zengin metin editörü: başlık, kalın/italik, liste, alıntı, site içi link ve görseller ekleyebilirsiniz.</p>
         </div>
       </div>
 

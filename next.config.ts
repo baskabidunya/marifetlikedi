@@ -4,6 +4,7 @@ const nextConfig: NextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
+  transpilePackages: ["quill"],
   images: {
     unoptimized: true,
   },

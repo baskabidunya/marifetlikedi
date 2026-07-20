@@ -69,7 +69,7 @@ export default function TrendForm() {
         </div>
         <div>
           <label className="block text-caption text-outline mb-1">İçerik</label>
-          <RichTextEditor value={content} onChange={setContent} />
+          <RichTextEditor value={content} folder="trend" name="content" onChange={setContent} />
         </div>
         <div className="flex items-end">
           <button type="submit"
