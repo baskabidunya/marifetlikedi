@@ -11,7 +11,7 @@ export default async function Header() {
 
   return (
     <header className="bg-surface-container/70 backdrop-blur-xl border-b border-white/10 shadow-2xl shadow-background/50">
-      <nav className="relative flex items-center px-container-padding-mobile md:px-container-padding-desktop h-20 max-w-7xl mx-auto">
+      <nav className="flex items-center justify-between px-container-padding-mobile md:px-container-padding-desktop h-20 max-w-7xl mx-auto">
         <div className="cursor-pointer shrink-0">
           <Link href="/">
             {logo ? (
@@ -26,7 +26,7 @@ export default async function Header() {
         {user && (
           <Link
             href="/profil"
-            className="md:hidden absolute left-1/2 -translate-x-1/2 flex items-center justify-center w-11 h-11 rounded-full bg-gradient-to-br from-primary-container to-secondary-container text-on-primary"
+            className="md:hidden flex items-center justify-center w-11 h-11 rounded-full bg-gradient-to-br from-primary-container to-secondary-container text-on-primary"
             aria-label="Profilim"
           >
             <span className="material-symbols-outlined">account_circle</span>
@@ -46,7 +46,7 @@ export default async function Header() {
           ]}
           isLoggedIn={!!user}
         />
-        <div className="flex items-center gap-3 md:gap-6 ml-auto">
+        <div className="hidden md:flex items-center gap-3 md:gap-6">
           {user ? (
             <Link
               href="/profil"
