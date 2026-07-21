@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import TestCard from "@/components/funtests/TestCard";
 import AdSlot from "@/components/ads/AdSlot";
-import { FUN_TESTS } from "@/lib/fun-tests";
+import { getFunTests } from "@/lib/fun-tests-db";
 
 export const metadata: Metadata = {
   title: "Eğlenceli Testler - Marifetli Kedi",
@@ -10,7 +10,11 @@ export const metadata: Metadata = {
     "Kişiliğini keşfet! Sinir seviyenden empati gücüne, sabırdan risk ruhuna kadar birbirinden eğlenceli testler seni bekliyor.",
 };
 
-export default function EglenceliTestlerPage() {
+export const dynamic = "force-dynamic";
+
+export default async function EglenceliTestlerPage() {
+  const tests = await getFunTests();
+
   return (
     <main className="top-clear-2 pb-section-gap px-container-padding-mobile md:px-container-padding-desktop max-w-6xl mx-auto">
       <nav className="flex items-center gap-2 text-caption text-outline mb-6 flex-wrap">
@@ -29,7 +33,7 @@ export default function EglenceliTestlerPage() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-        {FUN_TESTS.map((test) => (
+        {tests.map((test) => (
           <TestCard key={test.id} test={test} />
         ))}
       </div>

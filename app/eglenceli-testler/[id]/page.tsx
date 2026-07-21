@@ -2,20 +2,18 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import TestQuiz from "@/components/funtests/TestQuiz";
 import AdSlot from "@/components/ads/AdSlot";
-import { FUN_TESTS } from "@/lib/fun-tests";
+import { getFunTestBySlug } from "@/lib/fun-tests-db";
 import Link from "next/link";
 
 interface Props {
   params: Promise<{ id: string }>;
 }
 
-export async function generateStaticParams() {
-  return FUN_TESTS.map((test) => ({ id: test.id }));
-}
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = await params;
-  const test = FUN_TESTS.find((t) => t.id === id);
+  const test = await getFunTestBySlug(id);
   if (!test) return { title: "Test Bulunamadı" };
   return {
     title: `${test.title} - Eğlenceli Testler - Marifetli Kedi`,
@@ -25,7 +23,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function TestPage({ params }: Props) {
   const { id } = await params;
-  const test = FUN_TESTS.find((t) => t.id === id);
+  const test = await getFunTestBySlug(id);
   if (!test) notFound();
 
   return (

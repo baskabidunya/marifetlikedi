@@ -13,6 +13,7 @@ const NAV_LINKS = [
   { href: "/admin/blog/etiketler", label: "Etiketler", icon: "sell" },
   { href: "/admin/tarot", label: "Tarot Kartları", icon: "style" },
   { href: "/admin/trend", label: "Trend İçerikler", icon: "trending_up" },
+  { href: "/admin/eglenceli-testler", label: "Eğlenceli Testler", icon: "quiz" },
   { href: "/admin/sss", label: "SSS", icon: "help" },
   { href: "/admin/sayfalar", label: "Sayfalar", icon: "description" },
   { href: "/admin/duyurular", label: "Duyurular", icon: "campaign" },
