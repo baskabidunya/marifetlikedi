@@ -39,7 +39,7 @@ export default async function DogumHaritasiPage({
       <BirthChartCalculator focus={focus} />
 
       <AdSlot
-        name="dogum_haritasi"
+        name="content_inline"
         className="my-12 max-w-5xl mx-auto"
       />
     </main>

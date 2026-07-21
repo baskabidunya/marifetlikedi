@@ -22,15 +22,31 @@ export default function AdSlot({
   const ref = useRef<HTMLModElement>(null);
 
   useEffect(() => {
-    if (!clientId || !slot || !ref.current) return;
-    if (ref.current.getAttribute("data-ad-loaded")) return;
-    ref.current.setAttribute("data-ad-loaded", "1");
-    try {
-      (window as unknown as { adsbygoogle?: unknown[] }).adsbygoogle =
-        (window as unknown as { adsbygoogle?: unknown[] }).adsbygoogle || [];
-      ((window as unknown as { adsbygoogle: unknown[] }).adsbygoogle).push({});
-    } catch {
-      /* AdSense not ready */
+    if (!clientId || !slot) return;
+    const el = ref.current;
+    if (!el || el.getAttribute("data-ad-loaded")) return;
+    el.setAttribute("data-ad-loaded", "1");
+
+    const tryPush = () => {
+      try {
+        (window as unknown as { adsbygoogle?: unknown[] }).adsbygoogle =
+          (window as unknown as { adsbygoogle?: unknown[] }).adsbygoogle || [];
+        ((window as unknown as { adsbygoogle: unknown[] }).adsbygoogle).push({});
+      } catch {
+        /* AdSense not ready */
+      }
+    };
+
+    if ((window as unknown as { adsbygoogle?: unknown[] }).adsbygoogle) {
+      tryPush();
+    } else {
+      const timer = setInterval(() => {
+        if ((window as unknown as { adsbygoogle?: unknown[] }).adsbygoogle) {
+          clearInterval(timer);
+          tryPush();
+        }
+      }, 200);
+      setTimeout(() => clearInterval(timer), 5000);
     }
   }, [clientId, slot]);
 

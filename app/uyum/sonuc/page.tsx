@@ -25,7 +25,7 @@ export default function UyumSonucPage() {
       </Suspense>
 
       <AdSlot
-        name="uyum_result"
+        name="content_inline"
         className="my-12 max-w-5xl mx-auto"
       />
     </>

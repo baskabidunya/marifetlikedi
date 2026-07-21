@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import type { FunTest } from "@/lib/fun-tests";
+import { computeMaxScore } from "@/lib/fun-tests";
 
 export default function TestQuiz({ test }: { test: FunTest }) {
   const [current, setCurrent] = useState(0);
@@ -93,7 +94,7 @@ export default function TestQuiz({ test }: { test: FunTest }) {
             />
           </div>
           <p className="text-xs text-outline/40 mb-6">
-            Puan: {totalScore} / {test.maxScore}
+            Puan: {totalScore} / {computeMaxScore(test)}
           </p>
 
           <button

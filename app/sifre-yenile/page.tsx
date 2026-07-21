@@ -30,7 +30,7 @@ export default function ResetPasswordPage() {
       </div>
 
       <AdSlot
-        name="auth"
+        name="static_page"
         className="my-12 max-w-md mx-auto"
       />
     </main>

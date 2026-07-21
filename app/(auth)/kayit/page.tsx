@@ -71,7 +71,7 @@ export default function RegisterPage() {
       </section>
 
       <AdSlot
-        name="auth"
+        name="static_page"
         className="absolute bottom-16 left-1/2 -translate-x-1/2 w-[300px]"
       />
     </main>

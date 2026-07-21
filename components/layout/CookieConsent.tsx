@@ -22,11 +22,28 @@ export default function CookieConsent() {
   function accept() {
     localStorage.setItem(CONSENT_KEY, "accepted");
     setChoice("accepted");
+    if (typeof window !== "undefined" && window.gtag) {
+      window.gtag("consent", "update", {
+        ad_storage: "granted",
+        ad_user_data: "granted",
+        ad_personalization: "granted",
+        analytics_storage: "granted",
+      });
+    }
+    window.dispatchEvent(new Event("consent-accepted"));
   }
 
   function decline() {
     localStorage.setItem(CONSENT_KEY, "declined");
     setChoice("declined");
+    if (typeof window !== "undefined" && window.gtag) {
+      window.gtag("consent", "update", {
+        ad_storage: "denied",
+        ad_user_data: "denied",
+        ad_personalization: "denied",
+        analytics_storage: "denied",
+      });
+    }
   }
 
   if (!mounted || choice !== null) return null;

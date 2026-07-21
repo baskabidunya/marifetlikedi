@@ -3,6 +3,11 @@
 import { createClient } from "@/lib/supabase/server";
 
 export async function submitContactMessage(formData: FormData) {
+  const honeypot = (formData.get("website") as string || "").trim();
+  if (honeypot) {
+    return { ok: true, error: "" };
+  }
+
   const name = (formData.get("name") as string || "").trim();
   const email = (formData.get("email") as string || "").trim();
   const subject = (formData.get("subject") as string || "").trim();

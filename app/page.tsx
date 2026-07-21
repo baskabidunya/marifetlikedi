@@ -39,7 +39,7 @@ export default async function Home({
     <main className="top-clear">
       <HeroSection />
       <AdSlot
-        name="home_leaderboard"
+        name="content_inline"
         className="my-12 max-w-7xl mx-auto px-container-padding-mobile md:px-container-padding-desktop"
       />
       <DailyEnergy />

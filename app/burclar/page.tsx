@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
-import { ZODIAC_DATA, ZODIAC_SIGNS } from "@/lib/astro-utils";
+import { ZODIAC_DATA, ZODIAC_SIGNS, type ZodiacSign } from "@/lib/astro-utils";
 import AdSlot from "@/components/ads/AdSlot";
 import { signSlug } from "@/lib/sign-slugs";
 import { SIGN_TRAITS } from "@/lib/astro-narratives";
@@ -314,7 +314,7 @@ export default function BurclarPage() {
         </section>
 
         <AdSlot
-          name="burclar_listing"
+          name="blog_listing"
           className="my-section-gap max-w-7xl mx-auto"
         />
 
@@ -341,7 +341,7 @@ export default function BurclarPage() {
                   <div>
                     <label className="font-label-md text-sm text-on-surface-variant mb-2 block">Birinci Burç</label>
                     <div className="relative">
-                      <select value={sign1} onChange={e => setSign1(e.target.value)}
+                      <select value={sign1} onChange={e => setSign1(e.target.value as ZodiacSign)}
                         className="w-full appearance-none bg-surface-container border border-white/10 rounded-2xl px-5 py-4 text-on-surface font-label-md focus:ring-1 focus:ring-primary focus:border-primary transition-all cursor-pointer">
                         {ZODIAC_SIGNS.map(s => (
                           <option key={s} value={s}>{ZODIAC_DATA[s].emoji} {s} — {ZODIAC_DATA[s].element}</option>
@@ -353,7 +353,7 @@ export default function BurclarPage() {
                   <div>
                     <label className="font-label-md text-sm text-on-surface-variant mb-2 block">İkinci Burç</label>
                     <div className="relative">
-                      <select value={sign2} onChange={e => setSign2(e.target.value)}
+                      <select value={sign2} onChange={e => setSign2(e.target.value as ZodiacSign)}
                         className="w-full appearance-none bg-surface-container border border-white/10 rounded-2xl px-5 py-4 text-on-surface font-label-md focus:ring-1 focus:ring-primary focus:border-primary transition-all cursor-pointer">
                         {ZODIAC_SIGNS.map(s => (
                           <option key={s} value={s}>{ZODIAC_DATA[s].emoji} {s} — {ZODIAC_DATA[s].element}</option>

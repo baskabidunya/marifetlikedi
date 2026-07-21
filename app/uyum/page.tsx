@@ -34,7 +34,7 @@ export default function UyumPage() {
       <CompatibilityCalculator />
 
       <AdSlot
-        name="uyum"
+        name="content_inline"
         className="my-12 max-w-5xl mx-auto"
       />
 

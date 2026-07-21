@@ -27,7 +27,7 @@ export const TURKISH_MONTHS = [
   "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık",
 ];
 
-function angleToPhase(angle: number): Omit<MoonDay, "day" | "isKey" | "kind"> {
+function angleToPhase(angle: number): Omit<MoonDay, "day" | "angle" | "isKey" | "kind"> {
   const a = ((angle % 360) + 360) % 360;
   if (a < 22.5 || a >= 337.5) return { name: "Yeni Ay", emoji: "🌑", phaseKey: "new" };
   if (a < 67.5) return { name: "Hilal", emoji: "🌒", phaseKey: "waxing-crescent" };
@@ -45,10 +45,10 @@ function findPhaseDays(year: number, month: number): Set<number> {
   const end = new Date(Date.UTC(year, month + 1, 0, 23, 59, 59));
 
   const searchPhases: { fn: (d: Date) => Date; kind: MoonPhaseKind }[] = [
-    { fn: (d) => Astronomy.SearchMoonPhase(0, d, 40).date, kind: "new" },
-    { fn: (d) => Astronomy.SearchMoonPhase(90, d, 40).date, kind: "quarter" },
-    { fn: (d) => Astronomy.SearchMoonPhase(180, d, 40).date, kind: "full" },
-    { fn: (d) => Astronomy.SearchMoonPhase(270, d, 40).date, kind: "quarter" },
+    { fn: (d) => Astronomy.SearchMoonPhase(0, d, 40)?.date ?? new Date(0), kind: "new" },
+    { fn: (d) => Astronomy.SearchMoonPhase(90, d, 40)?.date ?? new Date(0), kind: "quarter" },
+    { fn: (d) => Astronomy.SearchMoonPhase(180, d, 40)?.date ?? new Date(0), kind: "full" },
+    { fn: (d) => Astronomy.SearchMoonPhase(270, d, 40)?.date ?? new Date(0), kind: "quarter" },
   ];
 
   for (const { fn } of searchPhases) {

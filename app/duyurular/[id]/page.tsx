@@ -97,7 +97,7 @@ export default async function AnnouncementDetailPage({
       </article>
 
       <AdSlot
-        name="duyurular_detay"
+        name="content_inline"
         className="my-section-gap max-w-3xl mx-auto"
       />
 

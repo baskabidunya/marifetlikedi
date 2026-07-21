@@ -25,7 +25,7 @@ export default function TrendPage() {
         </p>
         <TrendingGrid />
 
-        <AdSlot name="trend_listing" className="mt-12" />
+        <AdSlot name="blog_listing" className="mt-12" />
       </div>
     </main>
   );

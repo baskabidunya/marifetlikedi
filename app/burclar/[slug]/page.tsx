@@ -182,7 +182,7 @@ export default async function Page({
           </div>
         </section>
 
-        <AdSlot name="burc_detail" className="mb-section-gap" />
+        <AdSlot name="content_inline" className="mb-section-gap" />
 
         {/* Bento Grid */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6 mb-section-gap">

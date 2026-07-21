@@ -78,7 +78,7 @@ export default async function AnnouncementsPage() {
       )}
 
       <AdSlot
-        name="duyurular"
+        name="blog_listing"
         className="my-12 max-w-3xl mx-auto"
       />
     </main>

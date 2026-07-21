@@ -15,6 +15,13 @@ export interface FunTestResult {
   scoreRange: [number, number];
 }
 
+export function computeMaxScore(test: FunTest): number {
+  return test.maxScore ?? test.questions.reduce(
+    (sum, q) => sum + Math.max(...q.options.map(o => o.score)),
+    0
+  );
+}
+
 export interface FunTest {
   id: string;
   title: string;
@@ -22,7 +29,7 @@ export interface FunTest {
   icon: string;
   questions: FunTestQuestion[];
   results: FunTestResult[];
-  maxScore: number;
+  maxScore?: number;
 }
 
 function t(text: string, options: [string, number][]): FunTestQuestion {

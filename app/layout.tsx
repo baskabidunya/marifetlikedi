@@ -1,10 +1,10 @@
 import type { Metadata, Viewport } from "next";
 import { Sora, Inter } from "next/font/google";
-import Script from "next/script";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import AdNetwork from "@/components/ads/AdNetwork";
 import CookieConsent from "@/components/layout/CookieConsent";
+import ConsentScripts from "@/components/layout/ConsentScripts";
 import { getSiteSetting } from "@/lib/public-queries";
 import { ADSENSE_CLIENT } from "@/lib/ads";
 import "@/styles/globals.css";
@@ -95,6 +95,10 @@ export default async function RootLayout({
       suppressHydrationWarning
     >
       <head>
+        <meta
+          name="google-adsense-account"
+          content="ca-pub-8173666333919708"
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -129,25 +133,13 @@ export default async function RootLayout({
             }),
           }}
         />
-        <script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8173666333919708"
-          crossOrigin="anonymous"
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=block"
         />
       </head>
       <body className="bg-surface text-on-surface font-inter antialiased">
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-KKDKPBQWKF"
-          strategy="afterInteractive"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-KKDKPBQWKF');
-          `}
-        </Script>
+        <ConsentScripts />
         <link
           rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=block"

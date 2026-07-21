@@ -38,7 +38,7 @@ function SignEditor({ sign, initial }: { sign: string; initial: SignContent }) {
       setFields(prev => ({ ...prev, description: data.content || prev.description }));
     }
     if (data.title) {
-      setFields(prev => ({ ...prev, daily_prophecy: data.title }));
+      setFields(prev => ({ ...prev, daily_prophecy: data.title || prev.daily_prophecy }));
     }
     setDirty(true);
   }

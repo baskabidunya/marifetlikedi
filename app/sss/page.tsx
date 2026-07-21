@@ -79,7 +79,7 @@ export default async function SssPage() {
       )}
 
       <AdSlot
-        name="sss"
+        name="static_page"
         className="my-12 max-w-3xl mx-auto"
       />
     </main>

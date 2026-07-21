@@ -41,7 +41,7 @@ export default function RichTextEditor({ value = "", name = "content", folder = 
 
       if (value) quill.clipboard.dangerouslyPasteHTML(value);
 
-      quill.getModule("toolbar").addHandler("image", () => {
+      (quill.getModule("toolbar") as any).addHandler("image", () => {
         const input = document.createElement("input");
         input.setAttribute("type", "file");
         input.setAttribute("accept", "image/*");

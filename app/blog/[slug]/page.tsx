@@ -19,11 +19,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!post) return { title: "Gök Günlüğü - Marifetli Kedi" };
   return {
     title: post.title,
-    description: post.excerpt,
+    description: post.excerpt ?? undefined,
     alternates: { canonical: `/blog/${slug}` },
     openGraph: {
       title: post.title,
-      description: post.excerpt,
+      description: post.excerpt ?? undefined,
       type: "article",
       url: `/blog/${slug}`,
       images: post.cover_image ? [{ url: post.cover_image, width: 1200, height: 630, alt: post.title }] : undefined,

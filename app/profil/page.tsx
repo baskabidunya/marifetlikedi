@@ -11,7 +11,7 @@ export default function Profile() {
     <>
       <ProfilePage />
       <AdSlot
-        name="profile"
+        name="static_page"
         className="my-12 max-w-7xl mx-auto px-container-padding-mobile md:px-container-padding-desktop"
       />
     </>

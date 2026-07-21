@@ -384,7 +384,7 @@ export default function SynastryPage() {
         <SynastryContent synastry={synastry} partnerName={partnerName} />
       </section>
 
-      <AdSlot name="synastry" className="mt-section-gap" />
+      <AdSlot name="content_inline" className="mt-section-gap" />
     </main>
   );
 }
