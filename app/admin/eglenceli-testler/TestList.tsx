@@ -80,6 +80,9 @@ export default function TestList({ tests }: { tests: DbTest[] }) {
                     @{test.slug} — {(test.questions as unknown[]).length} soru, {(test.results as unknown[]).length} sonuç
                     {!test.active && " (pasif)"}
                   </p>
+                  <p className="text-caption text-outline/60 mt-0.5">
+                    {new Date(test.created_at).toLocaleDateString("tr-TR", { day: "numeric", month: "long", year: "numeric", hour: "2-digit", minute: "2-digit" })}
+                  </p>
                 </div>
               </div>
             </div>

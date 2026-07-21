@@ -22,8 +22,7 @@ export async function getFunTests() {
   const { data } = await supabase
     .from("fun_tests")
     .select("*")
-    .order("sort_order")
-    .order("title");
+    .order("created_at", { ascending: false });
   return data || [];
 }
 
