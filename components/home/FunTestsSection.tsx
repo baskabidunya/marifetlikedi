@@ -1,8 +1,9 @@
 import Link from "next/link";
-import { FUN_TESTS } from "@/lib/fun-tests";
+import { getFunTests } from "@/lib/fun-tests-db";
 
-export default function FunTestsSection() {
-  const latestTests = FUN_TESTS.slice(0, 3);
+export default async function FunTestsSection() {
+  const allTests = await getFunTests();
+  const latestTests = allTests.slice(0, 3);
 
   return (
     <section className="py-section-gap px-container-padding-mobile md:px-container-padding-desktop max-w-7xl mx-auto">
