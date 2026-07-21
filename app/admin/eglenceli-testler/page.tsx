@@ -7,8 +7,8 @@ export default async function AdminFunTestsPage() {
     <div>
       <div className="flex items-center justify-between mb-8">
         <h1 className="text-headline-md font-headline-md text-on-surface">Eğlenceli Testler</h1>
-        <TestList tests={tests} />
       </div>
+      <TestList tests={tests} />
     </div>
   );
 }
