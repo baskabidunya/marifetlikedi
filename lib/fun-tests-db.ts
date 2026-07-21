@@ -32,8 +32,7 @@ export async function getFunTests(): Promise<FunTest[]> {
     .from("fun_tests")
     .select("*")
     .eq("active", true)
-    .order("sort_order")
-    .order("title");
+    .order("created_at", { ascending: false });
   if (!data) return [];
   return data.map(rowToTest);
 }
