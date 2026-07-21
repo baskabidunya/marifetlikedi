@@ -2,6 +2,7 @@ import Link from "next/link";
 import { getPublicNavLinks, getSiteSetting } from "@/lib/public-queries";
 import { createClient } from "@/lib/supabase/server";
 import HeaderNav from "./HeaderNav";
+import SearchTrigger from "@/components/search/SearchTrigger";
 
 export default async function Header() {
   const navLinks = await getPublicNavLinks("header");
@@ -23,15 +24,18 @@ export default async function Header() {
             )}
           </Link>
         </div>
-        {user && (
-          <Link
-            href="/profil"
-            className="md:hidden flex items-center justify-center w-11 h-11 rounded-full bg-gradient-to-br from-primary-container to-secondary-container text-on-primary"
-            aria-label="Profilim"
-          >
-            <span className="material-symbols-outlined">account_circle</span>
-          </Link>
-        )}
+        <div className="md:hidden flex items-center gap-1">
+          <SearchTrigger />
+          {user && (
+            <Link
+              href="/profil"
+              className="flex items-center justify-center w-11 h-11 rounded-full bg-gradient-to-br from-primary-container to-secondary-container text-on-primary"
+              aria-label="Profilim"
+            >
+              <span className="material-symbols-outlined">account_circle</span>
+            </Link>
+          )}
+        </div>
         <HeaderNav
           links={[
             ...navLinks,
@@ -46,7 +50,8 @@ export default async function Header() {
           ]}
           isLoggedIn={!!user}
         />
-        <div className="hidden md:flex items-center gap-3 md:gap-6">
+        <div className="hidden md:flex items-center gap-1 md:gap-2">
+          <SearchTrigger />
           {user ? (
             <Link
               href="/profil"

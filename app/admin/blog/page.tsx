@@ -3,8 +3,16 @@ import { getBlogPosts, deleteBlogPost } from "@/lib/admin";
 import ConfirmButton from "@/components/admin/ConfirmButton";
 import BlogPageHeader from "./BlogPageHeader";
 
-export default async function AdminBlogPage() {
-  const posts = await getBlogPosts();
+interface Props {
+  searchParams: Promise<{ q?: string }>;
+}
+
+export default async function AdminBlogPage({ searchParams }: Props) {
+  const { q } = await searchParams;
+  const allPosts = await getBlogPosts();
+  const posts = q
+    ? allPosts.filter(p => p.title.toLowerCase().includes(q.toLowerCase()))
+    : allPosts;
 
   return (
     <div>
@@ -56,7 +64,7 @@ export default async function AdminBlogPage() {
         {posts.length === 0 && (
           <div className="text-center py-12 text-outline">
             <span className="material-symbols-outlined text-3xl mb-2 block">article</span>
-            <p className="text-body-sm">Henüz blog yazısı yok</p>
+            <p className="text-body-sm">{q ? "Aramanızla eşleşen yazı bulunamadı" : "Henüz blog yazısı yok"}</p>
           </div>
         )}
       </div>

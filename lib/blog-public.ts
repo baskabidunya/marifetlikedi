@@ -53,6 +53,19 @@ export async function getRelatedPosts(post: PostWithTags, limit = 3): Promise<Po
     .map((r) => r.post);
 }
 
+export async function searchPosts(query: string): Promise<PostWithTags[]> {
+  const supabase = await createClient();
+  const sanitized = `%${query.replace(/%/g, "")}%`;
+  const { data } = await supabase
+    .from("blog_posts")
+    .select("*, blog_post_tags(tag:blog_tags(slug, name))")
+    .eq("published", true)
+    .or(`title.ilike.${sanitized},excerpt.ilike.${sanitized},content.ilike.${sanitized}`)
+    .order("created_at", { ascending: false })
+    .limit(20);
+  return (data || []).map((p: any) => ({ ...p, tags: mapTags(p) }));
+}
+
 export async function getPublishedPostBySlug(slug: string): Promise<PostWithTags | null> {
   const supabase = await createClient();
   const { data } = await supabase

@@ -86,6 +86,19 @@ export async function getSiteSetting(key: string): Promise<string | null> {
   return data?.value ?? null;
 }
 
+export async function searchTrendArticles(query: string) {
+  const supabase = await createClient();
+  const sanitized = `%${query.replace(/%/g, "")}%`;
+  const { data } = await supabase
+    .from("trend_articles")
+    .select("*")
+    .eq("active", true)
+    .or(`title.ilike.${sanitized},summary.ilike.${sanitized},content.ilike.${sanitized}`)
+    .order("sort_order")
+    .limit(20);
+  return data || [];
+}
+
 export async function getTrendArticleBySlug(slug: string) {
   const supabase = await createClient();
   const { data } = await supabase.from("trend_articles").select("*").eq("slug", slug).eq("active", true).single();
