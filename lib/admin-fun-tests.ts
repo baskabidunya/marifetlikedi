@@ -1,6 +1,6 @@
 "use server";
 
-import { createClient, createAdminClient } from "@/lib/supabase/server";
+import { createClient } from "@/lib/supabase/server";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
@@ -18,7 +18,7 @@ async function requireAdmin() {
 
 export async function getFunTests() {
   await requireAdmin();
-  const supabase = createAdminClient();
+  const supabase = await createClient();
   const { data } = await supabase
     .from("fun_tests")
     .select("*")
@@ -29,7 +29,7 @@ export async function getFunTests() {
 
 export async function saveFunTest(formData: FormData) {
   await requireAdmin();
-  const supabase = createAdminClient();
+  const supabase = await createClient();
 
   const id = formData.get("id") as string;
   const slug = (formData.get("slug") as string).trim();
@@ -72,7 +72,7 @@ export async function saveFunTest(formData: FormData) {
 
 export async function deleteFunTest(formData: FormData) {
   await requireAdmin();
-  const supabase = createAdminClient();
+  const supabase = await createClient();
   const id = formData.get("id") as string;
   if (!id) return;
   await supabase.from("fun_tests").delete().eq("id", id);
@@ -82,7 +82,7 @@ export async function deleteFunTest(formData: FormData) {
 
 export async function getFunTestById(id: string) {
   await requireAdmin();
-  const supabase = createAdminClient();
+  const supabase = await createClient();
   const { data } = await supabase.from("fun_tests").select("*").eq("id", id).single();
   return data;
 }
