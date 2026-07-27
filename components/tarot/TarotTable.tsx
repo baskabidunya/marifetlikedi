@@ -241,15 +241,11 @@ export default function TarotTable({ deck }: { deck: CardData[] }) {
               <div className="w-16 h-0.5 gold-foil rounded-full mx-auto" />
             </div>
 
-            <div className={`grid gap-6 mb-8 ${
-              selectedCards.length === 1 ? "grid-cols-1 max-w-md mx-auto" :
-              selectedCards.length === 2 ? "grid-cols-1 md:grid-cols-2 max-w-2xl mx-auto" :
-              "grid-cols-1 md:grid-cols-3"
-            }`}>
+            <div className="flex flex-col gap-6 mb-8 max-w-4xl mx-auto">
               {selectedCards.map((sc) => (
-                <div key={sc.deckIndex} className="glass-card rounded-2xl overflow-hidden border border-white/10">
+                <div key={sc.deckIndex} className="glass-card rounded-2xl overflow-hidden border border-white/10 flex flex-col md:flex-row">
                   {/* Card Image */}
-                  <div className="relative h-56 overflow-hidden bg-surface-bright/10">
+                  <div className="relative w-full md:w-72 lg:w-80 shrink-0 overflow-hidden bg-surface-bright/10">
                     {sc.data.image_url ? (
                       <img
                         src={sc.data.image_url}
@@ -257,22 +253,21 @@ export default function TarotTable({ deck }: { deck: CardData[] }) {
                         className="w-full h-full object-contain"
                       />
                     ) : (
-                      <div className="w-full h-full flex items-center justify-center" style={{
+                      <div className="w-full h-full flex items-center justify-center min-h-[20rem]" style={{
                         background: "linear-gradient(135deg, #1a1040 0%, #2d1b69 40%, #4a2c8a 70%, #1a1040 100%)",
                       }}>
                         <span className="material-symbols-outlined text-7xl text-primary/40">{sc.data.icon}</span>
                       </div>
                     )}
-                    <div className="absolute inset-0 bg-gradient-to-t from-surface-container via-transparent to-transparent pointer-events-none" />
                     <div className="absolute top-3 left-3 bg-black/40 backdrop-blur-sm rounded-full px-3 py-1">
                       <span className="text-xs text-primary font-semibold">{sc.label}</span>
                     </div>
                   </div>
                   {/* Card Info */}
-                  <div className="p-5 text-center">
-                    <h4 className="font-sora text-lg text-white mb-1 font-bold">{sc.data.name}</h4>
+                  <div className="p-5 md:p-6 flex-1 text-left">
+                    <h4 className="font-sora text-xl text-white mb-1 font-bold">{sc.data.name}</h4>
                     <p className="text-xs text-tertiary mb-3 uppercase tracking-wider">{sc.data.desc}</p>
-                    <div className="w-8 h-0.5 gold-foil rounded-full mx-auto mb-3" />
+                    <div className="w-8 h-0.5 gold-foil rounded-full mb-3" />
                     <p className="text-sm text-on-surface-variant leading-relaxed">{sc.data.detail}</p>
                   </div>
                 </div>
