@@ -16,6 +16,7 @@ export default async function TarotPage() {
     desc: c.upright_meaning,
     detail: c.description,
     icon: c.icon,
+    image_url: c.image_url,
   }));
 
   const breadcrumbJsonLd = {

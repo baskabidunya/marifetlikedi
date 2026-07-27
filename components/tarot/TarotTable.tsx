@@ -10,6 +10,7 @@ type CardData = {
   desc: string;
   detail: string;
   icon: string;
+  image_url?: string;
 };
 
 const spreads: { id: SpreadType; icon: string; title: string; desc: string; cardCount: number; labels: string[] }[] = [
@@ -248,14 +249,21 @@ export default function TarotTable({ deck }: { deck: CardData[] }) {
               {selectedCards.map((sc) => (
                 <div key={sc.deckIndex} className="glass-card rounded-2xl overflow-hidden border border-white/10">
                   {/* Card Image */}
-                  <div className="relative h-56 overflow-hidden" style={{
-                    background: "linear-gradient(135deg, #1a1040 0%, #2d1b69 40%, #4a2c8a 70%, #1a1040 100%)",
-                  }}>
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <span className="material-symbols-outlined text-7xl text-primary/40">{sc.data.icon}</span>
-                    </div>
-                    <div className="absolute inset-0 bg-gradient-to-t from-surface-container via-transparent to-transparent" />
-                    {/* Card number overlay */}
+                  <div className="relative h-56 overflow-hidden bg-surface-bright/10">
+                    {sc.data.image_url ? (
+                      <img
+                        src={sc.data.image_url}
+                        alt={sc.data.name}
+                        className="w-full h-full object-contain"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center" style={{
+                        background: "linear-gradient(135deg, #1a1040 0%, #2d1b69 40%, #4a2c8a 70%, #1a1040 100%)",
+                      }}>
+                        <span className="material-symbols-outlined text-7xl text-primary/40">{sc.data.icon}</span>
+                      </div>
+                    )}
+                    <div className="absolute inset-0 bg-gradient-to-t from-surface-container via-transparent to-transparent pointer-events-none" />
                     <div className="absolute top-3 left-3 bg-black/40 backdrop-blur-sm rounded-full px-3 py-1">
                       <span className="text-xs text-primary font-semibold">{sc.label}</span>
                     </div>
