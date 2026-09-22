@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   title: "Eğlenceli Testler - Marifetli Kedi",
   description:
     "Kişiliğini keşfet! Sinir seviyenden empati gücüne, sabırdan risk ruhuna kadar birbirinden eğlenceli testler seni bekliyor.",
+  alternates: { canonical: "/eglenceli-testler" },
 };
 
 export const dynamic = "force-dynamic";

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import type { Metadata } from "next";
 import { ZODIAC_DATA, ZODIAC_SIGNS } from "@/lib/astro-utils";
 import { SIGN_TRAITS } from "@/lib/astro-narratives";
 import { RISING_SIGNS } from "@/lib/astro-interpretations";
@@ -109,6 +110,17 @@ function orderByCompat(sign: string, others: typeof ZODIAC_SIGNS): typeof ZODIAC
 
 export function generateStaticParams() {
   return Object.keys(SLUG_TO_SIGN).map(slug => ({ slug }));
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const sign = slugToSign(slug);
+  if (!sign) return { title: "Burç - Marifetli Kedi" };
+  return {
+    title: `${sign} Burcu - Marifetli Kedi`,
+    description: `${sign} burcu hakkında detaylı bilgi, karakter analizi, günlük fal ve ilişki uyumu.`,
+    alternates: { canonical: `/burclar/${slug}` },
+  };
 }
 
 export default async function Page({

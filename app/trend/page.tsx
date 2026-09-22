@@ -6,6 +6,7 @@ import AdSlot from "@/components/ads/AdSlot";
 export const metadata: Metadata = {
   title: "Trend İçerikler - Marifetli Kedi",
   description: "En çok okunan ve paylaşılan eğlenceli astroloji rehberleri.",
+  alternates: { canonical: "/trend" },
 };
 
 export default function TrendPage() {

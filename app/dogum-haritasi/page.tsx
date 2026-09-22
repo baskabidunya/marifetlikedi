@@ -6,6 +6,7 @@ import AdSlot from "@/components/ads/AdSlot";
 export const metadata: Metadata = {
   title: "Doğum Haritası Hesapla - Marifetli Kedi",
   description: "Güneş, yükselen, ay ve venüs burcunuzu ücretsiz hesaplayın.",
+  alternates: { canonical: "/dogum-haritasi" },
 };
 
 export default async function DogumHaritasiPage({

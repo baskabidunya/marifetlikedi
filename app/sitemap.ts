@@ -1,7 +1,8 @@
 import type { MetadataRoute } from "next";
 import { getPublishedPosts } from "@/lib/blog-public";
-import { getTrendArticles } from "@/lib/admin";
+import { getActiveTrendArticles } from "@/lib/public-queries";
 import { getAllAnnouncements } from "@/lib/public-queries";
+import { getFunTests } from "@/lib/fun-tests-db";
 import { SIGN_SLUGS } from "@/lib/sign-slugs";
 
 const SITE_URL = "https://www.marifetlikedi.com";
@@ -33,6 +34,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   let trendRoutes: MetadataRoute.Sitemap = [];
   let duyuruRoutes: MetadataRoute.Sitemap = [];
   let burcRoutes: MetadataRoute.Sitemap = [];
+  let testRoutes: MetadataRoute.Sitemap = [];
 
   try {
     const posts = await getPublishedPosts();
@@ -47,7 +49,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }
 
   try {
-    const trends = await getTrendArticles();
+    const trends = await getActiveTrendArticles();
     trendRoutes = trends.map((t) => ({
       url: `${SITE_URL}/trend/${t.slug}`,
       lastModified: new Date(t.updated_at || t.created_at),
@@ -70,6 +72,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     /* DB unavailable */
   }
 
+  try {
+    const tests = await getFunTests();
+    testRoutes = tests.map((t) => ({
+      url: `${SITE_URL}/eglenceli-testler/${t.id}`,
+      lastModified: new Date(),
+      changeFrequency: "weekly" as const,
+      priority: 0.6,
+    }));
+  } catch {
+    /* DB unavailable */
+  }
+
   burcRoutes = Object.values(SIGN_SLUGS).map((slug) => ({
     url: `${SITE_URL}/burclar/${slug}`,
     lastModified: new Date(),
@@ -83,5 +97,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...trendRoutes,
     ...duyuruRoutes,
     ...burcRoutes,
+    ...testRoutes,
   ];
 }

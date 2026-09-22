@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import type { Metadata } from "next";
 import { getAllAnnouncements } from "@/lib/public-queries";
 import AdSlot from "@/components/ads/AdSlot";
 
@@ -16,6 +17,12 @@ const TYPE_LABEL: Record<string, string> = {
 };
 
 export const dynamic = "force-dynamic";
+
+export const metadata: Metadata = {
+  title: "Duyurular - Marifetli Kedi",
+  description: "Gökyüzünden haberler ve kozmik rehberlik duyuruları.",
+  alternates: { canonical: "/duyurular" },
+};
 
 export default async function AnnouncementsPage() {
   const items = await getAllAnnouncements();

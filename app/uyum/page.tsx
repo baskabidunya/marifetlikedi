@@ -7,6 +7,7 @@ import Disclaimer from "@/components/layout/Disclaimer";
 export const metadata: Metadata = {
   title: "Uyum Hesapla - Marifetli Kedi",
   description: "İki doğum haritasını karşılaştırarak aşk ve uyum analizini keşfedin.",
+  alternates: { canonical: "/uyum" },
 };
 
 export default function UyumPage() {

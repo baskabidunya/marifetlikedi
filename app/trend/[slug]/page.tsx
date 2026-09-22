@@ -9,7 +9,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const article = await getTrendArticleBySlug(slug);
   if (!article) return { title: "Trend İçerikler - Marifetli Kedi" };
-  return { title: `${article.title} - Marifetli Kedi`, description: article.excerpt };
+  return {
+    title: `${article.title} - Marifetli Kedi`,
+    description: article.excerpt,
+    alternates: { canonical: `/trend/${slug}` },
+  };
 }
 
 export default async function TrendDetailPage({ params }: { params: Promise<{ slug: string }> }) {

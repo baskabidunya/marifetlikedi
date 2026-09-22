@@ -37,7 +37,11 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
   const { id } = await params;
   const a = await getAnnouncementById(id);
   if (!a) return { title: "Duyuru - Marifetli Kedi" };
-  return { title: `${a.title} - Marifetli Kedi`, description: a.message };
+  return {
+    title: `${a.title} - Marifetli Kedi`,
+    description: a.message,
+    alternates: { canonical: `/duyurular/${id}` },
+  };
 }
 
 export default async function AnnouncementDetailPage({

@@ -18,6 +18,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${test.title} - Eğlenceli Testler - Marifetli Kedi`,
     description: test.description,
+    alternates: { canonical: `/eglenceli-testler/${id}` },
   };
 }
 

@@ -7,6 +7,10 @@ export default function robots(): MetadataRoute.Robots {
         userAgent: "*",
         allow: "/",
       },
+      {
+        userAgent: "*",
+        disallow: ["/admin", "/profil", "/giris", "/kayit", "/sifre-yenile", "/sifremi-unuttum"],
+      },
     ],
     sitemap: "https://www.marifetlikedi.com/sitemap.xml",
   };
