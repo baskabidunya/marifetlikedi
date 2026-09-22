@@ -4,7 +4,7 @@ import { getPageBySlug } from "@/lib/admin";
 import { renderMarkdown } from "@/lib/markdown";
 import AdSlot from "@/components/ads/AdSlot";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 300;
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;

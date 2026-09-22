@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/eglenceli-testler" },
 };
 
-export const dynamic = "force-dynamic";
+export const revalidate = 300;
 
 export default async function EglenceliTestlerPage() {
   const tests = await getFunTests();

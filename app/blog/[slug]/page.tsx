@@ -6,7 +6,7 @@ import { renderMarkdown, extractFaqItems, extractTocItems } from "@/lib/markdown
 import { getRelatedPosts } from "@/lib/blog-public";
 import AdSlot from "@/components/ads/AdSlot";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 300;
 
 const AUTHOR = {
   name: "Başka bir Dünya Astroloji Ekibi",

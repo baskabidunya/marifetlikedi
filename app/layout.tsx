@@ -23,8 +23,6 @@ const inter = Inter({
   display: "swap",
 });
 
-export const dynamic = "force-dynamic";
-
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
