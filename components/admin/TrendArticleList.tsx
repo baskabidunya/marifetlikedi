@@ -4,6 +4,7 @@ import { useState, Fragment } from "react";
 import { saveTrendArticle, deleteTrendArticle } from "@/lib/admin";
 import ConfirmButton from "@/components/admin/ConfirmButton";
 import RichTextEditor from "@/components/admin/RichTextEditor";
+import CoverImageField from "@/components/admin/CoverImageField";
 
 const TAG_COLORS = [
   { value: "text-tertiary", label: "Altın (Tertiary)" },
@@ -113,9 +114,7 @@ export default function TrendArticleList({ articles }: { articles: Article[] }) 
                             </select>
                           </div>
                           <div className="md:col-span-2">
-                            <label className="block text-caption text-outline mb-1">Kapak Görseli URL (public/images/trend/ altına indirilmiş olmalı)</label>
-                            <input name="cover_image" defaultValue={c.cover_image || ""} placeholder="/images/trend/boga-erkegi.jpg"
-                              className="w-full bg-surface-container border border-white/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all" />
+                            <CoverImageField name="cover_image" defaultValue={c.cover_image || ""} folder="trend" />
                           </div>
                           <div>
                             <label className="block text-caption text-outline mb-1">Sıra</label>
