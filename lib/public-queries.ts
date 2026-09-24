@@ -76,7 +76,7 @@ export async function getPublicTarotCards() {
 
 export async function getActiveTrendArticles() {
   const supabase = await createClient();
-  const { data } = await supabase.from("trend_articles").select("*").eq("active", true).order("sort_order");
+  const { data } = await supabase.from("trend_articles").select("*").eq("active", true).order("created_at", { ascending: false });
   return data || [];
 }
 
@@ -94,7 +94,7 @@ export async function searchTrendArticles(query: string) {
     .select("*")
     .eq("active", true)
     .or(`title.ilike.${sanitized},summary.ilike.${sanitized},content.ilike.${sanitized}`)
-    .order("sort_order")
+    .order("created_at", { ascending: false })
     .limit(20);
   return data || [];
 }

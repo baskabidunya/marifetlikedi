@@ -698,7 +698,7 @@ function slugifyTrend(input: string): string {
 export async function getTrendArticles() {
   await requireAdmin();
   const supabase = await createClient();
-  const { data } = await supabase.from("trend_articles").select("*").order("sort_order");
+  const { data } = await supabase.from("trend_articles").select("*").order("created_at", { ascending: false });
   return data || [];
 }
 
@@ -713,14 +713,17 @@ export async function saveTrendArticle(formData: FormData) {
   const excerpt = formData.get("excerpt") as string || "";
   const content = formData.get("content") as string || "";
   const cover_image = formData.get("cover_image") as string || "";
-  const sort_order = parseInt(formData.get("sort_order") as string) || 0;
   const active = formData.get("active") === "true";
+  const hasSortOrder = formData.get("sort_order") !== null;
+  const sort_order = parseInt(formData.get("sort_order") as string) || 0;
 
   if (id) {
-    const { error } = await supabase.from("trend_articles").update({
-      title, slug, tag, tag_color, excerpt, content, cover_image, sort_order, active,
+    const update: Record<string, unknown> = {
+      title, slug, tag, tag_color, excerpt, content, cover_image, active,
       updated_at: new Date().toISOString(),
-    }).eq("id", id);
+    };
+    if (hasSortOrder) update.sort_order = sort_order;
+    const { error } = await supabase.from("trend_articles").update(update).eq("id", id);
     if (error) throw new Error(error.message);
   } else {
     const { error } = await supabase.from("trend_articles").insert({

@@ -117,11 +117,6 @@ export default function TrendArticleList({ articles }: { articles: Article[] }) 
                             <CoverImageField name="cover_image" defaultValue={c.cover_image || ""} folder="trend" />
                           </div>
                           <div>
-                            <label className="block text-caption text-outline mb-1">Sıra</label>
-                            <input name="sort_order" defaultValue={c.sort_order} type="number"
-                              className="w-full bg-surface-container border border-white/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all" />
-                          </div>
-                          <div>
                             <label className="block text-caption text-outline mb-1">Durum</label>
                             <select name="active" defaultValue={c.active ? "true" : "false"}
                               className="w-full bg-surface-container border border-white/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all">
