@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { saveTrendArticle } from "@/lib/admin";
+import { slugify } from "@/lib/slugify";
 import RichTextEditor from "@/components/admin/RichTextEditor";
 import AIGenerateButton from "@/components/admin/AIGenerateButton";
 
@@ -14,6 +15,7 @@ const TAG_COLORS = [
 export default function TrendForm() {
   const [title, setTitle] = useState("");
   const [slug, setSlug] = useState("");
+  const [slugTouched, setSlugTouched] = useState(false);
   const [tag, setTag] = useState("");
   const [tagColor, setTagColor] = useState("text-tertiary");
   const [excerpt, setExcerpt] = useState("");
@@ -23,7 +25,7 @@ export default function TrendForm() {
   function handleAI(data: { title: string; excerpt?: string; content?: string }) {
     if (data.title) {
       setTitle(data.title);
-      setSlug(data.title.toLowerCase().replace(/[^a-z0-9ğüşıöç\s-]/g, "").replace(/\s+/g, "-").slice(0, 80));
+      if (!slugTouched) setSlug(slugify(data.title));
     }
     if (data.excerpt) setExcerpt(data.excerpt);
     if (data.content) setContent(data.content);
@@ -49,13 +51,18 @@ export default function TrendForm() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
           <div>
             <label className="block text-caption text-outline mb-1">Başlık</label>
-            <input name="title" required placeholder="Yazı başlığı" value={title} onChange={(e) => setTitle(e.target.value)}
+            <input name="title" required placeholder="Yazı başlığı" value={title}
+              onChange={(e) => {
+                setTitle(e.target.value);
+                if (!slugTouched) setSlug(slugify(e.target.value));
+              }}
               className="w-full bg-surface-container border border-white/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all" />
           </div>
           <div>
             <label className="block text-caption text-outline mb-1">Slug</label>
-            <input name="slug" placeholder="otomatik-uretilir" value={slug} onChange={(e) => setSlug(e.target.value)}
-              className="w-full bg-surface-container border border-white/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all" />
+            <input name="slug" placeholder="otomatik-uretilir" value={slug}
+              onChange={(e) => { setSlugTouched(true); setSlug(e.target.value); }}
+              className="w-full bg-surface-container border border-white/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all font-mono text-xs" />
           </div>
           <div>
             <label className="block text-caption text-outline mb-1">Kategori / Etiket</label>

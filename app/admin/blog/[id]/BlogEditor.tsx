@@ -6,6 +6,7 @@ import { getActiveBlogCategories } from "@/lib/admin";
 import { getBlogTags } from "@/lib/admin";
 import ImageUpload from "@/components/admin/ImageUpload";
 import RichTextEditor from "@/components/admin/RichTextEditor";
+import { slugify } from "@/lib/slugify";
 
 interface BlogValues {
   id: string; title: string; slug: string; excerpt: string; content: string;
@@ -20,6 +21,8 @@ export default function BlogEditor({ defaultValues }: { defaultValues: BlogValue
   const [saving, setSaving] = useState(false);
   const [title, setTitle] = useState(defaultValues.title);
   const [slug, setSlug] = useState(defaultValues.slug);
+  const [slugTouched, setSlugTouched] = useState(false);
+  const isNew = !defaultValues.id;
   const [categories, setCategories] = useState<Category[]>([]);
   const [tags, setTags] = useState<Tag[]>([]);
   const [selectedTags, setSelectedTags] = useState<string[]>(defaultValues.tags || []);
@@ -29,15 +32,6 @@ export default function BlogEditor({ defaultValues }: { defaultValues: BlogValue
     getActiveBlogCategories().then(setCategories);
     getBlogTags().then(setTags);
   }, []);
-
-  function generateSlug(val: string) {
-    return val.toLowerCase()
-      .replace(/[^a-z0-9çğıöşü\s-]/g, "")
-      .replace(/\s+/g, "-")
-      .replace(/-+/g, "-")
-      .replace(/^[-]+|[-]+$/g, "")
-      .substring(0, 100);
-  }
 
   function toggleTag(tagId: string) {
     setSelectedTags(prev =>
@@ -65,13 +59,18 @@ export default function BlogEditor({ defaultValues }: { defaultValues: BlogValue
       <div className="glass-card p-6 md:p-8 rounded-3xl space-y-5">
         <div>
           <label className="block text-label-md text-on-surface-variant mb-2">Başlık</label>
-          <input name="title" value={title} onChange={e => { setTitle(e.target.value); setSlug(generateSlug(e.target.value)); }}
+          <input name="title" value={title}
+            onChange={e => {
+              setTitle(e.target.value);
+              if (isNew && !slugTouched) setSlug(slugify(e.target.value));
+            }}
             className="w-full bg-surface-container border border-white/10 rounded-2xl px-5 py-3.5 text-body-md text-on-surface focus:border-primary transition-all" />
         </div>
 
         <div>
           <label className="block text-label-md text-on-surface-variant mb-2">Slug (URL)</label>
-          <input name="slug" value={slug} onChange={e => setSlug(e.target.value)}
+          <input name="slug" value={slug}
+            onChange={e => { setSlugTouched(true); setSlug(e.target.value); }}
             className="w-full bg-surface-container border border-white/10 rounded-2xl px-5 py-3.5 text-body-md text-on-surface focus:border-primary transition-all font-mono" />
           <p className="text-caption text-outline mt-1">/{slug}</p>
         </div>

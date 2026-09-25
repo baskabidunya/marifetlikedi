@@ -1,6 +1,7 @@
 "use server";
 
 import { createClient } from "@/lib/supabase/server";
+import { slugify } from "@/lib/slugify";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
@@ -31,7 +32,7 @@ export async function saveFunTest(formData: FormData) {
   const supabase = await createClient();
 
   const id = formData.get("id") as string;
-  const slug = (formData.get("slug") as string).trim();
+  const slug = (formData.get("slug") as string).trim() || slugify((formData.get("title") as string) || "");
   const title = (formData.get("title") as string).trim();
   const description = (formData.get("description") as string).trim();
   const icon = (formData.get("icon") as string).trim() || "📝";

@@ -1,5 +1,6 @@
 import { getBlogCategories, saveBlogCategory, deleteBlogCategory } from "@/lib/admin";
 import ConfirmButton from "@/components/admin/ConfirmButton";
+import AutoSlugInput from "@/components/admin/AutoSlugInput";
 
 export default async function AdminBlogCategoriesPage() {
   const categories = await getBlogCategories();
@@ -22,8 +23,7 @@ export default async function AdminBlogCategoriesPage() {
           </div>
           <div>
             <label className="block text-caption text-outline mb-1">Slug</label>
-            <input name="slug" required placeholder="kategori-slug"
-              className="w-full bg-surface-container border border-white/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all" />
+            <AutoSlugInput source="name" placeholder="kategori-slug" />
           </div>
           <div>
             <label className="block text-caption text-outline mb-1">Açıklama</label>

@@ -1,5 +1,6 @@
 import { getBlogTags, saveBlogTag, deleteBlogTag } from "@/lib/admin";
 import ConfirmButton from "@/components/admin/ConfirmButton";
+import AutoSlugInput from "@/components/admin/AutoSlugInput";
 
 export default async function AdminBlogTagsPage() {
   const tags = await getBlogTags();
@@ -21,8 +22,7 @@ export default async function AdminBlogTagsPage() {
           </div>
           <div>
             <label className="block text-caption text-outline mb-1">Slug</label>
-            <input name="slug" required placeholder="etiket-slug"
-              className="w-full bg-surface-container border border-white/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all" />
+            <AutoSlugInput source="name" placeholder="etiket-slug" />
           </div>
           <div className="flex items-end">
             <button type="submit"

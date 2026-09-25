@@ -1,4 +1,5 @@
 import { getBlogPost } from "@/lib/admin";
+import { slugify } from "@/lib/slugify";
 import BlogEditor from "./BlogEditor";
 
 export default async function AdminBlogEditPage({
@@ -25,11 +26,7 @@ export default async function AdminBlogEditPage({
   } : {
     id: "",
     title: aiTitle,
-    slug: aiTitle
-      .toLowerCase()
-      .replace(/[^a-z0-9ğüşıöç\s-]/g, "")
-      .replace(/\s+/g, "-")
-      .slice(0, 80),
+    slug: slugify(aiTitle),
     excerpt: aiExcerpt,
     content: aiContent,
     cover_image: aiImage,

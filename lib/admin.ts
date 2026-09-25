@@ -2,6 +2,7 @@
 
 import { createClient } from "@/lib/supabase/server";
 import { getSunSignFromDate } from "@/lib/astro-utils";
+import { slugify } from "@/lib/slugify";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
@@ -186,7 +187,7 @@ export async function saveBlogPost(formData: FormData) {
   const supabase = await createClient();
   const id = formData.get("id") as string;
   const title = formData.get("title") as string;
-  const slug = formData.get("slug") as string;
+  const slug = (formData.get("slug") as string) || slugify(title || "");
   const excerpt = formData.get("excerpt") as string;
   const content = formData.get("content") as string;
   const cover_image = formData.get("cover_image") as string;
@@ -355,7 +356,7 @@ export async function savePage(formData: FormData) {
   const supabase = await createClient();
   const id = formData.get("id") as string;
   const title = formData.get("title") as string;
-  const slug = formData.get("slug") as string;
+  const slug = (formData.get("slug") as string) || slugify(title || "");
   const content = formData.get("content") as string;
   const meta_title = formData.get("meta_title") as string || "";
   const meta_description = formData.get("meta_description") as string || "";
@@ -518,7 +519,7 @@ export async function saveBlogCategory(formData: FormData) {
   const supabase = await createClient();
   const id = formData.get("id") as string;
   const name = formData.get("name") as string;
-  const slug = formData.get("slug") as string;
+  const slug = (formData.get("slug") as string) || slugify(name || "");
   const description = formData.get("description") as string || "";
   const sort_order = parseInt(formData.get("sort_order") as string) || 0;
   const active = formData.get("active") === "true";
@@ -558,7 +559,7 @@ export async function saveBlogTag(formData: FormData) {
   const supabase = await createClient();
   const id = formData.get("id") as string;
   const name = formData.get("name") as string;
-  const slug = formData.get("slug") as string;
+  const slug = (formData.get("slug") as string) || slugify(name || "");
 
   if (id) {
     const { error } = await supabase.from("blog_tags").update({ name, slug }).eq("id", id);
@@ -683,16 +684,7 @@ export async function deleteTarotCard(formData: FormData) {
 // ── Trend Articles ──
 
 function slugifyTrend(input: string): string {
-  const map: Record<string, string> = { ı: "i", İ: "i", ş: "s", Ş: "s", ğ: "g", Ğ: "g", ü: "u", Ü: "u", ö: "o", Ö: "o", ç: "c", Ç: "c" };
-  return input
-    .split("")
-    .map((c) => map[c] ?? c)
-    .join("")
-    .toLowerCase()
-    .trim()
-    .replace(/[^a-z0-9\s-]/g, "")
-    .replace(/\s+/g, "-")
-    .replace(/-+/g, "-");
+  return slugify(input);
 }
 
 export async function getTrendArticles() {

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { saveFunTest, deleteFunTest } from "@/lib/admin-fun-tests";
 import ConfirmButton from "@/components/admin/ConfirmButton";
+import AutoSlugInput from "@/components/admin/AutoSlugInput";
 
 interface DbTest {
   id: string;
@@ -217,10 +218,7 @@ function TestFormModal({ test, onClose }: { test: DbTest | null; onClose: () => 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div>
               <label className="block text-caption text-outline mb-1">Slug</label>
-              <input
-                name="slug" defaultValue={test?.slug || ""} required
-                className="w-full bg-surface-container border border-white/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all font-mono text-xs"
-              />
+              <AutoSlugInput defaultValue={test?.slug || ""} />
             </div>
             <div>
               <label className="block text-caption text-outline mb-1">Icon (emoji)</label>
