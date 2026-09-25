@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 const CONSENT_KEY = "marifetlikedi_cookie_consent";
 const ADSENSE_URL =
@@ -11,7 +11,7 @@ const CONSENT_DEFAULTS = {
   ad_storage: "denied",
   ad_user_data: "denied",
   ad_personalization: "denied",
-  analytics_storage: "denied",
+  analytics_storage: "granted",
 } as const;
 
 type GtagConsent = {
@@ -72,34 +72,27 @@ declare global {
   }
 }
 
-export default function ConsentScripts() {
-  const [done, setDone] = useState(false);
+function grantAds() {
+  gtag("consent", "update", {
+    ad_storage: "granted",
+    ad_user_data: "granted",
+    ad_personalization: "granted",
+  });
+}
 
+export default function ConsentScripts() {
   useEffect(() => {
     initDataLayer();
+    loadScript(ADSENSE_URL);
+    initGA();
 
-    function load() {
-      const stored = localStorage.getItem(CONSENT_KEY);
-      if (stored !== "accepted" || done) return;
-      setDone(true);
-      gtag("consent", "update", {
-        ad_storage: "granted",
-        ad_user_data: "granted",
-        ad_personalization: "granted",
-        analytics_storage: "granted",
-      });
-      loadScript(ADSENSE_URL);
-      initGA();
+    if (localStorage.getItem(CONSENT_KEY) === "accepted") {
+      grantAds();
     }
 
-    const stored = localStorage.getItem(CONSENT_KEY);
-    if (stored === "accepted") {
-      load();
-    }
-
-    window.addEventListener("consent-accepted", load, { once: true });
-    return () => window.removeEventListener("consent-accepted", load);
-  }, [done]);
+    window.addEventListener("consent-accepted", grantAds);
+    return () => window.removeEventListener("consent-accepted", grantAds);
+  }, []);
 
   return null;
 }
