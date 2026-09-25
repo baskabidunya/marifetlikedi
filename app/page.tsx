@@ -24,6 +24,9 @@ export default async function Home({
 }) {
   const sp = await searchParams;
   const now = new Date();
+  const dayNumber = Math.floor(
+    Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()) / 86400000
+  );
   const monthParam = sp.km !== undefined ? Number(sp.km) : NaN;
   const yearParam = sp.ky !== undefined ? Number(sp.ky) : NaN;
   const month =
@@ -44,7 +47,7 @@ export default async function Home({
       />
       <DailyEnergy />
       <ZodiacWheel />
-      <DailyMessage />
+      <DailyMessage seed={dayNumber} />
       <CelestialCalendar year={year} month={month} />
       <TrendingContent />
       <RelationshipLab />

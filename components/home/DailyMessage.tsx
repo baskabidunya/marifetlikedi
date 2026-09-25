@@ -50,9 +50,31 @@ function pickRandom(count: number, exclude: number[] = []): number[] {
   return picked;
 }
 
-export default function DailyMessage() {
+function mulberry32(seed: number) {
+  let a = seed | 0;
+  return function () {
+    a = (a + 0x6d2b79f5) | 0;
+    let t = Math.imul(a ^ (a >>> 15), 1 | a);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+function pickSeeded(count: number, seed: number): number[] {
+  const rng = mulberry32(seed);
+  const available = cosmicMessages.map((_, i) => i);
+  const picked: number[] = [];
+  for (let i = 0; i < count && available.length > 0; i++) {
+    const idx = Math.floor(rng() * available.length);
+    picked.push(available[idx]);
+    available.splice(idx, 1);
+  }
+  return picked;
+}
+
+export default function DailyMessage({ seed = 0 }: { seed?: number }) {
   const [revealed, setRevealed] = useState<number | null>(null);
-  const [selectedIndices, setSelectedIndices] = useState<number[]>(() => pickRandom(3));
+  const [selectedIndices, setSelectedIndices] = useState<number[]>(() => pickSeeded(3, seed));
 
   const handleCardClick = useCallback((cardIndex: number) => {
     if (revealed !== null) return;
