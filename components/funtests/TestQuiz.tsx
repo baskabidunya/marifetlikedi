@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import type { FunTest } from "@/lib/fun-tests";
 import { computeMaxScore } from "@/lib/fun-tests";
 
@@ -97,12 +98,20 @@ export default function TestQuiz({ test }: { test: FunTest }) {
             Puan: {totalScore} / {computeMaxScore(test)}
           </p>
 
-          <button
-            onClick={handleRestart}
-            className="inline-flex items-center gap-2 bg-tertiary text-on-tertiary px-6 py-3 rounded-xl font-semibold hover:bg-tertiary/90 transition-colors"
-          >
-            Testi Tekrarla
-          </button>
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            <button
+              onClick={handleRestart}
+              className="inline-flex items-center gap-2 bg-tertiary text-on-tertiary px-6 py-3 rounded-xl font-semibold hover:bg-tertiary/90 transition-colors"
+            >
+              Testi Tekrarla
+            </button>
+            <Link
+              href="/eglenceli-testler"
+              className="inline-flex items-center gap-2 bg-surface-dim/60 border border-outline/20 text-on-surface px-6 py-3 rounded-xl font-semibold hover:bg-surface-dim hover:border-tertiary/40 transition-colors"
+            >
+              Tüm Testler
+            </Link>
+          </div>
         </div>
       </div>
     );
