@@ -5,7 +5,10 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build --webpack",
-    "start": "next start"
+    "start": "next start",
+    "turkish:report": "node scripts/check-turkish.mjs --write-report",
+    "turkish:sql": "node scripts/check-turkish.mjs --sql",
+    "turkish:apply": "node scripts/check-turkish.mjs --write-report --apply --yes"
   },
   "engines": {
     "node": "22.x"

@@ -2,7 +2,6 @@ import RegisterForm from "@/components/auth/RegisterForm";
 import SocialLogin from "@/components/auth/SocialLogin";
 import StarField from "@/components/ui/StarField";
 import Link from "next/link";
-import AdSlot from "@/components/ads/AdSlot";
 
 export default function RegisterPage() {
   return (
@@ -69,11 +68,6 @@ export default function RegisterPage() {
           MARİFETLİ KEDİ © 2026 • Kozmik Rehberin
         </div>
       </section>
-
-      <AdSlot
-        name="static_page"
-        className="absolute bottom-16 left-1/2 -translate-x-1/2 w-[300px]"
-      />
     </main>
   );
 }

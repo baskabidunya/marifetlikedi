@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import ForgotPasswordForm from "@/components/auth/ForgotPasswordForm";
 import StarField from "@/components/ui/StarField";
 import Link from "next/link";
-import AdSlot from "@/components/ads/AdSlot";
 
 export const metadata: Metadata = {
   title: "Şifremi Unuttum - Marifetli Kedi",
@@ -36,11 +35,6 @@ export default function ForgotPasswordPage() {
           </p>
         </div>
       </div>
-
-      <AdSlot
-        name="static_page"
-        className="my-12 max-w-md mx-auto"
-      />
     </main>
   );
 }

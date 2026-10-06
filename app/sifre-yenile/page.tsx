@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import ResetPasswordForm from "@/components/auth/ResetPasswordForm";
 import StarField from "@/components/ui/StarField";
-import AdSlot from "@/components/ads/AdSlot";
 
 export const metadata: Metadata = {
   title: "Şifre Yenile - Marifetli Kedi",
@@ -28,11 +27,6 @@ export default function ResetPasswordPage() {
 
         <ResetPasswordForm />
       </div>
-
-      <AdSlot
-        name="static_page"
-        className="my-12 max-w-md mx-auto"
-      />
     </main>
   );
 }
