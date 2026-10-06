@@ -63,14 +63,14 @@ export default async function SearchPage({ searchParams }: Props) {
               <Link
                 key={post.id}
                 href={`/blog/${post.slug}`}
-                className="block bg-surface-container/50 rounded-xl p-4 border border-white/5 hover:bg-surface-container-high transition-colors"
+                className="block bg-surface-container/50 rounded-xl p-4 border border-on-surface/5 hover:bg-surface-container-high transition-colors"
               >
                 <h3 className="text-body-md font-label-md text-on-surface mb-1">{post.title}</h3>
                 {post.excerpt && (
                   <p className="text-caption text-outline line-clamp-2">{post.excerpt}</p>
                 )}
                 <div className="flex items-center gap-2 mt-2">
-                  <span className="text-caption text-outline bg-white/5 px-2 py-0.5 rounded">{post.category}</span>
+                  <span className="text-caption text-outline bg-on-surface/5 px-2 py-0.5 rounded">{post.category}</span>
                   <span className="text-caption text-outline">{new Date(post.created_at).toLocaleDateString("tr-TR")}</span>
                 </div>
               </Link>
@@ -90,7 +90,7 @@ export default async function SearchPage({ searchParams }: Props) {
               <Link
                 key={article.id}
                 href={`/trend/${article.slug}`}
-                className="block bg-surface-container/50 rounded-xl p-4 border border-white/5 hover:bg-surface-container-high transition-colors"
+                className="block bg-surface-container/50 rounded-xl p-4 border border-on-surface/5 hover:bg-surface-container-high transition-colors"
               >
                 <h3 className="text-body-md font-label-md text-on-surface mb-1">{article.title}</h3>
                 {article.summary && (

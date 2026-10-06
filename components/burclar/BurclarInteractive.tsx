@@ -104,10 +104,10 @@ export default function BurclarInteractive() {
         </div>
         <div className="absolute inset-0"
           style={{ backgroundImage: "radial-gradient(circle at 70% 30%, rgba(208,188,255,0.06), transparent 50%)" }} />
-        <button onClick={prevSlide} className="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/5 backdrop-blur-md border border-white/10 flex items-center justify-center hover:bg-white/10 transition-all text-on-surface-variant">
+        <button onClick={prevSlide} className="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-on-surface/5 backdrop-blur-md border border-on-surface/10 flex items-center justify-center hover:bg-on-surface/10 transition-all text-on-surface-variant">
           <span className="material-symbols-outlined text-lg">chevron_left</span>
         </button>
-        <button onClick={nextSlide} className="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/5 backdrop-blur-md border border-white/10 flex items-center justify-center hover:bg-white/10 transition-all text-on-surface-variant">
+        <button onClick={nextSlide} className="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-on-surface/5 backdrop-blur-md border border-on-surface/10 flex items-center justify-center hover:bg-on-surface/10 transition-all text-on-surface-variant">
           <span className="material-symbols-outlined text-lg">chevron_right</span>
         </button>
         <div className="relative z-10 p-8 md:p-12 w-full">
@@ -122,7 +122,7 @@ export default function BurclarInteractive() {
             {slides.map((_, i) => (
               <button key={i} onClick={() => setSlideIdx(i)}
                 className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                  i === slideIdx ? "bg-tertiary w-6" : "bg-white/20 hover:bg-white/40"
+                  i === slideIdx ? "bg-tertiary w-6" : "bg-on-surface/20 hover:bg-on-surface/40"
                 }`} />
             ))}
           </div>
@@ -152,7 +152,7 @@ export default function BurclarInteractive() {
                   <label className="font-label-md text-sm text-on-surface-variant mb-2 block">Birinci Burç</label>
                   <div className="relative">
                     <select value={sign1} onChange={e => setSign1(e.target.value as ZodiacSign)}
-                      className="w-full appearance-none bg-surface-container border border-white/10 rounded-2xl px-5 py-4 text-on-surface font-label-md focus:ring-1 focus:ring-primary focus:border-primary transition-all cursor-pointer">
+                      className="w-full appearance-none bg-surface-container border border-on-surface/10 rounded-2xl px-5 py-4 text-on-surface font-label-md focus:ring-1 focus:ring-primary focus:border-primary transition-all cursor-pointer">
                       {ZODIAC_SIGNS.map(s => (
                         <option key={s} value={s}>{ZODIAC_DATA[s].emoji} {s} — {ZODIAC_DATA[s].element}</option>
                       ))}
@@ -164,7 +164,7 @@ export default function BurclarInteractive() {
                   <label className="font-label-md text-sm text-on-surface-variant mb-2 block">İkinci Burç</label>
                   <div className="relative">
                     <select value={sign2} onChange={e => setSign2(e.target.value as ZodiacSign)}
-                      className="w-full appearance-none bg-surface-container border border-white/10 rounded-2xl px-5 py-4 text-on-surface font-label-md focus:ring-1 focus:ring-primary focus:border-primary transition-all cursor-pointer">
+                      className="w-full appearance-none bg-surface-container border border-on-surface/10 rounded-2xl px-5 py-4 text-on-surface font-label-md focus:ring-1 focus:ring-primary focus:border-primary transition-all cursor-pointer">
                       {ZODIAC_SIGNS.map(s => (
                         <option key={s} value={s}>{ZODIAC_DATA[s].emoji} {s} — {ZODIAC_DATA[s].element}</option>
                       ))}
@@ -176,7 +176,7 @@ export default function BurclarInteractive() {
                 <div className="flex flex-col items-center py-4">
                   <div className="relative w-28 h-28 md:w-32 md:h-32">
                     <svg className="w-full h-full -rotate-90" viewBox="0 0 120 120">
-                      <circle cx="60" cy="60" r="52" fill="none" stroke="rgba(255,255,255,0.05)" strokeWidth="6" />
+                      <circle cx="60" cy="60" r="52" fill="none" stroke="currentColor" strokeOpacity="0.12" strokeWidth="6" />
                       <circle cx="60" cy="60" r="52" fill="none" stroke="url(#compatGrad)" strokeWidth="6"
                         strokeDasharray={`${(compat.score / 100) * 326.7} 326.7`} strokeLinecap="round" />
                       <defs>
@@ -194,7 +194,7 @@ export default function BurclarInteractive() {
                 </div>
               </div>
 
-              <div className="bg-surface-container/50 rounded-2xl border border-white/5 p-6 flex flex-col justify-between min-h-[280px]">
+              <div className="bg-surface-container/50 rounded-2xl border border-on-surface/5 p-6 flex flex-col justify-between min-h-[280px]">
                 <div>
                   <div className="flex items-center gap-4 mb-6">
                     <div className="flex items-center gap-3">
@@ -234,13 +234,13 @@ export default function BurclarInteractive() {
                     </div>
                   </div>
                   <div className="mt-6">
-                    <div className="h-2 rounded-full bg-white/5 overflow-hidden">
+                    <div className="h-2 rounded-full bg-on-surface/5 overflow-hidden">
                       <div className="h-full rounded-full bg-gradient-to-r from-primary to-secondary transition-all duration-500"
                         style={{ width: `${compat.score}%` }} />
                     </div>
                   </div>
                 </div>
-                <div className="mt-6 pt-4 border-t border-white/5">
+                <div className="mt-6 pt-4 border-t border-on-surface/5">
                   <p className="text-body-md text-on-surface-variant leading-relaxed">{compat.note}</p>
                 </div>
               </div>

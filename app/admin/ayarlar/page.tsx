@@ -61,10 +61,10 @@ export default async function AdminAyarlarPage() {
                   <p className="text-body-md text-on-surface-variant">{meta.desc}</p>
                   {meta.type === "textarea" ? (
                     <textarea name="value" defaultValue={value} rows={3}
-                      className="w-full bg-surface-container border border-white/10 rounded-2xl p-4 text-body-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary transition-all resize-none" />
+                      className="w-full bg-surface-container border border-on-surface/10 rounded-2xl p-4 text-body-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary transition-all resize-none" />
                   ) : (
                     <input type={meta.type} name="value" defaultValue={value}
-                      className="w-full bg-surface-container border border-white/10 rounded-2xl px-5 py-3.5 text-body-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary transition-all" />
+                      className="w-full bg-surface-container border border-on-surface/10 rounded-2xl px-5 py-3.5 text-body-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary transition-all" />
                   )}
                 </div>
                 <button type="submit"

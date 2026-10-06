@@ -73,7 +73,7 @@ export default async function AnnouncementDetailPage({
         Tüm Duyurular
       </Link>
 
-      <article className="relative overflow-hidden rounded-3xl border border-white/10 glass-card">
+      <article className="relative overflow-hidden rounded-3xl border border-on-surface/10 glass-card">
         <div className={`h-1.5 w-full bg-gradient-to-r ${meta.accent}`} />
         <div className="p-8 md:p-12">
           <div className="flex items-center gap-3 mb-5 flex-wrap">
@@ -115,7 +115,7 @@ export default async function AnnouncementDetailPage({
                 <Link
                   key={a.id}
                   href={`/duyurular/${a.id}`}
-                  className="block glass-card rounded-2xl p-6 border-white/10 hover:border-primary/40 transition-all group no-underline"
+                  className="block glass-card rounded-2xl p-6 border-on-surface/10 hover:border-primary/40 transition-all group no-underline"
                 >
                   <div className="flex items-center gap-2 mb-2">
                     <span

@@ -5,7 +5,7 @@ export default function Newsletter() {
     <section className="py-section-gap px-container-padding-mobile md:px-container-padding-desktop max-w-5xl mx-auto text-center">
       <div className="glass p-8 md:p-12 rounded-[1.5rem] md:rounded-[3rem] inner-glow relative overflow-hidden">
         <div className="relative z-10 space-y-6">
-          <h2 className="font-sora text-headline-lg-mobile md:text-headline-lg text-white font-bold">
+          <h2 className="font-sora text-headline-lg-mobile md:text-headline-lg text-on-surface font-bold">
             Yıldızlardan Haber Al
           </h2>
           <p className="text-body-md text-on-surface-variant max-w-xl mx-auto">

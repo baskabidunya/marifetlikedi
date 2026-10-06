@@ -23,8 +23,8 @@ export default function RegisterPage() {
           <p className="text-lg text-on-surface-variant/80 max-w-md mx-auto">
             Kozmik rehberin Marifetli Kedi ile yıldızların dilini keşfet.
           </p>
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-white/5 rounded-full pointer-events-none" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[450px] h-[450px] border border-white/10 rounded-full pointer-events-none border-dashed animate-[spin_60s_linear_infinite]" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-on-surface/5 rounded-full pointer-events-none" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[450px] h-[450px] border border-on-surface/10 rounded-full pointer-events-none border-dashed animate-[spin_60s_linear_infinite]" />
         </div>
       </section>
 

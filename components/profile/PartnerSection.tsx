@@ -66,7 +66,7 @@ function PartnerForm({ partner, onDone }: { partner?: PartnerProfile | null; onD
           {pending ? "Kaydediliyor..." : label}
         </button>
         <button type="button" onClick={onDone}
-          className="px-6 py-3 glass text-white font-label-md rounded-full hover:bg-white/10 transition-all cursor-pointer">
+          className="px-6 py-3 glass text-on-surface font-label-md rounded-full hover:bg-on-surface/10 transition-all cursor-pointer">
           İptal
         </button>
       </div>
@@ -113,7 +113,7 @@ export default function PartnerSection({ hasBirthInfo }: { hasBirthInfo: boolean
         )}
 
         {showForm && (
-          <div className="mb-6 p-6 rounded-xl bg-white/[0.02] border border-white/10">
+          <div className="mb-6 p-6 rounded-xl bg-on-surface/[0.02] border border-on-surface/10">
             <h3 className="font-sora text-headline-sm text-on-background font-bold mb-4">Yeni Partner</h3>
             <PartnerForm onDone={() => { setShowForm(false); load(); }} />
           </div>
@@ -130,8 +130,8 @@ export default function PartnerSection({ hasBirthInfo }: { hasBirthInfo: boolean
         <div className="space-y-3">
           {partners.map(p => (
             <div key={p.id}>
-              <div className="flex items-start gap-4 p-5 rounded-xl bg-white/[0.02] border border-white/5 hover:bg-white/[0.04] transition-all">
-                <Link href={`/profil/uyum/${p.id}`} className="w-12 h-12 rounded-full bg-surface-variant flex items-center justify-center shrink-0 border border-white/5 no-underline hover:border-primary/40 transition-all">
+              <div className="flex items-start gap-4 p-5 rounded-xl bg-on-surface/[0.02] border border-on-surface/5 hover:bg-on-surface/[0.04] transition-all">
+                <Link href={`/profil/uyum/${p.id}`} className="w-12 h-12 rounded-full bg-surface-variant flex items-center justify-center shrink-0 border border-on-surface/5 no-underline hover:border-primary/40 transition-all">
                   <span className="material-symbols-outlined text-xl text-primary/80">{p.avatar || "auto_awesome"}</span>
                 </Link>
                 <div className="flex-1 min-w-0">
@@ -147,7 +147,7 @@ export default function PartnerSection({ hasBirthInfo }: { hasBirthInfo: boolean
                       <div className="flex items-center gap-1.5 text-caption text-on-surface-variant">
                         <span className="text-primary/80 material-symbols-outlined text-sm">star</span>
                         <span className="font-label-md text-outline">Temel</span>
-                        <div className="w-14 h-1 rounded-full bg-white/5 overflow-hidden flex">
+                        <div className="w-14 h-1 rounded-full bg-on-surface/5 overflow-hidden flex">
                           <div className="h-full bg-gradient-to-r from-primary to-secondary rounded-full transition-all" style={{ width: `${scores[p.id].temel}%` }} />
                         </div>
                         <span className="font-semibold tabular-nums text-on-surface-variant">{scores[p.id].temel}%</span>
@@ -155,7 +155,7 @@ export default function PartnerSection({ hasBirthInfo }: { hasBirthInfo: boolean
                       <div className="flex items-center gap-1.5 text-caption text-on-surface-variant">
                         <span>❤️</span>
                         <span className="font-label-md text-outline">Aşk</span>
-                        <div className="w-14 h-1 rounded-full bg-white/5 overflow-hidden flex">
+                        <div className="w-14 h-1 rounded-full bg-on-surface/5 overflow-hidden flex">
                           <div className="h-full bg-primary/60 rounded-full transition-all" style={{ width: `${(scores[p.id].ask / 10) * 100}%` }} />
                         </div>
                         <span className="font-semibold tabular-nums">{scores[p.id].ask}/10</span>
@@ -163,7 +163,7 @@ export default function PartnerSection({ hasBirthInfo }: { hasBirthInfo: boolean
                       <div className="flex items-center gap-1.5 text-caption text-on-surface-variant">
                         <span>💬</span>
                         <span className="font-label-md text-outline">İletişim</span>
-                        <div className="w-14 h-1 rounded-full bg-white/5 overflow-hidden flex">
+                        <div className="w-14 h-1 rounded-full bg-on-surface/5 overflow-hidden flex">
                           <div className="h-full bg-secondary/60 rounded-full transition-all" style={{ width: `${(scores[p.id].iletisim / 10) * 100}%` }} />
                         </div>
                         <span className="font-semibold tabular-nums">{scores[p.id].iletisim}/10</span>
@@ -171,7 +171,7 @@ export default function PartnerSection({ hasBirthInfo }: { hasBirthInfo: boolean
                       <div className="flex items-center gap-1.5 text-caption text-on-surface-variant">
                         <span>🔥</span>
                         <span className="font-label-md text-outline">Tutku</span>
-                        <div className="w-14 h-1 rounded-full bg-white/5 overflow-hidden flex">
+                        <div className="w-14 h-1 rounded-full bg-on-surface/5 overflow-hidden flex">
                           <div className="h-full bg-tertiary/60 rounded-full transition-all" style={{ width: `${(scores[p.id].tutku / 10) * 100}%` }} />
                         </div>
                         <span className="font-semibold tabular-nums">{scores[p.id].tutku}/10</span>
@@ -179,7 +179,7 @@ export default function PartnerSection({ hasBirthInfo }: { hasBirthInfo: boolean
                       <div className="flex items-center gap-1.5 text-caption text-on-surface-variant">
                         <span>🏡</span>
                         <span className="font-label-md text-outline">Vade</span>
-                        <div className="w-14 h-1 rounded-full bg-white/5 overflow-hidden flex">
+                        <div className="w-14 h-1 rounded-full bg-on-surface/5 overflow-hidden flex">
                           <div className="h-full bg-amber-400/60 rounded-full transition-all" style={{ width: `${(scores[p.id].uzunVade / 10) * 100}%` }} />
                         </div>
                         <span className="font-semibold tabular-nums">{scores[p.id].uzunVade}/10</span>
@@ -216,7 +216,7 @@ export default function PartnerSection({ hasBirthInfo }: { hasBirthInfo: boolean
                 </div>
               </div>
               {editing === p.id && (
-                <div className="mt-3 p-6 rounded-xl bg-white/[0.02] border border-white/10">
+                <div className="mt-3 p-6 rounded-xl bg-on-surface/[0.02] border border-on-surface/10">
                   <h3 className="font-sora text-headline-sm text-on-background font-bold mb-4">Partneri Düzenle</h3>
                   <PartnerForm partner={p} onDone={() => { setEditing(null); load(); }} />
                 </div>

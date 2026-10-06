@@ -16,7 +16,7 @@ export default function GizlilikPolitikasiPage() {
       description="Marifetli Kedi olarak kişisel verilerinizin gizliliğine önem veriyoruz. Bu sayfa, sitemizi kullanırken hangi verileri topladığımızı ve bu verileri nasıl kullandığımızı açıklar."
       slug="gizlilik-politikasi"
     >
-      <h2 className="font-sora text-headline-sm text-white">1. Topladığımız Bilgiler</h2>
+      <h2 className="font-sora text-headline-sm text-on-surface">1. Topladığımız Bilgiler</h2>
       <p>
         Sitemizi ziyaret ettiğinizde otomatik olarak bazı teknik veriler (IP adresi, tarayıcı
         türü, cihaz bilgisi, giriş sayfaları ve ziyaret süresi) standart günlük dosyaları ve
@@ -25,7 +25,7 @@ export default function GizlilikPolitikasiPage() {
         doğum tarihi, doğum yeri ve saati) yalnızca size hizmet sunmak amacıyla işlenir.
       </p>
 
-      <h2 className="font-sora text-headline-sm text-white">2. Çerezler (Cookies)</h2>
+      <h2 className="font-sora text-headline-sm text-on-surface">2. Çerezler (Cookies)</h2>
       <p>
         Marifetli Kedi, sitenin çalışması, tercihlerinizin hatırlanması ve içeriklerin
         kişiselleştirilmesi için çerezler kullanır. Çerezleri tarayıcı ayarlarınızdan
@@ -33,7 +33,7 @@ export default function GizlilikPolitikasiPage() {
         çalışmamasına yol açabilir.
       </p>
 
-      <h2 className="font-sora text-headline-sm text-white">3. Google AdSense ve Üçüncü Taraf Reklamlar</h2>
+      <h2 className="font-sora text-headline-sm text-on-surface">3. Google AdSense ve Üçüncü Taraf Reklamlar</h2>
       <p>
         Sitemiz, Google AdSense reklam ağı tarafından sağlanan reklamlar içerebilir. Google ve
         iş ortakları, size uygun reklamları göstermek için tarayıcınıza bir reklam çerezi
@@ -54,7 +54,7 @@ export default function GizlilikPolitikasiPage() {
         .
       </p>
 
-      <h2 className="font-sora text-headline-sm text-white">4. Verilerin Kullanımı</h2>
+      <h2 className="font-sora text-headline-sm text-on-surface">4. Verilerin Kullanımı</h2>
       <p>
         Topladığımız veriler; sitenin işleyişini sağlamak, içerik ve reklamları
         kişiselleştirmek, analiz etmek ve yasal yükümlülükleri yerine getirmek amacıyla
@@ -62,14 +62,14 @@ export default function GizlilikPolitikasiPage() {
         analiz hizmetleri kapsamında ve yasal sınırlar içinde aktarılabilir.
       </p>
 
-      <h2 className="font-sora text-headline-sm text-white">5. Veri Güvenliği</h2>
+      <h2 className="font-sora text-headline-sm text-on-surface">5. Veri Güvenliği</h2>
       <p>
         Kişisel verilerinizi korumak için endüstri standardı güvenlik önlemleri (HTTPS
         şifreleme, erişim kontrolü) uyguluyoruz. Ancak internet üzerinden hiçbir iletim
         yöntemi %100 güvenli değildir.
       </p>
 
-      <h2 className="font-sora text-headline-sm text-white">6. Haklarınız (KVKK)</h2>
+      <h2 className="font-sora text-headline-sm text-on-surface">6. Haklarınız (KVKK)</h2>
       <p>
         Kişisel verilerinizle ilgili olarak 6698 sayılı Kişisel Verilerin Korunması Kanunu
         kapsamında çeşitli haklara sahipsiniz. Detaylı bilgi için{" "}
@@ -79,7 +79,7 @@ export default function GizlilikPolitikasiPage() {
         sayfamızı inceleyebilirsiniz.
       </p>
 
-      <h2 className="font-sora text-headline-sm text-white">7. İletişim</h2>
+      <h2 className="font-sora text-headline-sm text-on-surface">7. İletişim</h2>
       <p>
         Gizlilik politikamızla ilgili sorularınız için{" "}
         <Link href="/iletisim" className="text-primary underline">

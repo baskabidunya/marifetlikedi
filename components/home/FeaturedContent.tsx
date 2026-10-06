@@ -9,7 +9,7 @@ export default async function FeaturedContent() {
     <section className="py-section-gap px-container-padding-mobile md:px-container-padding-desktop max-w-7xl mx-auto bg-surface-container-low/30 rounded-[3rem]">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-12 gap-4">
         <div className="space-y-2">
-          <h2 className="font-sora text-headline-lg-mobile md:text-headline-lg text-white font-bold">Gök Günlüğü</h2>
+          <h2 className="font-sora text-headline-lg-mobile md:text-headline-lg text-on-surface font-bold">Gök Günlüğü</h2>
           <p className="text-body-md text-on-surface-variant">
             Astroloji dünyasından en son haberler ve derinlemesine makaleler.
           </p>
@@ -39,7 +39,7 @@ export default async function FeaturedContent() {
                   {a.category}
                 </div>
               </div>
-              <h4 className="font-sora text-headline-md text-white group-hover:text-primary transition-colors font-semibold">
+              <h4 className="font-sora text-headline-md text-on-surface group-hover:text-primary transition-colors font-semibold">
                 {a.title}
               </h4>
               <p className="text-body-md text-on-surface-variant mt-2 line-clamp-2">

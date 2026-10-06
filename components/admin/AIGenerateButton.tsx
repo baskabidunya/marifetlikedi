@@ -73,8 +73,8 @@ export default function AIGenerateButton({ type, onGenerated }: Props) {
       {open && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center">
           <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setOpen(false)} />
-          <div className="relative bg-surface-container rounded-2xl border border-white/10 shadow-2xl w-full max-w-md mx-4">
-            <div className="border-b border-white/10 px-6 py-4 flex items-center justify-between rounded-t-2xl">
+          <div className="relative bg-surface-container rounded-2xl border border-on-surface/10 shadow-2xl w-full max-w-md mx-4">
+            <div className="border-b border-on-surface/10 px-6 py-4 flex items-center justify-between rounded-t-2xl">
               <h3 className="text-title-md text-on-surface flex items-center gap-2">
                 <span className="material-symbols-outlined text-tertiary">auto_awesome</span>
                 {TYPE_LABELS[type]} Üret
@@ -92,7 +92,7 @@ export default function AIGenerateButton({ type, onGenerated }: Props) {
                   value={topic}
                   onChange={(e) => setTopic(e.target.value)}
                   placeholder={TYPE_PLACEHOLDERS[type]}
-                  className="w-full bg-surface-container border border-white/10 rounded-lg px-3 py-2.5 text-body-sm text-on-surface focus:border-tertiary transition-all"
+                  className="w-full bg-surface-container border border-on-surface/10 rounded-lg px-3 py-2.5 text-body-sm text-on-surface focus:border-tertiary transition-all"
                   onKeyDown={(e) => e.key === "Enter" && handleGenerate()}
                   autoFocus
                 />

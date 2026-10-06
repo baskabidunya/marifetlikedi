@@ -133,7 +133,7 @@ export default function DailyMessage({ seed = 0 }: { seed?: number }) {
                     style={{ backfaceVisibility: "hidden" }}
                   >
                     <div className="absolute inset-0 bg-gradient-to-br from-surface-container-highest to-surface-container opacity-90" />
-                    <div className="relative z-10 border border-white/10 w-[85%] h-[90%] rounded-[2.2rem] flex flex-col items-center justify-center gap-4">
+                    <div className="relative z-10 border border-on-surface/10 w-[85%] h-[90%] rounded-[2.2rem] flex flex-col items-center justify-center gap-4">
                       <span className={`material-symbols-outlined text-7xl ${cfg.color} animate-pulse-soft`}>
                         {cfg.icon}
                       </span>
@@ -171,7 +171,7 @@ export default function DailyMessage({ seed = 0 }: { seed?: number }) {
                       {i === 2 && (
                         <>
                           <p className="text-body-md text-on-surface leading-relaxed">{msg.body}</p>
-                          <div className="pt-4 border-t border-white/5 w-full">
+                          <div className="pt-4 border-t border-on-surface/5 w-full">
                             <div className="text-caption text-primary font-bold mb-1">Küçük Görev</div>
                             <p className="text-caption text-on-surface-variant">{msg.task}</p>
                           </div>
@@ -188,7 +188,7 @@ export default function DailyMessage({ seed = 0 }: { seed?: number }) {
           {revealed !== null ? (
             <button
               onClick={handleReset}
-              className="px-6 py-3 glass text-on-surface font-label-md rounded-full hover:bg-white/10 transition-all border border-white/20 cursor-pointer"
+              className="px-6 py-3 glass text-on-surface font-label-md rounded-full hover:bg-on-surface/10 transition-all border border-on-surface/20 cursor-pointer"
             >
               Yeni Kartlar Çek
             </button>

@@ -150,7 +150,7 @@ export default function KozmikTakvim({
     <section className="mb-section-gap">
       <div className="flex items-center justify-between mb-8">
         <h3 className="text-headline-lg font-headline-lg text-primary">Kozmik Takvim</h3>
-        <div className="flex p-1 bg-surface-container rounded-2xl border border-white/5">
+        <div className="flex p-1 bg-surface-container rounded-2xl border border-on-surface/5">
           {(Object.keys(PERIOD_LABELS) as Period[]).map(p => (
             <button key={p} onClick={() => setPeriod(p)}
               className={`px-4 md:px-6 py-2 rounded-xl text-label-md font-label-md flex items-center gap-1.5 transition-all ${
@@ -166,7 +166,7 @@ export default function KozmikTakvim({
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="lg:col-span-2 glass-card p-8 rounded-3xl space-y-6">
-          <div className="flex items-center justify-between border-b border-white/10 pb-4">
+          <div className="flex items-center justify-between border-b border-on-surface/10 pb-4">
             <span className="text-headline-md font-headline-md text-tertiary">{PERIOD_LABELS[period]} Kehanet</span>
             <span className="text-caption font-label-md opacity-60 text-outline">
               {new Date().toLocaleDateString("tr-TR", { day: "numeric", month: "long", year: "numeric" })}
@@ -183,7 +183,7 @@ export default function KozmikTakvim({
             ].map(s => (
               <div key={s.label} className="flex-1 p-4 bg-surface-container rounded-2xl text-center">
                 <p className="text-caption font-label-md uppercase text-on-surface-variant mb-1">{s.label}</p>
-                <div className="h-1.5 w-full bg-white/10 rounded-full overflow-hidden">
+                <div className="h-1.5 w-full bg-on-surface/10 rounded-full overflow-hidden">
                   <div className={`h-full bg-${s.color} rounded-full`} style={{ width: `${s.value}%` }} />
                 </div>
                 <span className={`text-label-md font-label-md mt-2 inline-block text-${s.color}`}>{s.value}%</span>

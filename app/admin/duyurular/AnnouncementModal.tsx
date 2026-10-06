@@ -12,7 +12,7 @@ function toLocalInput(iso?: string) {
 }
 
 const inputCls =
-  "w-full bg-surface-container border border-white/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all";
+  "w-full bg-surface-container border border-on-surface/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all";
 const labelCls = "block text-caption text-outline mb-1";
 
 interface Props {
@@ -68,8 +68,8 @@ export default function AnnouncementModal({ open, onClose, announcement, aiData 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center">
       <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={onClose} />
-      <div className="relative bg-surface-container rounded-2xl border border-white/10 shadow-2xl w-full max-w-lg max-h-[90vh] overflow-y-auto mx-4">
-        <div className="sticky top-0 bg-surface-container border-b border-white/10 px-6 py-4 flex items-center justify-between rounded-t-2xl z-10">
+      <div className="relative bg-surface-container rounded-2xl border border-on-surface/10 shadow-2xl w-full max-w-lg max-h-[90vh] overflow-y-auto mx-4">
+        <div className="sticky top-0 bg-surface-container border-b border-on-surface/10 px-6 py-4 flex items-center justify-between rounded-t-2xl z-10">
           <h2 className="text-title-md text-on-surface">
             {isEdit ? "Duyuruyu Düzenle" : "Yeni Duyuru"}
           </h2>
@@ -175,7 +175,7 @@ export default function AnnouncementModal({ open, onClose, announcement, aiData 
             <button
               type="button"
               onClick={onClose}
-              className="px-4 py-2.5 rounded-lg border border-white/10 text-on-surface text-label-md hover:bg-white/5 transition-all cursor-pointer"
+              className="px-4 py-2.5 rounded-lg border border-on-surface/10 text-on-surface text-label-md hover:bg-on-surface/5 transition-all cursor-pointer"
             >
               İptal
             </button>

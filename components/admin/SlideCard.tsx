@@ -53,12 +53,12 @@ export default function SlideCard({
     : `${slide.sign || ""} — ${slide.title || "Burç"}`;
 
   return (
-    <div className="bg-surface-container/60 rounded-2xl border border-white/5 overflow-hidden">
+    <div className="bg-surface-container/60 rounded-2xl border border-on-surface/5 overflow-hidden">
       {/* HEADER */}
       <button
         type="button"
         onClick={() => setOpen(!open)}
-        className="w-full flex items-center gap-3 px-4 py-3 hover:bg-white/5 transition-colors text-left"
+        className="w-full flex items-center gap-3 px-4 py-3 hover:bg-on-surface/5 transition-colors text-left"
       >
         <span className="material-symbols-outlined text-lg text-primary">
           drag_indicator
@@ -71,7 +71,7 @@ export default function SlideCard({
             src={slide.image_url}
             alt=""
             loading="lazy"
-            className="w-10 h-10 rounded-lg object-cover border border-white/10"
+            className="w-10 h-10 rounded-lg object-cover border border-on-surface/10"
           />
         )}
         <span className="flex-1 text-body-sm text-on-surface truncate">
@@ -81,7 +81,7 @@ export default function SlideCard({
           className={`text-caption px-2 py-0.5 rounded-full ${
             slide.active
               ? "bg-green-500/20 text-green-400"
-              : "bg-white/10 text-outline"
+              : "bg-on-surface/10 text-outline"
           }`}
         >
           {slide.active ? "Aktif" : "Pasif"}
@@ -96,7 +96,7 @@ export default function SlideCard({
 
       {/* BODY */}
       {open && (
-        <form action={handleSave} className="px-4 pb-4 space-y-3 border-t border-white/5 pt-3">
+        <form action={handleSave} className="px-4 pb-4 space-y-3 border-t border-on-surface/5 pt-3">
           <input type="hidden" name="id" value={slide.id} />
           <input type="hidden" name="type" value={slide.type} />
 
@@ -109,12 +109,12 @@ export default function SlideCard({
                 <div>
                   <label className="block text-caption text-outline mb-1">Rozet Yazısı</label>
                   <input name="title" defaultValue={slide.title}
-                    className="w-full bg-surface-container border border-white/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all" />
+                    className="w-full bg-surface-container border border-on-surface/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all" />
                 </div>
                 <div>
                   <label className="block text-caption text-outline mb-1">Aktif</label>
                   <select name="active" defaultValue={slide.active ? "true" : "false"}
-                    className="w-full bg-surface-container border border-white/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all">
+                    className="w-full bg-surface-container border border-on-surface/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all">
                     <option value="true">Aktif</option>
                     <option value="false">Pasif</option>
                   </select>
@@ -122,7 +122,7 @@ export default function SlideCard({
                 <div>
                   <label className="block text-caption text-outline mb-1">Sıra</label>
                   <input name="slide_index" defaultValue={slide.slide_index} type="number"
-                    className="w-full bg-surface-container border border-white/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all" />
+                    className="w-full bg-surface-container border border-on-surface/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all" />
                 </div>
               </div>
 
@@ -130,12 +130,12 @@ export default function SlideCard({
                 <div>
                   <label className="block text-caption text-outline mb-1">Başlık Satır 1</label>
                   <input name="heading1" defaultValue={slide.heading1}
-                    className="w-full bg-surface-container border border-white/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all" />
+                    className="w-full bg-surface-container border border-on-surface/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all" />
                 </div>
                 <div>
                   <label className="block text-caption text-outline mb-1">Başlık Satır 2 (Gradient)</label>
                   <input name="heading2" defaultValue={slide.heading2}
-                    className="w-full bg-surface-container border border-white/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all" />
+                    className="w-full bg-surface-container border border-on-surface/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all" />
                 </div>
               </div>
 
@@ -143,12 +143,12 @@ export default function SlideCard({
                 <div>
                   <label className="block text-caption text-outline mb-1">1. Buton Yazısı</label>
                   <input name="button1_text" defaultValue={slide.button1_text} placeholder="Boşsa buton gizlenir"
-                    className="w-full bg-surface-container border border-white/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all" />
+                    className="w-full bg-surface-container border border-on-surface/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all" />
                 </div>
                 <div>
                   <label className="block text-caption text-outline mb-1">1. Buton Linki</label>
                   <input name="button1_link" defaultValue={slide.button1_link} placeholder="/burclar"
-                    className="w-full bg-surface-container border border-white/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all" />
+                    className="w-full bg-surface-container border border-on-surface/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all" />
                 </div>
               </div>
 
@@ -156,19 +156,19 @@ export default function SlideCard({
                 <div>
                   <label className="block text-caption text-outline mb-1">2. Buton Yazısı</label>
                   <input name="button2_text" defaultValue={slide.button2_text} placeholder="Boşsa buton gizlenir"
-                    className="w-full bg-surface-container border border-white/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all" />
+                    className="w-full bg-surface-container border border-on-surface/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all" />
                 </div>
                 <div>
                   <label className="block text-caption text-outline mb-1">2. Buton Linki</label>
                   <input name="button2_link" defaultValue={slide.button2_link} placeholder="/tarot"
-                    className="w-full bg-surface-container border border-white/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all" />
+                    className="w-full bg-surface-container border border-on-surface/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all" />
                 </div>
               </div>
 
               <div>
                 <label className="block text-caption text-outline mb-1">Açıklama</label>
                 <textarea name="description" defaultValue={slide.description} rows={2}
-                  className="w-full bg-surface-container border border-white/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all resize-none" />
+                  className="w-full bg-surface-container border border-on-surface/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all resize-none" />
               </div>
             </>
           ) : (
@@ -178,7 +178,7 @@ export default function SlideCard({
                 <div>
                   <label className="block text-caption text-outline mb-1">Burç</label>
                   <select name="sign" defaultValue={slide.sign}
-                    className="w-full bg-surface-container border border-white/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all">
+                    className="w-full bg-surface-container border border-on-surface/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all">
                     <option value="">Burç seçin</option>
                     <option value="Koç">♈ Koç</option>
                     <option value="Boğa">♉ Boğa</option>
@@ -197,13 +197,13 @@ export default function SlideCard({
                 <div>
                   <label className="block text-caption text-outline mb-1">Başlık</label>
                   <input name="title" defaultValue={slide.title}
-                    className="w-full bg-surface-container border border-white/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all" />
+                    className="w-full bg-surface-container border border-on-surface/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all" />
                 </div>
                 <div className="grid grid-cols-2 gap-3">
                   <div>
                     <label className="block text-caption text-outline mb-1">Aktif</label>
                     <select name="active" defaultValue={slide.active ? "true" : "false"}
-                      className="w-full bg-surface-container border border-white/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all">
+                      className="w-full bg-surface-container border border-on-surface/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all">
                       <option value="true">Aktif</option>
                       <option value="false">Pasif</option>
                     </select>
@@ -211,7 +211,7 @@ export default function SlideCard({
                   <div>
                     <label className="block text-caption text-outline mb-1">Sıra</label>
                     <input name="slide_index" defaultValue={slide.slide_index} type="number"
-                      className="w-full bg-surface-container border border-white/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all" />
+                      className="w-full bg-surface-container border border-on-surface/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all" />
                   </div>
                 </div>
               </div>
@@ -219,7 +219,7 @@ export default function SlideCard({
               <div>
                 <label className="block text-caption text-outline mb-1">Açıklama</label>
                 <input name="description" defaultValue={slide.description}
-                  className="w-full bg-surface-container border border-white/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all" />
+                  className="w-full bg-surface-container border border-on-surface/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all" />
               </div>
             </>
           )}

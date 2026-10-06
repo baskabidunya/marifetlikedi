@@ -62,7 +62,7 @@ function aspectTag(type: string) {
     case "Karşıt":
       return { label: "ZORLAYICI", cls: "bg-error/10 text-error", border: "border-error" };
     default:
-      return { label: "", cls: "bg-white/10 text-on-surface-variant", border: "border-white/10" };
+      return { label: "", cls: "bg-on-surface/10 text-on-surface-variant", border: "border-on-surface/10" };
   }
 }
 
@@ -74,12 +74,12 @@ function AvatarPicker({ current, onSelect, onClose }: { current: string; onSelec
     return () => document.removeEventListener("mousedown", handler);
   }, [onClose]);
   return (
-    <div ref={ref} className="absolute top-full mt-2 left-1/2 -translate-x-1/2 z-50 p-3 rounded-xl bg-surface-container border border-white/10 shadow-2xl shadow-black/50 backdrop-blur-xl w-56">
+    <div ref={ref} className="absolute top-full mt-2 left-1/2 -translate-x-1/2 z-50 p-3 rounded-xl bg-surface-container border border-on-surface/10 shadow-2xl shadow-black/50 backdrop-blur-xl w-56">
       <div className="text-caption text-outline text-center mb-2 font-label-md">Avatar Seç</div>
       <div className="grid grid-cols-5 gap-1.5">
         {AVATAR_ICONS.map(icon => (
           <button key={icon} onClick={() => { onSelect(icon); onClose(); }}
-            className={`w-9 h-9 rounded-lg flex items-center justify-center transition-all hover:bg-primary/20 active:scale-90 ${current === icon ? "bg-primary/20 ring-1 ring-primary" : "bg-white/[0.03]"}`}>
+            className={`w-9 h-9 rounded-lg flex items-center justify-center transition-all hover:bg-primary/20 active:scale-90 ${current === icon ? "bg-primary/20 ring-1 ring-primary" : "bg-on-surface/[0.03]"}`}>
             <span className="material-symbols-outlined text-lg text-on-surface">{icon}</span>
           </button>
         ))}
@@ -263,8 +263,8 @@ export default function SynastryPage() {
             <div className="w-80 h-80 bg-primary blur-[100px] rounded-full" />
           </div>
           <div className="relative w-72 h-72 md:w-96 md:h-96 flex items-center justify-center">
-            <div className="absolute inset-0 animate-spin-slow rounded-full border border-dashed border-white/10" />
-            <div className="glass-card w-44 h-44 md:w-60 md:h-60 rounded-full flex flex-col items-center justify-center celestial-glow z-10 border-white/20">
+            <div className="absolute inset-0 animate-spin-slow rounded-full border border-dashed border-on-surface/10" />
+            <div className="glass-card w-44 h-44 md:w-60 md:h-60 rounded-full flex flex-col items-center justify-center celestial-glow z-10 border-on-surface/20">
               <span className="font-sora font-bold text-display-lg text-tertiary">{temelPct}%</span>
               <span className="text-label-md text-on-surface-variant mt-1">Genel Uyum</span>
             </div>
@@ -272,8 +272,8 @@ export default function SynastryPage() {
               <circle cx="50" cy="50" fill="none" r="48" stroke="url(#lineGrad)" stroke-dasharray="2 2" stroke-width="0.5" />
               <defs>
                 <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" style={{ stopColor: "#d0bcff", stopOpacity: 1 }} />
-                  <stop offset="100%" style={{ stopColor: "#fbabff", stopOpacity: 1 }} />
+                  <stop offset="0%" style={{ stopColor: "var(--color-primary)", stopOpacity: 1 }} />
+                  <stop offset="100%" style={{ stopColor: "var(--color-secondary)", stopOpacity: 1 }} />
                 </linearGradient>
               </defs>
             </svg>
@@ -284,7 +284,7 @@ export default function SynastryPage() {
               Detaylı Analiz
             </button>
             <button onClick={share}
-              className="glass-card hover:bg-white/10 text-on-surface font-label-md px-6 py-3 rounded-full transition-all active:scale-95 border border-white/20">
+              className="glass-card hover:bg-on-surface/10 text-on-surface font-label-md px-6 py-3 rounded-full transition-all active:scale-95 border border-on-surface/20">
               Paylaş
             </button>
           </div>
@@ -353,9 +353,9 @@ export default function SynastryPage() {
             {interactions.map((a, i) => {
               const tag = aspectTag(a.type);
               return (
-                <div key={i} className={`glass-card p-6 rounded-xl flex flex-col md:flex-row md:items-center justify-between gap-6 hover:bg-white/5 transition-colors cursor-pointer border-l-4 ${tag.border}`}>
+                <div key={i} className={`glass-card p-6 rounded-xl flex flex-col md:flex-row md:items-center justify-between gap-6 hover:bg-on-surface/5 transition-colors cursor-pointer border-l-4 ${tag.border}`}>
                   <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-lg bg-white/5 flex items-center justify-center">
+                    <div className="w-12 h-12 rounded-lg bg-on-surface/5 flex items-center justify-center">
                       <span className={`material-symbols-outlined ${tag.cls.split(" ")[1]}`}>{PLANET_ICONS[a.planet1] || "stars"}</span>
                     </div>
                     <div>

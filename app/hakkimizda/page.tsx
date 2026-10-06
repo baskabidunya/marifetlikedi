@@ -16,7 +16,7 @@ export default function HakkimizdaPage() {
       description="Yıldızların sessiz dilini herkes için anlaşılır ve keyifli hâle getirmek için yola çıktık."
       slug="hakkimizda"
     >
-      <h2 className="font-sora text-headline-sm text-white">Hikâyemiz</h2>
+      <h2 className="font-sora text-headline-sm text-on-surface">Hikâyemiz</h2>
       <p>
         Marifetli Kedi, astroloji, tarot ve kozmik rehberliği günlük hayatın içine sokan bir
         keşif portalıdır. Burç yorumlarından doğum haritası analizlerine, uyum testlerinden
@@ -25,7 +25,7 @@ export default function HakkimizdaPage() {
         durak olmak.
       </p>
 
-      <h2 className="font-sora text-headline-sm text-white">Misyonumuz</h2>
+      <h2 className="font-sora text-headline-sm text-on-surface">Misyonumuz</h2>
       <p>
         Kadim bilgeliği modern bir bakışla sunarak okuyucularımıza kendilerini ve
         çevrelerindeki dünyayı daha iyi anlama fırsatı vermek istiyoruz. İçeriklerimiz
@@ -33,7 +33,7 @@ export default function HakkimizdaPage() {
         hukuki tavsiye yerine geçmez.
       </p>
 
-      <h2 className="font-sora text-headline-sm text-white">Neler Sunuyoruz?</h2>
+      <h2 className="font-sora text-headline-sm text-on-surface">Neler Sunuyoruz?</h2>
       <ul className="list-disc pl-6 space-y-1">
         <li>Günlük, haftalık ve aylık burç yorumları</li>
         <li>Kişisel doğum haritası ve uyum (synastry) analizleri</li>
@@ -42,14 +42,14 @@ export default function HakkimizdaPage() {
         <li>Gök Günlüğü blog köşemizde derin astroloji yazıları</li>
       </ul>
 
-      <h2 className="font-sora text-headline-sm text-white">Editörlerimiz</h2>
+      <h2 className="font-sora text-headline-sm text-on-surface">Editörlerimiz</h2>
       <p>
         İçeriklerimiz, astroloji ve kişisel gelişim alanında deneyimli bir editör ekibi
         tarafından hazırlanır ve düzenli olarak güncellenir. Her yazı, okuyucusuna gerçek
         değer katması için özenle yazılır.
       </p>
 
-      <h2 className="font-sora text-headline-sm text-white">Bize Ulaşın</h2>
+      <h2 className="font-sora text-headline-sm text-on-surface">Bize Ulaşın</h2>
       <p>
         Sorularınız, önerileriniz veya iş birliği talepleriniz için{" "}
         <Link href="/iletisim" className="text-primary underline">

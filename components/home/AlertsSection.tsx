@@ -1,7 +1,7 @@
 export default function AlertsSection() {
   return (
     <section className="mb-section-gap">
-      <div className="bg-gradient-to-r from-surface-container-high/50 to-primary/10 p-8 rounded-3xl border border-white/5 relative overflow-hidden">
+      <div className="bg-gradient-to-r from-surface-container-high/50 to-primary/10 p-8 rounded-3xl border border-on-surface/5 relative overflow-hidden">
         <div className="absolute right-[-50px] top-[-50px] opacity-20">
           <span className="material-symbols-outlined text-[200px] text-primary">
             rocket_launch

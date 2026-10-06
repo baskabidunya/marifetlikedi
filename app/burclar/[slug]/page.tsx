@@ -172,21 +172,21 @@ export default async function Page({
             style={{ backgroundImage: `url(${img})` }} />
           <div className="absolute inset-0 bg-gradient-to-t from-surface via-surface/40 to-transparent z-10" />
           <div className="relative z-20 space-y-4">
-            <div className="w-24 h-24 mx-auto rounded-full flex items-center justify-center mb-4 border border-white/10 bg-surface/50 backdrop-blur-md">
+            <div className="w-24 h-24 mx-auto rounded-full flex items-center justify-center mb-4 border border-on-surface/10 bg-surface/50 backdrop-blur-md">
               <span className="text-6xl text-tertiary">{info.emoji}</span>
             </div>
             <h1 className="text-display-lg font-headline-lg-mobile md:text-display-lg font-display-lg text-primary tracking-widest uppercase">{s}</h1>
             <p className="text-headline-md font-headline-md text-secondary">{info.dateRange}</p>
             <div className="flex gap-2 justify-center mt-6">
-              <span className="px-4 py-1.5 rounded-full text-label-md font-label-md bg-surface/50 backdrop-blur-md border border-white/10 text-on-surface/80">
+              <span className="px-4 py-1.5 rounded-full text-label-md font-label-md bg-surface/50 backdrop-blur-md border border-on-surface/10 text-on-surface/80">
                 <span className="material-symbols-outlined text-[14px] align-text-bottom mr-1">{getElementIcon(info.element)}</span>
                 {info.element} Elementi
               </span>
-              <span className="px-4 py-1.5 rounded-full text-label-md font-label-md bg-surface/50 backdrop-blur-md border border-white/10 text-on-surface/80">
+              <span className="px-4 py-1.5 rounded-full text-label-md font-label-md bg-surface/50 backdrop-blur-md border border-on-surface/10 text-on-surface/80">
                 <span className="material-symbols-outlined text-[14px] align-text-bottom mr-1">{getQualityIcon(info.quality)}</span>
                 {info.quality} Nitelik
               </span>
-              <span className="px-4 py-1.5 rounded-full text-label-md font-label-md bg-surface/50 backdrop-blur-md border border-white/10 text-on-surface/80">
+              <span className="px-4 py-1.5 rounded-full text-label-md font-label-md bg-surface/50 backdrop-blur-md border border-on-surface/10 text-on-surface/80">
                 <span className="material-symbols-outlined text-[14px] align-text-bottom mr-1">public</span>
                 {info.ruler}
               </span>
@@ -238,7 +238,7 @@ export default async function Page({
                 return (
                   <span key={t}
                     className={`px-4 py-2 rounded-xl text-label-md font-label-md ${
-                      isPositive ? "bg-primary/15 text-primary" : "bg-white/5 text-on-surface-variant"
+                      isPositive ? "bg-primary/15 text-primary" : "bg-on-surface/5 text-on-surface-variant"
                     }`}>
                     {t}
                   </span>

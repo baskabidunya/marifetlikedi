@@ -39,7 +39,7 @@ export default function LegalPage({
       )}
 
       <article className="space-y-6">
-        <h1 className="font-sora text-headline-lg-mobile md:text-headline-lg text-white font-bold">
+        <h1 className="font-sora text-headline-lg-mobile md:text-headline-lg text-on-surface font-bold">
           {title}
         </h1>
         <div className="w-20 h-1 bg-gradient-to-r from-transparent via-primary to-transparent" />

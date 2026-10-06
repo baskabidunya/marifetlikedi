@@ -144,7 +144,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       )}
 
       {tocItems.length >= 3 && (
-        <nav className="bg-surface-container/40 rounded-2xl border border-white/5 p-5 mb-8">
+        <nav className="bg-surface-container/40 rounded-2xl border border-on-surface/5 p-5 mb-8">
           <h2 className="text-label-md text-on-surface font-label-md mb-3 flex items-center gap-2">
             <span className="material-symbols-outlined text-primary text-lg">list</span>
             İçindekiler
@@ -169,7 +169,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         dangerouslySetInnerHTML={{ __html: html }}
       />
 
-      <div className="mt-12 rounded-2xl border border-white/10 bg-surface-container/40 p-5 flex items-start gap-4">
+      <div className="mt-12 rounded-2xl border border-on-surface/10 bg-surface-container/40 p-5 flex items-start gap-4">
         <span className="material-symbols-outlined text-primary text-[28px]">auto_awesome</span>
         <div>
           <p className="text-label-md text-on-surface font-label-md">{authorName}</p>

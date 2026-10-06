@@ -54,7 +54,7 @@ export default function ImageUpload({
           readOnly
           value={url}
           placeholder="Bilgisayardan görsel seçin veya URL yapıştırın"
-          className="flex-1 bg-surface-container border border-white/10 rounded-lg px-3 py-2 text-body-sm text-on-surface-variant focus:border-primary transition-all cursor-default"
+          className="flex-1 bg-surface-container border border-on-surface/10 rounded-lg px-3 py-2 text-body-sm text-on-surface-variant focus:border-primary transition-all cursor-default"
         />
         <input
           ref={fileRef}
@@ -80,7 +80,7 @@ export default function ImageUpload({
           src={preview}
           alt="Önizleme"
           loading="lazy"
-          className="w-20 h-20 rounded-xl object-cover border border-white/10 mt-2"
+          className="w-20 h-20 rounded-xl object-cover border border-on-surface/10 mt-2"
           onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}
           onLoad={(e) => { (e.target as HTMLImageElement).style.display = "block"; }}
         />

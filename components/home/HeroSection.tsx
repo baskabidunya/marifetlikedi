@@ -26,7 +26,7 @@ export default async function HeroSection() {
             <span className="material-symbols-outlined text-sm">auto_awesome</span>
             <span className="text-label-md">{badge}</span>
           </div>
-          <h1 className="font-sora text-display-lg text-white leading-tight font-bold">
+          <h1 className="font-sora text-display-lg text-on-surface leading-tight font-bold">
             {heading1} <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-tertiary">
               {heading2}
@@ -44,7 +44,7 @@ export default async function HeroSection() {
             )}
             {button2 && button2Link && button2Link !== "#" && (
               <Link href={button2Link}
-                className="px-8 py-4 glass text-white font-label-md rounded-full hover:bg-white/10 transition-all">
+                className="px-8 py-4 glass text-on-surface font-label-md rounded-full hover:bg-on-surface/10 transition-all">
                 {button2}
               </Link>
             )}

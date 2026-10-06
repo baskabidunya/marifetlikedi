@@ -20,7 +20,7 @@ export default function ZodiacWheel() {
   return (
     <section className="py-section-gap px-container-padding-mobile md:px-container-padding-desktop max-w-7xl mx-auto">
       <div className="text-center mb-16 space-y-4">
-        <h2 className="font-sora text-headline-lg-mobile md:text-headline-lg text-white font-bold">Zodyak Çemberi</h2>
+        <h2 className="font-sora text-headline-lg-mobile md:text-headline-lg text-on-surface font-bold">Zodyak Çemberi</h2>
         <div className="w-20 h-1 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto" />
         <p className="text-body-md text-on-surface-variant">
           Güneş burcunun derinliklerine in, karakterinin gizli yanlarını keşfet.
@@ -40,7 +40,7 @@ export default function ZodiacWheel() {
                 {z.symbol}
               </span>
             </div>
-            <div className="font-sora text-white text-body-md">{z.name}</div>
+            <div className="font-sora text-on-surface text-body-md">{z.name}</div>
             <div className="text-caption text-on-surface-variant">{z.range}</div>
           </Link>
         ))}

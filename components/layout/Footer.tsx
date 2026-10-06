@@ -30,7 +30,7 @@ export default async function Footer() {
           </p>
         </div>
         <div className="space-y-4">
-          <h5 className="text-label-md text-white">Hızlı Linkler</h5>
+          <h5 className="text-label-md text-on-surface">Hızlı Linkler</h5>
           <ul className="space-y-2">
             {quickLinks.map((link) => (
               <li key={link.id}>
@@ -42,7 +42,7 @@ export default async function Footer() {
           </ul>
         </div>
         <div className="space-y-4">
-          <h5 className="text-label-md text-white">Kurumsal</h5>
+          <h5 className="text-label-md text-on-surface">Kurumsal</h5>
           <ul className="space-y-2">
             {corporateLinks.map((link) => (
               <li key={link.id}>
@@ -54,7 +54,7 @@ export default async function Footer() {
           </ul>
         </div>
         <div className="space-y-4">
-          <h5 className="text-label-md text-white">İletişim</h5>
+          <h5 className="text-label-md text-on-surface">İletişim</h5>
           <ul className="space-y-2">
             <li className="flex items-center gap-2 text-on-surface-variant">
               <span className="material-symbols-outlined text-sm">mail</span> hello@marifetlikedi.com
@@ -68,7 +68,7 @@ export default async function Footer() {
               href="https://instagram.com/marifetli.kedi"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-on-surface-variant hover:bg-pink-500/20 hover:text-pink-400 hover:border-pink-400/30 transition-all"
+              className="w-10 h-10 rounded-xl bg-on-surface/5 border border-on-surface/10 flex items-center justify-center text-on-surface-variant hover:bg-pink-500/20 hover:text-pink-400 hover:border-pink-400/30 transition-all"
               aria-label="Instagram"
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -82,7 +82,7 @@ export default async function Footer() {
         name="footer"
         className="max-w-7xl mx-auto px-container-padding-mobile md:px-container-padding-desktop mb-10"
       />
-      <div className="text-center mt-12 pt-8 border-t border-white/5 text-caption text-outline">
+      <div className="text-center mt-12 pt-8 border-t border-on-surface/5 text-caption text-outline">
         Yıldızlar sadece yol gösterir, seçimi sen yaparsın.
       </div>
       <div className="text-center mt-3 px-container-padding-mobile md:px-container-padding-desktop">

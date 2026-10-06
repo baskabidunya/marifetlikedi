@@ -28,7 +28,7 @@ function aspectBadge(type: string) {
 
 function renderPair(p1: string, s1: string, p2: string, s2: string, aspect: any) {
   return (
-    <div className={`p-4 rounded-xl border ${aspect ? (aspect.type === "Kare" || aspect.type === "Karşıt" ? "border-error/20 bg-error/5" : "border-secondary/20 bg-secondary/5") : "border-white/5 bg-white/[0.02]"}`}>
+    <div className={`p-4 rounded-xl border ${aspect ? (aspect.type === "Kare" || aspect.type === "Karşıt" ? "border-error/20 bg-error/5" : "border-secondary/20 bg-secondary/5") : "border-on-surface/5 bg-on-surface/[0.02]"}`}>
       <div className="flex items-center gap-2 flex-wrap">
         <span className="font-sora font-bold text-sm text-on-background">{p1}</span>
         <span className="text-caption text-outline">({s1})</span>
@@ -50,14 +50,14 @@ function ScoreDetailBar({ icon, label, value, max, note, color, className = "" }
   const pct = Math.round((value / max) * 100);
   const rating = value >= max * 0.9 ? "Mükemmel" : value >= max * 0.7 ? "Çok İyi" : value >= max * 0.5 ? "Orta" : value >= max * 0.3 ? "Düşük" : "Zorlayıcı";
   return (
-    <div className={`p-4 rounded-xl bg-white/[0.02] border border-white/5 ${className}`}>
+    <div className={`p-4 rounded-xl bg-on-surface/[0.02] border border-on-surface/5 ${className}`}>
       <div className="flex items-center justify-between flex-wrap gap-2 mb-2">
         <div className="flex items-center gap-2">
           {icon}
           <span className="font-label-md text-on-background">{label}</span>
         </div>
         <div className="flex items-center gap-2">
-          <div className="w-24 h-2 rounded-full bg-white/5 overflow-hidden flex">
+          <div className="w-24 h-2 rounded-full bg-on-surface/5 overflow-hidden flex">
             <div className={`h-full rounded-full transition-all ${color}`}
               style={{ width: `${pct}%` }} />
           </div>
@@ -196,7 +196,7 @@ export default function SynastryContent({ synastry, partnerName }: { synastry: S
           {["Ateş", "Toprak", "Hava", "Su"].map(el => (
             <div key={el} className="flex items-center gap-3">
               <span className="font-label-md text-on-surface-variant w-16">{el}</span>
-              <div className="flex-1 h-3 rounded-full bg-white/5 overflow-hidden flex">
+              <div className="flex-1 h-3 rounded-full bg-on-surface/5 overflow-hidden flex">
                 <div className="h-full bg-primary/60 rounded-l-full transition-all" style={{ width: `${userEl[el]}%` }} />
                 <div className="h-full bg-secondary/60 rounded-r-full transition-all" style={{ width: `${partnerEl[el]}%` }} />
               </div>
@@ -227,7 +227,7 @@ export default function SynastryContent({ synastry, partnerName }: { synastry: S
                 12: "Bilinçaltı, yalnızlık, ruhsal gelişim",
               };
               return (
-                <div key={h.houseNum} className="p-4 rounded-xl bg-white/[0.02] border border-white/5">
+                <div key={h.houseNum} className="p-4 rounded-xl bg-on-surface/[0.02] border border-on-surface/5">
                   <div className="font-label-md text-primary">{h.houseTitle}</div>
                   <div className="text-caption text-on-surface-variant mt-0.5">{houseMeanings[h.houseNum]}</div>
                   <div className="text-label-md text-on-background mt-2">{h.planets.join(" · ")}</div>

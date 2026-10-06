@@ -54,7 +54,7 @@ export default function LogoUploader({ currentValue }: { currentValue: string })
       </div>
 
       <div className="flex items-center gap-6">
-        <div className="w-48 h-20 rounded-2xl bg-surface-container border border-white/10 flex items-center justify-center overflow-hidden">
+        <div className="w-48 h-20 rounded-2xl bg-surface-container border border-on-surface/10 flex items-center justify-center overflow-hidden">
           {logo ? (
             <img src={logo} alt="Logo" className="max-w-full max-h-full object-contain p-2" />
           ) : (

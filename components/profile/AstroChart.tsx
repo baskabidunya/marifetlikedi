@@ -40,7 +40,7 @@ const ASPECT_COLORS: Record<string, string> = {
   "Altmışlık": "text-primary border-primary/30 bg-primary/10",
   "Kare": "text-error border-error/30 bg-error/10",
   "Üçgen": "text-secondary border-secondary/30 bg-secondary/10",
-  "Karşıt": "text-on-surface-variant border-white/10 bg-white/5",
+  "Karşıt": "text-on-surface-variant border-on-surface/10 bg-on-surface/5",
 };
 
 type DetailTarget =
@@ -127,7 +127,7 @@ function PlanetCard({ planet, size = "md", onClick }: { planet: PlanetPosition; 
       </div>
     </div>
   ) : (
-    <div className={`rounded-xl p-4 ${clr.bg} border ${clr.border} backdrop-blur-sm transition-all ${onClick ? "cursor-pointer hover:bg-white/[0.06] hover:shadow-md" : ""}`}>
+    <div className={`rounded-xl p-4 ${clr.bg} border ${clr.border} backdrop-blur-sm transition-all ${onClick ? "cursor-pointer hover:bg-on-surface/[0.06] hover:shadow-md" : ""}`}>
       <div className="flex items-center gap-3">
         <span className={`material-symbols-outlined ${clr.text} text-2xl`}>{planet.icon}</span>
         <div className="flex-1 min-w-0">
@@ -159,7 +159,7 @@ export function HousesSection({ chart, setDetail }: { chart: AstroChartType; set
           const clr = ZODIAC_COLORS[sign];
           return (
             <button key={num} onClick={() => setDetail({ type: "house", num: parseInt(num), sign })}
-              className={`rounded-xl p-4 ${clr.bg} border ${clr.border} text-left cursor-pointer hover:bg-white/[0.06] hover:shadow-md transition-all`}>
+              className={`rounded-xl p-4 ${clr.bg} border ${clr.border} text-left cursor-pointer hover:bg-on-surface/[0.06] hover:shadow-md transition-all`}>
               <div className="font-sora font-bold text-sm text-on-background">{h.title}</div>
               <div className={`text-xs font-label-md ${clr.text} mt-1`}>{sign}</div>
               <div className="text-caption text-outline mt-1 line-clamp-2">{h.meaning.slice(0, 80)}...</div>
@@ -182,7 +182,7 @@ export function PlanetsSection({ chart, setDetail }: { chart: AstroChartType; se
           const clr = ZODIAC_COLORS[p.sign];
           return (
             <button key={p.name} onClick={() => setDetail({ type: "planet", planet: p })}
-              className={`rounded-xl p-4 ${clr.bg} border ${clr.border} text-left cursor-pointer hover:bg-white/[0.06] hover:shadow-md transition-all`}>
+              className={`rounded-xl p-4 ${clr.bg} border ${clr.border} text-left cursor-pointer hover:bg-on-surface/[0.06] hover:shadow-md transition-all`}>
               <div className="flex items-center gap-2 mb-2">
                 <span className={`material-symbols-outlined ${clr.text} text-xl`}>{p.icon}</span>
                 <span className="font-sora font-bold text-sm text-on-background">{p.name}</span>
@@ -207,12 +207,12 @@ export function AspectsSection({ chart, setDetail }: { chart: AstroChartType; se
       <p className="text-outline text-body-md mb-6">Gezegenler arası etkileşimler ve enerji akışları</p>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
         {chart.aspects.map((a, i) => {
-          const ac = ASPECT_COLORS[a.type] || "border-white/10 bg-white/5";
+          const ac = ASPECT_COLORS[a.type] || "border-on-surface/10 bg-on-surface/5";
           return (
             <button key={i} onClick={() => setDetail({ type: "aspect", aspect: a })}
-              className={`flex items-center gap-3 p-3 rounded-lg border cursor-pointer hover:bg-white/[0.06] transition-all ${ac}`}>
+              className={`flex items-center gap-3 p-3 rounded-lg border cursor-pointer hover:bg-on-surface/[0.06] transition-all ${ac}`}>
               <span className="font-label-md text-on-background">{a.planet1}</span>
-              <span className={`text-xs px-2 py-0.5 rounded-full ${a.type === "Kare" ? "text-error" : a.type === "Üçgen" ? "text-secondary" : a.type === "Kavuşum" ? "text-tertiary" : "text-on-surface-variant"} bg-white/5 border border-white/10`}>
+              <span className={`text-xs px-2 py-0.5 rounded-full ${a.type === "Kare" ? "text-error" : a.type === "Üçgen" ? "text-secondary" : a.type === "Kavuşum" ? "text-tertiary" : "text-on-surface-variant"} bg-on-surface/5 border border-on-surface/10`}>
                 {a.type}
               </span>
               <span className="font-label-md text-on-background">{a.planet2}</span>
@@ -323,12 +323,12 @@ export default function AstroChart({ birthDate, birthTime, birthPlace, chart: pr
               const pct = Math.round((el.points / totalPoints) * 100);
               return (
                 <button key={el.name} onClick={() => setDetail({ type: "element", name: el.name, bodies: el.bodies })}
-                  className={`rounded-xl p-5 ${el.bg} border border-white/10 text-center cursor-pointer hover:scale-[1.03] transition-transform`}>
+                  className={`rounded-xl p-5 ${el.bg} border border-on-surface/10 text-center cursor-pointer hover:scale-[1.03] transition-transform`}>
                   <span className={`material-symbols-outlined text-3xl ${el.text} mb-2`}>{el.icon}</span>
                   <div className={`font-sora font-bold text-headline-md ${el.text}`}>{pct}%</div>
                   <div className="font-label-md text-on-background mt-1">{el.name}</div>
                   <div className="text-caption text-outline mt-1">{el.points}/{totalPoints} puan</div>
-                  <div className="mt-3 w-full h-2 rounded-full bg-white/5 overflow-hidden">
+                  <div className="mt-3 w-full h-2 rounded-full bg-on-surface/5 overflow-hidden">
                     <div className={`h-full rounded-full bg-gradient-to-r ${el.color} transition-all`} style={{ width: `${pct}%` }} />
                   </div>
                   {el.bodies.length > 0 && (

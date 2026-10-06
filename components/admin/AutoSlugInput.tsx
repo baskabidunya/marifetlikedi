@@ -13,7 +13,7 @@ interface Props {
 }
 
 const DEFAULT_CLASS =
-  "w-full bg-surface-container border border-white/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all font-mono text-xs";
+  "w-full bg-surface-container border border-on-surface/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all font-mono text-xs";
 
 /**
  * Slug alanı. defaultValue boşsa (yeni içerik) kaynak alandan (varsayılan "title")

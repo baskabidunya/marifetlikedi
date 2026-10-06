@@ -3,6 +3,7 @@ import { getPublicNavLinks, getSiteSetting } from "@/lib/public-queries";
 import { createClient } from "@/lib/supabase/server";
 import HeaderNav from "./HeaderNav";
 import SearchTrigger from "@/components/search/SearchTrigger";
+import ThemeToggle from "./ThemeToggle";
 
 export default async function Header() {
   const navLinks = await getPublicNavLinks("header");
@@ -11,7 +12,7 @@ export default async function Header() {
   const logo = await getSiteSetting("site_logo");
 
   return (
-    <header className="bg-surface-container/70 backdrop-blur-xl border-b border-white/10 shadow-2xl shadow-background/50">
+    <header className="bg-surface-container/70 backdrop-blur-xl border-b border-on-surface/10 shadow-2xl shadow-background/50">
       <nav className="flex items-center justify-between px-container-padding-mobile md:px-container-padding-desktop h-20 max-w-7xl mx-auto">
         <div className="cursor-pointer shrink-0">
           <Link href="/">
@@ -25,6 +26,7 @@ export default async function Header() {
           </Link>
         </div>
         <div className="md:hidden flex items-center gap-1">
+          <ThemeToggle />
           <SearchTrigger />
           {user && (
             <Link
@@ -51,6 +53,7 @@ export default async function Header() {
           isLoggedIn={!!user}
         />
         <div className="hidden md:flex items-center gap-1 md:gap-2">
+          <ThemeToggle />
           <SearchTrigger />
           {user ? (
             <Link
@@ -64,7 +67,7 @@ export default async function Header() {
             <>
               <Link
                 href="/giris"
-                className="hidden md:flex px-5 py-2.5 rounded-full text-on-surface-variant border border-white/15 hover:border-primary/40 font-label-md hover:bg-white/5 transition-all"
+                className="hidden md:flex px-5 py-2.5 rounded-full text-on-surface-variant border border-on-surface/15 hover:border-primary/40 font-label-md hover:bg-on-surface/5 transition-all"
               >
                 Giriş Yap
               </Link>

@@ -16,7 +16,7 @@ export default function DailyEnergy() {
                 <div className={`w-24 h-24 rounded-full border-4 border-${g.color} flex items-center justify-center relative`}>
                   <span className={`text-headline-md text-${g.color}`}>%{g.value}</span>
                   <div
-                    className={`absolute inset-0 rounded-full border-4 border-white/10 border-t-${g.color} animate-spin`}
+                    className={`absolute inset-0 rounded-full border-4 border-on-surface/10 border-t-${g.color} animate-spin`}
                     style={{ animationDuration: g.dur }}
                   />
                 </div>
@@ -25,7 +25,7 @@ export default function DailyEnergy() {
             ))}
           </div>
           <div className="flex-1 text-center md:text-left space-y-4">
-            <h2 className="font-sora text-headline-md text-white font-semibold">Günün Kozmik Enerjisi</h2>
+            <h2 className="font-sora text-headline-md text-on-surface font-semibold">Günün Kozmik Enerjisi</h2>
             <p className="text-body-md text-on-surface-variant max-w-2xl">
               Merkür ve Jüpiter arasındaki olumlu açı bugün iletişim kanallarını
               sonuna kadar açıyor. Önemli kararlar almak ve yeni başlangıçlar

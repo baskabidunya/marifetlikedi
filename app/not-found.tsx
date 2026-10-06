@@ -20,7 +20,7 @@ export default function NotFound() {
           </Link>
           <Link
             href="/blog"
-            className="px-8 py-3 rounded-full border border-white/15 text-on-surface-variant font-label-md hover:bg-white/5 transition-all"
+            className="px-8 py-3 rounded-full border border-on-surface/15 text-on-surface-variant font-label-md hover:bg-on-surface/5 transition-all"
           >
             Gök Günlüğü
           </Link>

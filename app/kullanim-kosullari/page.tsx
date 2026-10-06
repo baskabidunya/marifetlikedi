@@ -16,7 +16,7 @@ export default function KullanimKosullariPage() {
       description="Bu sayfa, Marifetli Kedi web sitesini (&quot;Site&quot;) kullanımınıza ilişkin hüküm ve koşulları belirler. Siteyi kullanarak bu koşulları kabul etmiş sayılırsınız."
       slug="kullanim-kosullari"
     >
-      <h2 className="font-sora text-headline-sm text-white">1. Genel Hükümler</h2>
+      <h2 className="font-sora text-headline-sm text-on-surface">1. Genel Hükümler</h2>
       <p>
         Marifetli Kedi (İstanbul, Türkiye) tarafından işletilen bu site, astroloji,
         tarot, doğum haritası ve uyum analizi gibi içerikleri &quot;olduğu gibi&quot;
@@ -24,7 +24,7 @@ export default function KullanimKosullariPage() {
         anladığınızı ve kabul ettiğinizi beyan edersiniz.
       </p>
 
-      <h2 className="font-sora text-headline-sm text-white">2. Eğlence Amaçlı İçerik</h2>
+      <h2 className="font-sora text-headline-sm text-on-surface">2. Eğlence Amaçlı İçerik</h2>
       <p>
         Sitemizde yer alan tüm burç yorumları, tarot falı, uyum analizleri ve astrolojik
         içerikler yalnızca <strong>eğlence ve bilgilendirme amaçlıdır</strong>. Bu içerikler
@@ -32,7 +32,7 @@ export default function KullanimKosullariPage() {
         Kararlarınızın sorumluluğu tamamen size aittir.
       </p>
 
-      <h2 className="font-sora text-headline-sm text-white">3. Kullanıcı Hesabı</h2>
+      <h2 className="font-sora text-headline-sm text-on-surface">3. Kullanıcı Hesabı</h2>
       <p>
         Sitedeki bazı özellikleri kullanabilmek için hesap oluşturmanız gerekebilir. Hesap
         oluştururken doğru, güncel ve eksiksiz bilgi vermeyi kabul edersiniz. Hesabınızın
@@ -40,7 +40,7 @@ export default function KullanimKosullariPage() {
         Hesabınızda şüpheli bir aktivite fark ederseniz derhal bizimle iletişime geçmelisiniz.
       </p>
 
-      <h2 className="font-sora text-headline-sm text-white">4. Kullanıcı Yükümlülükleri</h2>
+      <h2 className="font-sora text-headline-sm text-on-surface">4. Kullanıcı Yükümlülükleri</h2>
       <p>Siteyi kullanırken aşağıdaki kurallara uymayı kabul edersiniz:</p>
       <ul className="list-disc pl-6 space-y-1">
         <li>Yasalara ve üçüncü taraf haklarına aykırı faaliyetlerde bulunmamak,</li>
@@ -51,7 +51,7 @@ export default function KullanimKosullariPage() {
         <li>Başka bir kullanıcıyı taklit etmemek veya yanıltıcı bilgi paylaşmamak.</li>
       </ul>
 
-      <h2 className="font-sora text-headline-sm text-white">5. Fikri Mülkiyet</h2>
+      <h2 className="font-sora text-headline-sm text-on-surface">5. Fikri Mülkiyet</h2>
       <p>
         Sitede yer alan tüm içerik (metinler, görseller, logolar, grafikler, yazılım ve
         kodlar) Marifetli Kedi veya lisans sahiplerine aittir ve fikri mülkiyet yasalarıyla
@@ -59,7 +59,7 @@ export default function KullanimKosullariPage() {
         değiştirilmesi veya ticari amaçla kullanılması yasaktır.
       </p>
 
-      <h2 className="font-sora text-headline-sm text-white">6. Üçüncü Taraf Bağlantıları</h2>
+      <h2 className="font-sora text-headline-sm text-on-surface">6. Üçüncü Taraf Bağlantıları</h2>
       <p>
         Sitemiz, üçüncü taraf web sitelerine bağlantılar içerebilir. Bu bağlantılar yalnızca
         kolaylık sağlamak amacıyla sunulmaktadır ve bu sitelerin içeriği, gizlilik
@@ -68,7 +68,7 @@ export default function KullanimKosullariPage() {
         politikasını incelemeniz önerilir.
       </p>
 
-      <h2 className="font-sora text-headline-sm text-white">7. Sorumluluk Reddi</h2>
+      <h2 className="font-sora text-headline-sm text-on-surface">7. Sorumluluk Reddi</h2>
       <p>
         Marifetli Kedi, sitede yer alan bilgilerin doğruluğu, güncelliği ve eksiksizliği
         konusunda garanti vermez. Site içeriğindeki olası hata veya eksikliklerden dolayı
@@ -77,7 +77,7 @@ export default function KullanimKosullariPage() {
         değiştirilebilir.
       </p>
 
-      <h2 className="font-sora text-headline-sm text-white">8. Gizlilik ve Veri Koruma</h2>
+      <h2 className="font-sora text-headline-sm text-on-surface">8. Gizlilik ve Veri Koruma</h2>
       <p>
         Kişisel verilerinizin işlenmesi hakkında detaylı bilgi için{" "}
         <Link href="/gizlilik-politikasi" className="text-primary underline">
@@ -94,20 +94,20 @@ export default function KullanimKosullariPage() {
         &apos;ne başvurabilirsiniz.
       </p>
 
-      <h2 className="font-sora text-headline-sm text-white">9. Değişiklikler</h2>
+      <h2 className="font-sora text-headline-sm text-on-surface">9. Değişiklikler</h2>
       <p>
         Bu kullanım koşulları dilediğimiz zaman güncellenebilir. Değişiklikler sitede
         yayınlandığı anda yürürlüğe girer. Önemli değişikliklerde kullanıcılarımıza e-posta
         yoluyla veya sitede bildirim yapılabilir.
       </p>
 
-      <h2 className="font-sora text-headline-sm text-white">10. Uygulanacak Hukuk</h2>
+      <h2 className="font-sora text-headline-sm text-on-surface">10. Uygulanacak Hukuk</h2>
       <p>
         Bu kullanım koşulları, Türkiye Cumhuriyeti yasalarına tabidir. İşbu koşullardan
         kaynaklanan uyuşmazlıklarda İstanbul Mahkemeleri ve İcra Daireleri yetkilidir.
       </p>
 
-      <h2 className="font-sora text-headline-sm text-white">11. İletişim</h2>
+      <h2 className="font-sora text-headline-sm text-on-surface">11. İletişim</h2>
       <p>
         Kullanım koşullarımızla ilgili sorularınız, görüşleriniz veya talepleriniz için{" "}
         <Link href="/iletisim" className="text-primary underline">

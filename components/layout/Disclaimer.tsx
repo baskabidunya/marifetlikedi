@@ -1,7 +1,7 @@
 export default function Disclaimer({ variant = "inline" }: { variant?: "inline" | "box" }) {
   if (variant === "box") {
     return (
-      <div className="rounded-2xl border border-white/10 bg-surface-container/50 p-4 text-caption text-outline leading-relaxed">
+      <div className="rounded-2xl border border-on-surface/10 bg-surface-container/50 p-4 text-caption text-outline leading-relaxed">
         <span className="material-symbols-outlined text-tertiary text-sm align-middle mr-1">
           info
         </span>

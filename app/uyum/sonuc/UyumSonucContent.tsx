@@ -53,7 +53,7 @@ function aspectTag(type: string) {
     case "Karşıt":
       return { label: "ZORLAYICI", cls: "bg-error/10 text-error", border: "border-error" };
     default:
-      return { label: "", cls: "bg-white/10 text-on-surface-variant", border: "border-white/10" };
+      return { label: "", cls: "bg-on-surface/10 text-on-surface-variant", border: "border-on-surface/10" };
   }
 }
 
@@ -223,8 +223,8 @@ export default function UyumSonucContent() {
             <div className="w-80 h-80 bg-primary blur-[100px] rounded-full" />
           </div>
           <div className="relative w-72 h-72 md:w-96 md:h-96 flex items-center justify-center">
-            <div className="absolute inset-0 animate-spin-slow rounded-full border border-dashed border-white/10" />
-            <div className="glass-card w-44 h-44 md:w-60 md:h-60 rounded-full flex flex-col items-center justify-center celestial-glow z-10 border-white/20">
+            <div className="absolute inset-0 animate-spin-slow rounded-full border border-dashed border-on-surface/10" />
+            <div className="glass-card w-44 h-44 md:w-60 md:h-60 rounded-full flex flex-col items-center justify-center celestial-glow z-10 border-on-surface/20">
               <span className="font-sora font-bold text-display-lg text-tertiary">{temelPct}%</span>
               <span className="text-label-md text-on-surface-variant mt-1">Genel Uyum</span>
             </div>
@@ -232,8 +232,8 @@ export default function UyumSonucContent() {
               <circle cx="50" cy="50" fill="none" r="48" stroke="url(#lineGrad)" stroke-dasharray="2 2" stroke-width="0.5" />
               <defs>
                 <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" style={{ stopColor: "#d0bcff", stopOpacity: 1 }} />
-                  <stop offset="100%" style={{ stopColor: "#fbabff", stopOpacity: 1 }} />
+                  <stop offset="0%" style={{ stopColor: "var(--color-primary)", stopOpacity: 1 }} />
+                  <stop offset="100%" style={{ stopColor: "var(--color-secondary)", stopOpacity: 1 }} />
                 </linearGradient>
               </defs>
             </svg>
@@ -302,9 +302,9 @@ export default function UyumSonucContent() {
             {interactions.map((a, i) => {
               const tag = aspectTag(a.type);
               return (
-                <div key={i} className={`glass-card p-6 rounded-xl flex flex-col md:flex-row md:items-center justify-between gap-6 hover:bg-white/5 transition-colors border-l-4 ${tag.border}`}>
+                <div key={i} className={`glass-card p-6 rounded-xl flex flex-col md:flex-row md:items-center justify-between gap-6 hover:bg-on-surface/5 transition-colors border-l-4 ${tag.border}`}>
                   <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-lg bg-white/5 flex items-center justify-center">
+                    <div className="w-12 h-12 rounded-lg bg-on-surface/5 flex items-center justify-center">
                       <span className={`material-symbols-outlined ${tag.cls.split(" ")[1]}`}>{PLANET_ICONS[a.planet1] || "stars"}</span>
                     </div>
                     <div>

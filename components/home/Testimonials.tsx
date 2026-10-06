@@ -7,7 +7,7 @@ export default async function Testimonials() {
   return (
     <section className="py-section-gap px-container-padding-mobile md:px-container-padding-desktop max-w-7xl mx-auto">
       <div className="text-center mb-12 space-y-4">
-        <h2 className="font-sora text-headline-lg-mobile md:text-headline-lg text-white font-bold">
+        <h2 className="font-sora text-headline-lg-mobile md:text-headline-lg text-on-surface font-bold">
           Yol Arkadaşlarımızın Yıldızları
         </h2>
         <div className="w-20 h-1 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto" />
@@ -20,7 +20,7 @@ export default async function Testimonials() {
         {items.map((t) => (
           <div
             key={t.id}
-            className="bg-surface-container/60 rounded-2xl p-6 border border-white/5 inner-glow"
+            className="bg-surface-container/60 rounded-2xl p-6 border border-on-surface/5 inner-glow"
           >
             <div className="flex items-center gap-1 text-tertiary mb-3">
               {Array.from({ length: 5 }).map((_, i) => (

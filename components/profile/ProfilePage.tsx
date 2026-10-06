@@ -84,7 +84,7 @@ export default function ProfilePage() {
               {displayName}
             </h1>
             <div className="flex flex-wrap justify-center md:justify-start gap-4">
-              <div className="flex items-center gap-2 px-4 py-2 rounded-full glass-card border-white/10">
+              <div className="flex items-center gap-2 px-4 py-2 rounded-full glass-card border-on-surface/10">
                 <span className="material-symbols-outlined text-on-surface-variant text-lg">calendar_month</span>
                 <span className="font-label-md text-on-surface-variant">
                   Katılma: {new Date(user!.created_at).toLocaleDateString("tr-TR")}
@@ -200,7 +200,7 @@ export default function ProfilePage() {
               <button
                 type="button"
                 onClick={() => setEditing(false)}
-                className="px-8 py-3 glass text-white font-label-md rounded-full hover:bg-white/10 transition-all cursor-pointer"
+                className="px-8 py-3 glass text-on-surface font-label-md rounded-full hover:bg-on-surface/10 transition-all cursor-pointer"
               >
                 İptal
               </button>
@@ -232,9 +232,9 @@ export default function ProfilePage() {
             </h2>
             <p className="text-outline text-body-md mb-6">Evrenin bugünkü ritmini keşfet ve akışa uyum sağla.</p>
             {[
-              { label: "Duygusal", percent: 75, icon: "favorite", color: "text-tertiary", stroke: "#f9bd22" },
-              { label: "Zihinsel", percent: 50, icon: "psychology", color: "text-primary", stroke: "#d0bcff" },
-              { label: "Fiziksel", percent: 32, icon: "bolt", color: "text-secondary", stroke: "#fbabff" },
+              { label: "Duygusal", percent: 75, icon: "favorite", color: "text-tertiary", stroke: "var(--color-tertiary)" },
+              { label: "Zihinsel", percent: 50, icon: "psychology", color: "text-primary", stroke: "var(--color-primary)" },
+              { label: "Fiziksel", percent: 32, icon: "bolt", color: "text-secondary", stroke: "var(--color-secondary)" },
             ].map((item) => {
               const r = 28;
               const circ = 2 * Math.PI * r;
@@ -243,7 +243,7 @@ export default function ProfilePage() {
                 <div key={item.label} className="flex items-center gap-4 mb-5 last:mb-0">
                   <div className="relative flex items-center justify-center shrink-0">
                     <svg className="w-14 h-14 -rotate-90" viewBox="0 0 64 64">
-                      <circle cx="32" cy="32" r={r} fill="transparent" stroke="rgba(255,255,255,0.05)" strokeWidth="4" />
+                      <circle cx="32" cy="32" r={r} fill="transparent" stroke="currentColor" strokeOpacity="0.12" strokeWidth="4" />
                       <circle
                         cx="32" cy="32" r={r}
                         fill="transparent"

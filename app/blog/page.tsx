@@ -59,7 +59,7 @@ export default async function BlogPage({
       <div className="flex flex-wrap items-center gap-3 mb-12">
         <Link
           href="/blog"
-          className={`px-4 py-2 rounded-full text-label-md transition-all ${!kategori && !etiket ? "bg-primary text-on-primary" : "glass text-on-surface-variant hover:text-white"}`}
+          className={`px-4 py-2 rounded-full text-label-md transition-all ${!kategori && !etiket ? "bg-primary text-on-primary" : "glass text-on-surface-variant hover:text-on-surface"}`}
         >
           Tümü
         </Link>
@@ -67,7 +67,7 @@ export default async function BlogPage({
           <Link
             key={c}
             href={`/blog?kategori=${encodeURIComponent(c)}`}
-            className={`px-4 py-2 rounded-full text-label-md transition-all ${kategori === c ? "bg-primary text-on-primary" : "glass text-on-surface-variant hover:text-white"}`}
+            className={`px-4 py-2 rounded-full text-label-md transition-all ${kategori === c ? "bg-primary text-on-primary" : "glass text-on-surface-variant hover:text-on-surface"}`}
           >
             {c}
           </Link>
@@ -75,7 +75,7 @@ export default async function BlogPage({
         {activeLabel && (
           <span className="text-caption text-outline ml-2">
             Filtre: <span className="text-primary">{activeLabel}</span>
-            <Link href="/blog" className="ml-2 underline hover:text-white">temizle</Link>
+            <Link href="/blog" className="ml-2 underline hover:text-on-surface">temizle</Link>
           </span>
         )}
       </div>

@@ -70,7 +70,7 @@ export default function CoverImageField({
           <button
             type="button"
             onClick={() => setUrl("")}
-            className="flex items-center gap-1.5 px-3 py-2 rounded-lg border border-white/10 text-on-surface-variant text-caption font-label-md hover:bg-white/5 transition-all whitespace-nowrap"
+            className="flex items-center gap-1.5 px-3 py-2 rounded-lg border border-on-surface/10 text-on-surface-variant text-caption font-label-md hover:bg-on-surface/5 transition-all whitespace-nowrap"
           >
             <span className="material-symbols-outlined text-lg">delete</span>
             Kaldır
@@ -83,7 +83,7 @@ export default function CoverImageField({
           src={url}
           alt="Kapak önizleme"
           loading="lazy"
-          className="w-40 h-24 rounded-xl object-cover border border-white/10"
+          className="w-40 h-24 rounded-xl object-cover border border-on-surface/10"
           onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}
           onLoad={(e) => { (e.target as HTMLImageElement).style.display = "block"; }}
         />

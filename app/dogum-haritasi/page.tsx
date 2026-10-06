@@ -28,7 +28,7 @@ export default async function DogumHaritasiPage({
           <span className="material-symbols-outlined text-sm">auto_awesome</span>
           <span className="text-label-md">Ücretsiz Doğum Haritası</span>
         </span>
-        <h1 className="font-sora text-display-lg-mobile md:text-display-lg text-white font-bold mt-4">
+        <h1 className="font-sora text-display-lg-mobile md:text-display-lg text-on-surface font-bold mt-4">
           Burçlarını <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-tertiary">Keşfet</span>
         </h1>
         <p className="text-body-lg text-on-surface-variant max-w-2xl mx-auto mt-4">

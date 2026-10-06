@@ -31,7 +31,7 @@ export default function IletisimPage() {
         <ContactForm />
       </div>
 
-      <h2 className="font-sora text-headline-sm text-white pt-4">Yasal Bilgiler</h2>
+      <h2 className="font-sora text-headline-sm text-on-surface pt-4">Yasal Bilgiler</h2>
       <p>
         Gizlilik ve veri işleme hakkında{" "}
         <a href="/gizlilik-politikasi" className="text-primary underline">Gizlilik Politikası</a>{" "}

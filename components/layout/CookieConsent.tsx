@@ -50,7 +50,7 @@ export default function CookieConsent() {
 
   return (
     <div className="fixed bottom-0 inset-x-0 z-[9998]">
-      <div className="bg-surface-container-lowest backdrop-blur-xl border-t border-white/10 p-4 md:p-6 shadow-2xl">
+      <div className="bg-surface-container-lowest backdrop-blur-xl border-t border-on-surface/10 p-4 md:p-6 shadow-2xl">
         <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-6">
           <div className="flex-1 text-sm md:text-body-md text-on-surface-variant leading-relaxed">
             Sitemizde size daha iyi bir deneyim sunmak, içerik ve reklamları
@@ -63,7 +63,7 @@ export default function CookieConsent() {
           <div className="flex items-center gap-3 shrink-0">
             <button
               onClick={decline}
-              className="px-5 py-2.5 rounded-xl text-sm font-label-md text-on-surface-variant border border-white/15 hover:bg-white/5 transition-all"
+              className="px-5 py-2.5 rounded-xl text-sm font-label-md text-on-surface-variant border border-on-surface/15 hover:bg-on-surface/5 transition-all"
             >
               Reddet
             </button>

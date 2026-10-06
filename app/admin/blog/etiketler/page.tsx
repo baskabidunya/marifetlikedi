@@ -13,12 +13,12 @@ export default async function AdminBlogTagsPage() {
       </div>
 
       {/* Yeni Ekle */}
-      <form action={saveBlogTag} className="bg-surface-container/60 rounded-2xl p-4 space-y-3 border border-white/5">
+      <form action={saveBlogTag} className="bg-surface-container/60 rounded-2xl p-4 space-y-3 border border-on-surface/5">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
           <div>
             <label className="block text-caption text-outline mb-1">Etiket Adı</label>
             <input name="name" required placeholder="Etiket adı"
-              className="w-full bg-surface-container border border-white/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all" />
+              className="w-full bg-surface-container border border-on-surface/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all" />
           </div>
           <div>
             <label className="block text-caption text-outline mb-1">Slug</label>
@@ -35,7 +35,7 @@ export default async function AdminBlogTagsPage() {
 
       <div className="flex flex-wrap gap-2">
         {tags.map(t => (
-          <div key={t.id} className="flex items-center gap-2 bg-surface-container/60 rounded-lg px-3 py-2 border border-white/5">
+          <div key={t.id} className="flex items-center gap-2 bg-surface-container/60 rounded-lg px-3 py-2 border border-on-surface/5">
             <span className="text-body-sm text-on-surface">{t.name}</span>
             <ConfirmButton formAction={deleteBlogTag} name="id" value={t.id} label="Sil" />
           </div>

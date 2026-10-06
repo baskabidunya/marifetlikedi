@@ -64,14 +64,14 @@ export default function BlogEditor({ defaultValues }: { defaultValues: BlogValue
               setTitle(e.target.value);
               if (isNew && !slugTouched) setSlug(slugify(e.target.value));
             }}
-            className="w-full bg-surface-container border border-white/10 rounded-2xl px-5 py-3.5 text-body-md text-on-surface focus:border-primary transition-all" />
+            className="w-full bg-surface-container border border-on-surface/10 rounded-2xl px-5 py-3.5 text-body-md text-on-surface focus:border-primary transition-all" />
         </div>
 
         <div>
           <label className="block text-label-md text-on-surface-variant mb-2">Slug (URL)</label>
           <input name="slug" value={slug}
             onChange={e => { setSlugTouched(true); setSlug(e.target.value); }}
-            className="w-full bg-surface-container border border-white/10 rounded-2xl px-5 py-3.5 text-body-md text-on-surface focus:border-primary transition-all font-mono" />
+            className="w-full bg-surface-container border border-on-surface/10 rounded-2xl px-5 py-3.5 text-body-md text-on-surface focus:border-primary transition-all font-mono" />
           <p className="text-caption text-outline mt-1">/{slug}</p>
         </div>
 
@@ -79,7 +79,7 @@ export default function BlogEditor({ defaultValues }: { defaultValues: BlogValue
           <div>
             <label className="block text-label-md text-on-surface-variant mb-2">Kategori</label>
             <select name="category" defaultValue={defaultValues.category}
-              className="w-full bg-surface-container border border-white/10 rounded-2xl px-5 py-3.5 text-body-md text-on-surface focus:border-primary transition-all">
+              className="w-full bg-surface-container border border-on-surface/10 rounded-2xl px-5 py-3.5 text-body-md text-on-surface focus:border-primary transition-all">
               <option value="genel">Genel</option>
               {categories.map(c => (
                 <option key={c.id} value={c.slug}>{c.name}</option>
@@ -89,12 +89,12 @@ export default function BlogEditor({ defaultValues }: { defaultValues: BlogValue
           <div>
             <label className="block text-label-md text-on-surface-variant mb-2">Yazar</label>
             <input name="author_name" defaultValue={defaultValues.author_name}
-              className="w-full bg-surface-container border border-white/10 rounded-2xl px-5 py-3.5 text-body-md text-on-surface focus:border-primary transition-all" />
+              className="w-full bg-surface-container border border-on-surface/10 rounded-2xl px-5 py-3.5 text-body-md text-on-surface focus:border-primary transition-all" />
           </div>
           <div>
             <label className="block text-label-md text-on-surface-variant mb-2">Durum</label>
             <select name="published" defaultValue={defaultValues.published ? "true" : "false"}
-              className="w-full bg-surface-container border border-white/10 rounded-2xl px-5 py-3.5 text-body-md text-on-surface focus:border-primary transition-all">
+              className="w-full bg-surface-container border border-on-surface/10 rounded-2xl px-5 py-3.5 text-body-md text-on-surface focus:border-primary transition-all">
               <option value="false">Taslak</option>
               <option value="true">Yayında</option>
             </select>
@@ -111,7 +111,7 @@ export default function BlogEditor({ defaultValues }: { defaultValues: BlogValue
                   className={`px-3 py-1.5 rounded-lg text-caption font-label-md transition-all ${
                     selectedTags.includes(t.id)
                       ? "bg-primary/20 text-primary border border-primary/30"
-                      : "bg-surface-container border border-white/10 text-on-surface-variant hover:bg-white/5"
+                      : "bg-surface-container border border-on-surface/10 text-on-surface-variant hover:bg-on-surface/5"
                   }`}>
                   {t.name}
                 </button>
@@ -132,7 +132,7 @@ export default function BlogEditor({ defaultValues }: { defaultValues: BlogValue
         <div>
           <label className="block text-label-md text-on-surface-variant mb-2">Özet</label>
           <textarea name="excerpt" defaultValue={defaultValues.excerpt} rows={3}
-            className="w-full bg-surface-container border border-white/10 rounded-2xl p-4 text-body-md text-on-surface focus:border-primary transition-all resize-none" />
+            className="w-full bg-surface-container border border-on-surface/10 rounded-2xl p-4 text-body-md text-on-surface focus:border-primary transition-all resize-none" />
         </div>
 
         <div>
@@ -148,7 +148,7 @@ export default function BlogEditor({ defaultValues }: { defaultValues: BlogValue
           {saving ? "Kaydediliyor..." : defaultValues.id ? "Güncelle" : "Yayınla"}
         </button>
         <a href="/admin/blog"
-          className="px-8 py-3.5 rounded-2xl border border-white/10 text-on-surface-variant font-label-md hover:bg-white/5 transition-all">
+          className="px-8 py-3.5 rounded-2xl border border-on-surface/10 text-on-surface-variant font-label-md hover:bg-on-surface/5 transition-all">
           İptal
         </a>
       </div>

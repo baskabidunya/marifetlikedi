@@ -84,7 +84,7 @@ export default function TarotTable({ deck }: { deck: CardData[] }) {
       />
 
       <div className="max-w-7xl mx-auto px-4 md:px-8 mb-10 text-center relative z-10">
-        <h1 className="font-sora text-3xl md:text-4xl text-white mb-3 font-bold">Kehanet Odası</h1>
+        <h1 className="font-sora text-3xl md:text-4xl text-on-surface mb-3 font-bold">Kehanet Odası</h1>
         <p className="text-base text-on-surface-variant max-w-2xl mx-auto">
           Yıldızların ve kartların rehberliğinde gizemli bir yolculuğa çıkın.
         </p>
@@ -100,11 +100,11 @@ export default function TarotTable({ deck }: { deck: CardData[] }) {
               className={`glass-card p-5 rounded-xl text-center border transition-all hover:scale-[1.02] active:scale-95 cursor-pointer ${
                 activeSpread === s.id
                   ? "border-primary/60 shadow-lg shadow-primary/10"
-                  : "border-white/10 hover:border-primary/40"
+                  : "border-on-surface/10 hover:border-primary/40"
               }`}
             >
               <span className="material-symbols-outlined text-3xl text-tertiary mb-2 block">{s.icon}</span>
-              <h3 className="font-sora text-sm text-white font-semibold mb-1">{s.title}</h3>
+              <h3 className="font-sora text-sm text-on-surface font-semibold mb-1">{s.title}</h3>
               <p className="text-xs text-on-surface-variant">{s.desc}</p>
             </button>
           ))}
@@ -115,7 +115,7 @@ export default function TarotTable({ deck }: { deck: CardData[] }) {
           <div className="text-center mb-6">
             <div className="flex items-center justify-center gap-2 mb-1">
               <span className="material-symbols-outlined text-tertiary text-xl">{activeSpreadData.icon}</span>
-              <h2 className="font-sora text-xl text-white font-bold">{activeSpreadData.title}</h2>
+              <h2 className="font-sora text-xl text-on-surface font-bold">{activeSpreadData.title}</h2>
             </div>
             <p className="text-sm text-on-surface-variant">
               Lütfen {activeSpreadData.cardCount} kart seçin
@@ -212,7 +212,7 @@ export default function TarotTable({ deck }: { deck: CardData[] }) {
         {!activeSpread && deck.length === 0 && (
           <div className="text-center space-y-6 py-20">
             <span className="material-symbols-outlined text-6xl text-error">error</span>
-            <h3 className="font-sora text-xl text-white font-bold">Kartlar Yüklenemedi</h3>
+            <h3 className="font-sora text-xl text-on-surface font-bold">Kartlar Yüklenemedi</h3>
             <p className="text-sm text-on-surface-variant">Lütfen biraz sonra tekrar deneyin.</p>
           </div>
         )}
@@ -223,12 +223,12 @@ export default function TarotTable({ deck }: { deck: CardData[] }) {
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4" onClick={() => setShowModal(false)}>
           <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" />
           <div
-            className="relative bg-surface-container rounded-3xl border border-white/10 max-w-4xl w-full max-h-[90vh] overflow-y-auto p-6 md:p-10 shadow-2xl animate-fadeIn"
+            className="relative bg-surface-container rounded-3xl border border-on-surface/10 max-w-4xl w-full max-h-[90vh] overflow-y-auto p-6 md:p-10 shadow-2xl animate-fadeIn"
             onClick={(e) => e.stopPropagation()}
           >
             <button
               onClick={() => setShowModal(false)}
-              className="absolute top-4 right-4 text-on-surface-variant hover:text-white transition-colors cursor-pointer z-10"
+              className="absolute top-4 right-4 text-on-surface-variant hover:text-on-surface transition-colors cursor-pointer z-10"
             >
               <span className="material-symbols-outlined text-2xl">close</span>
             </button>
@@ -236,14 +236,14 @@ export default function TarotTable({ deck }: { deck: CardData[] }) {
             <div className="text-center mb-8">
               <div className="flex items-center justify-center gap-2 mb-2">
                 <span className="material-symbols-outlined text-tertiary text-xl">{activeSpreadData.icon}</span>
-                <h2 className="font-sora text-2xl text-white font-bold">{activeSpreadData.title}</h2>
+                <h2 className="font-sora text-2xl text-on-surface font-bold">{activeSpreadData.title}</h2>
               </div>
               <div className="w-16 h-0.5 gold-foil rounded-full mx-auto" />
             </div>
 
             <div className="flex flex-col gap-6 mb-8 max-w-4xl mx-auto">
               {selectedCards.map((sc) => (
-                <div key={sc.deckIndex} className="glass-card rounded-2xl overflow-hidden border border-white/10 flex flex-col md:flex-row">
+                <div key={sc.deckIndex} className="glass-card rounded-2xl overflow-hidden border border-on-surface/10 flex flex-col md:flex-row">
                   {/* Card Image */}
                   <div className="relative w-full md:w-72 lg:w-80 shrink-0 overflow-hidden bg-surface-bright/10">
                     {sc.data.image_url ? (
@@ -265,7 +265,7 @@ export default function TarotTable({ deck }: { deck: CardData[] }) {
                   </div>
                   {/* Card Info */}
                   <div className="p-5 md:p-6 flex-1 text-left">
-                    <h4 className="font-sora text-xl text-white mb-1 font-bold">{sc.data.name}</h4>
+                    <h4 className="font-sora text-xl text-on-surface mb-1 font-bold">{sc.data.name}</h4>
                     <p className="text-xs text-tertiary mb-3 uppercase tracking-wider">{sc.data.desc}</p>
                     <div className="w-8 h-0.5 gold-foil rounded-full mb-3" />
                     <p className="text-sm text-on-surface-variant leading-relaxed">{sc.data.detail}</p>
@@ -294,8 +294,8 @@ export default function TarotTable({ deck }: { deck: CardData[] }) {
         className="max-w-7xl mx-auto px-4 md:px-8 my-12"
       />
 
-      <div className="absolute top-1/4 right-5 w-16 h-16 border border-white/10 rounded-full floating pointer-events-none" style={{ animationDelay: "-1s" }} />
-      <div className="absolute bottom-1/3 left-5 w-24 h-24 border border-white/5 rounded-full floating pointer-events-none" style={{ animationDelay: "-2s" }} />
+      <div className="absolute top-1/4 right-5 w-16 h-16 border border-on-surface/10 rounded-full floating pointer-events-none" style={{ animationDelay: "-1s" }} />
+      <div className="absolute bottom-1/3 left-5 w-24 h-24 border border-on-surface/5 rounded-full floating pointer-events-none" style={{ animationDelay: "-2s" }} />
 
       <style jsx>{`
         @keyframes float {

@@ -18,10 +18,10 @@ export default async function AdminBlogPage({ searchParams }: Props) {
     <div>
       <BlogPageHeader count={posts.length} />
 
-      <div className="bg-surface-container/50 rounded-2xl overflow-hidden border border-white/5">
+      <div className="bg-surface-container/50 rounded-2xl overflow-hidden border border-on-surface/5">
         <table className="w-full text-left">
           <thead>
-            <tr className="border-b border-white/10">
+            <tr className="border-b border-on-surface/10">
               <th className="px-4 py-2.5 text-caption font-label-md text-outline">Başlık</th>
               <th className="px-4 py-2.5 text-caption font-label-md text-outline hidden sm:table-cell">Kategori</th>
               <th className="px-4 py-2.5 text-caption font-label-md text-outline hidden md:table-cell">Durum</th>
@@ -31,7 +31,7 @@ export default async function AdminBlogPage({ searchParams }: Props) {
           </thead>
           <tbody>
             {posts.map(p => (
-              <tr key={p.id} className="border-b border-white/5 hover:bg-white/5 transition-colors">
+              <tr key={p.id} className="border-b border-on-surface/5 hover:bg-on-surface/5 transition-colors">
                 <td className="px-4 py-2.5">
                   <Link href={`/admin/blog/${p.id}`} className="text-body-sm text-on-surface hover:text-primary transition-colors">
                     {p.title}
@@ -40,7 +40,7 @@ export default async function AdminBlogPage({ searchParams }: Props) {
                 <td className="px-4 py-2.5 text-body-sm text-on-surface-variant hidden sm:table-cell">{p.category}</td>
                 <td className="px-4 py-2.5 hidden md:table-cell">
                   <span className={`px-2 py-0.5 rounded-md text-caption font-label-md ${
-                    p.published ? "bg-primary/20 text-primary" : "bg-white/5 text-outline"
+                    p.published ? "bg-primary/20 text-primary" : "bg-on-surface/5 text-outline"
                   }`}>
                     {p.published ? "Yayında" : "Taslak"}
                   </span>

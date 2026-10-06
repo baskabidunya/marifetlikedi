@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback } from "react";
 import { createPortal } from "react-dom";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import ThemeToggle from "./ThemeToggle";
 
 interface NavLink {
   id: string;
@@ -48,7 +49,7 @@ export default function HeaderNav({ links, isLoggedIn }: { links: NavLink[]; isL
       {/* Mobile toggle */}
       <button
         onClick={() => setOpen(true)}
-        className="md:hidden flex items-center justify-center w-11 h-11 rounded-xl bg-surface-container border border-white/10 text-on-surface"
+        className="md:hidden flex items-center justify-center w-11 h-11 rounded-xl bg-surface-container border border-on-surface/10 text-on-surface"
         aria-label="Menüyü aç"
       >
         <span className="material-symbols-outlined">menu</span>
@@ -81,7 +82,7 @@ export default function HeaderNav({ links, isLoggedIn }: { links: NavLink[]; isL
             className="absolute inset-0 bg-black/60 backdrop-blur-sm"
             onClick={close}
           />
-          <div className="absolute top-0 right-0 w-72 max-w-[85vw] h-full bg-surface-container border-l border-white/10 p-6 overflow-y-auto shadow-2xl">
+          <div className="absolute top-0 right-0 w-72 max-w-[85vw] h-full bg-surface-container border-l border-on-surface/10 p-6 overflow-y-auto shadow-2xl">
             <div className="flex justify-between items-center mb-6">
               <span className="text-headline-sm font-sora text-primary">Menü</span>
               <button
@@ -103,14 +104,18 @@ export default function HeaderNav({ links, isLoggedIn }: { links: NavLink[]; isL
                   className={`block px-4 py-3 rounded-xl text-body-md transition-colors ${
                     isActive(link.url)
                       ? "bg-primary/15 text-primary font-medium"
-                      : "text-tertiary hover:bg-white/10 hover:text-on-surface"
+                      : "text-tertiary hover:bg-on-surface/10 hover:text-on-surface"
                   }`}
                 >
                   {link.label}
                 </a>
               ))}
             </nav>
-            <div className="pt-4 border-t border-white/10 mt-4 flex flex-col gap-2">
+            <div className="flex items-center justify-between px-4 py-2 mb-1">
+              <span className="text-body-md text-on-surface-variant">Tema</span>
+              <ThemeToggle />
+            </div>
+            <div className="pt-4 border-t border-on-surface/10 mt-4 flex flex-col gap-2">
               {isLoggedIn ? (
                 <Link
                   href="/profil"
@@ -125,7 +130,7 @@ export default function HeaderNav({ links, isLoggedIn }: { links: NavLink[]; isL
                   <Link
                     href="/giris"
                     onClick={close}
-                    className="block px-4 py-3 rounded-xl text-on-surface-variant border border-white/15 text-center"
+                    className="block px-4 py-3 rounded-xl text-on-surface-variant border border-on-surface/15 text-center"
                   >
                     Giriş Yap
                   </Link>

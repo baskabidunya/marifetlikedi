@@ -41,7 +41,7 @@ export default function SearchDialog({ open, onClose }: Props) {
   return (
     <div className="fixed inset-0 z-50 flex items-start justify-center pt-20">
       <div className="fixed inset-0 bg-black/50 backdrop-blur-sm" onClick={onClose} />
-      <div className="relative w-full max-w-xl mx-4 bg-surface-container-high rounded-2xl border border-white/10 shadow-2xl overflow-hidden">
+      <div className="relative w-full max-w-xl mx-4 bg-surface-container-high rounded-2xl border border-on-surface/10 shadow-2xl overflow-hidden">
         <form onSubmit={handleSubmit} className="flex items-center gap-3 px-5 py-4">
           <span className="material-symbols-outlined text-outline">search</span>
           <input

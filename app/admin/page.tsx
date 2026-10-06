@@ -42,7 +42,7 @@ export default async function AdminDashboard() {
         <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
           {actions.map(a => (
             <Link key={a.href} href={a.href}
-              className="flex items-center gap-3 px-4 py-3 rounded-xl bg-surface-container/40 hover:bg-primary/10 border border-white/5 hover:border-primary/20 transition-all group">
+              className="flex items-center gap-3 px-4 py-3 rounded-xl bg-surface-container/40 hover:bg-primary/10 border border-on-surface/5 hover:border-primary/20 transition-all group">
               <span className="material-symbols-outlined text-xl text-on-surface-variant group-hover:text-primary transition-colors">{a.icon}</span>
               <span className="text-label-md font-label-md text-on-surface-variant group-hover:text-on-surface transition-colors">{a.label}</span>
               <span className="material-symbols-outlined text-sm text-outline ml-auto opacity-0 group-hover:opacity-100 transition-opacity">arrow_forward</span>

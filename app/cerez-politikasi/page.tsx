@@ -16,30 +16,30 @@ export default function CerezPolitikasiPage() {
       description="Bu sayfa, Marifetli Kedi (&quot;biz&quot;, &quot;bize&quot;, &quot;bizim&quot;) tarafından kullanılan çerezler hakkında sizi bilgilendirmek amacıyla hazırlanmıştır. Sitemizi kullanarak bu politikada belirtilen şekilde çerez kullanımına izin vermiş olursunuz."
       slug="cerez-politikasi"
     >
-      <h2 className="font-sora text-headline-sm text-white">1. Çerez Nedir?</h2>
+      <h2 className="font-sora text-headline-sm text-on-surface">1. Çerez Nedir?</h2>
       <p>
         Çerezler, bir web sitesini ziyaret ettiğinizde tarayıcınıza veya cihazınıza kaydedilen
         küçük metin dosyalarıdır. Çerezler, web sitesinin düzgün çalışması, tercihlerinizi
         hatırlaması ve size daha iyi bir kullanıcı deneyimi sunması için kullanılır.
       </p>
 
-      <h2 className="font-sora text-headline-sm text-white">2. Kullandığımız Çerez Türleri</h2>
+      <h2 className="font-sora text-headline-sm text-on-surface">2. Kullandığımız Çerez Türleri</h2>
 
-      <h3 className="font-sora text-title-md text-white mt-6">Zorunlu Çerezler</h3>
+      <h3 className="font-sora text-title-md text-on-surface mt-6">Zorunlu Çerezler</h3>
       <p>
         Bu çerezler, web sitemizin düzgün çalışması için gereklidir. Oturum yönetimi, güvenlik
         ve erişim kontrolü gibi temel işlevleri sağlarlar. Bu çerezler olmadan sitemizin bazı
         özellikleri kullanılamaz.
       </p>
 
-      <h3 className="font-sora text-title-md text-white mt-6">İşlevsellik Çerezleri</h3>
+      <h3 className="font-sora text-title-md text-on-surface mt-6">İşlevsellik Çerezleri</h3>
       <p>
         Bu çerezler, tercihlerinizi hatırlamamıza ve size daha kişiselleştirilmiş bir deneyim
         sunmamıza olanak tanır. Örneğin, burç tercihiniz veya oturum bilgileriniz bu çerezler
         aracılığıyla saklanabilir.
       </p>
 
-      <h3 className="font-sora text-title-md text-white mt-6">Analitik Çerezler</h3>
+      <h3 className="font-sora text-title-md text-on-surface mt-6">Analitik Çerezler</h3>
       <p>
         Google Analytics aracılığıyla kullanılan bu çerezler, ziyaretçilerin sitemizi nasıl
         kullandığını anlamamıza yardımcı olur. Hangi sayfaların daha popüler olduğunu,
@@ -47,7 +47,7 @@ export default function CerezPolitikasiPage() {
         anonimleştirilmiş veriler toplarız.
       </p>
 
-      <h3 className="font-sora text-title-md text-white mt-6">Reklam/Pazarlama Çerezleri</h3>
+      <h3 className="font-sora text-title-md text-on-surface mt-6">Reklam/Pazarlama Çerezleri</h3>
       <p>
         Google AdSense tarafından kullanılan bu çerezler, size ilgi alanlarınıza göre
         kişiselleştirilmiş reklamlar göstermek için kullanılır. Bu çerezler, reklamların
@@ -55,7 +55,7 @@ export default function CerezPolitikasiPage() {
         Reklam çerezleri yalnızca açık izniniz doğrultusunda etkinleştirilir.
       </p>
 
-      <h2 className="font-sora text-headline-sm text-white">3. Üçüncü Taraf Çerezleri</h2>
+      <h2 className="font-sora text-headline-sm text-on-surface">3. Üçüncü Taraf Çerezleri</h2>
       <p>
         Sitemizde aşağıdaki üçüncü taraf hizmet sağlayıcıları tarafından yerleştirilen
         çerezler kullanılmaktadır:
@@ -74,7 +74,7 @@ export default function CerezPolitikasiPage() {
         </li>
       </ul>
 
-      <h2 className="font-sora text-headline-sm text-white">4. Çerez Tercihlerinizi Yönetme</h2>
+      <h2 className="font-sora text-headline-sm text-on-surface">4. Çerez Tercihlerinizi Yönetme</h2>
       <p>
         Çerez tercihlerinizi aşağıdaki yollarla yönetebilirsiniz:
       </p>
@@ -98,7 +98,7 @@ export default function CerezPolitikasiPage() {
         </li>
       </ul>
 
-      <h2 className="font-sora text-headline-sm text-white">5. Çerezlerin Saklanma Süresi</h2>
+      <h2 className="font-sora text-headline-sm text-on-surface">5. Çerezlerin Saklanma Süresi</h2>
       <p>
         Çerezler, oturum çerezleri (tarayıcıyı kapattığınızda sona erer) ve kalıcı çerezler
         (belirli bir süre sonunda veya manuel olarak silinene kadar cihazınızda kalır) olarak
@@ -106,13 +106,13 @@ export default function CerezPolitikasiPage() {
         1 aydan 2 yıla kadar değişebilir.
       </p>
 
-      <h2 className="font-sora text-headline-sm text-white">6. Değişiklikler</h2>
+      <h2 className="font-sora text-headline-sm text-on-surface">6. Değişiklikler</h2>
       <p>
         Bu çerez politikası gerektiğinde güncellenebilir. Önemli değişiklikler sitemizde
         yayınlanır ve yürürlüğe girdiği tarihten itibaren geçerli olur.
       </p>
 
-      <h2 className="font-sora text-headline-sm text-white">7. İletişim</h2>
+      <h2 className="font-sora text-headline-sm text-on-surface">7. İletişim</h2>
       <p>
         Çerez politikamızla ilgili sorularınız için{" "}
         <Link href="/iletisim" className="text-primary underline">

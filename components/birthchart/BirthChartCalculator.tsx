@@ -104,7 +104,7 @@ export default function BirthChartCalculator({ focus }: { focus?: string }) {
                   <div className="flex items-center gap-4">
                     <span className={`text-5xl ${ui.textColor}`}>{ui.emoji}</span>
                     <div>
-                      <div className="font-sora text-headline-md text-white font-bold">{c.data.sign}</div>
+                      <div className="font-sora text-headline-md text-on-surface font-bold">{c.data.sign}</div>
                       <div className="text-caption text-outline">
                         {c.data.degree}° {c.data.minute}'
                       </div>

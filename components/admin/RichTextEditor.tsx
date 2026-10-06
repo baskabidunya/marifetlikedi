@@ -87,9 +87,9 @@ export default function RichTextEditor({ value = "", name = "content", folder = 
   const hiddenRef = useRef<HTMLTextAreaElement>(null);
 
   return (
-    <div className="rounded-xl overflow-hidden border border-white/10">
+    <div className="rounded-xl overflow-hidden border border-on-surface/10">
       {!ready && (
-        <div className="rounded-xl border border-white/10 bg-surface-container px-4 py-6 text-caption text-outline">
+        <div className="rounded-xl border border-on-surface/10 bg-surface-container px-4 py-6 text-caption text-outline">
           Editör yükleniyor…
         </div>
       )}

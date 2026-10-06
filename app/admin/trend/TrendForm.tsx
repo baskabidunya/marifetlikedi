@@ -46,7 +46,7 @@ export default function TrendForm() {
         </div>
       </div>
       {open && (
-      <form action={saveTrendArticle} className="bg-surface-container/60 rounded-2xl p-4 space-y-3 border border-white/5">
+      <form action={saveTrendArticle} className="bg-surface-container/60 rounded-2xl p-4 space-y-3 border border-on-surface/5">
         <input type="hidden" name="active" value="true" />
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
           <div>
@@ -56,23 +56,23 @@ export default function TrendForm() {
                 setTitle(e.target.value);
                 if (!slugTouched) setSlug(slugify(e.target.value));
               }}
-              className="w-full bg-surface-container border border-white/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all" />
+              className="w-full bg-surface-container border border-on-surface/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all" />
           </div>
           <div>
             <label className="block text-caption text-outline mb-1">Slug</label>
             <input name="slug" placeholder="otomatik-uretilir" value={slug}
               onChange={(e) => { setSlugTouched(true); setSlug(e.target.value); }}
-              className="w-full bg-surface-container border border-white/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all font-mono text-xs" />
+              className="w-full bg-surface-container border border-on-surface/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all font-mono text-xs" />
           </div>
           <div>
             <label className="block text-caption text-outline mb-1">Kategori / Etiket</label>
             <input name="tag" placeholder="Burç Analizi" value={tag} onChange={(e) => setTag(e.target.value)}
-              className="w-full bg-surface-container border border-white/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all" />
+              className="w-full bg-surface-container border border-on-surface/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all" />
           </div>
           <div>
             <label className="block text-caption text-outline mb-1">Etiket Rengi</label>
             <select name="tag_color" value={tagColor} onChange={(e) => setTagColor(e.target.value)}
-              className="w-full bg-surface-container border border-white/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all">
+              className="w-full bg-surface-container border border-on-surface/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all">
               {TAG_COLORS.map((c) => (
                 <option key={c.value} value={c.value}>{c.label}</option>
               ))}
@@ -82,7 +82,7 @@ export default function TrendForm() {
         <div>
           <label className="block text-caption text-outline mb-1">Özet</label>
           <textarea name="excerpt" rows={2} value={excerpt} onChange={(e) => setExcerpt(e.target.value)}
-            className="w-full bg-surface-container border border-white/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all resize-none" />
+            className="w-full bg-surface-container border border-on-surface/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all resize-none" />
         </div>
         <div>
           <label className="block text-caption text-outline mb-1">İçerik</label>
@@ -94,7 +94,7 @@ export default function TrendForm() {
             + Ekle
           </button>
           <button type="button" onClick={() => setOpen(false)}
-            className="px-4 py-2 rounded-lg border border-white/10 text-on-surface-variant text-caption font-label-md hover:bg-white/5 transition-all">
+            className="px-4 py-2 rounded-lg border border-on-surface/10 text-on-surface-variant text-caption font-label-md hover:bg-on-surface/5 transition-all">
             İptal
           </button>
         </div>

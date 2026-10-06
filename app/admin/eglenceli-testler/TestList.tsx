@@ -70,7 +70,7 @@ export default function TestList({ tests }: { tests: DbTest[] }) {
         {tests.map((test) => (
           <div
             key={test.id}
-            className="bg-surface-container/60 rounded-2xl p-4 border border-white/5 flex items-center justify-between gap-4"
+            className="bg-surface-container/60 rounded-2xl p-4 border border-on-surface/5 flex items-center justify-between gap-4"
           >
             <div className="min-w-0 flex-1">
               <div className="flex items-center gap-3">
@@ -204,7 +204,7 @@ function TestFormModal({ test, onClose }: { test: DbTest | null; onClose: () => 
   return (
     <div className="fixed inset-0 z-50 flex items-start justify-center pt-10 pb-10 overflow-y-auto">
       <div className="fixed inset-0 bg-black/60 backdrop-blur-sm" onClick={onClose} />
-      <div className="relative bg-surface-container border border-white/10 rounded-2xl p-6 w-full max-w-4xl mx-4 shadow-2xl">
+      <div className="relative bg-surface-container border border-on-surface/10 rounded-2xl p-6 w-full max-w-4xl mx-4 shadow-2xl">
         <h2 className="text-headline-sm font-headline-md text-on-surface mb-6">
           {test ? "Testi Düzenle" : "Yeni Test Ekle"}
         </h2>
@@ -224,7 +224,7 @@ function TestFormModal({ test, onClose }: { test: DbTest | null; onClose: () => 
               <label className="block text-caption text-outline mb-1">Icon (emoji)</label>
               <input
                 name="icon" defaultValue={test?.icon || "📝"}
-                className="w-full bg-surface-container border border-white/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all"
+                className="w-full bg-surface-container border border-on-surface/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all"
               />
             </div>
             <div className="flex items-end gap-4">
@@ -236,7 +236,7 @@ function TestFormModal({ test, onClose }: { test: DbTest | null; onClose: () => 
                 <label className="block text-caption text-outline mb-1">Sıra</label>
                 <input
                   name="sort_order" type="number" defaultValue={test?.sort_order ?? 0}
-                  className="w-20 bg-surface-container border border-white/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all"
+                  className="w-20 bg-surface-container border border-on-surface/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all"
                 />
               </div>
             </div>
@@ -246,7 +246,7 @@ function TestFormModal({ test, onClose }: { test: DbTest | null; onClose: () => 
             <label className="block text-caption text-outline mb-1">Başlık</label>
             <input
               name="title" defaultValue={test?.title || ""} required
-              className="w-full bg-surface-container border border-white/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all"
+              className="w-full bg-surface-container border border-on-surface/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all"
             />
           </div>
 
@@ -254,11 +254,11 @@ function TestFormModal({ test, onClose }: { test: DbTest | null; onClose: () => 
             <label className="block text-caption text-outline mb-1">Açıklama</label>
             <textarea
               name="description" defaultValue={test?.description || ""} required rows={2}
-              className="w-full bg-surface-container border border-white/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all resize-none"
+              className="w-full bg-surface-container border border-on-surface/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all resize-none"
             />
           </div>
 
-          <div className="border-t border-white/10 pt-4">
+          <div className="border-t border-on-surface/10 pt-4">
             <div className="flex items-center justify-between mb-3">
               <label className="text-body-md font-label-md text-on-surface">Sorular ({questions.length})</label>
               <button type="button" onClick={addQuestion}
@@ -269,7 +269,7 @@ function TestFormModal({ test, onClose }: { test: DbTest | null; onClose: () => 
             </div>
             <div className="space-y-4">
               {questions.map((q, qi) => (
-                <div key={qi} className="bg-surface rounded-xl p-4 border border-white/5">
+                <div key={qi} className="bg-surface rounded-xl p-4 border border-on-surface/5">
                   <div className="flex items-start justify-between gap-3 mb-3">
                     <span className="text-caption font-label-md text-outline mt-2 shrink-0">Soru {qi + 1}</span>
                     <button type="button" onClick={() => removeQuestion(qi)}
@@ -281,7 +281,7 @@ function TestFormModal({ test, onClose }: { test: DbTest | null; onClose: () => 
                   <input
                     value={q.text} onChange={(e) => updateQuestion(qi, e.target.value)}
                     placeholder="Soru metni"
-                    className="w-full bg-surface-container border border-white/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all mb-3"
+                    className="w-full bg-surface-container border border-on-surface/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all mb-3"
                   />
                   <div className="space-y-2">
                     {q.options.map((o, oi) => (
@@ -289,11 +289,11 @@ function TestFormModal({ test, onClose }: { test: DbTest | null; onClose: () => 
                         <input
                           value={o.text} onChange={(e) => updateOption(qi, oi, "text", e.target.value)}
                           placeholder={`Seçenek ${oi + 1}`}
-                          className="flex-1 bg-surface-container border border-white/10 rounded-lg px-3 py-1.5 text-body-sm text-on-surface focus:border-primary transition-all"
+                          className="flex-1 bg-surface-container border border-on-surface/10 rounded-lg px-3 py-1.5 text-body-sm text-on-surface focus:border-primary transition-all"
                         />
                         <input
                           type="number" value={o.score} onChange={(e) => updateOption(qi, oi, "score", parseInt(e.target.value) || 0)}
-                          className="w-16 bg-surface-container border border-white/10 rounded-lg px-2 py-1.5 text-body-sm text-on-surface focus:border-primary transition-all text-center"
+                          className="w-16 bg-surface-container border border-on-surface/10 rounded-lg px-2 py-1.5 text-body-sm text-on-surface focus:border-primary transition-all text-center"
                           title="Puan"
                         />
                         <button type="button" onClick={() => removeOption(qi, oi)}
@@ -314,7 +314,7 @@ function TestFormModal({ test, onClose }: { test: DbTest | null; onClose: () => 
             </div>
           </div>
 
-          <div className="border-t border-white/10 pt-4">
+          <div className="border-t border-on-surface/10 pt-4">
             <div className="flex items-center justify-between mb-3">
               <label className="text-body-md font-label-md text-on-surface">Sonuçlar ({results.length})</label>
               <button type="button" onClick={addResult}
@@ -325,7 +325,7 @@ function TestFormModal({ test, onClose }: { test: DbTest | null; onClose: () => 
             </div>
             <div className="space-y-4">
               {results.map((r, ri) => (
-                <div key={ri} className="bg-surface rounded-xl p-4 border border-white/5">
+                <div key={ri} className="bg-surface rounded-xl p-4 border border-on-surface/5">
                   <div className="flex items-start justify-between gap-3 mb-3">
                     <span className="text-caption font-label-md text-outline mt-2 shrink-0">Sonuç {ri + 1}</span>
                     <button type="button" onClick={() => removeResult(ri)}
@@ -340,7 +340,7 @@ function TestFormModal({ test, onClose }: { test: DbTest | null; onClose: () => 
                       <input
                         value={r.title} onChange={(e) => updateResult(ri, "title", e.target.value)}
                         placeholder="Sonuç başlığı"
-                        className="w-full bg-surface-container border border-white/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all"
+                        className="w-full bg-surface-container border border-on-surface/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all"
                       />
                     </div>
                     <div className="flex items-center gap-2">
@@ -349,7 +349,7 @@ function TestFormModal({ test, onClose }: { test: DbTest | null; onClose: () => 
                         <input
                           type="number" value={r.scoreRange[0]}
                           onChange={(e) => updateResult(ri, "scoreRange", [parseInt(e.target.value) || 0, r.scoreRange[1]])}
-                          className="w-full bg-surface-container border border-white/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all"
+                          className="w-full bg-surface-container border border-on-surface/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all"
                         />
                       </div>
                       <div>
@@ -357,7 +357,7 @@ function TestFormModal({ test, onClose }: { test: DbTest | null; onClose: () => 
                         <input
                           type="number" value={r.scoreRange[1]}
                           onChange={(e) => updateResult(ri, "scoreRange", [r.scoreRange[0], parseInt(e.target.value) || 0])}
-                          className="w-full bg-surface-container border border-white/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all"
+                          className="w-full bg-surface-container border border-on-surface/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all"
                         />
                       </div>
                     </div>
@@ -367,7 +367,7 @@ function TestFormModal({ test, onClose }: { test: DbTest | null; onClose: () => 
                     <textarea
                       value={r.description} onChange={(e) => updateResult(ri, "description", e.target.value)}
                       placeholder="Sonuç açıklaması" rows={2}
-                      className="w-full bg-surface-container border border-white/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all resize-none"
+                      className="w-full bg-surface-container border border-on-surface/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all resize-none"
                     />
                   </div>
                   <div>
@@ -375,7 +375,7 @@ function TestFormModal({ test, onClose }: { test: DbTest | null; onClose: () => 
                     <textarea
                       value={r.advice} onChange={(e) => updateResult(ri, "advice", e.target.value)}
                       placeholder="Kullanıcıya tavsiye" rows={2}
-                      className="w-full bg-surface-container border border-white/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all resize-none"
+                      className="w-full bg-surface-container border border-on-surface/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all resize-none"
                     />
                   </div>
                 </div>
@@ -390,7 +390,7 @@ function TestFormModal({ test, onClose }: { test: DbTest | null; onClose: () => 
           <div className="flex items-center justify-end gap-3 pt-2">
             <button
               type="button" onClick={onClose}
-              className="px-4 py-2 rounded-lg text-on-surface-variant text-caption font-label-md hover:bg-white/5 transition-all"
+              className="px-4 py-2 rounded-lg text-on-surface-variant text-caption font-label-md hover:bg-on-surface/5 transition-all"
             >
               İptal
             </button>

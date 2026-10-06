@@ -13,10 +13,10 @@ export default async function AdminPartnerlerPage() {
         </div>
       </div>
 
-      <div className="bg-surface-container/50 rounded-3xl overflow-hidden border border-white/5">
+      <div className="bg-surface-container/50 rounded-3xl overflow-hidden border border-on-surface/5">
         <table className="w-full text-left">
           <thead>
-            <tr className="border-b border-white/10">
+            <tr className="border-b border-on-surface/10">
               <th className="px-6 py-4 text-label-md font-label-md text-on-surface-variant">İsim</th>
               <th className="px-6 py-4 text-label-md font-label-md text-on-surface-variant hidden sm:table-cell">Doğum</th>
               <th className="px-6 py-4 text-label-md font-label-md text-on-surface-variant hidden md:table-cell">Kullanıcı ID</th>
@@ -26,7 +26,7 @@ export default async function AdminPartnerlerPage() {
           </thead>
           <tbody>
             {partners.map(p => (
-              <tr key={p.id} className="border-b border-white/5 hover:bg-white/5 transition-colors">
+              <tr key={p.id} className="border-b border-on-surface/5 hover:bg-on-surface/5 transition-colors">
                 <td className="px-6 py-4 text-body-md text-on-surface">{p.name}</td>
                 <td className="px-6 py-4 text-body-md text-on-surface-variant hidden sm:table-cell">
                   {p.birth_date ? new Date(p.birth_date).toLocaleDateString("tr-TR") : "—"}

@@ -24,7 +24,7 @@ export default async function AdminSliderPage() {
             <SlideCard key={s.id} slide={s} saveAction={saveSlide} deleteAction={deleteSlide} isHome />
           ))}
           {homeSlides.length === 0 && (
-            <div className="bg-surface-container/30 rounded-2xl p-8 text-center text-outline border border-white/5">
+            <div className="bg-surface-container/30 rounded-2xl p-8 text-center text-outline border border-on-surface/5">
               <p className="text-body-sm">Henüz ana sayfa slider içeriği yok</p>
             </div>
           )}
@@ -43,7 +43,7 @@ export default async function AdminSliderPage() {
             <SlideCard key={s.id} slide={s} saveAction={saveSlide} deleteAction={deleteSlide} isHome={false} />
           ))}
           {burclarSlides.length === 0 && (
-            <div className="bg-surface-container/30 rounded-2xl p-8 text-center text-outline border border-white/5">
+            <div className="bg-surface-container/30 rounded-2xl p-8 text-center text-outline border border-on-surface/5">
               <p className="text-body-sm">Henüz burçlar slider içeriği yok</p>
             </div>
           )}

@@ -17,9 +17,9 @@ function getStatus(item: { active: boolean; start_date: string; end_date: string
   const now = Date.now();
   const start = new Date(item.start_date).getTime();
   const end = item.end_date ? new Date(item.end_date).getTime() : Infinity;
-  if (!item.active) return { label: "Pasif", cls: "bg-white/10 text-outline border-white/10" };
+  if (!item.active) return { label: "Pasif", cls: "bg-on-surface/10 text-outline border-on-surface/10" };
   if (now < start) return { label: "Yaklaşan", cls: "bg-tertiary/15 text-tertiary border-tertiary/30" };
-  if (now > end) return { label: "Süresi doldu", cls: "bg-white/10 text-outline border-white/10" };
+  if (now > end) return { label: "Süresi doldu", cls: "bg-on-surface/10 text-outline border-on-surface/10" };
   return { label: "Yayında", cls: "bg-secondary/15 text-secondary border-secondary/30" };
 }
 
@@ -123,7 +123,7 @@ export default function AnnouncementList({ items }: { items: Announcement[] }) {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Duyuru ara..."
-            className="w-full pl-10 pr-4 py-2.5 bg-surface-container border border-white/10 rounded-lg text-body-sm text-on-surface focus:border-primary transition-all"
+            className="w-full pl-10 pr-4 py-2.5 bg-surface-container border border-on-surface/10 rounded-lg text-body-sm text-on-surface focus:border-primary transition-all"
           />
           {search && (
             <button
@@ -137,7 +137,7 @@ export default function AnnouncementList({ items }: { items: Announcement[] }) {
         <select
           value={statusFilter}
           onChange={(e) => setStatusFilter(e.target.value)}
-          className="px-4 py-2.5 bg-surface-container border border-white/10 rounded-lg text-body-sm text-on-surface focus:border-primary transition-all cursor-pointer"
+          className="px-4 py-2.5 bg-surface-container border border-on-surface/10 rounded-lg text-body-sm text-on-surface focus:border-primary transition-all cursor-pointer"
         >
           {STATUS_FILTERS.map((f) => (
             <option key={f.value} value={f.value}>
@@ -157,7 +157,7 @@ export default function AnnouncementList({ items }: { items: Announcement[] }) {
         <div className="overflow-x-auto">
           <table className="w-full text-left">
             <thead>
-              <tr className="border-b border-white/10">
+              <tr className="border-b border-on-surface/10">
                 <th className="pb-3 text-caption font-label-md text-outline">Başlık</th>
                 <th className="pb-3 text-caption font-label-md text-outline hidden sm:table-cell">Tür</th>
                 <th className="pb-3 text-caption font-label-md text-outline">Durum</th>
@@ -170,7 +170,7 @@ export default function AnnouncementList({ items }: { items: Announcement[] }) {
                 const badge = TYPE_BADGE[a.type] || TYPE_BADGE.info;
                 const status = getStatus(a);
                 return (
-                  <tr key={a.id} className="border-b border-white/5 hover:bg-white/[0.02] transition-colors">
+                  <tr key={a.id} className="border-b border-on-surface/5 hover:bg-on-surface/[0.02] transition-colors">
                     <td className="py-3 pr-4">
                       <button
                         onClick={() => openEdit(a)}
@@ -196,7 +196,7 @@ export default function AnnouncementList({ items }: { items: Announcement[] }) {
                       <div className="flex items-center justify-end gap-1">
                         <button
                           onClick={() => openEdit(a)}
-                          className="p-1.5 rounded-lg hover:bg-white/10 text-outline hover:text-on-surface transition-all cursor-pointer"
+                          className="p-1.5 rounded-lg hover:bg-on-surface/10 text-outline hover:text-on-surface transition-all cursor-pointer"
                           title="Düzenle"
                         >
                           <span className="material-symbols-outlined text-lg">edit</span>
@@ -206,7 +206,7 @@ export default function AnnouncementList({ items }: { items: Announcement[] }) {
                           <input type="hidden" name="active" value={a.active ? "true" : "false"} />
                           <button
                             type="submit"
-                            className="p-1.5 rounded-lg hover:bg-white/10 text-outline hover:text-on-surface transition-all cursor-pointer"
+                            className="p-1.5 rounded-lg hover:bg-on-surface/10 text-outline hover:text-on-surface transition-all cursor-pointer"
                             title={a.active ? "Pasifleştir" : "Aktifleştir"}
                           >
                             <span className="material-symbols-outlined text-lg">

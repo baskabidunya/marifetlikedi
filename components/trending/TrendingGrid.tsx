@@ -20,7 +20,7 @@ export default async function TrendingGrid({ limit }: { limit?: number }) {
         <Link
           key={c.id}
           href={`/trend/${c.slug}`}
-          className="glass p-4 rounded-3xl inner-glow group hover:bg-white/5 transition-all flex flex-col h-full cursor-pointer"
+          className="glass p-4 rounded-3xl inner-glow group hover:bg-on-surface/5 transition-all flex flex-col h-full cursor-pointer"
         >
           <div className="relative h-48 rounded-2xl overflow-hidden mb-4">
             {c.cover_image ? (
@@ -34,7 +34,7 @@ export default async function TrendingGrid({ limit }: { limit?: number }) {
               {c.tag}
             </div>
           </div>
-          <h4 className={`font-sora text-body-lg text-white mb-4 flex-1 font-semibold ${c.tag_color} transition-colors`}>
+          <h4 className={`font-sora text-body-lg text-on-surface mb-4 flex-1 font-semibold ${c.tag_color} transition-colors`}>
             {c.title}
           </h4>
         </Link>

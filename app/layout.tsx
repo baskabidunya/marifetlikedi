@@ -93,6 +93,11 @@ export default async function RootLayout({
       suppressHydrationWarning
     >
       <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem("marifetlikedi_theme");var m=t==="dark"||t==="light"?t:(window.matchMedia("(prefers-color-scheme: light)").matches?"light":"dark");var e=document.documentElement;e.classList.remove("dark","light");e.classList.add(m);}catch(e){}})();`,
+          }}
+        />
         <meta
           name="google-adsense-account"
           content="ca-pub-8173666333919708"

@@ -44,29 +44,29 @@ export default function CelestialCalendar({
   return (
     <section className="py-section-gap px-container-padding-mobile md:px-container-padding-desktop max-w-7xl mx-auto relative overflow-hidden" id="celestial-calendar">
       <div className="text-center mb-16 space-y-4">
-        <h2 className="font-sora text-headline-lg text-white font-bold">Kozmik Takvim</h2>
+        <h2 className="font-sora text-headline-lg text-on-surface font-bold">Kozmik Takvim</h2>
         <div className="w-20 h-1 bg-gradient-to-r from-transparent via-tertiary to-transparent mx-auto" />
         <p className="text-body-md text-on-surface-variant">
           Ayın döngülerini ve kozmik olayları takip edin
         </p>
       </div>
-      <div className="glass p-8 rounded-[3rem] inner-glow border border-white/10">
+      <div className="glass p-8 rounded-[3rem] inner-glow border border-on-surface/10">
         <div className="flex justify-between items-center mb-8 px-4">
-          <h3 className="font-sora text-headline-md md:text-headline-lg text-white font-bold">
+          <h3 className="font-sora text-headline-md md:text-headline-lg text-on-surface font-bold">
             {TURKISH_MONTHS[month]} <span className="text-tertiary">{year}</span>
           </h3>
           <div className="flex gap-4">
             <Link
               href={nav(prevMonth, prevYear)}
               aria-label="Önceki ay"
-              className="p-2 rounded-full hover:bg-white/5 text-on-surface-variant hover:text-white transition-all"
+              className="p-2 rounded-full hover:bg-on-surface/5 text-on-surface-variant hover:text-on-surface transition-all"
             >
               <span className="material-symbols-outlined">chevron_left</span>
             </Link>
             <Link
               href={nav(nextMonth, nextYear)}
               aria-label="Sonraki ay"
-              className="p-2 rounded-full hover:bg-white/5 text-on-surface-variant hover:text-white transition-all"
+              className="p-2 rounded-full hover:bg-on-surface/5 text-on-surface-variant hover:text-on-surface transition-all"
             >
               <span className="material-symbols-outlined">chevron_right</span>
             </Link>
@@ -87,7 +87,7 @@ export default function CelestialCalendar({
             const phase: MoonDay = phases[day - 1];
             const todayCell = isToday(day);
 
-            let borderCls = "border border-white/5";
+            let borderCls = "border border-on-surface/5";
             let labelCls = "text-on-surface-variant";
             if (phase?.isKey) {
               if (phase.kind === "new") {
@@ -132,7 +132,7 @@ export default function CelestialCalendar({
           })}
         </div>
 
-        <div className="mt-8 flex flex-wrap justify-center gap-6 pt-8 border-t border-white/5">
+        <div className="mt-8 flex flex-wrap justify-center gap-6 pt-8 border-t border-on-surface/5">
           {legend.map((l) => (
             <div key={l.key} className="flex items-center gap-2">
               {/* eslint-disable-next-line @next/next/no-img-element */}

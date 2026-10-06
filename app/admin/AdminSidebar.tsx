@@ -33,7 +33,7 @@ export default function AdminSidebar({ displayName }: { displayName: string }) {
     <>
       {/* Mobile toggle */}
       <button onClick={() => setMobileOpen(!mobileOpen)}
-        className="fixed top-20 left-4 z-50 md:hidden bg-surface-container p-2.5 rounded-xl border border-white/10 shadow-lg">
+        className="fixed top-20 left-4 z-50 md:hidden bg-surface-container p-2.5 rounded-xl border border-on-surface/10 shadow-lg">
         <span className="material-symbols-outlined text-on-surface">{mobileOpen ? "close" : "menu"}</span>
       </button>
 
@@ -44,11 +44,11 @@ export default function AdminSidebar({ displayName }: { displayName: string }) {
       )}
 
       {/* Sidebar */}
-      <aside className={`fixed md:sticky top-20 z-40 h-screen w-64 bg-surface-container border-r border-white/10 flex flex-col transition-transform duration-300 ${
+      <aside className={`fixed md:sticky top-20 z-40 h-screen w-64 bg-surface-container border-r border-on-surface/10 flex flex-col transition-transform duration-300 ${
         mobileOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"
       }`}>
         {/* Logo */}
-        <div className="flex items-center gap-3 px-6 pt-6 pb-4 border-b border-white/10">
+        <div className="flex items-center gap-3 px-6 pt-6 pb-4 border-b border-on-surface/10">
           <div className="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center">
             <span className="material-symbols-outlined text-primary">auto_awesome</span>
           </div>
@@ -67,7 +67,7 @@ export default function AdminSidebar({ displayName }: { displayName: string }) {
                 className={`flex items-center gap-3 px-4 py-3 rounded-2xl text-label-md font-label-md transition-all ${
                   isActive
                     ? "bg-primary/20 text-primary shadow-sm"
-                    : "text-on-surface-variant hover:bg-white/5 hover:text-on-surface"
+                    : "text-on-surface-variant hover:bg-on-surface/5 hover:text-on-surface"
                 }`}>
                 <span className="material-symbols-outlined text-[20px]">{l.icon}</span>
                 {l.label}
@@ -77,7 +77,7 @@ export default function AdminSidebar({ displayName }: { displayName: string }) {
         </nav>
 
         {/* Bottom */}
-        <div className="px-3 py-4 border-t border-white/10">
+        <div className="px-3 py-4 border-t border-on-surface/10">
           <div className="flex items-center gap-3 px-4 py-3">
             <div className="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center">
               <span className="material-symbols-outlined text-[18px] text-on-surface">account_circle</span>
@@ -87,7 +87,7 @@ export default function AdminSidebar({ displayName }: { displayName: string }) {
             </div>
           </div>
           <Link href="/"
-            className="flex items-center gap-3 px-4 py-3 rounded-2xl text-label-md font-label-md text-outline hover:bg-white/5 hover:text-on-surface transition-all mt-1">
+            className="flex items-center gap-3 px-4 py-3 rounded-2xl text-label-md font-label-md text-outline hover:bg-on-surface/5 hover:text-on-surface transition-all mt-1">
             <span className="material-symbols-outlined text-[20px]">arrow_back</span>
             Siteye Dön
           </Link>

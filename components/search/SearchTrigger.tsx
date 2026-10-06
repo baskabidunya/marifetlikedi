@@ -10,7 +10,7 @@ export default function SearchTrigger() {
     <>
       <button
         onClick={() => setOpen(true)}
-        className="flex items-center justify-center w-11 h-11 rounded-full hover:bg-white/5 transition-colors text-outline hover:text-on-surface"
+        className="flex items-center justify-center w-11 h-11 rounded-full hover:bg-on-surface/5 transition-colors text-outline hover:text-on-surface"
         aria-label="Ara"
       >
         <span className="material-symbols-outlined">search</span>

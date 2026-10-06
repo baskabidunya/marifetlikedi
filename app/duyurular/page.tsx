@@ -59,7 +59,7 @@ export default async function AnnouncementsPage() {
             <Link
               key={a.id}
               href={`/duyurular/${a.id}`}
-              className="block glass-card rounded-2xl p-6 md:p-8 border-white/10 hover:border-primary/40 transition-all group no-underline"
+              className="block glass-card rounded-2xl p-6 md:p-8 border-on-surface/10 hover:border-primary/40 transition-all group no-underline"
             >
               <div className="flex items-center gap-3 mb-3">
                 <span className={`px-3 py-1 rounded-full text-caption font-label-md border ${TYPE_STYLES[a.type] || TYPE_STYLES.info}`}>

@@ -30,10 +30,10 @@ export default function TrendArticleList({ articles }: { articles: Article[] }) 
   const [openId, setOpenId] = useState<string | null>(null);
 
   return (
-    <div className="bg-surface-container/50 rounded-2xl overflow-hidden border border-white/5">
+    <div className="bg-surface-container/50 rounded-2xl overflow-hidden border border-on-surface/5">
       <table className="w-full text-left">
         <thead>
-          <tr className="border-b border-white/10">
+          <tr className="border-b border-on-surface/10">
             <th className="px-4 py-2.5 text-caption font-label-md text-outline">Başlık</th>
             <th className="px-4 py-2.5 text-caption font-label-md text-outline hidden sm:table-cell">Etiket</th>
             <th className="px-4 py-2.5 text-caption font-label-md text-outline hidden md:table-cell">Durum</th>
@@ -46,7 +46,7 @@ export default function TrendArticleList({ articles }: { articles: Article[] }) 
             const open = openId === c.id;
             return (
               <Fragment key={c.id}>
-                <tr className="border-b border-white/5 hover:bg-white/5 transition-colors">
+                <tr className="border-b border-on-surface/5 hover:bg-on-surface/5 transition-colors">
                   <td className="px-4 py-2.5">
                     <button
                       type="button"
@@ -61,7 +61,7 @@ export default function TrendArticleList({ articles }: { articles: Article[] }) 
                   </td>
                   <td className="px-4 py-2.5 hidden md:table-cell">
                     <span className={`px-2 py-0.5 rounded-md text-caption font-label-md ${
-                      c.active ? "bg-primary/20 text-primary" : "bg-white/5 text-outline"
+                      c.active ? "bg-primary/20 text-primary" : "bg-on-surface/5 text-outline"
                     }`}>
                       {c.active ? "Yayında" : "Pasif"}
                     </span>
@@ -84,7 +84,7 @@ export default function TrendArticleList({ articles }: { articles: Article[] }) 
                 </tr>
 
                 {open && (
-                  <tr className="border-b border-white/5 bg-background/30">
+                  <tr className="border-b border-on-surface/5 bg-background/30">
                     <td colSpan={5} className="px-4 py-4">
                       <form action={saveTrendArticle} className="space-y-3">
                         <input type="hidden" name="id" value={c.id} />
@@ -92,22 +92,22 @@ export default function TrendArticleList({ articles }: { articles: Article[] }) 
                           <div>
                             <label className="block text-caption text-outline mb-1">Başlık</label>
                             <input name="title" defaultValue={c.title} required
-                              className="w-full bg-surface-container border border-white/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all" />
+                              className="w-full bg-surface-container border border-on-surface/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all" />
                           </div>
                           <div>
                             <label className="block text-caption text-outline mb-1">Slug</label>
                             <input name="slug" defaultValue={c.slug}
-                              className="w-full bg-surface-container border border-white/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all" />
+                              className="w-full bg-surface-container border border-on-surface/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all" />
                           </div>
                           <div>
                             <label className="block text-caption text-outline mb-1">Kategori / Etiket</label>
                             <input name="tag" defaultValue={c.tag}
-                              className="w-full bg-surface-container border border-white/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all" />
+                              className="w-full bg-surface-container border border-on-surface/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all" />
                           </div>
                           <div>
                             <label className="block text-caption text-outline mb-1">Etiket Rengi</label>
                             <select name="tag_color" defaultValue={c.tag_color}
-                              className="w-full bg-surface-container border border-white/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all">
+                              className="w-full bg-surface-container border border-on-surface/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all">
                               {TAG_COLORS.map((opt) => (
                                 <option key={opt.value} value={opt.value}>{opt.label}</option>
                               ))}
@@ -119,7 +119,7 @@ export default function TrendArticleList({ articles }: { articles: Article[] }) 
                           <div>
                             <label className="block text-caption text-outline mb-1">Durum</label>
                             <select name="active" defaultValue={c.active ? "true" : "false"}
-                              className="w-full bg-surface-container border border-white/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all">
+                              className="w-full bg-surface-container border border-on-surface/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all">
                               <option value="true">Yayında</option>
                               <option value="false">Pasif</option>
                             </select>
@@ -128,7 +128,7 @@ export default function TrendArticleList({ articles }: { articles: Article[] }) 
                         <div>
                           <label className="block text-caption text-outline mb-1">Özet</label>
                           <textarea name="excerpt" defaultValue={c.excerpt} rows={2}
-                            className="w-full bg-surface-container border border-white/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all resize-none" />
+                            className="w-full bg-surface-container border border-on-surface/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all resize-none" />
                         </div>
                         <div>
                           <label className="block text-caption text-outline mb-1">İçerik</label>
@@ -140,7 +140,7 @@ export default function TrendArticleList({ articles }: { articles: Article[] }) 
                             Kaydet
                           </button>
                           <button type="button" onClick={() => setOpenId(null)}
-                            className="px-4 py-1.5 rounded-lg border border-white/10 text-on-surface-variant text-caption font-label-md hover:bg-white/5 transition-all">
+                            className="px-4 py-1.5 rounded-lg border border-on-surface/10 text-on-surface-variant text-caption font-label-md hover:bg-on-surface/5 transition-all">
                             İptal
                           </button>
                         </div>

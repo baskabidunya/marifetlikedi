@@ -8,7 +8,7 @@ import { TURKISH_CITIES } from "@/lib/cities";
 function BirthFields({ prefix, title }: { prefix: string; title: string }) {
   return (
     <div className="glass p-5 rounded-2xl inner-glow space-y-4">
-      <h3 className="font-sora text-headline-sm text-white font-semibold">{title}</h3>
+      <h3 className="font-sora text-headline-sm text-on-surface font-semibold">{title}</h3>
       {prefix === "partner" && (
         <div className="space-y-2">
           <label className="text-label-md text-on-surface-variant">İsim (opsiyonel)</label>
