@@ -29,6 +29,15 @@ interface Article {
 export default function TrendArticleList({ articles }: { articles: Article[] }) {
   const [openId, setOpenId] = useState<string | null>(null);
 
+  async function handleSaveEdit(formData: FormData) {
+    try {
+      await saveTrendArticle(formData);
+      setOpenId(null);
+    } catch (err) {
+      alert("Kaydedilemedi: " + (err instanceof Error ? err.message : "bilinmeyen hata"));
+    }
+  }
+
   return (
     <div className="bg-surface-container/50 rounded-2xl overflow-hidden border border-on-surface/5">
       <table className="w-full text-left">
@@ -86,7 +95,7 @@ export default function TrendArticleList({ articles }: { articles: Article[] }) 
                 {open && (
                   <tr className="border-b border-on-surface/5 bg-background/30">
                     <td colSpan={5} className="px-4 py-4">
-                      <form action={saveTrendArticle} className="space-y-3">
+                      <form action={handleSaveEdit} className="space-y-3">
                         <input type="hidden" name="id" value={c.id} />
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                           <div>

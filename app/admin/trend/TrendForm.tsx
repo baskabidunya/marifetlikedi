@@ -5,6 +5,7 @@ import { saveTrendArticle } from "@/lib/admin";
 import { slugify } from "@/lib/slugify";
 import RichTextEditor from "@/components/admin/RichTextEditor";
 import AIGenerateButton from "@/components/admin/AIGenerateButton";
+import CoverImageField from "@/components/admin/CoverImageField";
 
 const TAG_COLORS = [
   { value: "text-tertiary", label: "Altın (Tertiary)" },
@@ -21,6 +22,28 @@ export default function TrendForm() {
   const [excerpt, setExcerpt] = useState("");
   const [content, setContent] = useState("");
   const [open, setOpen] = useState(false);
+  const [formKey, setFormKey] = useState(0);
+
+  function resetForm() {
+    setTitle("");
+    setSlug("");
+    setSlugTouched(false);
+    setTag("");
+    setTagColor("text-tertiary");
+    setExcerpt("");
+    setContent("");
+    setFormKey((k) => k + 1);
+    setOpen(false);
+  }
+
+  async function handleSave(formData: FormData) {
+    try {
+      await saveTrendArticle(formData);
+      resetForm();
+    } catch (err) {
+      alert("Kaydedilemedi: " + (err instanceof Error ? err.message : "bilinmeyen hata"));
+    }
+  }
 
   function handleAI(data: { title: string; excerpt?: string; content?: string }) {
     if (data.title) {
@@ -46,7 +69,7 @@ export default function TrendForm() {
         </div>
       </div>
       {open && (
-      <form action={saveTrendArticle} className="bg-surface-container/60 rounded-2xl p-4 space-y-3 border border-on-surface/5">
+      <form key={formKey} action={handleSave} className="bg-surface-container/60 rounded-2xl p-4 space-y-3 border border-on-surface/5">
         <input type="hidden" name="active" value="true" />
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
           <div>
@@ -78,6 +101,9 @@ export default function TrendForm() {
               ))}
             </select>
           </div>
+          <div className="md:col-span-2">
+            <CoverImageField name="cover_image" folder="trend" />
+          </div>
         </div>
         <div>
           <label className="block text-caption text-outline mb-1">Özet</label>
@@ -93,7 +119,7 @@ export default function TrendForm() {
             className="px-4 py-2 rounded-lg bg-primary/20 text-primary text-caption font-label-md hover:bg-primary/30 transition-all">
             + Ekle
           </button>
-          <button type="button" onClick={() => setOpen(false)}
+          <button type="button" onClick={resetForm}
             className="px-4 py-2 rounded-lg border border-on-surface/10 text-on-surface-variant text-caption font-label-md hover:bg-on-surface/5 transition-all">
             İptal
           </button>
