@@ -5,10 +5,17 @@ import Link from "next/link";
 import type { FunTest } from "@/lib/fun-tests";
 import { computeMaxScore } from "@/lib/fun-tests";
 
-export default function TestQuiz({ test }: { test: FunTest }) {
+export default function TestQuiz({
+  test,
+  related = [],
+}: {
+  test: FunTest;
+  related?: FunTest[];
+}) {
   const [current, setCurrent] = useState(0);
   const [answers, setAnswers] = useState<number[]>([]);
   const [showResult, setShowResult] = useState(false);
+  const [copied, setCopied] = useState(false);
 
   const total = test.questions.length;
 
@@ -51,6 +58,36 @@ export default function TestQuiz({ test }: { test: FunTest }) {
     const emojis = ["🟢", "🔵", "🟡", "🔴"];
     const level =
       percentage < 25 ? 0 : percentage < 50 ? 1 : percentage < 75 ? 2 : 3;
+
+    const shareText = `Sonucum: "${result.title}" — ${test.title}. Sen de Marifetli Kedi'de dene!`;
+
+    async function handleCopy() {
+      try {
+        await navigator.clipboard.writeText(
+          `${shareText} ${window.location.href}`
+        );
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+      } catch {
+        setCopied(false);
+      }
+    }
+
+    async function handleShare() {
+      if (typeof navigator !== "undefined" && navigator.share) {
+        try {
+          await navigator.share({
+            title: test.title,
+            text: shareText,
+            url: window.location.href,
+          });
+          return;
+        } catch {
+          // kullanıcı iptal ettiyse sessizce geç
+        }
+      }
+      await handleCopy();
+    }
 
     return (
       <div className="max-w-2xl mx-auto">
@@ -97,6 +134,60 @@ export default function TestQuiz({ test }: { test: FunTest }) {
           <p className="text-xs text-outline/40 mb-6">
             Puan: {totalScore} / {computeMaxScore(test)}
           </p>
+
+          <div className="text-left border-t border-outline/20 pt-6 mb-6">
+            <h3 className="text-sm font-semibold text-tertiary uppercase tracking-wider mb-2">
+              Sonucunu Paylaş
+            </h3>
+            <p className="text-on-surface-variant text-sm leading-relaxed mb-3">
+              &ldquo;{result.title}&rdquo; çıktın! Sonucunu arkadaşlarınla
+              paylaş, onlar da kendi kozmik sonuçlarını öğrensin.
+            </p>
+            <div className="flex flex-wrap gap-2">
+              <button
+                onClick={handleShare}
+                className="inline-flex items-center gap-2 bg-primary/20 text-primary px-4 py-2 rounded-lg text-sm font-semibold hover:bg-primary/30 transition-colors"
+              >
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+                </svg>
+                Paylaş
+              </button>
+              <button
+                onClick={handleCopy}
+                className="inline-flex items-center gap-2 bg-surface-dim/60 border border-outline/20 text-on-surface px-4 py-2 rounded-lg text-sm font-semibold hover:border-tertiary/40 transition-colors"
+              >
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                </svg>
+                {copied ? "Kopyalandı!" : "Linki Kopyala"}
+              </button>
+            </div>
+          </div>
+
+          {related.length > 0 && (
+            <div className="text-left border-t border-outline/20 pt-6 mb-6">
+              <h3 className="text-sm font-semibold text-tertiary uppercase tracking-wider mb-2">
+                Keşfetmeye Devam Et
+              </h3>
+              <p className="text-on-surface-variant text-sm leading-relaxed mb-3">
+                Bir başka merak sorun mu var? Daha fazla test çöz, kozmik
+                haritanın diğer katmanlarını da keşfet.
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {related.map((r) => (
+                  <Link
+                    key={r.id}
+                    href={`/eglenceli-testler/${r.id}`}
+                    className="inline-flex items-center gap-1.5 bg-surface-dim/50 border border-outline/10 px-3 py-1.5 rounded-lg text-xs text-on-surface-variant hover:border-tertiary/40 hover:text-on-surface transition-colors"
+                  >
+                    <span>{r.icon}</span>
+                    {r.title}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
 
           <div className="flex flex-wrap items-center justify-center gap-3">
             <button

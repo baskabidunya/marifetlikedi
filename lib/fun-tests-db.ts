@@ -6,6 +6,7 @@ interface DbFunTest {
   slug: string;
   title: string;
   description: string;
+  intro?: string | null;
   icon: string;
   questions: string;
   results: string;
@@ -20,6 +21,7 @@ function rowToTest(row: DbFunTest): FunTest {
     id: row.slug,
     title: row.title,
     description: row.description,
+    intro: row.intro || undefined,
     icon: row.icon || "📝",
     questions,
     results,

@@ -10,6 +10,7 @@ interface DbTest {
   slug: string;
   title: string;
   description: string;
+  intro?: string | null;
   icon: string;
   questions: unknown[];
   results: unknown[];
@@ -254,6 +255,17 @@ function TestFormModal({ test, onClose }: { test: DbTest | null; onClose: () => 
             <label className="block text-caption text-outline mb-1">Açıklama</label>
             <textarea
               name="description" defaultValue={test?.description || ""} required rows={2}
+              className="w-full bg-surface-container border border-on-surface/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all resize-none"
+            />
+          </div>
+
+          <div>
+            <label className="block text-caption text-outline mb-1">
+              Giriş Metni (150-250 kelime)
+            </label>
+            <textarea
+              name="intro" defaultValue={test?.intro || ""} rows={5}
+              placeholder="Test sayfasında görünecek giriş metni..."
               className="w-full bg-surface-container border border-on-surface/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all resize-none"
             />
           </div>

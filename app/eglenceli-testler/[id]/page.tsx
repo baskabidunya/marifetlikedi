@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import TestQuiz from "@/components/funtests/TestQuiz";
 import AdSlot from "@/components/ads/AdSlot";
-import { getFunTestBySlug } from "@/lib/fun-tests-db";
+import { getFunTestBySlug, getFunTests } from "@/lib/fun-tests-db";
 import Link from "next/link";
 
 interface Props {
@@ -27,6 +27,10 @@ export default async function TestPage({ params }: Props) {
   const test = await getFunTestBySlug(id);
   if (!test) notFound();
 
+  const related = (await getFunTests())
+    .filter((t) => t.id !== test.id)
+    .slice(0, 3);
+
   return (
     <main className="top-clear-2 pb-section-gap px-container-padding-mobile md:px-container-padding-desktop max-w-5xl mx-auto">
       <nav className="flex items-center gap-2 text-caption text-outline mb-6 flex-wrap">
@@ -48,7 +52,24 @@ export default async function TestPage({ params }: Props) {
         </Link>
       </div>
 
-      <TestQuiz test={test} />
+      <section className="mb-8 bg-surface/60 border border-outline/20 rounded-2xl p-6 md:p-8">
+        <h1 className="text-headline-sm font-headline-sm text-on-surface mb-4">
+          {test.title}
+        </h1>
+        <p className="text-body-md text-on-surface-variant leading-relaxed mb-4">
+          {test.description}
+        </p>
+        {test.intro?.split(/\n\s*\n/).map((para, i) => (
+          <p
+            key={i}
+            className="text-body-md text-on-surface-variant leading-relaxed mb-4 last:mb-0"
+          >
+            {para}
+          </p>
+        ))}
+      </section>
+
+      <TestQuiz test={test} related={related} />
 
       <AdSlot
         name="static_page"

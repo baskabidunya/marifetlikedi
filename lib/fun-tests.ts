@@ -26,6 +26,7 @@ export interface FunTest {
   id: string;
   title: string;
   description: string;
+  intro?: string;
   icon: string;
   questions: FunTestQuestion[];
   results: FunTestResult[];
