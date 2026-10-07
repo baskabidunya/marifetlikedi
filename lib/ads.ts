@@ -7,6 +7,10 @@
 
 export const ADSENSE_CLIENT = process.env.NEXT_PUBLIC_ADSENSE_CLIENT || "";
 
+// AdSense onayı gelene kadar tüm reklam üniteleri kapalıdır (boş kutu
+// görünmesin). Onay sonrası burayı true yapmak yeterlidir.
+export const ADS_ENABLED = false;
+
 export type AdSlotName =
   | "content_inline"
   | "sidebar"

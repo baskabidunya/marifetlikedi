@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { useAdClient } from "./AdNetwork";
-import { getAdSlot, type AdSlotName } from "@/lib/ads";
+import { getAdSlot, ADS_ENABLED, type AdSlotName } from "@/lib/ads";
 
 export default function AdSlot({
   name,
@@ -22,7 +22,7 @@ export default function AdSlot({
   const ref = useRef<HTMLModElement>(null);
 
   useEffect(() => {
-    if (!clientId || !slot) return;
+    if (!ADS_ENABLED || !clientId || !slot) return;
     const el = ref.current;
     if (!el || el.getAttribute("data-ad-loaded")) return;
     el.setAttribute("data-ad-loaded", "1");
@@ -50,7 +50,7 @@ export default function AdSlot({
     }
   }, [clientId, slot]);
 
-  if (!clientId || !slot) return null;
+  if (!ADS_ENABLED || !clientId || !slot) return null;
 
   return (
     <ins
