@@ -14,7 +14,7 @@ export default function AdSlot({
   name: AdSlotName;
   className?: string;
   style?: React.CSSProperties;
-  format?: "auto" | "rectangle" | "vertical" | "horizontal";
+  format?: "auto" | "rectangle" | "vertical" | "horizontal" | "fluid";
   responsive?: boolean;
 }) {
   const clientId = useAdClient();

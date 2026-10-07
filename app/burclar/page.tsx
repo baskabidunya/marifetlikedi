@@ -191,6 +191,7 @@ export default function BurclarPage() {
 
         <AdSlot
           name="blog_listing"
+          format="fluid"
           className="my-section-gap max-w-7xl mx-auto"
         />
       </div>

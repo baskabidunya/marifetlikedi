@@ -33,7 +33,7 @@ export default async function TrendPage({
         </p>
         <TrendingGrid page={currentPage} />
 
-        <AdSlot name="blog_listing" className="mt-12" />
+        <AdSlot name="blog_listing" format="fluid" className="mt-12" />
       </div>
     </main>
   );

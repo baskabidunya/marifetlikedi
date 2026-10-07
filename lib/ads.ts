@@ -15,10 +15,10 @@ export type AdSlotName =
   | "static_page";
 
 const AD_SLOT_ENV: Record<AdSlotName, string | undefined> = {
-  content_inline: process.env.NEXT_PUBLIC_AD_SLOT_CONTENT,
+  content_inline: process.env.NEXT_PUBLIC_AD_SLOT_CONTENT || "6969644703",
   sidebar: process.env.NEXT_PUBLIC_AD_SLOT_SIDEBAR,
   footer: process.env.NEXT_PUBLIC_AD_SLOT_FOOTER,
-  blog_listing: process.env.NEXT_PUBLIC_AD_SLOT_BLOG_LISTING,
+  blog_listing: process.env.NEXT_PUBLIC_AD_SLOT_BLOG_LISTING || "2262107929",
   static_page: process.env.NEXT_PUBLIC_AD_SLOT_STATIC_PAGE,
 };
 

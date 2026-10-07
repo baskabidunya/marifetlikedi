@@ -86,6 +86,7 @@ export default async function AnnouncementsPage() {
 
       <AdSlot
         name="blog_listing"
+        format="fluid"
         className="my-12 max-w-3xl mx-auto"
       />
     </main>

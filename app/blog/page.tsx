@@ -87,7 +87,7 @@ export default async function BlogPage({
         )}
       </div>
 
-      <AdSlot name="blog_listing" className="mb-12" />
+      <AdSlot name="blog_listing" format="fluid" className="mb-12" />
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {pagePosts.map(p => (
