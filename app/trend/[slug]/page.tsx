@@ -3,8 +3,9 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { getTrendArticleBySlug } from "@/lib/public-queries";
 import { renderMarkdown } from "@/lib/markdown";
-import { ogMeta } from "@/lib/seo";
+import { ogMeta, breadcrumbLd, jsonLd } from "@/lib/seo";
 import AdSlot from "@/components/ads/AdSlot";
+import AuthorBox from "@/components/seo/AuthorBox";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
@@ -29,9 +30,15 @@ export default async function TrendDetailPage({ params }: { params: Promise<{ sl
   const article = await getTrendArticleBySlug(slug);
   if (!article) notFound();
   const html = renderMarkdown(article.content);
+  const breadcrumb = breadcrumbLd([
+    { name: "Ana Sayfa", path: "/" },
+    { name: "Trend İçerikler", path: "/trend" },
+    { name: article.title },
+  ]);
 
   return (
     <main className="top-clear-2 pb-32">
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(breadcrumb)} />
       <article className="max-w-3xl mx-auto px-container-padding-mobile md:px-container-padding-desktop">
         <nav className="flex items-center gap-2 text-caption text-outline mb-6 flex-wrap">
           <Link href="/" className="hover:text-on-surface transition-colors">Ana Sayfa</Link>
@@ -65,6 +72,8 @@ export default async function TrendDetailPage({ params }: { params: Promise<{ sl
         />
 
         <AdSlot name="content_inline" className="my-10" />
+
+        <AuthorBox updated={(article.updated_at || article.created_at) as string} />
       </article>
     </main>
   );

@@ -1,5 +1,24 @@
 import type { Metadata } from "next";
 
+const SITE_URL = "https://www.marifetlikedi.com";
+
+export function breadcrumbLd(items: { name: string; path?: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((it, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: it.name,
+      ...(it.path ? { item: `${SITE_URL}${it.path}` } : {}),
+    })),
+  };
+}
+
+export function jsonLd(data: object) {
+  return { __html: JSON.stringify(data).replace(/</g, "\\u003c") };
+}
+
 type OGInput = {
   title: string;
   description: string;

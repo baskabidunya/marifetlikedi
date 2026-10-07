@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import TestQuiz from "@/components/funtests/TestQuiz";
 import AdSlot from "@/components/ads/AdSlot";
-import { ogMeta } from "@/lib/seo";
+import { ogMeta, breadcrumbLd, jsonLd } from "@/lib/seo";
 import { getFunTestBySlug, getFunTests } from "@/lib/fun-tests-db";
 import Link from "next/link";
 
@@ -37,9 +37,15 @@ export default async function TestPage({ params }: Props) {
   const related = (await getFunTests())
     .filter((t) => t.id !== test.id)
     .slice(0, 3);
+  const breadcrumb = breadcrumbLd([
+    { name: "Ana Sayfa", path: "/" },
+    { name: "Eğlenceli Testler", path: "/eglenceli-testler" },
+    { name: test.title },
+  ]);
 
   return (
     <main className="top-clear-2 pb-section-gap px-container-padding-mobile md:px-container-padding-desktop max-w-5xl mx-auto">
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(breadcrumb)} />
       <nav className="flex items-center gap-2 text-caption text-outline mb-6 flex-wrap">
         <Link href="/" className="hover:text-on-surface transition-colors">Ana Sayfa</Link>
         <span className="material-symbols-outlined text-xs">chevron_right</span>

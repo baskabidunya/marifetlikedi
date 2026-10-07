@@ -184,6 +184,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         <div>
           <p className="text-label-md text-on-surface font-label-md">{authorName}</p>
           <p className="text-caption text-on-surface-variant mt-1 leading-relaxed">{AUTHOR.bio}</p>
+          {updatedAt && (
+            <p className="text-caption text-outline mt-1.5">Son güncelleme: {updatedAt}</p>
+          )}
         </div>
       </div>
 

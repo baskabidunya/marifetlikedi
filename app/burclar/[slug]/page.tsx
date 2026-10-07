@@ -2,11 +2,13 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { ZODIAC_DATA, ZODIAC_SIGNS } from "@/lib/astro-utils";
-import { ogMeta } from "@/lib/seo";
+import { ogMeta, breadcrumbLd, jsonLd } from "@/lib/seo";
+import { SIGN_GUIDES, SIGN_GUIDES_UPDATED } from "@/lib/sign-guides";
 import { SIGN_TRAITS } from "@/lib/astro-narratives";
 import { RISING_SIGNS } from "@/lib/astro-interpretations";
 import KozmikTakvim from "@/components/profile/KozmikTakvim";
 import AdSlot from "@/components/ads/AdSlot";
+import AuthorBox from "@/components/seo/AuthorBox";
 
 type ZodiacSign = (typeof ZODIAC_SIGNS)[number];
 
@@ -146,7 +148,14 @@ export default async function Page({
   const img = SIGN_IMAGES[s];
   const lucky = LUCKY_RITUALS[s] || { color: "", stone: "", activity: "" };
   const prophecy = DAILY_PROPHECIES[s];
-  const desc = RISING_SIGNS[s];
+  const risingText = RISING_SIGNS[s];
+  const guide = SIGN_GUIDES[s];
+
+  const breadcrumb = breadcrumbLd([
+    { name: "Ana Sayfa", path: "/" },
+    { name: "Burçlar", path: "/burclar" },
+    { name: `${s} Burcu` },
+  ]);
 
   const positiveTraits = traits.positive.split(", ");
   const negativeTraits = traits.negative.split(", ");
@@ -160,6 +169,7 @@ export default async function Page({
 
   return (
     <main className="relative min-h-screen bg-background pb-32 top-clear-1">
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(breadcrumb)} />
       <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
         <div className="absolute w-full h-full bg-[radial-gradient(circle_at_20%_30%,rgba(110,59,215,0.2),transparent_50%),radial-gradient(circle_at_80%_70%,rgba(251,171,255,0.15),transparent_50%)]" />
         <div className="absolute inset-0 opacity-[0.03]"
@@ -253,9 +263,56 @@ export default async function Page({
                 );
               })}
             </div>
-            <p className="text-body-lg font-body-lg text-on-surface-variant leading-relaxed max-w-2xl">{desc}</p>
+            <p className="text-body-lg font-body-lg text-on-surface-variant leading-relaxed max-w-2xl">
+              {s} burcu {traits.nature} doğasıyla bilinir; {traits.positive} nitelikleri bu {info.element.toLowerCase()} elementinin enerjisiyle birleşir. Güneş burcunun karakterine dair derinlikli analiz aşağıda yer alır.
+            </p>
           </div>
         </div>
+
+        {/* Geniş İçerik — Güneş Burcu Analizi */}
+        <section className="mb-section-gap max-w-3xl mx-auto space-y-10">
+          <div>
+            <h2 className="text-headline-lg font-headline-lg text-primary mb-4">
+              {s} Burcu Genel Karakteristik ve Temel Dinamikler
+            </h2>
+            <p className="text-body-lg font-body-lg text-on-surface-variant leading-relaxed">{guide.overview}</p>
+          </div>
+          <div>
+            <h2 className="text-headline-lg font-headline-lg text-primary mb-4">
+              {s} Burcunda Aşk ve İlişkiler
+            </h2>
+            <p className="text-body-lg font-body-lg text-on-surface-variant leading-relaxed">{guide.love}</p>
+          </div>
+          <div>
+            <h2 className="text-headline-lg font-headline-lg text-primary mb-4">
+              {s} Burcunda Kariyer ve Para
+            </h2>
+            <p className="text-body-lg font-body-lg text-on-surface-variant leading-relaxed">{guide.career}</p>
+          </div>
+          <div>
+            <h2 className="text-headline-lg font-headline-lg text-primary mb-4">
+              {s} Burcunun Güçlü ve Gelişime Açık Yönleri
+            </h2>
+            <p className="text-body-lg font-body-lg text-on-surface-variant leading-relaxed">{guide.strengths}</p>
+          </div>
+          <div>
+            <h2 className="text-headline-lg font-headline-lg text-primary mb-4">
+              {s} Burcunda Element ve Gezegen Etkisi
+            </h2>
+            <p className="text-body-lg font-body-lg text-on-surface-variant leading-relaxed">{guide.element}</p>
+          </div>
+          <div className="glass-card p-6 rounded-3xl border border-primary/10">
+            <h3 className="text-headline-md font-headline-md text-primary mb-3">Yükselen Burcunuz</h3>
+            <p className="text-body-md font-body-md text-on-surface-variant leading-relaxed mb-3">{risingText}</p>
+            <Link
+              href="/dogum-haritasi"
+              className="text-primary font-label-md hover:text-secondary inline-flex items-center gap-1"
+            >
+              Yükselen burcunu hesapla
+              <span className="material-symbols-outlined text-sm">arrow_forward</span>
+            </Link>
+          </div>
+        </section>
 
         <KozmikTakvim
           sign={s}
@@ -274,8 +331,8 @@ export default async function Page({
               const isHigh = score >= 75;
               const isMid = score >= 50;
               return (
-                <div key={target}
-                  className={`glass-card p-6 rounded-3xl text-center group cursor-pointer hover:-translate-y-2 transition-all ${
+                <Link key={target} href={`/burclar/${SIGN_SLUGS[target]}`}
+                  className={`glass-card p-6 rounded-3xl text-center group hover:-translate-y-2 transition-all ${
                     !isMid ? "opacity-50 grayscale hover:grayscale-0 hover:opacity-100" : ""
                   }`}>
                   <span className="text-4xl mb-3 inline-block">{ZODIAC_DATA[target]?.emoji || "✦"}</span>
@@ -283,7 +340,7 @@ export default async function Page({
                   <p className={`text-caption font-label-md mt-1 ${
                     isHigh ? "text-secondary" : isMid ? "text-primary" : "text-error"
                   }`}>{score}% Uyumluluk</p>
-                </div>
+                </Link>
               );
             })}
           </div>
@@ -315,6 +372,8 @@ export default async function Page({
             </Link>
           </div>
         </section>
+
+        <AuthorBox updated={SIGN_GUIDES_UPDATED} />
       </div>
     </main>
   );

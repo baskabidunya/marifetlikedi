@@ -2,7 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getAnnouncementById, getActiveAnnouncements } from "@/lib/public-queries";
 import AdSlot from "@/components/ads/AdSlot";
-import { ogMeta } from "@/lib/seo";
+import { ogMeta, breadcrumbLd, jsonLd } from "@/lib/seo";
 
 const TYPE_META: Record<string, { label: string; icon: string; cls: string; accent: string }> = {
   info: {
@@ -62,9 +62,15 @@ export default async function AnnouncementDetailPage({
 
   const meta = TYPE_META[announcement.type] || TYPE_META.info;
   const others = (await getActiveAnnouncements()).filter((a) => a.id !== id).slice(0, 3);
+  const breadcrumb = breadcrumbLd([
+    { name: "Ana Sayfa", path: "/" },
+    { name: "Duyurular", path: "/duyurular" },
+    { name: announcement.title },
+  ]);
 
   return (
     <main className="top-clear-2 pb-section-gap px-container-padding-mobile md:px-container-padding-desktop max-w-3xl mx-auto">
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(breadcrumb)} />
       <nav className="flex items-center gap-2 text-caption text-outline mb-6 flex-wrap">
         <Link href="/" className="hover:text-on-surface transition-colors">Ana Sayfa</Link>
         <span className="material-symbols-outlined text-xs">chevron_right</span>
