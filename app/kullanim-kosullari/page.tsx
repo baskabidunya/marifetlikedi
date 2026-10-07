@@ -1,12 +1,19 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import LegalPage from "@/components/layout/LegalPage";
+import { ogMeta } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Kullanım Koşulları",
   description:
     "Marifetli Kedi kullanım koşulları: sitemizi kullanırken uymanız gereken kurallar, sorumluluklar ve yasal bildirimler.",
   alternates: { canonical: "/kullanim-kosullari" },
+  ...ogMeta({
+    title: "Kullanım Koşulları",
+    description:
+      "Marifetli Kedi kullanım koşulları: sitemizi kullanırken uymanız gereken kurallar, sorumluluklar ve yasal bildirimler.",
+    path: "/kullanim-kosullari",
+  }),
 };
 
 export default function KullanimKosullariPage() {

@@ -1,12 +1,19 @@
 import type { Metadata } from "next";
 import LegalPage from "@/components/layout/LegalPage";
 import ContactForm from "@/components/contact/ContactForm";
+import { ogMeta } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "İletişim",
   description:
     "Marifetli Kedi ile iletişime geçin: sorularınız, önerileriniz ve iş birliği talepleriniz için iletişim formu ve adres bilgileri.",
   alternates: { canonical: "/iletisim" },
+  ...ogMeta({
+    title: "İletişim",
+    description:
+      "Marifetli Kedi ile iletişime geçin: sorularınız, önerileriniz ve iş birliği talepleriniz için iletişim formu ve adres bilgileri.",
+    path: "/iletisim",
+  }),
 };
 
 export default function IletisimPage() {

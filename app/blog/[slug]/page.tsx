@@ -16,7 +16,7 @@ const AUTHOR = {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const post = await getPublishedPostBySlug(slug);
-  if (!post) return { title: "Gök Günlüğü - Marifetli Kedi" };
+  if (!post) return { title: "Gök Günlüğü" };
   return {
     title: post.title,
     description: post.excerpt ?? undefined,

@@ -2,11 +2,17 @@ import Link from "next/link";
 import TarotTable from "@/components/tarot/TarotTable";
 import Disclaimer from "@/components/layout/Disclaimer";
 import { getPublicTarotCards } from "@/lib/public-queries";
+import { ogMeta } from "@/lib/seo";
 
 export const metadata = {
   title: "Tarot ve Kehanet Odası",
   description: "Online tarot falı ile kartların rehberliğinde geleceğinize bakın. Major ve Minor Arkana kartlarının anlamları.",
   alternates: { canonical: "/tarot" },
+  ...ogMeta({
+    title: "Tarot ve Kehanet Odası",
+    description: "Online tarot falı ile kartların rehberliğinde geleceğinize bakın. Major ve Minor Arkana kartlarının anlamları.",
+    path: "/tarot",
+  }),
 };
 
 export default async function TarotPage() {

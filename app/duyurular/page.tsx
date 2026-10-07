@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { getAllAnnouncements } from "@/lib/public-queries";
+import { ogMeta } from "@/lib/seo";
 import AdSlot from "@/components/ads/AdSlot";
 
 const TYPE_STYLES: Record<string, string> = {
@@ -19,9 +20,14 @@ const TYPE_LABEL: Record<string, string> = {
 export const revalidate = 300;
 
 export const metadata: Metadata = {
-  title: "Duyurular - Marifetli Kedi",
+  title: "Duyurular",
   description: "Gökyüzünden haberler ve kozmik rehberlik duyuruları.",
   alternates: { canonical: "/duyurular" },
+  ...ogMeta({
+    title: "Duyurular",
+    description: "Gökyüzünden haberler ve kozmik rehberlik duyuruları.",
+    path: "/duyurular",
+  }),
 };
 
 export default async function AnnouncementsPage() {

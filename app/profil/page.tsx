@@ -2,7 +2,7 @@ import ProfilePage from "@/components/profile/ProfilePage";
 import AdSlot from "@/components/ads/AdSlot";
 
 export const metadata = {
-  title: "Profilim - Marifetli Kedi",
+  title: "Profilim",
   description: "Kozmik profilinizi keşfedin.",
 };
 

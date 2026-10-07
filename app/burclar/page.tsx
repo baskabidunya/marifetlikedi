@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { ZODIAC_DATA, ZODIAC_SIGNS } from "@/lib/astro-utils";
 import AdSlot from "@/components/ads/AdSlot";
+import { ogMeta } from "@/lib/seo";
 import { signSlug } from "@/lib/sign-slugs";
 import { SIGN_TRAITS } from "@/lib/astro-narratives";
 import { RISING_SIGNS } from "@/lib/astro-interpretations";
@@ -9,9 +10,14 @@ import Disclaimer from "@/components/layout/Disclaimer";
 import BurclarInteractive from "@/components/burclar/BurclarInteractive";
 
 export const metadata: Metadata = {
-  title: "Burçlar - Marifetli Kedi",
+  title: "Burçlar",
   description: "Tüm burçlar hakkında detaylı bilgi, karakter analizi, element dağılımı ve ilişki uyumu.",
   alternates: { canonical: "/burclar" },
+  ...ogMeta({
+    title: "Burçlar",
+    description: "Tüm burçlar hakkında detaylı bilgi, karakter analizi, element dağılımı ve ilişki uyumu.",
+    path: "/burclar",
+  }),
 };
 
 const ELEMENT_ICONS: Record<string, string> = {

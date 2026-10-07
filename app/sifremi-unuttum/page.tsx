@@ -4,7 +4,7 @@ import StarField from "@/components/ui/StarField";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Şifremi Unuttum - Marifetli Kedi",
+  title: "Şifremi Unuttum",
   description: "Şifreni sıfırla ve kozmik yolculuğuna devam et.",
 };
 

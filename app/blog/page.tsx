@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { getPublishedPosts } from "@/lib/blog-public";
 import AdSlot from "@/components/ads/AdSlot";
+import { ogMeta } from "@/lib/seo";
 import Pagination from "@/components/Pagination";
 
 const PAGE_SIZE = 10;
@@ -10,6 +11,11 @@ export const metadata: Metadata = {
   title: "Gök Günlüğü",
   description: "Astroloji, burç yorumları, tarot ve kozmik rehberlik yazıları. Günlük burç, burç uyumu ve kişisel gelişim.",
   alternates: { canonical: "/blog" },
+  ...ogMeta({
+    title: "Gök Günlüğü",
+    description: "Astroloji, burç yorumları, tarot ve kozmik rehberlik yazıları. Günlük burç, burç uyumu ve kişisel gelişim.",
+    path: "/blog",
+  }),
 };
 
 export default async function BlogPage({

@@ -3,16 +3,24 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { getTrendArticleBySlug } from "@/lib/public-queries";
 import { renderMarkdown } from "@/lib/markdown";
+import { ogMeta } from "@/lib/seo";
 import AdSlot from "@/components/ads/AdSlot";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const article = await getTrendArticleBySlug(slug);
-  if (!article) return { title: "Trend İçerikler - Marifetli Kedi" };
+  if (!article) return { title: "Trend İçerikler" };
   return {
-    title: `${article.title} - Marifetli Kedi`,
+    title: article.title,
     description: article.excerpt,
     alternates: { canonical: `/trend/${slug}` },
+    ...ogMeta({
+      title: article.title,
+      description: article.excerpt,
+      path: `/trend/${slug}`,
+      type: "article",
+      image: article.cover_image ?? undefined,
+    }),
   };
 }
 

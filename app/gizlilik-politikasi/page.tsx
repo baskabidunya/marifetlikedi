@@ -1,12 +1,19 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import LegalPage from "@/components/layout/LegalPage";
+import { ogMeta } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Gizlilik Politikası",
   description:
     "Marifetli Kedi gizlilik politikası: topladığımız veriler, çerez kullanımı, Google AdSense ve üçüncü taraf reklamlar hakkında bilgilendirme.",
   alternates: { canonical: "/gizlilik-politikasi" },
+  ...ogMeta({
+    title: "Gizlilik Politikası",
+    description:
+      "Marifetli Kedi gizlilik politikası: topladığımız veriler, çerez kullanımı, Google AdSense ve üçüncü taraf reklamlar hakkında bilgilendirme.",
+    path: "/gizlilik-politikasi",
+  }),
 };
 
 export default function GizlilikPolitikasiPage() {

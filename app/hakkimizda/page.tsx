@@ -1,12 +1,19 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import LegalPage from "@/components/layout/LegalPage";
+import { ogMeta } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Hakkımızda",
   description:
     "Marifetli Kedi nedir? Kozmik rehberlik, astroloji ve tarot içeriklerini modern bir bakışla sunan portalımızın hikâyesi ve misyonu.",
   alternates: { canonical: "/hakkimizda" },
+  ...ogMeta({
+    title: "Hakkımızda",
+    description:
+      "Marifetli Kedi nedir? Kozmik rehberlik, astroloji ve tarot içeriklerini modern bir bakışla sunan portalımızın hikâyesi ve misyonu.",
+    path: "/hakkimizda",
+  }),
 };
 
 export default function HakkimizdaPage() {

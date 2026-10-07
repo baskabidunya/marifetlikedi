@@ -9,7 +9,7 @@ export const revalidate = 300;
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const page = await getPageBySlug(slug);
-  if (!page) return { title: "Sayfa Bulunamadı - Marifetli Kedi" };
+  if (!page) return { title: "Sayfa Bulunamadı" };
   return {
     title: page.meta_title || page.title,
     description: page.meta_description || "",

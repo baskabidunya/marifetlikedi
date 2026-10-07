@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getAnnouncementById, getActiveAnnouncements } from "@/lib/public-queries";
 import AdSlot from "@/components/ads/AdSlot";
+import { ogMeta } from "@/lib/seo";
 
 const TYPE_META: Record<string, { label: string; icon: string; cls: string; accent: string }> = {
   info: {
@@ -36,11 +37,17 @@ export const revalidate = 300;
 export async function generateMetadata({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   const a = await getAnnouncementById(id);
-  if (!a) return { title: "Duyuru - Marifetli Kedi" };
+  if (!a) return { title: "Duyuru" };
   return {
-    title: `${a.title} - Marifetli Kedi`,
+    title: a.title,
     description: a.message,
     alternates: { canonical: `/duyurular/${id}` },
+    ...ogMeta({
+      title: a.title,
+      description: a.message,
+      path: `/duyurular/${id}`,
+      type: "article",
+    }),
   };
 }
 

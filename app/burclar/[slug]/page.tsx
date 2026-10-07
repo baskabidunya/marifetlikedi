@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { ZODIAC_DATA, ZODIAC_SIGNS } from "@/lib/astro-utils";
+import { ogMeta } from "@/lib/seo";
 import { SIGN_TRAITS } from "@/lib/astro-narratives";
 import { RISING_SIGNS } from "@/lib/astro-interpretations";
 import KozmikTakvim from "@/components/profile/KozmikTakvim";
@@ -115,11 +116,18 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const sign = slugToSign(slug);
-  if (!sign) return { title: "Burç - Marifetli Kedi" };
+  if (!sign) return { title: "Burç" };
+  const description = `${sign} burcu hakkında detaylı bilgi, karakter analizi, günlük fal ve ilişki uyumu.`;
   return {
-    title: `${sign} Burcu - Marifetli Kedi`,
-    description: `${sign} burcu hakkında detaylı bilgi, karakter analizi, günlük fal ve ilişki uyumu.`,
+    title: `${sign} Burcu`,
+    description,
     alternates: { canonical: `/burclar/${slug}` },
+    ...ogMeta({
+      title: `${sign} Burcu`,
+      description,
+      path: `/burclar/${slug}`,
+      type: "article",
+    }),
   };
 }
 

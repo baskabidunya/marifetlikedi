@@ -2,16 +2,23 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import TestCard from "@/components/funtests/TestCard";
 import AdSlot from "@/components/ads/AdSlot";
+import { ogMeta } from "@/lib/seo";
 import Pagination from "@/components/Pagination";
 import { getFunTests } from "@/lib/fun-tests-db";
 
 const PAGE_SIZE = 10;
 
 export const metadata: Metadata = {
-  title: "Eğlenceli Testler - Marifetli Kedi",
+  title: "Eğlenceli Testler",
   description:
     "Kişiliğini keşfet! Sinir seviyenden empati gücüne, sabırdan risk ruhuna kadar birbirinden eğlenceli testler seni bekliyor.",
   alternates: { canonical: "/eglenceli-testler" },
+  ...ogMeta({
+    title: "Eğlenceli Testler",
+    description:
+      "Kişiliğini keşfet! Sinir seviyenden empati gücüne, sabırdan risk ruhuna kadar birbirinden eğlenceli testler seni bekliyor.",
+    path: "/eglenceli-testler",
+  }),
 };
 
 export const revalidate = 300;

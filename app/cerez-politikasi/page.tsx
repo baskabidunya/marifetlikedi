@@ -1,12 +1,19 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import LegalPage from "@/components/layout/LegalPage";
+import { ogMeta } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Çerez Politikası",
   description:
     "Marifetli Kedi çerez politikası: sitemizde kullanılan çerez türleri, amaçları ve tercihlerinizi nasıl yönetebileceğiniz hakkında bilgi.",
   alternates: { canonical: "/cerez-politikasi" },
+  ...ogMeta({
+    title: "Çerez Politikası",
+    description:
+      "Marifetli Kedi çerez politikası: sitemizde kullanılan çerez türleri, amaçları ve tercihlerinizi nasıl yönetebileceğiniz hakkında bilgi.",
+    path: "/cerez-politikasi",
+  }),
 };
 
 export default function CerezPolitikasiPage() {

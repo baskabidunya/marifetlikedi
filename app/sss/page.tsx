@@ -1,11 +1,17 @@
 import Link from "next/link";
 import { getActiveFaqItems } from "@/lib/public-queries";
 import AdSlot from "@/components/ads/AdSlot";
+import { ogMeta } from "@/lib/seo";
 
 export const metadata = {
   title: "Sıkça Sorulan Sorular",
   description: "Astroloji, tarot, burç yorumları ve kozmik rehberlik hakkında sıkça sorulan sorular ve yanıtları.",
   alternates: { canonical: "/sss" },
+  ...ogMeta({
+    title: "Sıkça Sorulan Sorular",
+    description: "Astroloji, tarot, burç yorumları ve kozmik rehberlik hakkında sıkça sorulan sorular ve yanıtları.",
+    path: "/sss",
+  }),
 };
 
 export default async function SssPage() {

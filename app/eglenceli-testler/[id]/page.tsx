@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import TestQuiz from "@/components/funtests/TestQuiz";
 import AdSlot from "@/components/ads/AdSlot";
+import { ogMeta } from "@/lib/seo";
 import { getFunTestBySlug, getFunTests } from "@/lib/fun-tests-db";
 import Link from "next/link";
 
@@ -16,9 +17,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const test = await getFunTestBySlug(id);
   if (!test) return { title: "Test Bulunamadı" };
   return {
-    title: `${test.title} - Eğlenceli Testler - Marifetli Kedi`,
+    title: `${test.title} - Eğlenceli Testler`,
     description: test.description,
     alternates: { canonical: `/eglenceli-testler/${id}` },
+    ...ogMeta({
+      title: `${test.title} - Eğlenceli Testler`,
+      description: test.description,
+      path: `/eglenceli-testler/${id}`,
+      type: "article",
+    }),
   };
 }
 

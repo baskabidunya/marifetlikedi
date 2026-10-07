@@ -1,12 +1,19 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import LegalPage from "@/components/layout/LegalPage";
+import { ogMeta } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "KVKK Aydınlatma Metni",
   description:
     "Marifetli Kedi tarafından 6698 sayılı Kişisel Verilerin Korunması Kanunu kapsamında veri sahibi olarak aydınlatılmanız.",
   alternates: { canonical: "/kvkk" },
+  ...ogMeta({
+    title: "KVKK Aydınlatma Metni",
+    description:
+      "Marifetli Kedi tarafından 6698 sayılı Kişisel Verilerin Korunması Kanunu kapsamında veri sahibi olarak aydınlatılmanız.",
+    path: "/kvkk",
+  }),
 };
 
 export default function KvkkPage() {

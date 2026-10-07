@@ -3,7 +3,7 @@ import ResetPasswordForm from "@/components/auth/ResetPasswordForm";
 import StarField from "@/components/ui/StarField";
 
 export const metadata: Metadata = {
-  title: "Şifre Yenile - Marifetli Kedi",
+  title: "Şifre Yenile",
   description: "Yeni şifreni belirle.",
 };
 

@@ -2,12 +2,18 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import CompatibilityCalculator from "@/components/compatibility/CompatibilityCalculator";
 import AdSlot from "@/components/ads/AdSlot";
+import { ogMeta } from "@/lib/seo";
 import Disclaimer from "@/components/layout/Disclaimer";
 
 export const metadata: Metadata = {
-  title: "Uyum Hesapla - Marifetli Kedi",
+  title: "Uyum Hesapla",
   description: "İki doğum haritasını karşılaştırarak aşk ve uyum analizini keşfedin.",
   alternates: { canonical: "/uyum" },
+  ...ogMeta({
+    title: "Uyum Hesapla",
+    description: "İki doğum haritasını karşılaştırarak aşk ve uyum analizini keşfedin.",
+    path: "/uyum",
+  }),
 };
 
 export default function UyumPage() {

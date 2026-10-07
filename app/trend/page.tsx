@@ -2,11 +2,17 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import TrendingGrid from "@/components/trending/TrendingGrid";
 import AdSlot from "@/components/ads/AdSlot";
+import { ogMeta } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Trend İçerikler - Marifetli Kedi",
+  title: "Trend İçerikler",
   description: "En çok okunan ve paylaşılan eğlenceli astroloji rehberleri.",
   alternates: { canonical: "/trend" },
+  ...ogMeta({
+    title: "Trend İçerikler",
+    description: "En çok okunan ve paylaşılan eğlenceli astroloji rehberleri.",
+    path: "/trend",
+  }),
 };
 
 export default async function TrendPage({

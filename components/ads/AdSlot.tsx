@@ -50,21 +50,7 @@ export default function AdSlot({
     }
   }, [clientId, slot]);
 
-  if (!clientId || !slot) {
-    return (
-      <div
-        className={`flex items-center justify-center rounded-2xl border border-dashed border-on-surface/15 bg-on-surface/[0.03] text-caption text-outline min-h-[250px] ${className || ""}`}
-        style={style}
-        data-ad-placeholder="true"
-        data-ad-name={name}
-        data-ad-client={clientId || undefined}
-        role="complementary"
-        aria-label="Reklam alanı"
-      >
-        <span className="tracking-widest uppercase select-none">Reklam</span>
-      </div>
-    );
-  }
+  if (!clientId || !slot) return null;
 
   return (
     <ins

@@ -2,11 +2,17 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import BirthChartCalculator from "@/components/birthchart/BirthChartCalculator";
 import AdSlot from "@/components/ads/AdSlot";
+import { ogMeta } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Doğum Haritası Hesapla - Marifetli Kedi",
+  title: "Doğum Haritası Hesapla",
   description: "Güneş, yükselen, ay ve venüs burcunuzu ücretsiz hesaplayın.",
   alternates: { canonical: "/dogum-haritasi" },
+  ...ogMeta({
+    title: "Doğum Haritası Hesapla",
+    description: "Güneş, yükselen, ay ve venüs burcunuzu ücretsiz hesaplayın.",
+    path: "/dogum-haritasi",
+  }),
 };
 
 export default async function DogumHaritasiPage({
