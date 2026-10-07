@@ -11,7 +11,7 @@ const CONSENT_DEFAULTS = {
   ad_storage: "denied",
   ad_user_data: "denied",
   ad_personalization: "denied",
-  analytics_storage: "granted",
+  analytics_storage: "denied",
 } as const;
 
 type GtagConsent = {

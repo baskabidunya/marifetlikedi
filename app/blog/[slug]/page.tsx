@@ -28,6 +28,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       url: `/blog/${slug}`,
       images: post.cover_image ? [{ url: post.cover_image, width: 1200, height: 630, alt: post.title }] : undefined,
     },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.excerpt ?? undefined,
+      images: post.cover_image ? [post.cover_image] : undefined,
+    },
   };
 }
 
@@ -62,7 +68,11 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     "@type": "BlogPosting",
     headline: post.title,
     description: post.excerpt,
-    image: post.cover_image || undefined,
+    image: post.cover_image
+      ? post.cover_image.startsWith("http")
+        ? post.cover_image
+        : `https://www.marifetlikedi.com${post.cover_image.startsWith("/") ? "" : "/"}${post.cover_image}`
+      : undefined,
     datePublished: post.created_at,
     dateModified: post.updated_at || post.created_at,
     author: { "@type": "Organization", name: authorName },
@@ -111,7 +121,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
       {post.cover_image && (
         <div className="w-full h-64 md:h-96 rounded-3xl overflow-hidden mb-8">
-          <img src={post.cover_image} alt={post.title} loading="lazy" className="w-full h-full object-cover" />
+          <img src={post.cover_image} alt={post.title} loading="eager" fetchPriority="high" className="w-full h-full object-cover" />
         </div>
       )}
 

@@ -21,6 +21,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/sss",
     "/gizlilik-politikasi",
     "/kvkk",
+    "/cerez-politikasi",
+    "/kullanim-kosullari",
+    "/ara",
     "/hakkimizda",
     "/iletisim",
   ].map((path) => ({

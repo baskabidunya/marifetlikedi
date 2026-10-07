@@ -130,12 +130,15 @@ export default async function RootLayout({
               url: SITE_URL,
               potentialAction: {
                 "@type": "SearchAction",
-                target: `${SITE_URL}/blog?q={search_term_string}`,
+                target: `${SITE_URL}/ara?q={search_term_string}`,
                 "query-input": "required name=search_term_string",
               },
             }),
           }}
         />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://gbgsykjrozmpkpsqukcp.supabase.co" />
         <link
           rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=block"
@@ -143,10 +146,6 @@ export default async function RootLayout({
       </head>
       <body className="bg-surface text-on-surface font-inter antialiased">
         <ConsentScripts />
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=block"
-        />
         <AdNetwork clientId={adsenseClient}>
           <div className="fixed top-0 inset-x-0 z-50">
             <Header />

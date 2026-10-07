@@ -57,7 +57,10 @@ export default async function Footer() {
           <h5 className="text-label-md text-on-surface">İletişim</h5>
           <ul className="space-y-2">
             <li className="flex items-center gap-2 text-on-surface-variant">
-              <span className="material-symbols-outlined text-sm">mail</span> hello@marifetlikedi.com
+              <span className="material-symbols-outlined text-sm">mail</span>
+              <a href="mailto:hello@marifetlikedi.com" className="hover:text-primary transition-colors">
+                hello@marifetlikedi.com
+              </a>
             </li>
             <li className="flex items-center gap-2 text-on-surface-variant">
               <span className="material-symbols-outlined text-sm">location_on</span> İstanbul, Türkiye
