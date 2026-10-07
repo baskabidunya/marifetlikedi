@@ -99,7 +99,7 @@ export default function TestQuiz({
           <h2 className="text-3xl font-bold text-on-surface mb-2">
             {result.title}
           </h2>
-          <p className="text-on-surface-variant leading-relaxed mb-6 max-w-lg mx-auto">
+          <p className="text-on-surface-variant leading-relaxed whitespace-pre-line mb-6 max-w-2xl mx-auto text-left">
             {result.description}
           </p>
 

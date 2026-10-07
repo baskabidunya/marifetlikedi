@@ -59,14 +59,6 @@ export default async function TestPage({ params }: Props) {
         <p className="text-body-md text-on-surface-variant leading-relaxed mb-4">
           {test.description}
         </p>
-        {test.intro?.split(/\n\s*\n/).map((para, i) => (
-          <p
-            key={i}
-            className="text-body-md text-on-surface-variant leading-relaxed mb-4 last:mb-0"
-          >
-            {para}
-          </p>
-        ))}
       </section>
 
       <TestQuiz test={test} related={related} />

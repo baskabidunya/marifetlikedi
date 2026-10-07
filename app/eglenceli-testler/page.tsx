@@ -2,7 +2,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import TestCard from "@/components/funtests/TestCard";
 import AdSlot from "@/components/ads/AdSlot";
+import Pagination from "@/components/Pagination";
 import { getFunTests } from "@/lib/fun-tests-db";
+
+const PAGE_SIZE = 10;
 
 export const metadata: Metadata = {
   title: "Eğlenceli Testler - Marifetli Kedi",
@@ -13,8 +16,17 @@ export const metadata: Metadata = {
 
 export const revalidate = 300;
 
-export default async function EglenceliTestlerPage() {
+export default async function EglenceliTestlerPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ page?: string }>;
+}) {
+  const { page } = await searchParams;
+  const currentPage = Math.max(1, parseInt(page || "1", 10) || 1);
+
   const tests = await getFunTests();
+  const totalPages = Math.ceil(tests.length / PAGE_SIZE);
+  const pageTests = tests.slice((currentPage - 1) * PAGE_SIZE, currentPage * PAGE_SIZE);
 
   return (
     <main className="top-clear-2 pb-section-gap px-container-padding-mobile md:px-container-padding-desktop max-w-6xl mx-auto">
@@ -34,10 +46,16 @@ export default async function EglenceliTestlerPage() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-        {tests.map((test) => (
+        {pageTests.map((test) => (
           <TestCard key={test.id} test={test} />
         ))}
       </div>
+
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        basePath="/eglenceli-testler"
+      />
 
       <AdSlot
         name="static_page"

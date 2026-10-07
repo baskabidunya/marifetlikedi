@@ -10,7 +10,6 @@ interface DbTest {
   slug: string;
   title: string;
   description: string;
-  intro?: string | null;
   icon: string;
   questions: unknown[];
   results: unknown[];
@@ -259,17 +258,6 @@ function TestFormModal({ test, onClose }: { test: DbTest | null; onClose: () => 
             />
           </div>
 
-          <div>
-            <label className="block text-caption text-outline mb-1">
-              Giriş Metni (150-250 kelime)
-            </label>
-            <textarea
-              name="intro" defaultValue={test?.intro || ""} rows={5}
-              placeholder="Test sayfasında görünecek giriş metni..."
-              className="w-full bg-surface-container border border-on-surface/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all resize-none"
-            />
-          </div>
-
           <div className="border-t border-on-surface/10 pt-4">
             <div className="flex items-center justify-between mb-3">
               <label className="text-body-md font-label-md text-on-surface">Sorular ({questions.length})</label>
@@ -375,10 +363,12 @@ function TestFormModal({ test, onClose }: { test: DbTest | null; onClose: () => 
                     </div>
                   </div>
                   <div className="mb-3">
-                    <label className="block text-caption text-outline mb-1">Açıklama</label>
+                    <label className="block text-caption text-outline mb-1">
+                      Açıklama (en az 150 kelime analiz)
+                    </label>
                     <textarea
                       value={r.description} onChange={(e) => updateResult(ri, "description", e.target.value)}
-                      placeholder="Sonuç açıklaması" rows={2}
+                      placeholder="Sonucun detaylı analizi — en az 150 kelime" rows={6}
                       className="w-full bg-surface-container border border-on-surface/10 rounded-lg px-3 py-2 text-body-sm text-on-surface focus:border-primary transition-all resize-none"
                     />
                   </div>

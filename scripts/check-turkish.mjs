@@ -297,7 +297,7 @@ const SUGGEST_MAP = {
 };
 
 const SPECIAL_FIXES = new Map([
-  ["ic", "iç"], ["Ic", "İç"], ["IC", "İÇ"],
+  ["ic", "iç"], ["Ic", "İç"],
   ["bitsede", "bitse de"], ["Bitsede", "Bitse de"],
 ]);
 
@@ -315,7 +315,9 @@ const AMBIGUOUS = new Set([
   "the", "and", "for", "with", "this", "that", "you", "are", "from",
   "css", "js", "json", "api", "url", "utf", "nbsp", "strong", "em", "li",
   "yani", "bas", "sus", "isin", "nin", "duş",
-  "aci", "acı", "açı", "basan", "başan"
+  "aci", "acı", "açı", "basan", "başan",
+  "hayati", "acısı", "dişi", "dışı", "insani", "insanı", "basar", "donuk", "öldüğü", "olduğu",
+  "Venus", "Jupiter", "Saturn",
 ]);
 
 function suggestCandidates(token, correctSet) {

@@ -35,7 +35,6 @@ export async function saveFunTest(formData: FormData) {
   const slug = (formData.get("slug") as string).trim() || slugify((formData.get("title") as string) || "");
   const title = (formData.get("title") as string).trim();
   const description = (formData.get("description") as string).trim();
-  const intro = ((formData.get("intro") as string) || "").trim();
   const icon = (formData.get("icon") as string).trim() || "📝";
   const sort_order = parseInt(formData.get("sort_order") as string) || 0;
   const active = formData.get("active") === "on";
@@ -55,7 +54,7 @@ export async function saveFunTest(formData: FormData) {
   }
 
   const payload: Record<string, unknown> = {
-    slug, title, description, intro: intro || null, icon,
+    slug, title, description, icon,
     questions: JSON.parse(questions),
     results: JSON.parse(results),
     sort_order, active,

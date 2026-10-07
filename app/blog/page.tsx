@@ -2,6 +2,9 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { getPublishedPosts } from "@/lib/blog-public";
 import AdSlot from "@/components/ads/AdSlot";
+import Pagination from "@/components/Pagination";
+
+const PAGE_SIZE = 10;
 
 export const metadata: Metadata = {
   title: "Gök Günlüğü",
@@ -12,9 +15,10 @@ export const metadata: Metadata = {
 export default async function BlogPage({
   searchParams,
 }: {
-  searchParams: Promise<{ kategori?: string; etiket?: string }>;
+  searchParams: Promise<{ kategori?: string; etiket?: string; page?: string }>;
 }) {
-  const { kategori, etiket } = await searchParams;
+  const { kategori, etiket, page } = await searchParams;
+  const currentPage = Math.max(1, parseInt(page || "1", 10) || 1);
   const allPosts = await getPublishedPosts();
 
   const categories = Array.from(new Set(allPosts.map((p) => p.category).filter(Boolean)));
@@ -24,6 +28,9 @@ export default async function BlogPage({
     if (etiket && !p.tags.some((t) => t.slug === etiket)) return false;
     return true;
   });
+
+  const totalPages = Math.ceil(posts.length / PAGE_SIZE);
+  const pagePosts = posts.slice((currentPage - 1) * PAGE_SIZE, currentPage * PAGE_SIZE);
 
   const activeLabel = kategori
     ? kategori
@@ -83,7 +90,7 @@ export default async function BlogPage({
       <AdSlot name="blog_listing" className="mb-12" />
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {posts.map(p => (
+        {pagePosts.map(p => (
           <article key={p.id} className="glass-card rounded-3xl overflow-hidden hover:-translate-y-1 transition-all group">
             {p.cover_image && (
               <Link href={`/blog/${p.slug}`} className="block h-48 overflow-hidden">
@@ -125,6 +132,13 @@ export default async function BlogPage({
           <p className="text-body-lg">Bu filtreye uygun yazı bulunamadı</p>
         </div>
       )}
+
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        basePath="/blog"
+        params={{ kategori: kategori || "", etiket: etiket || "" }}
+      />
     </div>
   );
 }

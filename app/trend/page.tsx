@@ -9,7 +9,14 @@ export const metadata: Metadata = {
   alternates: { canonical: "/trend" },
 };
 
-export default function TrendPage() {
+export default async function TrendPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ page?: string }>;
+}) {
+  const { page } = await searchParams;
+  const currentPage = Math.max(1, parseInt(page || "1", 10) || 1);
+
   return (
     <main className="top-clear-2 pb-32">
       <div className="max-w-7xl mx-auto px-container-padding-mobile md:px-container-padding-desktop">
@@ -24,7 +31,7 @@ export default function TrendPage() {
         <p className="text-body-lg text-on-surface-variant mb-12">
           En çok okunan ve paylaşılan eğlenceli astroloji rehberlerimiz.
         </p>
-        <TrendingGrid />
+        <TrendingGrid page={currentPage} />
 
         <AdSlot name="blog_listing" className="mt-12" />
       </div>
