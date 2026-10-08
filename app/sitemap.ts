@@ -1,7 +1,6 @@
 import type { MetadataRoute } from "next";
 import { getPublishedPosts } from "@/lib/blog-public";
 import { getActiveTrendArticles } from "@/lib/public-queries";
-import { getAllAnnouncements } from "@/lib/public-queries";
 import { getFunTests } from "@/lib/fun-tests-db";
 import { SIGN_SLUGS } from "@/lib/sign-slugs";
 
@@ -17,7 +16,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/uyum",
     "/dogum-haritasi",
     "/eglenceli-testler",
-    "/duyurular",
     "/sss",
     "/gizlilik-politikasi",
     "/kvkk",
@@ -35,7 +33,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   let blogRoutes: MetadataRoute.Sitemap = [];
   let trendRoutes: MetadataRoute.Sitemap = [];
-  let duyuruRoutes: MetadataRoute.Sitemap = [];
   let burcRoutes: MetadataRoute.Sitemap = [];
   let testRoutes: MetadataRoute.Sitemap = [];
 
@@ -64,18 +61,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }
 
   try {
-    const duyurular = await getAllAnnouncements();
-    duyuruRoutes = duyurular.map((d) => ({
-      url: `${SITE_URL}/duyurular/${d.id}`,
-      lastModified: new Date(d.created_at),
-      changeFrequency: "monthly" as const,
-      priority: 0.5,
-    }));
-  } catch {
-    /* DB unavailable */
-  }
-
-  try {
     const tests = await getFunTests();
     testRoutes = tests.map((t) => ({
       url: `${SITE_URL}/eglenceli-testler/${t.id}`,
@@ -98,7 +83,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...staticRoutes,
     ...blogRoutes,
     ...trendRoutes,
-    ...duyuruRoutes,
     ...burcRoutes,
     ...testRoutes,
   ];

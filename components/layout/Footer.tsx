@@ -4,7 +4,7 @@ import AdSlot from "@/components/ads/AdSlot";
 
 // Footer menüsü tek veri kaynağından (navigation_links) gruplanır; böylece
 // aynı bağlantı iki kez görünmez ve başlık/altlık menüleri çakışmaz.
-const QUICK_URLS = ["/", "/burclar", "/tarot", "/blog", "/sss", "/duyurular"];
+const QUICK_URLS = ["/", "/burclar", "/tarot", "/blog", "/sss"];
 const CORPORATE_URLS = [
   "/hakkimizda",
   "/iletisim",

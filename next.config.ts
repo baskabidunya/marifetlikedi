@@ -11,6 +11,12 @@ const nextConfig: NextConfig = {
     ],
   },
   productionBrowserSourceMaps: false,
+  async redirects() {
+    return [
+      { source: "/duyurular/:path*", destination: "/", permanent: true },
+      { source: "/duyurular", destination: "/", permanent: true },
+    ];
+  },
   serverExternalPackages: [
     "@supabase/supabase-js",
     "@supabase/ssr",
