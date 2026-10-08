@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 
 const THEME_KEY = "marifetlikedi_theme";
-const DARK_COLOR = "#0e0c1a";
+const DARK_COLOR = "#101828";
 const LIGHT_COLOR = "#f6f4fb";
 
 type Theme = "dark" | "light";

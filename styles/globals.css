@@ -26,38 +26,38 @@
   --font-size-headline-sm--line-height: 1.35;
   --font-size-headline-sm-mobile: 20px;
 
-  /* Core Colors */
-  --color-surface: #0b1326;
-  --color-surface-dim: #0b1326;
-  --color-surface-bright: #31394d;
-  --color-surface-container-lowest: #060e20;
-  --color-surface-container-low: #131b2e;
-  --color-surface-container: #171f33;
-  --color-surface-container-high: #222a3d;
-  --color-surface-container-highest: #2d3449;
-  --color-on-surface: #dae2fd;
-  --color-on-surface-variant: #cbc3d7;
-  --color-background: #0b1326;
-  --color-on-background: #dae2fd;
-  --color-outline: #958ea0;
-  --color-outline-variant: #494454;
+  /* Core Colors — karanlık mod: daha açık zemin, daha belirgin katman farkı */
+  --color-surface: #101828;
+  --color-surface-dim: #0d1526;
+  --color-surface-bright: #3a4566;
+  --color-surface-container-lowest: #0a1120;
+  --color-surface-container-low: #151f38;
+  --color-surface-container: #1a2540;
+  --color-surface-container-high: #24304f;
+  --color-surface-container-highest: #2f3b5e;
+  --color-on-surface: #e6ecff;
+  --color-on-surface-variant: #c3cbe4;
+  --color-background: #101828;
+  --color-on-background: #e6ecff;
+  --color-outline: #98a2c0;
+  --color-outline-variant: #4a5578;
 
   /* Primary (Purple) */
-  --color-primary: #d0bcff;
+  --color-primary: #d3c2ff;
   --color-on-primary: #3c0091;
-  --color-primary-container: #a078ff;
+  --color-primary-container: #8f66ff;
   --color-on-primary-container: #340080;
 
   /* Secondary (Fuchsia) */
-  --color-secondary: #fbabff;
+  --color-secondary: #ffaef5;
   --color-on-secondary: #580065;
-  --color-secondary-container: #ae05c6;
+  --color-secondary-container: #bf0cd6;
   --color-on-secondary-container: #ffd8fd;
 
   /* Tertiary (Gold) */
-  --color-tertiary: #f9bd22;
+  --color-tertiary: #ffc845;
   --color-on-tertiary: #402d00;
-  --color-tertiary-container: #b88900;
+  --color-tertiary-container: #c99400;
   --color-on-tertiary-container: #372700;
 
   /* Error */
