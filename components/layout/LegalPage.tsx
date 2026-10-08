@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
 import AdSlot from "@/components/ads/AdSlot";
+import { jsonLd } from "@/lib/seo";
 
 export default function LegalPage({
   title,
@@ -27,13 +28,13 @@ export default function LegalPage({
   return (
     <main className="top-clear-2 pb-section-gap px-container-padding-mobile md:px-container-padding-desktop max-w-3xl mx-auto">
       {breadcrumbJsonLd && (
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(breadcrumbJsonLd)} />
       )}
 
       {slug && (
         <nav className="flex items-center gap-2 text-caption text-outline mb-6 flex-wrap">
           <Link href="/" className="hover:text-on-surface transition-colors">Ana Sayfa</Link>
-          <span className="material-symbols-outlined text-xs">chevron_right</span>
+          <span aria-hidden="true" className="material-symbols-outlined text-xs">chevron_right</span>
           <span className="text-on-surface-variant">{title}</span>
         </nav>
       )}

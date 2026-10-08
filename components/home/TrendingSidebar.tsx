@@ -15,10 +15,10 @@ export default function TrendingSidebar() {
             </h4>
             <div className="flex items-center gap-3 mt-2 text-xs text-on-surface-variant">
               <span className="flex items-center gap-1">
-                <span className="material-symbols-outlined text-[12px]">favorite</span> 12.4k
+                <span aria-hidden="true" className="material-symbols-outlined text-[12px]">favorite</span> 12.4k
               </span>
               <span className="flex items-center gap-1">
-                <span className="material-symbols-outlined text-[12px]">chat_bubble</span> 856
+                <span aria-hidden="true" className="material-symbols-outlined text-[12px]">chat_bubble</span> 856
               </span>
             </div>
           </div>
@@ -33,10 +33,10 @@ export default function TrendingSidebar() {
             </h4>
             <div className="flex items-center gap-3 mt-2 text-xs text-on-surface-variant">
               <span className="flex items-center gap-1">
-                <span className="material-symbols-outlined text-[12px]">favorite</span> 8.9k
+                <span aria-hidden="true" className="material-symbols-outlined text-[12px]">favorite</span> 8.9k
               </span>
               <span className="flex items-center gap-1">
-                <span className="material-symbols-outlined text-[12px]">chat_bubble</span> 243
+                <span aria-hidden="true" className="material-symbols-outlined text-[12px]">chat_bubble</span> 243
               </span>
             </div>
           </div>
@@ -51,10 +51,10 @@ export default function TrendingSidebar() {
             </h4>
             <div className="flex items-center gap-3 mt-2 text-xs text-on-surface-variant">
               <span className="flex items-center gap-1">
-                <span className="material-symbols-outlined text-[12px]">favorite</span> 7.2k
+                <span aria-hidden="true" className="material-symbols-outlined text-[12px]">favorite</span> 7.2k
               </span>
               <span className="flex items-center gap-1">
-                <span className="material-symbols-outlined text-[12px]">chat_bubble</span> 512
+                <span aria-hidden="true" className="material-symbols-outlined text-[12px]">chat_bubble</span> 512
               </span>
             </div>
           </div>

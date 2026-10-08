@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { getActiveTrendArticles } from "@/lib/public-queries";
 import Pagination from "@/components/Pagination";
+import { decodeEntities, trendTagLabel } from "@/lib/seo";
 
 const PAGE_SIZE = 10;
 
@@ -23,7 +24,7 @@ export default async function TrendingGrid({
   if (articles.length === 0) {
     return (
       <div className="text-center py-16 text-on-surface-variant">
-        <span className="material-symbols-outlined text-5xl mb-4 block">auto_stories</span>
+        <span aria-hidden="true" className="material-symbols-outlined text-5xl mb-4 block">auto_stories</span>
         <p className="text-body-lg">Henüz trend içerik eklenmemiş</p>
       </div>
     );
@@ -40,18 +41,18 @@ export default async function TrendingGrid({
           >
             <div className="relative h-48 rounded-2xl overflow-hidden mb-4">
               {c.cover_image ? (
-                <img src={c.cover_image} alt={c.title} loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                <img src={c.cover_image} alt={decodeEntities(c.title)} loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
               ) : (
                 <div className="w-full h-full bg-surface-bright/20 flex items-center justify-center">
-                  <span className="material-symbols-outlined text-4xl text-outline/30">image</span>
+                  <span aria-hidden="true" className="material-symbols-outlined text-4xl text-outline/30">image</span>
                 </div>
               )}
               <div className={`absolute top-3 left-3 px-3 py-1 bg-background/80 backdrop-blur text-caption rounded-full ${c.tag_color}`}>
-                {c.tag}
+                {trendTagLabel(c.tag)}
               </div>
             </div>
             <h4 className="font-sora text-body-lg text-on-surface group-hover:text-primary mb-4 flex-1 font-semibold transition-colors">
-              {c.title}
+              {decodeEntities(c.title)}
             </h4>
           </Link>
         ))}

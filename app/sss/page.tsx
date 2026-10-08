@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { getActiveFaqItems } from "@/lib/public-queries";
 import AdSlot from "@/components/ads/AdSlot";
-import { ogMeta } from "@/lib/seo";
+import { ogMeta, jsonLd } from "@/lib/seo";
 
 export const metadata = {
   title: "Sıkça Sorulan Sorular",
@@ -41,13 +41,13 @@ export default async function SssPage() {
   return (
     <main className="top-clear-2 pb-section-gap px-container-padding-mobile md:px-container-padding-desktop max-w-3xl mx-auto">
       {faqJsonLd && (
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(faqJsonLd)} />
       )}
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(breadcrumbJsonLd)} />
 
       <nav className="flex items-center gap-2 text-caption text-outline mb-6 flex-wrap">
         <Link href="/" className="hover:text-on-surface transition-colors">Ana Sayfa</Link>
-        <span className="material-symbols-outlined text-xs">chevron_right</span>
+        <span aria-hidden="true" className="material-symbols-outlined text-xs">chevron_right</span>
         <span className="text-on-surface-variant">Sıkça Sorulan Sorular</span>
       </nav>
 
@@ -72,7 +72,7 @@ export default async function SssPage() {
             >
               <summary className="flex items-center justify-between gap-4 px-6 py-4 cursor-pointer list-none text-body-md text-on-surface font-medium">
                 {item.question}
-                <span className="material-symbols-outlined text-on-surface-variant group-open:rotate-180 transition-transform">
+                <span aria-hidden="true" className="material-symbols-outlined text-on-surface-variant group-open:rotate-180 transition-transform">
                   expand_more
                 </span>
               </summary>

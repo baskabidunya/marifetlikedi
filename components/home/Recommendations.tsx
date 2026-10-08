@@ -34,7 +34,7 @@ export default function Recommendations() {
             className="glass-card p-4 rounded-2xl border-primary/20 shadow-[0_0_20px_rgba(208,188,255,0.15)] group"
           >
             <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
-              <span className="material-symbols-outlined text-primary">
+              <span aria-hidden="true" className="material-symbols-outlined text-primary">
                 {item.icon}
               </span>
             </div>

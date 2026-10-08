@@ -34,7 +34,7 @@ export default function AdminSidebar({ displayName }: { displayName: string }) {
       {/* Mobile toggle */}
       <button onClick={() => setMobileOpen(!mobileOpen)}
         className="fixed top-20 left-4 z-50 md:hidden bg-surface-container p-2.5 rounded-xl border border-on-surface/10 shadow-lg">
-        <span className="material-symbols-outlined text-on-surface">{mobileOpen ? "close" : "menu"}</span>
+        <span aria-hidden="true" className="material-symbols-outlined text-on-surface">{mobileOpen ? "close" : "menu"}</span>
       </button>
 
       {/* Overlay on mobile */}
@@ -50,7 +50,7 @@ export default function AdminSidebar({ displayName }: { displayName: string }) {
         {/* Logo */}
         <div className="flex items-center gap-3 px-6 pt-6 pb-4 border-b border-on-surface/10">
           <div className="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center">
-            <span className="material-symbols-outlined text-primary">auto_awesome</span>
+            <span aria-hidden="true" className="material-symbols-outlined text-primary">auto_awesome</span>
           </div>
           <div>
             <Link href="/admin" className="font-sora font-bold text-headline-md text-primary">Admin</Link>
@@ -69,7 +69,7 @@ export default function AdminSidebar({ displayName }: { displayName: string }) {
                     ? "bg-primary/20 text-primary shadow-sm"
                     : "text-on-surface-variant hover:bg-on-surface/5 hover:text-on-surface"
                 }`}>
-                <span className="material-symbols-outlined text-[20px]">{l.icon}</span>
+                <span aria-hidden="true" className="material-symbols-outlined text-[20px]">{l.icon}</span>
                 {l.label}
               </Link>
             );
@@ -80,7 +80,7 @@ export default function AdminSidebar({ displayName }: { displayName: string }) {
         <div className="px-3 py-4 border-t border-on-surface/10">
           <div className="flex items-center gap-3 px-4 py-3">
             <div className="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center">
-              <span className="material-symbols-outlined text-[18px] text-on-surface">account_circle</span>
+              <span aria-hidden="true" className="material-symbols-outlined text-[18px] text-on-surface">account_circle</span>
             </div>
             <div className="flex-1 min-w-0">
               <p className="text-label-md font-label-md text-on-surface truncate">{displayName}</p>
@@ -88,7 +88,7 @@ export default function AdminSidebar({ displayName }: { displayName: string }) {
           </div>
           <Link href="/"
             className="flex items-center gap-3 px-4 py-3 rounded-2xl text-label-md font-label-md text-outline hover:bg-on-surface/5 hover:text-on-surface transition-all mt-1">
-            <span className="material-symbols-outlined text-[20px]">arrow_back</span>
+            <span aria-hidden="true" className="material-symbols-outlined text-[20px]">arrow_back</span>
             Siteye Dön
           </Link>
         </div>

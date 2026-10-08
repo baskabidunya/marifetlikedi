@@ -38,7 +38,7 @@ export default function BlogPageHeader({ count }: { count: number }) {
           <p className="text-caption text-outline mt-0.5">{count} yazı</p>
         </div>
         <form onSubmit={handleSearch} className="relative">
-          <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-lg">search</span>
+          <span aria-hidden="true" className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-lg">search</span>
           <input
             type="text"
             value={q}
@@ -52,7 +52,7 @@ export default function BlogPageHeader({ count }: { count: number }) {
         <AIGenerateButton type="blog" onGenerated={handleAI} />
         <Link href="/admin/blog/yeni"
           className="px-4 py-2 rounded-xl bg-gradient-to-r from-primary to-secondary text-on-primary font-label-md shadow-lg hover:shadow-xl transition-all flex items-center gap-1.5 text-sm">
-          <span className="material-symbols-outlined text-[18px]">add</span>
+          <span aria-hidden="true" className="material-symbols-outlined text-[18px]">add</span>
           Yeni Yazı
         </Link>
       </div>

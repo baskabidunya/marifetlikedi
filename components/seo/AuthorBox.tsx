@@ -13,7 +13,7 @@ export default function AuthorBox({ updated }: { updated?: string }) {
       aria-label="Yayın bilgisi"
     >
       <div className="shrink-0 w-14 h-14 rounded-full bg-primary/15 border border-primary/20 flex items-center justify-center">
-        <span className="material-symbols-outlined text-primary text-2xl">auto_awesome</span>
+        <span aria-hidden="true" className="material-symbols-outlined text-primary text-2xl">auto_awesome</span>
       </div>
       <div className="min-w-0">
         <p className="text-caption font-label-md uppercase tracking-widest text-outline mb-1">Yayın Ekibi</p>

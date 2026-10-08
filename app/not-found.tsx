@@ -26,7 +26,7 @@ export default function NotFound() {
           </Link>
         </div>
         <div className="mt-12 text-on-surface-variant/50">
-          <span className="material-symbols-outlined text-6xl">explore</span>
+          <span aria-hidden="true" className="material-symbols-outlined text-6xl">explore</span>
         </div>
       </div>
     </main>

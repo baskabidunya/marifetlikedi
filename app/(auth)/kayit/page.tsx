@@ -14,7 +14,7 @@ export default function RegisterPage() {
         <div className="relative z-10 text-center space-y-8 max-w-lg drop-shadow-2xl">
           <div className="inline-block p-6 rounded-full glass-card mb-4">
             <div className="w-32 h-32 rounded-full bg-primary/20 flex items-center justify-center">
-              <span className="material-symbols-outlined text-6xl text-primary" style={{ fontVariationSettings: '"FILL" 1' }}>auto_awesome</span>
+              <span aria-hidden="true" className="material-symbols-outlined text-6xl text-primary" style={{ fontVariationSettings: '"FILL" 1' }}>auto_awesome</span>
             </div>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-on-background leading-tight font-sora">
@@ -33,7 +33,7 @@ export default function RegisterPage() {
         <div className="w-full max-w-md relative z-10">
           <div className="text-center md:text-left mb-10">
             <div className="md:hidden mx-auto w-20 h-20 mb-6 rounded-full bg-primary/20 flex items-center justify-center">
-              <span className="material-symbols-outlined text-3xl text-primary" style={{ fontVariationSettings: '"FILL" 1' }}>auto_awesome</span>
+              <span aria-hidden="true" className="material-symbols-outlined text-3xl text-primary" style={{ fontVariationSettings: '"FILL" 1' }}>auto_awesome</span>
             </div>
             <h1 className="text-2xl md:text-3xl font-bold text-on-background mb-2 font-sora">
               Hesap Oluştur

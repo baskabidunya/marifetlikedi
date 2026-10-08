@@ -60,7 +60,7 @@ export default function SlideCard({
         onClick={() => setOpen(!open)}
         className="w-full flex items-center gap-3 px-4 py-3 hover:bg-on-surface/5 transition-colors text-left"
       >
-        <span className="material-symbols-outlined text-lg text-primary">
+        <span aria-hidden="true" className="material-symbols-outlined text-lg text-primary">
           drag_indicator
         </span>
         <span className="text-caption font-mono bg-primary/20 text-primary px-2 py-0.5 rounded min-w-[2rem] text-center">
@@ -86,7 +86,7 @@ export default function SlideCard({
         >
           {slide.active ? "Aktif" : "Pasif"}
         </span>
-        <span
+        <span aria-hidden="true"
           className="material-symbols-outlined text-lg text-outline transition-transform"
           style={{ transform: open ? "rotate(180deg)" : undefined }}
         >

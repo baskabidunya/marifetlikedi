@@ -16,7 +16,7 @@ export default function ForgotPasswordPage() {
       <div className="w-full max-w-md relative z-10 glass p-8 rounded-3xl inner-glow">
         <div className="text-center mb-8">
           <div className="mx-auto w-20 h-20 mb-6 rounded-full bg-primary/20 flex items-center justify-center">
-            <span className="material-symbols-outlined text-3xl text-primary" style={{ fontVariationSettings: '"FILL" 1' }}>lock_reset</span>
+            <span aria-hidden="true" className="material-symbols-outlined text-3xl text-primary" style={{ fontVariationSettings: '"FILL" 1' }}>lock_reset</span>
           </div>
           <h1 className="text-2xl md:text-3xl font-bold text-on-background mb-2 font-sora">
             Şifreni mi unuttun?

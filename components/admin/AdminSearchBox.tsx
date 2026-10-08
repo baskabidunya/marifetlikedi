@@ -25,7 +25,7 @@ export default function AdminSearchBox({ placeholder = "Başlıkta ara..." }: Pr
 
   return (
     <form onSubmit={handleSubmit} className="relative">
-      <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-lg">search</span>
+      <span aria-hidden="true" className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-lg">search</span>
       <input
         type="text"
         value={q}

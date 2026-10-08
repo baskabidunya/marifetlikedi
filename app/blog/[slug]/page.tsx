@@ -4,7 +4,11 @@ import type { Metadata } from "next";
 import { getPublishedPostBySlug } from "@/lib/blog-public";
 import { renderMarkdown, extractFaqItems, extractTocItems } from "@/lib/markdown";
 import { getRelatedPosts } from "@/lib/blog-public";
+import { ogMeta, jsonLd, cleanDescription, decodeEntities, absoluteUrl } from "@/lib/seo";
+import { findSignInText } from "@/lib/sign-slugs";
 import AdSlot from "@/components/ads/AdSlot";
+import ContentDisclaimer from "@/components/seo/ContentDisclaimer";
+import SignCta from "@/components/seo/SignCta";
 
 export const revalidate = 300;
 
@@ -17,23 +21,21 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const post = await getPublishedPostBySlug(slug);
   if (!post) return { title: "Gök Günlüğü" };
+  const title = decodeEntities(post.title);
+  const description = cleanDescription(post.excerpt || "");
   return {
-    title: post.title,
-    description: post.excerpt ?? undefined,
+    title,
+    description: description || undefined,
     alternates: { canonical: `/blog/${slug}` },
-    openGraph: {
-      title: post.title,
-      description: post.excerpt ?? undefined,
+    ...ogMeta({
+      title,
+      description,
+      path: `/blog/${slug}`,
       type: "article",
-      url: `/blog/${slug}`,
-      images: post.cover_image ? [{ url: post.cover_image, width: 1200, height: 630, alt: post.title }] : undefined,
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: post.title,
-      description: post.excerpt ?? undefined,
-      images: post.cover_image ? [post.cover_image] : undefined,
-    },
+      image: post.cover_image ?? undefined,
+      publishedTime: post.created_at as string,
+      modifiedTime: (post.updated_at || post.created_at) as string,
+    }),
   };
 }
 
@@ -45,6 +47,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   const relatedPosts = await getRelatedPosts(post);
 
   const authorName = post.author_name || AUTHOR.name;
+  const title = decodeEntities(post.title);
+  const description = cleanDescription(post.excerpt || "");
+  const sign = findSignInText(post.title, post.excerpt);
   const faqItems = extractFaqItems(post.content);
   const tocItems = extractTocItems(post.content);
   const faqJsonLd = faqItems.length
@@ -66,13 +71,11 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   const blogPostingJsonLd = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    headline: post.title,
-    description: post.excerpt,
+    headline: title,
+    description: description || undefined,
     image: post.cover_image
-      ? post.cover_image.startsWith("http")
-        ? post.cover_image
-        : `https://www.marifetlikedi.com${post.cover_image.startsWith("/") ? "" : "/"}${post.cover_image}`
-      : undefined,
+      ? absoluteUrl(post.cover_image)
+      : absoluteUrl("/og-default.png"),
     datePublished: post.created_at,
     dateModified: post.updated_at || post.created_at,
     author: { "@type": "Organization", name: authorName },
@@ -88,40 +91,34 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Ana Sayfa", item: "https://www.marifetlikedi.com" },
-      { "@type": "ListItem", position: 2, name: "Gök Günlüğü", item: "https://www.marifetlikedi.com/blog" },
-      { "@type": "ListItem", position: 3, name: post.title },
+      { "@type": "ListItem", position: 1, name: "Ana Sayfa", item: absoluteUrl("/") },
+      { "@type": "ListItem", position: 2, name: "Gök Günlüğü", item: absoluteUrl("/blog") },
+      { "@type": "ListItem", position: 3, name: title },
     ],
   };
 
   return (
     <div className="max-w-4xl mx-auto px-container-padding-mobile md:px-container-padding-desktop top-clear-2 pb-32">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPostingJsonLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(blogPostingJsonLd)} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(breadcrumbJsonLd)} />
       {faqJsonLd && (
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+          dangerouslySetInnerHTML={jsonLd(faqJsonLd)}
         />
       )}
 
       <nav className="flex items-center gap-2 text-caption text-outline mb-6 flex-wrap">
         <Link href="/" className="hover:text-on-surface transition-colors">Ana Sayfa</Link>
-        <span className="material-symbols-outlined text-xs">chevron_right</span>
+        <span aria-hidden="true" className="material-symbols-outlined text-xs">chevron_right</span>
         <Link href="/blog" className="hover:text-on-surface transition-colors">Gök Günlüğü</Link>
-        <span className="material-symbols-outlined text-xs">chevron_right</span>
-        <span className="text-on-surface-variant truncate max-w-[200px]">{post.title}</span>
+        <span aria-hidden="true" className="material-symbols-outlined text-xs">chevron_right</span>
+        <span className="text-on-surface-variant truncate max-w-[200px]">{decodeEntities(post.title)}</span>
       </nav>
 
       {post.cover_image && (
         <div className="w-full h-64 md:h-96 rounded-3xl overflow-hidden mb-8">
-          <img src={post.cover_image} alt={post.title} loading="eager" fetchPriority="high" className="w-full h-full object-cover" />
+          <img src={post.cover_image} alt={decodeEntities(post.title)} loading="eager" fetchPriority="high" className="w-full h-full object-cover" />
         </div>
       )}
 
@@ -147,16 +144,16 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         )}
       </div>
 
-      <h1 className="text-display-lg-mobile md:text-display-lg font-display-lg text-primary mb-8">{post.title}</h1>
+      <h1 className="text-display-lg-mobile md:text-display-lg font-display-lg text-primary mb-8">{decodeEntities(post.title)}</h1>
 
       {post.excerpt && (
-        <p className="text-body-lg text-on-surface-variant italic mb-8 leading-relaxed">{post.excerpt}</p>
+        <p className="text-body-lg text-on-surface-variant italic mb-8 leading-relaxed">{decodeEntities(post.excerpt)}</p>
       )}
 
       {tocItems.length >= 3 && (
         <nav className="bg-surface-container/40 rounded-2xl border border-on-surface/5 p-5 mb-8">
           <h2 className="text-label-md text-on-surface font-label-md mb-3 flex items-center gap-2">
-            <span className="material-symbols-outlined text-primary text-lg">list</span>
+            <span aria-hidden="true" className="material-symbols-outlined text-primary text-lg">list</span>
             İçindekiler
           </h2>
           <ul className="space-y-1.5">
@@ -179,8 +176,12 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         dangerouslySetInnerHTML={{ __html: html }}
       />
 
+      <ContentDisclaimer />
+
+      <SignCta signName={sign?.name} signSlug={sign?.slug} />
+
       <div className="mt-12 rounded-2xl border border-on-surface/10 bg-surface-container/40 p-5 flex items-start gap-4">
-        <span className="material-symbols-outlined text-primary text-[28px]">auto_awesome</span>
+        <span aria-hidden="true" className="material-symbols-outlined text-primary text-[28px]">auto_awesome</span>
         <div>
           <p className="text-label-md text-on-surface font-label-md">{authorName}</p>
           <p className="text-caption text-on-surface-variant mt-1 leading-relaxed">{AUTHOR.bio}</p>
@@ -193,7 +194,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       {relatedPosts.length > 0 && (
         <section className="mt-12">
           <h2 className="text-headline-md text-primary font-headline-md mb-6 flex items-center gap-2">
-            <span className="material-symbols-outlined text-lg">auto_stories</span>
+            <span aria-hidden="true" className="material-symbols-outlined text-lg">auto_stories</span>
             Benzer Yazılar
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -211,7 +212,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 <div className="p-4">
                   <span className="text-caption px-2 py-0.5 rounded bg-primary/15 text-primary">{rp.category}</span>
                   <h3 className="text-body-md font-label-md text-on-surface mt-2 group-hover:text-primary transition-colors line-clamp-2">
-                    {rp.title}
+                    {decodeEntities(rp.title)}
                   </h3>
                 </div>
               </Link>

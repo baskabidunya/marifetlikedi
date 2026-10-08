@@ -17,6 +17,23 @@ export function signSlug(sign: string): string {
   return SIGN_SLUGS[sign] || sign.toLowerCase();
 }
 
+/**
+ * Metinde (başlık/özet gibi) geçiyorsa ilk burcu bulur.
+ * Türkçe kelime sınırlarına duyarlıdır (ör. "Yay" yazıda "Yayın" olarak
+ * geçtiğinde yanlış eşleşmez).
+ */
+export function findSignInText(
+  ...texts: (string | null | undefined)[]
+): { name: string; slug: string } | null {
+  const haystack = texts.filter(Boolean).join(" ");
+  if (!haystack) return null;
+  for (const name of Object.keys(SIGN_SLUGS)) {
+    const re = new RegExp(`(?<![\\p{L}])${name}(?![\\p{L}])`, "u");
+    if (re.test(haystack)) return { name, slug: SIGN_SLUGS[name] };
+  }
+  return null;
+}
+
 export function slugToSign(slug: string): string | undefined {
   switch (slug) {
     case "kocburcu": return "Koç";

@@ -36,7 +36,7 @@ export default function ZodiacWheel() {
             <div
               className={`w-16 h-16 mx-auto mb-4 bg-gradient-to-br ${z.gradient} rounded-full flex items-center justify-center group-hover:scale-110 transition-transform`}
             >
-              <span className={`material-symbols-outlined text-3xl ${z.color}`}>
+              <span aria-hidden="true" className={`material-symbols-outlined text-3xl ${z.color}`}>
                 {z.symbol}
               </span>
             </div>

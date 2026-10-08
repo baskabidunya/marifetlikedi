@@ -91,7 +91,7 @@ export default function BurclarPage() {
       <div className="max-w-7xl mx-auto px-container-padding-mobile md:px-container-padding-desktop pt-4">
         <nav className="flex items-center gap-2 text-caption text-outline mb-4 flex-wrap">
           <Link href="/" className="hover:text-on-surface transition-colors">Ana Sayfa</Link>
-          <span className="material-symbols-outlined text-xs">chevron_right</span>
+          <span aria-hidden="true" className="material-symbols-outlined text-xs">chevron_right</span>
           <span className="text-on-surface-variant">Burçlar</span>
         </nav>
       </div>
@@ -119,7 +119,7 @@ export default function BurclarPage() {
                   <div className={`absolute -top-6 -right-6 w-32 h-32 rounded-full ${ELEMENT_BG[info.element]} blur-2xl`} />
                   <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-background/10 to-transparent" />
                   <div className="absolute top-4 right-4 w-10 h-10 rounded-xl bg-on-surface/5 backdrop-blur-md border border-on-surface/10 flex items-center justify-center">
-                    <span className={`material-symbols-outlined text-lg ${ELEMENT_COLORS[info.element]}`}>{ELEMENT_ICONS[info.element]}</span>
+                    <span aria-hidden="true" className={`material-symbols-outlined text-lg ${ELEMENT_COLORS[info.element]}`}>{ELEMENT_ICONS[info.element]}</span>
                   </div>
                   <div className="absolute bottom-4 left-5">
                     <span className="text-4xl md:text-5xl drop-shadow-lg">{hero.symbol}</span>
@@ -133,7 +133,7 @@ export default function BurclarPage() {
                       {info.element}
                     </span>
                     <span className="px-2.5 py-1 rounded-full text-caption font-label-md bg-on-surface/5 border border-on-surface/5 text-outline flex items-center gap-1">
-                      <span className="material-symbols-outlined text-[12px]">{QUALITY_ICONS[info.quality]}</span>
+                      <span aria-hidden="true" className="material-symbols-outlined text-[12px]">{QUALITY_ICONS[info.quality]}</span>
                       {info.quality}
                     </span>
                     <span className="px-2.5 py-1 rounded-full text-caption font-label-md bg-on-surface/5 border border-on-surface/5 text-on-surface-variant">
@@ -156,7 +156,7 @@ export default function BurclarPage() {
         <section className="mb-section-gap">
           <div className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-surface-container-high/60 via-primary/[0.05] to-secondary/[0.05] border border-on-surface/5 p-8 md:p-10">
             <div className="absolute right-[-40px] top-[-40px] opacity-[0.06]">
-              <span className="material-symbols-outlined text-[200px] text-primary">explore</span>
+              <span aria-hidden="true" className="material-symbols-outlined text-[200px] text-primary">explore</span>
             </div>
             <div className="absolute inset-0"
               style={{ backgroundImage: "radial-gradient(white 1px, transparent 1px)", backgroundSize: "30px 30px", opacity: 0.03 }} />
@@ -172,7 +172,7 @@ export default function BurclarPage() {
                     <div key={el} className="bg-surface/40 backdrop-blur-md p-5 rounded-2xl border border-on-surface/5 hover:bg-surface/60 transition-all">
                       <div className={`flex items-center gap-2 mb-4 ${ELEMENT_COLORS[el]}`}>
                         <div className={`w-10 h-10 rounded-xl ${ELEMENT_BG[el]} flex items-center justify-center`}>
-                          <span className="material-symbols-outlined">{ELEMENT_ICONS[el]}</span>
+                          <span aria-hidden="true" className="material-symbols-outlined">{ELEMENT_ICONS[el]}</span>
                         </div>
                         <span className="font-label-md text-headline-sm">{el}</span>
                       </div>

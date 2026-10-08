@@ -69,7 +69,7 @@ export default function ImageUpload({
           disabled={uploading}
           className="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-primary/20 text-primary text-caption font-label-md hover:bg-primary/30 transition-all whitespace-nowrap disabled:opacity-50"
         >
-          <span className="material-symbols-outlined text-lg">
+          <span aria-hidden="true" className="material-symbols-outlined text-lg">
             {uploading ? "hourglass_top" : "upload"}
           </span>
           {uploading ? "Yükleniyor..." : "Bilgisayardan Ekle"}

@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { getPublishedPosts } from "@/lib/blog-public";
 import AdSlot from "@/components/ads/AdSlot";
-import { ogMeta } from "@/lib/seo";
+import { ogMeta, jsonLd, decodeEntities } from "@/lib/seo";
 import Pagination from "@/components/Pagination";
 
 const PAGE_SIZE = 10;
@@ -57,12 +57,12 @@ export default async function BlogPage({
     <div className="max-w-7xl mx-auto px-container-padding-mobile md:px-container-padding-desktop top-clear-2 pb-32">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+        dangerouslySetInnerHTML={jsonLd(breadcrumbJsonLd)}
       />
 
       <nav className="flex items-center gap-2 text-caption text-outline mb-6 flex-wrap">
         <Link href="/" className="hover:text-on-surface transition-colors">Ana Sayfa</Link>
-        <span className="material-symbols-outlined text-xs">chevron_right</span>
+        <span aria-hidden="true" className="material-symbols-outlined text-xs">chevron_right</span>
         <span className="text-on-surface-variant">Gök Günlüğü</span>
       </nav>
 
@@ -100,16 +100,16 @@ export default async function BlogPage({
           <article key={p.id} className="glass-card rounded-3xl overflow-hidden hover:-translate-y-1 transition-all group">
             {p.cover_image && (
               <Link href={`/blog/${p.slug}`} className="block h-48 overflow-hidden">
-                <img src={p.cover_image} alt={p.title} loading="lazy"
+                <img src={p.cover_image} alt={decodeEntities(p.title)} loading="lazy"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
               </Link>
             )}
             <div className="p-6 space-y-3">
               <span className="px-3 py-1 rounded-lg bg-primary/15 text-primary text-caption font-label-md">{p.category}</span>
               <h2 className="text-headline-md font-headline-md text-on-surface group-hover:text-primary transition-colors">
-                <Link href={`/blog/${p.slug}`}>{p.title}</Link>
+                <Link href={`/blog/${p.slug}`}>{decodeEntities(p.title)}</Link>
               </h2>
-              {p.excerpt && <p className="text-body-md text-on-surface-variant line-clamp-3">{p.excerpt}</p>}
+              {p.excerpt && <p className="text-body-md text-on-surface-variant line-clamp-3">{decodeEntities(p.excerpt)}</p>}
               {p.tags.length > 0 && (
                 <div className="flex flex-wrap gap-2 pt-1">
                   {p.tags.map((t) => (
@@ -134,7 +134,7 @@ export default async function BlogPage({
 
       {posts.length === 0 && (
         <div className="text-center py-24 text-outline">
-          <span className="material-symbols-outlined text-5xl mb-4 block">auto_stories</span>
+          <span aria-hidden="true" className="material-symbols-outlined text-5xl mb-4 block">auto_stories</span>
           <p className="text-body-lg">Bu filtreye uygun yazı bulunamadı</p>
         </div>
       )}

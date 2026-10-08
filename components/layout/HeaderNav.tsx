@@ -52,7 +52,7 @@ export default function HeaderNav({ links, isLoggedIn }: { links: NavLink[]; isL
         className="md:hidden flex items-center justify-center w-11 h-11 rounded-xl bg-surface-container border border-on-surface/10 text-on-surface"
         aria-label="Menüyü aç"
       >
-        <span className="material-symbols-outlined">menu</span>
+        <span aria-hidden="true" className="material-symbols-outlined">menu</span>
       </button>
 
       {/* Desktop nav */}
@@ -89,7 +89,7 @@ export default function HeaderNav({ links, isLoggedIn }: { links: NavLink[]; isL
                 onClick={close}
                 className="w-10 h-10 rounded-xl bg-surface-container-high flex items-center justify-center text-on-surface"
               >
-                <span className="material-symbols-outlined">close</span>
+                <span aria-hidden="true" className="material-symbols-outlined">close</span>
               </button>
             </div>
             <nav className="flex flex-col gap-1">
@@ -122,7 +122,7 @@ export default function HeaderNav({ links, isLoggedIn }: { links: NavLink[]; isL
                   onClick={close}
                   className="flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-primary/20 text-primary font-label-md text-center"
                 >
-                  <span className="material-symbols-outlined text-lg">account_circle</span>
+                  <span aria-hidden="true" className="material-symbols-outlined text-lg">account_circle</span>
                   Profilim
                 </Link>
               ) : (

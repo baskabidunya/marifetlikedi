@@ -93,7 +93,7 @@ function DetailModal({ target, onClose }: { target: DetailTarget; onClose: () =>
         onClick={(e) => e.stopPropagation()}
       >
         <button onClick={onClose} className="absolute top-4 right-4 text-on-surface-variant hover:text-on-surface cursor-pointer">
-          <span className="material-symbols-outlined">close</span>
+          <span aria-hidden="true" className="material-symbols-outlined">close</span>
         </button>
         <h3 className="font-sora text-headline-md text-on-background font-bold mb-4 pr-8">{title}</h3>
         <div className="text-on-surface-variant text-body-md leading-relaxed whitespace-pre-line">{body}</div>
@@ -114,7 +114,7 @@ function PlanetCard({ planet, size = "md", onClick }: { planet: PlanetPosition; 
       </div>
       <div className="flex items-center gap-4">
         <div className={`w-16 h-16 rounded-full flex items-center justify-center ${clr.bg} border ${clr.border}`}>
-          <span className={`material-symbols-outlined text-3xl ${clr.text}`}>{isRising ? "arrow_upward" : planet.icon}</span>
+          <span aria-hidden="true" className={`material-symbols-outlined text-3xl ${clr.text}`}>{isRising ? "arrow_upward" : planet.icon}</span>
         </div>
         <div>
           <div className="text-caption text-outline mb-0.5">{planet.name}</div>
@@ -129,7 +129,7 @@ function PlanetCard({ planet, size = "md", onClick }: { planet: PlanetPosition; 
   ) : (
     <div className={`rounded-xl p-4 ${clr.bg} border ${clr.border} backdrop-blur-sm transition-all ${onClick ? "cursor-pointer hover:bg-on-surface/[0.06] hover:shadow-md" : ""}`}>
       <div className="flex items-center gap-3">
-        <span className={`material-symbols-outlined ${clr.text} text-2xl`}>{planet.icon}</span>
+        <span aria-hidden="true" className={`material-symbols-outlined ${clr.text} text-2xl`}>{planet.icon}</span>
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2">
             <span className="font-sora font-bold text-sm text-on-background">{planet.name}</span>
@@ -184,7 +184,7 @@ export function PlanetsSection({ chart, setDetail }: { chart: AstroChartType; se
             <button key={p.name} onClick={() => setDetail({ type: "planet", planet: p })}
               className={`rounded-xl p-4 ${clr.bg} border ${clr.border} text-left cursor-pointer hover:bg-on-surface/[0.06] hover:shadow-md transition-all`}>
               <div className="flex items-center gap-2 mb-2">
-                <span className={`material-symbols-outlined ${clr.text} text-xl`}>{p.icon}</span>
+                <span aria-hidden="true" className={`material-symbols-outlined ${clr.text} text-xl`}>{p.icon}</span>
                 <span className="font-sora font-bold text-sm text-on-background">{p.name}</span>
                 <span className={`text-xs font-label-md ${clr.text} ml-auto`}>{p.sign}</span>
               </div>
@@ -258,7 +258,7 @@ export default function AstroChart({ birthDate, birthTime, birthPlace, chart: pr
     return (
       <section className="glass-card rounded-xl p-10 mb-section-gap text-center">
         <div className="flex items-center justify-center gap-3">
-          <span className="material-symbols-outlined text-tertiary animate-spin">sync</span>
+          <span aria-hidden="true" className="material-symbols-outlined text-tertiary animate-spin">sync</span>
           <span className="text-on-surface-variant">Kozmik haritan hesaplanıyor...</span>
         </div>
       </section>
@@ -268,7 +268,7 @@ export default function AstroChart({ birthDate, birthTime, birthPlace, chart: pr
   if (!chart) {
     return (
       <section className="glass-card rounded-xl p-10 mb-section-gap text-center">
-        <span className="material-symbols-outlined text-5xl text-outline/40 mb-4">auto_awesome</span>
+        <span aria-hidden="true" className="material-symbols-outlined text-5xl text-outline/40 mb-4">auto_awesome</span>
         <h3 className="font-sora text-headline-md text-on-background font-bold mb-2">Kozmik Haritan Hazır Değil</h3>
         <p className="text-outline text-body-md max-w-md mx-auto">Doğum bilgilerini profiline ekle, Kozmik Haritan burada görünsün.</p>
       </section>
@@ -324,7 +324,7 @@ export default function AstroChart({ birthDate, birthTime, birthPlace, chart: pr
               return (
                 <button key={el.name} onClick={() => setDetail({ type: "element", name: el.name, bodies: el.bodies })}
                   className={`rounded-xl p-5 ${el.bg} border border-on-surface/10 text-center cursor-pointer hover:scale-[1.03] transition-transform`}>
-                  <span className={`material-symbols-outlined text-3xl ${el.text} mb-2`}>{el.icon}</span>
+                  <span aria-hidden="true" className={`material-symbols-outlined text-3xl ${el.text} mb-2`}>{el.icon}</span>
                   <div className={`font-sora font-bold text-headline-md ${el.text}`}>{pct}%</div>
                   <div className="font-label-md text-on-background mt-1">{el.name}</div>
                   <div className="text-caption text-outline mt-1">{el.points}/{totalPoints} puan</div>

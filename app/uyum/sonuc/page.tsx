@@ -8,9 +8,9 @@ export default function UyumSonucPage() {
     <>
       <nav className="top-clear-2 max-w-5xl mx-auto px-container-padding-mobile md:px-container-padding-desktop flex items-center gap-2 text-caption text-outline mb-6 flex-wrap">
         <Link href="/" className="hover:text-on-surface transition-colors">Ana Sayfa</Link>
-        <span className="material-symbols-outlined text-xs">chevron_right</span>
+        <span aria-hidden="true" className="material-symbols-outlined text-xs">chevron_right</span>
         <Link href="/uyum" className="hover:text-on-surface transition-colors">Uyum Analizi</Link>
-        <span className="material-symbols-outlined text-xs">chevron_right</span>
+        <span aria-hidden="true" className="material-symbols-outlined text-xs">chevron_right</span>
         <span className="text-on-surface-variant">Sonuç</span>
       </nav>
       <Suspense fallback={

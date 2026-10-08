@@ -105,10 +105,10 @@ export default function BurclarInteractive() {
         <div className="absolute inset-0"
           style={{ backgroundImage: "radial-gradient(circle at 70% 30%, rgba(208,188,255,0.06), transparent 50%)" }} />
         <button onClick={prevSlide} className="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-on-surface/5 backdrop-blur-md border border-on-surface/10 flex items-center justify-center hover:bg-on-surface/10 transition-all text-on-surface-variant">
-          <span className="material-symbols-outlined text-lg">chevron_left</span>
+          <span aria-hidden="true" className="material-symbols-outlined text-lg">chevron_left</span>
         </button>
         <button onClick={nextSlide} className="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-on-surface/5 backdrop-blur-md border border-on-surface/10 flex items-center justify-center hover:bg-on-surface/10 transition-all text-on-surface-variant">
-          <span className="material-symbols-outlined text-lg">chevron_right</span>
+          <span aria-hidden="true" className="material-symbols-outlined text-lg">chevron_right</span>
         </button>
         <div className="relative z-10 p-8 md:p-12 w-full">
           <span className="px-4 py-1.5 rounded-full bg-tertiary/20 text-tertiary font-label-md text-xs uppercase tracking-widest mb-4 inline-block backdrop-blur-md border border-tertiary/20">
@@ -133,12 +133,12 @@ export default function BurclarInteractive() {
       <section className="mb-section-gap">
         <div className="relative rounded-3xl overflow-hidden glass-card p-8 md:p-10">
           <div className="absolute right-[-30px] bottom-[-30px] opacity-[0.05]">
-            <span className="material-symbols-outlined text-[180px] text-secondary">favorite</span>
+            <span aria-hidden="true" className="material-symbols-outlined text-[180px] text-secondary">favorite</span>
           </div>
           <div className="relative z-10">
             <div className="flex items-center gap-3 mb-2">
               <div className="w-12 h-12 rounded-2xl bg-secondary/20 flex items-center justify-center">
-                <span className="material-symbols-outlined text-2xl text-secondary">favorite</span>
+                <span aria-hidden="true" className="material-symbols-outlined text-2xl text-secondary">favorite</span>
               </div>
               <div>
                 <h2 className="font-headline-md text-headline-md text-on-surface">İlişki Laboratuvarı</h2>
@@ -157,7 +157,7 @@ export default function BurclarInteractive() {
                         <option key={s} value={s}>{ZODIAC_DATA[s].emoji} {s} — {ZODIAC_DATA[s].element}</option>
                       ))}
                     </select>
-                    <span className="absolute right-4 top-1/2 -translate-y-1/2 text-outline pointer-events-none material-symbols-outlined">expand_more</span>
+                    <span aria-hidden="true" className="absolute right-4 top-1/2 -translate-y-1/2 text-outline pointer-events-none material-symbols-outlined">expand_more</span>
                   </div>
                 </div>
                 <div>
@@ -169,7 +169,7 @@ export default function BurclarInteractive() {
                         <option key={s} value={s}>{ZODIAC_DATA[s].emoji} {s} — {ZODIAC_DATA[s].element}</option>
                       ))}
                     </select>
-                    <span className="absolute right-4 top-1/2 -translate-y-1/2 text-outline pointer-events-none material-symbols-outlined">expand_more</span>
+                    <span aria-hidden="true" className="absolute right-4 top-1/2 -translate-y-1/2 text-outline pointer-events-none material-symbols-outlined">expand_more</span>
                   </div>
                 </div>
 
@@ -215,21 +215,21 @@ export default function BurclarInteractive() {
                   </div>
                   <div className="space-y-3">
                     <div className="flex items-center gap-2">
-                      <span className="material-symbols-outlined text-sm" style={{ color: ELEMENT_COLORS[ZODIAC_DATA[sign1].element].replace("text-", "") }}>
+                      <span aria-hidden="true" className="material-symbols-outlined text-sm" style={{ color: ELEMENT_COLORS[ZODIAC_DATA[sign1].element].replace("text-", "") }}>
                         {ELEMENT_ICONS[ZODIAC_DATA[sign1].element]}
                       </span>
                       <span className="text-caption text-on-surface-variant">{ZODIAC_DATA[sign1].element}</span>
                       <span className="text-outline">×</span>
-                      <span className="material-symbols-outlined text-sm" style={{ color: ELEMENT_COLORS[ZODIAC_DATA[sign2].element].replace("text-", "") }}>
+                      <span aria-hidden="true" className="material-symbols-outlined text-sm" style={{ color: ELEMENT_COLORS[ZODIAC_DATA[sign2].element].replace("text-", "") }}>
                         {ELEMENT_ICONS[ZODIAC_DATA[sign2].element]}
                       </span>
                       <span className="text-caption text-on-surface-variant">{ZODIAC_DATA[sign2].element}</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <span className="material-symbols-outlined text-sm text-outline">diamond</span>
+                      <span aria-hidden="true" className="material-symbols-outlined text-sm text-outline">diamond</span>
                       <span className="text-caption text-on-surface-variant">{ZODIAC_DATA[sign1].quality}</span>
                       <span className="text-outline">×</span>
-                      <span className="material-symbols-outlined text-sm text-outline">diamond</span>
+                      <span aria-hidden="true" className="material-symbols-outlined text-sm text-outline">diamond</span>
                       <span className="text-caption text-on-surface-variant">{ZODIAC_DATA[sign2].quality}</span>
                     </div>
                   </div>

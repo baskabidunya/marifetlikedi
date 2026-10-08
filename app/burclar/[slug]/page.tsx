@@ -179,9 +179,9 @@ export default async function Page({
       <div className="max-w-7xl mx-auto px-container-padding-mobile md:px-container-padding-desktop">
         <nav className="flex items-center gap-2 text-caption text-outline mb-4 pt-4 flex-wrap">
           <Link href="/" className="hover:text-on-surface transition-colors">Ana Sayfa</Link>
-          <span className="material-symbols-outlined text-xs">chevron_right</span>
+          <span aria-hidden="true" className="material-symbols-outlined text-xs">chevron_right</span>
           <Link href="/burclar" className="hover:text-on-surface transition-colors">Burçlar</Link>
-          <span className="material-symbols-outlined text-xs">chevron_right</span>
+          <span aria-hidden="true" className="material-symbols-outlined text-xs">chevron_right</span>
           <span className="text-on-surface-variant">{s} Burcu</span>
         </nav>
         {/* Hero */}
@@ -197,15 +197,15 @@ export default async function Page({
             <p className="text-headline-md font-headline-md text-secondary">{info.dateRange}</p>
             <div className="flex gap-2 justify-center mt-6">
               <span className="px-4 py-1.5 rounded-full text-label-md font-label-md bg-surface/50 backdrop-blur-md border border-on-surface/10 text-on-surface/80">
-                <span className="material-symbols-outlined text-[14px] align-text-bottom mr-1">{getElementIcon(info.element)}</span>
+                <span aria-hidden="true" className="material-symbols-outlined text-[14px] align-text-bottom mr-1">{getElementIcon(info.element)}</span>
                 {info.element} Elementi
               </span>
               <span className="px-4 py-1.5 rounded-full text-label-md font-label-md bg-surface/50 backdrop-blur-md border border-on-surface/10 text-on-surface/80">
-                <span className="material-symbols-outlined text-[14px] align-text-bottom mr-1">{getQualityIcon(info.quality)}</span>
+                <span aria-hidden="true" className="material-symbols-outlined text-[14px] align-text-bottom mr-1">{getQualityIcon(info.quality)}</span>
                 {info.quality} Nitelik
               </span>
               <span className="px-4 py-1.5 rounded-full text-label-md font-label-md bg-surface/50 backdrop-blur-md border border-on-surface/10 text-on-surface/80">
-                <span className="material-symbols-outlined text-[14px] align-text-bottom mr-1">public</span>
+                <span aria-hidden="true" className="material-symbols-outlined text-[14px] align-text-bottom mr-1">public</span>
                 {info.ruler}
               </span>
             </div>
@@ -218,26 +218,26 @@ export default async function Page({
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6 mb-section-gap">
           <div className="md:col-span-4 glass-card p-8 rounded-3xl space-y-6">
             <h3 className="text-headline-md font-headline-md text-primary flex items-center gap-2">
-              <span className="material-symbols-outlined">auto_awesome</span> Burç Künyesi
+              <span aria-hidden="true" className="material-symbols-outlined">auto_awesome</span> Burç Künyesi
             </h3>
             <div className="space-y-4">
               <div className="flex items-center justify-between p-4 bg-surface-container-low/50 rounded-2xl">
                 <div className="flex items-center gap-3">
-                  <span className="material-symbols-outlined text-tertiary text-lg">{getElementIcon(info.element)}</span>
+                  <span aria-hidden="true" className="material-symbols-outlined text-tertiary text-lg">{getElementIcon(info.element)}</span>
                   <span className="text-body-md font-body-md">Element</span>
                 </div>
                 <span className="text-label-md font-label-md text-tertiary">{info.element}</span>
               </div>
               <div className="flex items-center justify-between p-4 bg-surface-container-low/50 rounded-2xl">
                 <div className="flex items-center gap-3">
-                  <span className="material-symbols-outlined text-secondary text-lg">{getQualityIcon(info.quality)}</span>
+                  <span aria-hidden="true" className="material-symbols-outlined text-secondary text-lg">{getQualityIcon(info.quality)}</span>
                   <span className="text-body-md font-body-md">Nitelik</span>
                 </div>
                 <span className="text-label-md font-label-md text-secondary">{info.quality}</span>
               </div>
               <div className="flex items-center justify-between p-4 bg-surface-container-low/50 rounded-2xl">
                 <div className="flex items-center gap-3">
-                  <span className="material-symbols-outlined text-primary text-lg">public</span>
+                  <span aria-hidden="true" className="material-symbols-outlined text-primary text-lg">public</span>
                   <span className="text-body-md font-body-md">Yönetici Gezegen</span>
                 </div>
                 <span className="text-label-md font-label-md text-primary">{info.ruler}</span>
@@ -247,7 +247,7 @@ export default async function Page({
 
           <div className="md:col-span-8 glass-card p-8 rounded-3xl relative overflow-hidden">
             <div className="absolute top-0 right-0 p-8 opacity-[0.04] pointer-events-none">
-              <span className="material-symbols-outlined text-[120px]">psychology</span>
+              <span aria-hidden="true" className="material-symbols-outlined text-[120px]">psychology</span>
             </div>
             <h3 className="text-headline-md font-headline-md text-primary mb-6">Karakter Analizi</h3>
             <div className="flex flex-wrap gap-2 mb-8">
@@ -309,7 +309,7 @@ export default async function Page({
               className="text-primary font-label-md hover:text-secondary inline-flex items-center gap-1"
             >
               Yükselen burcunu hesapla
-              <span className="material-symbols-outlined text-sm">arrow_forward</span>
+              <span aria-hidden="true" className="material-symbols-outlined text-sm">arrow_forward</span>
             </Link>
           </div>
         </section>

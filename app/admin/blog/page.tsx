@@ -63,7 +63,7 @@ export default async function AdminBlogPage({ searchParams }: Props) {
         </table>
         {posts.length === 0 && (
           <div className="text-center py-12 text-outline">
-            <span className="material-symbols-outlined text-3xl mb-2 block">article</span>
+            <span aria-hidden="true" className="material-symbols-outlined text-3xl mb-2 block">article</span>
             <p className="text-body-sm">{q ? "Aramanızla eşleşen yazı bulunamadı" : "Henüz blog yazısı yok"}</p>
           </div>
         )}

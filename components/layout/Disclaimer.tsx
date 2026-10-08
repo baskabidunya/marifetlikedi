@@ -2,7 +2,7 @@ export default function Disclaimer({ variant = "inline" }: { variant?: "inline" 
   if (variant === "box") {
     return (
       <div className="rounded-2xl border border-on-surface/10 bg-surface-container/50 p-4 text-caption text-outline leading-relaxed">
-        <span className="material-symbols-outlined text-tertiary text-sm align-middle mr-1">
+        <span aria-hidden="true" className="material-symbols-outlined text-tertiary text-sm align-middle mr-1">
           info
         </span>
         Bu sayfadaki burç yorumları, tarot ve uyum analizleri{" "}

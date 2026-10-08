@@ -2,7 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { getAllAnnouncements } from "@/lib/public-queries";
-import { ogMeta } from "@/lib/seo";
+import { ogMeta, decodeEntities } from "@/lib/seo";
 import AdSlot from "@/components/ads/AdSlot";
 
 const TYPE_STYLES: Record<string, string> = {
@@ -37,12 +37,12 @@ export default async function AnnouncementsPage() {
     <main className="top-clear-2 pb-section-gap px-container-padding-mobile md:px-container-padding-desktop max-w-3xl mx-auto">
       <nav className="flex items-center gap-2 text-caption text-outline mb-6 flex-wrap">
         <Link href="/" className="hover:text-on-surface transition-colors">Ana Sayfa</Link>
-        <span className="material-symbols-outlined text-xs">chevron_right</span>
+        <span aria-hidden="true" className="material-symbols-outlined text-xs">chevron_right</span>
         <span className="text-on-surface-variant">Duyurular</span>
       </nav>
       <header className="mb-10">
         <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass text-secondary border border-secondary/20 mb-4">
-          <span className="material-symbols-outlined text-sm">campaign</span>
+          <span aria-hidden="true" className="material-symbols-outlined text-sm">campaign</span>
           <span className="text-label-md">Duyurular</span>
         </span>
         <h1 className="font-sora text-headline-lg-mobile md:text-display-lg mb-3 gradient-text">
@@ -56,7 +56,7 @@ export default async function AnnouncementsPage() {
 
       {items.length === 0 ? (
         <div className="glass-card rounded-xl p-10 text-center">
-          <span className="material-symbols-outlined text-5xl text-outline/40 mb-4">campaign</span>
+          <span aria-hidden="true" className="material-symbols-outlined text-5xl text-outline/40 mb-4">campaign</span>
           <p className="text-on-surface-variant">Şu an aktif bir duyuru bulunmuyor.</p>
         </div>
       ) : (
@@ -76,14 +76,14 @@ export default async function AnnouncementsPage() {
                 </span>
               </div>
               <h2 className="font-sora text-headline-md text-on-background mb-2 group-hover:text-primary transition-colors">
-                {a.title}
+                {decodeEntities(a.title)}
               </h2>
               <p className="text-body-md text-on-surface-variant leading-relaxed line-clamp-2">
                 {a.message}
               </p>
               <span className="inline-flex items-center gap-1 mt-4 text-label-md text-primary">
                 Daha fazlası
-                <span className="material-symbols-outlined text-lg group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                <span aria-hidden="true" className="material-symbols-outlined text-lg group-hover:translate-x-1 transition-transform">arrow_forward</span>
               </span>
             </Link>
           ))}

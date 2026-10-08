@@ -25,7 +25,7 @@ export default function ForgotPasswordForm() {
           E-posta Adresi
         </label>
         <div className="relative">
-          <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">alternate_email</span>
+          <span aria-hidden="true" className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">alternate_email</span>
           <input
             id="email"
             name="email"
@@ -43,7 +43,7 @@ export default function ForgotPasswordForm() {
         className="w-full py-4 rounded-xl cta-glow text-on-primary font-bold flex items-center justify-center space-x-2 disabled:opacity-50 cursor-pointer"
       >
         <span>{pending ? "Gönderiliyor..." : "Bağlantı Gönder"}</span>
-        <span className="material-symbols-outlined">send</span>
+        <span aria-hidden="true" className="material-symbols-outlined">send</span>
       </button>
 
       <div className="text-center">

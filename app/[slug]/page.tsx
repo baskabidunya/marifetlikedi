@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getPageBySlug } from "@/lib/admin";
 import { renderMarkdown } from "@/lib/markdown";
+import { jsonLd } from "@/lib/seo";
 import AdSlot from "@/components/ads/AdSlot";
 
 export const revalidate = 300;
@@ -12,7 +13,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!page) return { title: "Sayfa Bulunamadı" };
   return {
     title: page.meta_title || page.title,
-    description: page.meta_description || "",
+    description: page.meta_description || undefined,
     alternates: { canonical: `/${slug}` },
   };
 }
@@ -35,12 +36,12 @@ export default async function StaticPage({ params }: { params: Promise<{ slug: s
     <main className="top-clear-2 pb-section-gap px-container-padding-mobile md:px-container-padding-desktop max-w-3xl mx-auto">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+        dangerouslySetInnerHTML={jsonLd(breadcrumbJsonLd)}
       />
 
       <nav className="flex items-center gap-2 text-caption text-outline mb-6 flex-wrap">
         <Link href="/" className="hover:text-on-surface transition-colors">Ana Sayfa</Link>
-        <span className="material-symbols-outlined text-xs">chevron_right</span>
+        <span aria-hidden="true" className="material-symbols-outlined text-xs">chevron_right</span>
         <span className="text-on-surface-variant">{page.title}</span>
       </nav>
 

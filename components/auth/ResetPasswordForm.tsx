@@ -62,7 +62,7 @@ export default function ResetPasswordForm() {
         className="w-full py-4 rounded-xl cta-glow text-on-primary font-bold flex items-center justify-center gap-2 disabled:opacity-50 cursor-pointer"
       >
         <span>{pending ? "Güncelleniyor..." : "Şifreyi Güncelle"}</span>
-        <span className="material-symbols-outlined">check_circle</span>
+        <span aria-hidden="true" className="material-symbols-outlined">check_circle</span>
       </button>
     </form>
   );

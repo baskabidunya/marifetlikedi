@@ -75,7 +75,7 @@ export default function BirthChartCalculator({ focus }: { focus?: string }) {
           disabled={pending}
           className="w-full py-4 rounded-xl cta-glow text-on-primary font-bold flex items-center justify-center gap-2 disabled:opacity-50 cursor-pointer"
         >
-          <span className="material-symbols-outlined">auto_awesome</span>
+          <span aria-hidden="true" className="material-symbols-outlined">auto_awesome</span>
           {pending ? "Hesaplanıyor..." : "Doğum Haritamı Hesapla"}
         </button>
       </form>
@@ -98,7 +98,7 @@ export default function BirthChartCalculator({ focus }: { focus?: string }) {
                   className={`block glass p-6 rounded-3xl inner-glow border transition-all hover:-translate-y-1 hover:border-primary/40 ${isFocus ? "ring-2 ring-primary" : ""}`}
                 >
                   <div className="flex items-center gap-3 mb-4">
-                    <span className="material-symbols-outlined text-3xl text-primary">{c.icon}</span>
+                    <span aria-hidden="true" className="material-symbols-outlined text-3xl text-primary">{c.icon}</span>
                     <span className="font-label-md text-on-surface-variant">{c.label}</span>
                   </div>
                   <div className="flex items-center gap-4">

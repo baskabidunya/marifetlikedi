@@ -103,7 +103,7 @@ export default function TarotTable({ deck }: { deck: CardData[] }) {
                   : "border-on-surface/10 hover:border-primary/40"
               }`}
             >
-              <span className="material-symbols-outlined text-3xl text-tertiary mb-2 block">{s.icon}</span>
+              <span aria-hidden="true" className="material-symbols-outlined text-3xl text-tertiary mb-2 block">{s.icon}</span>
               <h3 className="font-sora text-sm text-on-surface font-semibold mb-1">{s.title}</h3>
               <p className="text-xs text-on-surface-variant">{s.desc}</p>
             </button>
@@ -114,7 +114,7 @@ export default function TarotTable({ deck }: { deck: CardData[] }) {
         {activeSpread && activeSpreadData && (
           <div className="text-center mb-6">
             <div className="flex items-center justify-center gap-2 mb-1">
-              <span className="material-symbols-outlined text-tertiary text-xl">{activeSpreadData.icon}</span>
+              <span aria-hidden="true" className="material-symbols-outlined text-tertiary text-xl">{activeSpreadData.icon}</span>
               <h2 className="font-sora text-xl text-on-surface font-bold">{activeSpreadData.title}</h2>
             </div>
             <p className="text-sm text-on-surface-variant">
@@ -185,7 +185,7 @@ export default function TarotTable({ deck }: { deck: CardData[] }) {
                       {/* Selected indicator */}
                       {isSelected && (
                         <div className="absolute inset-0 flex items-center justify-center bg-black/40 rounded-lg">
-                          <span className="material-symbols-outlined text-primary text-2xl">check_circle</span>
+                          <span aria-hidden="true" className="material-symbols-outlined text-primary text-2xl">check_circle</span>
                         </div>
                       )}
                     </div>
@@ -211,7 +211,7 @@ export default function TarotTable({ deck }: { deck: CardData[] }) {
         {/* Empty state */}
         {!activeSpread && deck.length === 0 && (
           <div className="text-center space-y-6 py-20">
-            <span className="material-symbols-outlined text-6xl text-error">error</span>
+            <span aria-hidden="true" className="material-symbols-outlined text-6xl text-error">error</span>
             <h3 className="font-sora text-xl text-on-surface font-bold">Kartlar Yüklenemedi</h3>
             <p className="text-sm text-on-surface-variant">Lütfen biraz sonra tekrar deneyin.</p>
           </div>
@@ -230,12 +230,12 @@ export default function TarotTable({ deck }: { deck: CardData[] }) {
               onClick={() => setShowModal(false)}
               className="absolute top-4 right-4 text-on-surface-variant hover:text-on-surface transition-colors cursor-pointer z-10"
             >
-              <span className="material-symbols-outlined text-2xl">close</span>
+              <span aria-hidden="true" className="material-symbols-outlined text-2xl">close</span>
             </button>
 
             <div className="text-center mb-8">
               <div className="flex items-center justify-center gap-2 mb-2">
-                <span className="material-symbols-outlined text-tertiary text-xl">{activeSpreadData.icon}</span>
+                <span aria-hidden="true" className="material-symbols-outlined text-tertiary text-xl">{activeSpreadData.icon}</span>
                 <h2 className="font-sora text-2xl text-on-surface font-bold">{activeSpreadData.title}</h2>
               </div>
               <div className="w-16 h-0.5 gold-foil rounded-full mx-auto" />
@@ -256,7 +256,7 @@ export default function TarotTable({ deck }: { deck: CardData[] }) {
                       <div className="w-full h-full flex items-center justify-center min-h-[20rem]" style={{
                         background: "linear-gradient(135deg, #1a1040 0%, #2d1b69 40%, #4a2c8a 70%, #1a1040 100%)",
                       }}>
-                        <span className="material-symbols-outlined text-7xl text-primary/40">{sc.data.icon}</span>
+                        <span aria-hidden="true" className="material-symbols-outlined text-7xl text-primary/40">{sc.data.icon}</span>
                       </div>
                     )}
                     <div className="absolute top-3 left-3 bg-black/40 backdrop-blur-sm rounded-full px-3 py-1">

@@ -13,7 +13,7 @@ export default async function AdminKullanicilarPage() {
         </div>
         <a href="/kayit"
           className="px-4 py-2 rounded-xl bg-gradient-to-r from-primary to-secondary text-on-primary font-label-md shadow-lg hover:shadow-xl transition-all flex items-center gap-1.5 text-sm">
-          <span className="material-symbols-outlined text-[18px]">person_add</span>
+          <span aria-hidden="true" className="material-symbols-outlined text-[18px]">person_add</span>
           Yeni Kullanıcı
         </a>
       </div>

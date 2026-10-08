@@ -34,7 +34,7 @@ export default async function Header() {
               className="flex items-center justify-center w-11 h-11 rounded-full bg-gradient-to-br from-primary-container to-secondary-container text-on-primary"
               aria-label="Profilim"
             >
-              <span className="material-symbols-outlined">account_circle</span>
+              <span aria-hidden="true" className="material-symbols-outlined">account_circle</span>
             </Link>
           )}
         </div>
@@ -60,7 +60,7 @@ export default async function Header() {
               href="/profil"
               className="hidden md:flex items-center gap-2 bg-gradient-to-r from-primary-container to-secondary-container px-6 py-2.5 rounded-full text-on-primary font-label-md hover:scale-105 active:scale-95 transition-all shadow-lg shadow-primary/20"
             >
-              <span className="material-symbols-outlined text-lg">account_circle</span>
+              <span aria-hidden="true" className="material-symbols-outlined text-lg">account_circle</span>
               Profil
             </Link>
           ) : (

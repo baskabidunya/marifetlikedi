@@ -33,16 +33,6 @@ export const metadata: Metadata = {
     "Astroloji, burç yorumları, tarot, doğum haritası ve uyum analizleriyle kozmik rehberlik sunan eğlence ve kişisel gelişim portalı.",
   applicationName: "Marifetli Kedi",
   authors: [{ name: "Marifetli Kedi" }],
-  keywords: [
-    "astroloji",
-    "burç yorumları",
-    "tarot",
-    "doğum haritası",
-    "uyum analizi",
-    "burç uyumu",
-    "günlük burç",
-    "kozmik rehberlik",
-  ],
   openGraph: {
     type: "website",
     locale: "tr_TR",
@@ -136,13 +126,7 @@ export default async function RootLayout({
             }),
           }}
         />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://gbgsykjrozmpkpsqukcp.supabase.co" />
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=block"
-        />
       </head>
       <body className="bg-surface text-on-surface font-inter antialiased">
         <ConsentScripts />

@@ -66,7 +66,7 @@ export default function AIGenerateButton({ type, onGenerated }: Props) {
         onClick={() => setOpen(true)}
         className="px-4 py-2.5 rounded-lg bg-tertiary/20 text-tertiary text-label-md hover:bg-tertiary/30 transition-all flex items-center gap-2 cursor-pointer"
       >
-        <span className="material-symbols-outlined text-lg">auto_awesome</span>
+        <span aria-hidden="true" className="material-symbols-outlined text-lg">auto_awesome</span>
         AI ile Oluştur
       </button>
 
@@ -76,11 +76,11 @@ export default function AIGenerateButton({ type, onGenerated }: Props) {
           <div className="relative bg-surface-container rounded-2xl border border-on-surface/10 shadow-2xl w-full max-w-md mx-4">
             <div className="border-b border-on-surface/10 px-6 py-4 flex items-center justify-between rounded-t-2xl">
               <h3 className="text-title-md text-on-surface flex items-center gap-2">
-                <span className="material-symbols-outlined text-tertiary">auto_awesome</span>
+                <span aria-hidden="true" className="material-symbols-outlined text-tertiary">auto_awesome</span>
                 {TYPE_LABELS[type]} Üret
               </h3>
               <button onClick={() => setOpen(false)} className="text-outline hover:text-on-surface transition-colors">
-                <span className="material-symbols-outlined">close</span>
+                <span aria-hidden="true" className="material-symbols-outlined">close</span>
               </button>
             </div>
 
@@ -115,12 +115,12 @@ export default function AIGenerateButton({ type, onGenerated }: Props) {
               >
                 {loading ? (
                   <>
-                    <span className="material-symbols-outlined animate-spin text-lg">sync</span>
+                    <span aria-hidden="true" className="material-symbols-outlined animate-spin text-lg">sync</span>
                     Oluşturuluyor...
                   </>
                 ) : (
                   <>
-                    <span className="material-symbols-outlined text-lg">auto_awesome</span>
+                    <span aria-hidden="true" className="material-symbols-outlined text-lg">auto_awesome</span>
                     Oluştur
                   </>
                 )}

@@ -123,7 +123,7 @@ export default function UyumSonucContent() {
     return (
       <main className="top-clear-2 pb-section-gap px-container-padding-mobile md:px-container-padding-desktop max-w-5xl mx-auto flex items-start justify-center min-h-[60vh]">
         <div className="glass-card rounded-xl p-10 max-w-md text-center pt-20">
-          <span className="material-symbols-outlined text-5xl text-error/60 mb-4">error</span>
+          <span aria-hidden="true" className="material-symbols-outlined text-5xl text-error/60 mb-4">error</span>
           <p className="text-on-surface-variant text-body-md mb-6">{error || "Analiz bulunamadı."}</p>
           <Link href="/uyum"
             className="px-6 py-3 bg-primary text-on-primary font-label-md rounded-full hover:shadow-[0_0_20px_rgba(208,188,255,0.4)] transition-all inline-block no-underline">
@@ -175,14 +175,14 @@ export default function UyumSonucContent() {
       {/* Navigation */}
       <Link href="/uyum"
         className="inline-flex items-center gap-1.5 text-on-surface-variant hover:text-on-surface transition-colors mb-8 no-underline group">
-        <span className="material-symbols-outlined text-lg group-hover:-translate-x-0.5 transition-transform">arrow_back</span>
+        <span aria-hidden="true" className="material-symbols-outlined text-lg group-hover:-translate-x-0.5 transition-transform">arrow_back</span>
         <span className="font-label-md">Geri Dön</span>
       </Link>
 
       {/* Hero Section */}
       <section className="flex flex-col items-center text-center mb-section-gap">
         <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass text-secondary border border-secondary/20 mb-4">
-          <span className="material-symbols-outlined text-sm">favorite</span>
+          <span aria-hidden="true" className="material-symbols-outlined text-sm">favorite</span>
           <span className="text-label-md">İlişki Uyumu</span>
         </span>
         <h1 className="font-sora text-headline-lg-mobile md:text-display-lg mb-4 gradient-text">İlişki Laboratuvarı</h1>
@@ -198,7 +198,7 @@ export default function UyumSonucContent() {
           <div className="relative">
             <div className={`absolute inset-0 bg-gradient-to-br ${userGrad} blur-xl rounded-full`} />
             <div className="relative w-24 h-24 rounded-full border-2 border-primary/40 bg-surface-container flex items-center justify-center overflow-hidden">
-              <span className="material-symbols-outlined text-4xl text-primary">person</span>
+              <span aria-hidden="true" className="material-symbols-outlined text-4xl text-primary">person</span>
             </div>
           </div>
           <div>
@@ -251,7 +251,7 @@ export default function UyumSonucContent() {
           <div className="relative">
             <div className={`absolute inset-0 bg-gradient-to-br ${partnerGrad} blur-xl rounded-full`} />
             <div className="relative w-24 h-24 rounded-full border-2 border-secondary/40 bg-surface-container flex items-center justify-center overflow-hidden">
-              <span className="material-symbols-outlined text-4xl text-secondary">person</span>
+              <span aria-hidden="true" className="material-symbols-outlined text-4xl text-secondary">person</span>
             </div>
           </div>
           <div>
@@ -276,7 +276,7 @@ export default function UyumSonucContent() {
         {scoreCards.map(card => (
           <div key={card.key} className="glass-card p-6 rounded-xl relative overflow-hidden group">
             <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-30 transition-opacity">
-              <span className="material-symbols-outlined text-4xl">{card.icon}</span>
+              <span aria-hidden="true" className="material-symbols-outlined text-4xl">{card.icon}</span>
             </div>
             <h4 className="text-outline font-label-md mb-2">{card.title}</h4>
             <div className="flex items-end gap-2">
@@ -295,7 +295,7 @@ export default function UyumSonucContent() {
       {interactions.length > 0 && (
         <section className="mt-section-gap">
           <div className="flex items-center gap-4 mb-8">
-            <span className="material-symbols-outlined text-tertiary">stars</span>
+            <span aria-hidden="true" className="material-symbols-outlined text-tertiary">stars</span>
             <h2 className="font-sora text-headline-md text-on-background">Gezegen Etkileşimleri</h2>
           </div>
           <div className="space-y-4">
@@ -305,7 +305,7 @@ export default function UyumSonucContent() {
                 <div key={i} className={`glass-card p-6 rounded-xl flex flex-col md:flex-row md:items-center justify-between gap-6 hover:bg-on-surface/5 transition-colors border-l-4 ${tag.border}`}>
                   <div className="flex items-center gap-4">
                     <div className="w-12 h-12 rounded-lg bg-on-surface/5 flex items-center justify-center">
-                      <span className={`material-symbols-outlined ${tag.cls.split(" ")[1]}`}>{PLANET_ICONS[a.planet1] || "stars"}</span>
+                      <span aria-hidden="true" className={`material-symbols-outlined ${tag.cls.split(" ")[1]}`}>{PLANET_ICONS[a.planet1] || "stars"}</span>
                     </div>
                     <div>
                       <h5 className="font-label-md text-on-surface">{a.planet1} – {a.planet2} {a.type}</h5>

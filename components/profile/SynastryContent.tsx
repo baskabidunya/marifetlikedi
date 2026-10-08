@@ -106,7 +106,7 @@ export default function SynastryContent({ synastry, partnerName }: { synastry: S
         <h4 className="font-sora text-headline-sm text-on-background font-bold mb-1">Uyum Skorları</h4>
         <p className="text-outline text-body-md mb-5">Beş farklı kategoride uyum seviyeniz</p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <ScoreDetailBar className="md:col-span-2" icon={<span className="material-symbols-outlined text-sm text-primary">star</span>} label="Temel Uyum"
+            <ScoreDetailBar className="md:col-span-2" icon={<span aria-hidden="true" className="material-symbols-outlined text-sm text-primary">star</span>} label="Temel Uyum"
               value={synastry.compatibilityScores.temel} max={100}
             note="Güneş ve Ay burçlarınız arasındaki temel uyumu yansıtır. Birbirinizi doğal olarak ne kadar anladığınızı gösterir."
             color="bg-gradient-to-r from-primary to-secondary" />

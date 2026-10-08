@@ -92,7 +92,7 @@ export default function DailyMessage({ seed = 0 }: { seed?: number }) {
       <div className="container mx-auto px-container-padding-mobile md:px-container-padding-desktop relative z-10">
         <div className="text-center mb-16 space-y-4">
           <div className="flex justify-center mb-4">
-            <span className="material-symbols-outlined text-5xl text-tertiary drop-shadow-[0_0_15px_rgba(249,189,34,0.5)]">
+            <span aria-hidden="true" className="material-symbols-outlined text-5xl text-tertiary drop-shadow-[0_0_15px_rgba(249,189,34,0.5)]">
               stars
             </span>
           </div>
@@ -134,7 +134,7 @@ export default function DailyMessage({ seed = 0 }: { seed?: number }) {
                   >
                     <div className="absolute inset-0 bg-gradient-to-br from-surface-container-highest to-surface-container opacity-90" />
                     <div className="relative z-10 border border-on-surface/10 w-[85%] h-[90%] rounded-[2.2rem] flex flex-col items-center justify-center gap-4">
-                      <span className={`material-symbols-outlined text-7xl ${cfg.color} animate-pulse-soft`}>
+                      <span aria-hidden="true" className={`material-symbols-outlined text-7xl ${cfg.color} animate-pulse-soft`}>
                         {cfg.icon}
                       </span>
                       <div className={`text-label-md ${cfg.color} tracking-[0.3em] uppercase font-bold`}>

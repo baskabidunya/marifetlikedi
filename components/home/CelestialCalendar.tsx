@@ -61,14 +61,14 @@ export default function CelestialCalendar({
               aria-label="Önceki ay"
               className="p-2 rounded-full hover:bg-on-surface/5 text-on-surface-variant hover:text-on-surface transition-all"
             >
-              <span className="material-symbols-outlined">chevron_left</span>
+              <span aria-hidden="true" className="material-symbols-outlined">chevron_left</span>
             </Link>
             <Link
               href={nav(nextMonth, nextYear)}
               aria-label="Sonraki ay"
               className="p-2 rounded-full hover:bg-on-surface/5 text-on-surface-variant hover:text-on-surface transition-all"
             >
-              <span className="material-symbols-outlined">chevron_right</span>
+              <span aria-hidden="true" className="material-symbols-outlined">chevron_right</span>
             </Link>
           </div>
         </div>

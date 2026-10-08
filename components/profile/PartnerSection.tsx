@@ -99,7 +99,7 @@ export default function PartnerSection({ hasBirthInfo }: { hasBirthInfo: boolean
           {hasBirthInfo && !showForm && (
             <button onClick={() => setShowForm(true)}
               className="px-6 py-2.5 bg-primary text-on-primary font-label-md rounded-full hover:shadow-[0_0_20px_rgba(208,188,255,0.4)] transition-all flex items-center gap-2 cursor-pointer shrink-0">
-              <span className="material-symbols-outlined text-lg">add</span>
+              <span aria-hidden="true" className="material-symbols-outlined text-lg">add</span>
               Partner Ekle
             </button>
           )}
@@ -107,7 +107,7 @@ export default function PartnerSection({ hasBirthInfo }: { hasBirthInfo: boolean
 
         {!hasBirthInfo && (
           <div className="p-6 rounded-xl bg-amber-900/10 border border-amber-500/20 text-center">
-            <span className="material-symbols-outlined text-amber-400 text-3xl mb-2">info</span>
+            <span aria-hidden="true" className="material-symbols-outlined text-amber-400 text-3xl mb-2">info</span>
             <p className="text-on-surface-variant">Önce kendi doğum bilgilerini profiline ekle.</p>
           </div>
         )}
@@ -121,7 +121,7 @@ export default function PartnerSection({ hasBirthInfo }: { hasBirthInfo: boolean
 
         {partners.length === 0 && hasBirthInfo && !showForm && (
           <div className="flex flex-col items-center justify-center py-12 text-center">
-            <span className="material-symbols-outlined text-5xl text-outline/40 mb-4">favorite</span>
+            <span aria-hidden="true" className="material-symbols-outlined text-5xl text-outline/40 mb-4">favorite</span>
             <p className="text-on-surface-variant">Henüz partner eklemedin.</p>
             <p className="text-caption text-outline mt-1">Partnerinin doğum bilgilerini ekleyerek uyum analizini gör.</p>
           </div>
@@ -132,7 +132,7 @@ export default function PartnerSection({ hasBirthInfo }: { hasBirthInfo: boolean
             <div key={p.id}>
               <div className="flex items-start gap-4 p-5 rounded-xl bg-on-surface/[0.02] border border-on-surface/5 hover:bg-on-surface/[0.04] transition-all">
                 <Link href={`/profil/uyum/${p.id}`} className="w-12 h-12 rounded-full bg-surface-variant flex items-center justify-center shrink-0 border border-on-surface/5 no-underline hover:border-primary/40 transition-all">
-                  <span className="material-symbols-outlined text-xl text-primary/80">{p.avatar || "auto_awesome"}</span>
+                  <span aria-hidden="true" className="material-symbols-outlined text-xl text-primary/80">{p.avatar || "auto_awesome"}</span>
                 </Link>
                 <div className="flex-1 min-w-0">
                   <Link href={`/profil/uyum/${p.id}`} className="no-underline">
@@ -145,7 +145,7 @@ export default function PartnerSection({ hasBirthInfo }: { hasBirthInfo: boolean
                   {scores[p.id] && p.birth_date && (
                     <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mt-2">
                       <div className="flex items-center gap-1.5 text-caption text-on-surface-variant">
-                        <span className="text-primary/80 material-symbols-outlined text-sm">star</span>
+                        <span aria-hidden="true" className="text-primary/80 material-symbols-outlined text-sm">star</span>
                         <span className="font-label-md text-outline">Temel</span>
                         <div className="w-14 h-1 rounded-full bg-on-surface/5 overflow-hidden flex">
                           <div className="h-full bg-gradient-to-r from-primary to-secondary rounded-full transition-all" style={{ width: `${scores[p.id].temel}%` }} />
@@ -202,7 +202,7 @@ export default function PartnerSection({ hasBirthInfo }: { hasBirthInfo: boolean
                   )}
                   <button onClick={() => setEditing(editing === p.id ? null : p.id)}
                     className="p-1.5 text-on-surface-variant hover:text-on-surface cursor-pointer">
-                    <span className="material-symbols-outlined text-lg">edit</span>
+                    <span aria-hidden="true" className="material-symbols-outlined text-lg">edit</span>
                   </button>
                   <button onClick={async () => {
                     if (confirm("Partneri silmek istediğine emin misin?")) {
@@ -211,7 +211,7 @@ export default function PartnerSection({ hasBirthInfo }: { hasBirthInfo: boolean
                     }
                   }}
                     className="p-1.5 text-error/60 hover:text-error cursor-pointer">
-                    <span className="material-symbols-outlined text-lg">delete</span>
+                    <span aria-hidden="true" className="material-symbols-outlined text-lg">delete</span>
                   </button>
                 </div>
               </div>

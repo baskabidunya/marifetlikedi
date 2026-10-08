@@ -156,7 +156,7 @@ export default function AdminBurclarPage() {
                     <span className="text-caption text-outline ml-3">{info.element} · {info.dateRange}</span>
                   </div>
                 </div>
-                <span className={`material-symbols-outlined text-outline transition-transform ${isOpen ? "rotate-180" : ""}`}>
+                <span aria-hidden="true" className={`material-symbols-outlined text-outline transition-transform ${isOpen ? "rotate-180" : ""}`}>
                   expand_more
                 </span>
               </button>

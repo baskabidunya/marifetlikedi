@@ -25,11 +25,11 @@ export default function IletisimPage() {
     >
       <div className="not-prose space-y-2 text-on-surface-variant">
         <p className="flex items-center gap-2">
-          <span className="material-symbols-outlined text-primary text-sm">mail</span>
+          <span aria-hidden="true" className="material-symbols-outlined text-primary text-sm">mail</span>
           hello@marifetlikedi.com
         </p>
         <p className="flex items-center gap-2">
-          <span className="material-symbols-outlined text-primary text-sm">location_on</span>
+          <span aria-hidden="true" className="material-symbols-outlined text-primary text-sm">location_on</span>
           İstanbul, Türkiye
         </p>
       </div>

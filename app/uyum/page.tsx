@@ -21,12 +21,12 @@ export default function UyumPage() {
     <main className="top-clear-2 pb-section-gap px-container-padding-mobile md:px-container-padding-desktop max-w-5xl mx-auto">
       <nav className="flex items-center gap-2 text-caption text-outline mb-6 flex-wrap">
         <Link href="/" className="hover:text-on-surface transition-colors">Ana Sayfa</Link>
-        <span className="material-symbols-outlined text-xs">chevron_right</span>
+        <span aria-hidden="true" className="material-symbols-outlined text-xs">chevron_right</span>
         <span className="text-on-surface-variant">Uyum Analizi</span>
       </nav>
       <div className="text-center mb-10">
         <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass text-secondary border border-secondary/20">
-          <span className="material-symbols-outlined text-sm">favorite</span>
+          <span aria-hidden="true" className="material-symbols-outlined text-sm">favorite</span>
           <span className="text-label-md">İlişki Uyumu</span>
         </span>
         <h1 className="font-sora text-display-lg-mobile md:text-display-lg text-on-surface font-bold mt-4">

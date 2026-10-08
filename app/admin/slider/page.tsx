@@ -15,7 +15,7 @@ export default async function AdminSliderPage() {
       {/* HOME SLIDER */}
       <div>
         <div className="flex items-center gap-2 mb-3 px-1">
-          <span className="material-symbols-outlined text-lg text-primary">home</span>
+          <span aria-hidden="true" className="material-symbols-outlined text-lg text-primary">home</span>
           <p className="text-caption text-outline uppercase tracking-wider">Ana Sayfa Slider</p>
           <span className="text-caption text-outline">({homeSlides.length})</span>
         </div>
@@ -34,7 +34,7 @@ export default async function AdminSliderPage() {
       {/* BURCLAR SLIDER */}
       <div>
         <div className="flex items-center gap-2 mb-3 px-1">
-          <span className="material-symbols-outlined text-lg text-primary">astrology</span>
+          <span aria-hidden="true" className="material-symbols-outlined text-lg text-primary">astrology</span>
           <p className="text-caption text-outline uppercase tracking-wider">Burçlar Sayfası Slider</p>
           <span className="text-caption text-outline">({burclarSlides.length})</span>
         </div>

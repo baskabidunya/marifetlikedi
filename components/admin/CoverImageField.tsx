@@ -61,7 +61,7 @@ export default function CoverImageField({
           disabled={uploading}
           className="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-primary/20 text-primary text-caption font-label-md hover:bg-primary/30 transition-all whitespace-nowrap disabled:opacity-50"
         >
-          <span className="material-symbols-outlined text-lg">
+          <span aria-hidden="true" className="material-symbols-outlined text-lg">
             {uploading ? "hourglass_top" : "add_photo_alternate"}
           </span>
           {uploading ? "Yükleniyor..." : "Ekle"}
@@ -72,7 +72,7 @@ export default function CoverImageField({
             onClick={() => setUrl("")}
             className="flex items-center gap-1.5 px-3 py-2 rounded-lg border border-on-surface/10 text-on-surface-variant text-caption font-label-md hover:bg-on-surface/5 transition-all whitespace-nowrap"
           >
-            <span className="material-symbols-outlined text-lg">delete</span>
+            <span aria-hidden="true" className="material-symbols-outlined text-lg">delete</span>
             Kaldır
           </button>
         )}

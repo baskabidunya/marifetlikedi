@@ -30,7 +30,7 @@ export default function LoginForm() {
           E-posta Adresi
         </label>
         <div className="relative">
-          <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">alternate_email</span>
+          <span aria-hidden="true" className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">alternate_email</span>
           <input
             id="email"
             name="email"
@@ -52,7 +52,7 @@ export default function LoginForm() {
           </Link>
         </div>
         <div className="relative">
-          <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">lock</span>
+          <span aria-hidden="true" className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">lock</span>
           <input
             id="password"
             name="password"
@@ -62,7 +62,7 @@ export default function LoginForm() {
             className="w-full pl-12 pr-12 py-3.5 glass-input rounded-xl text-on-surface focus:outline-none placeholder:text-outline/50"
           />
           <button type="button" onClick={() => setShowPassword((v) => !v)} className="absolute right-4 top-1/2 -translate-y-1/2 text-outline hover:text-on-surface transition-colors">
-            <span className="material-symbols-outlined">{showPassword ? "visibility_off" : "visibility"}</span>
+            <span aria-hidden="true" className="material-symbols-outlined">{showPassword ? "visibility_off" : "visibility"}</span>
           </button>
         </div>
       </div>
@@ -82,7 +82,7 @@ export default function LoginForm() {
         className="w-full py-4 rounded-xl cta-glow text-on-primary font-bold flex items-center justify-center space-x-2 disabled:opacity-50 cursor-pointer"
       >
         <span>{pending ? "Giriş yapılıyor..." : "Giriş Yap"}</span>
-        <span className="material-symbols-outlined">auto_awesome</span>
+        <span aria-hidden="true" className="material-symbols-outlined">auto_awesome</span>
       </button>
     </form>
   );

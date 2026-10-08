@@ -106,7 +106,7 @@ export default function AnnouncementList({ items }: { items: Announcement[] }) {
             onClick={openNew}
             className="px-5 py-2.5 rounded-lg bg-primary text-on-primary text-label-md hover:shadow-[0_0_15px_rgba(208,188,255,0.3)] transition-all flex items-center gap-2 cursor-pointer shrink-0"
           >
-            <span className="material-symbols-outlined text-lg">add</span>
+            <span aria-hidden="true" className="material-symbols-outlined text-lg">add</span>
             Yeni Duyuru
           </button>
         </div>
@@ -115,7 +115,7 @@ export default function AnnouncementList({ items }: { items: Announcement[] }) {
       {/* Search + Filter */}
       <div className="flex flex-col sm:flex-row gap-3 mb-6">
         <div className="relative flex-1">
-          <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-lg">
+          <span aria-hidden="true" className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-lg">
             search
           </span>
           <input
@@ -130,7 +130,7 @@ export default function AnnouncementList({ items }: { items: Announcement[] }) {
               onClick={() => setSearch("")}
               className="absolute right-3 top-1/2 -translate-y-1/2 text-outline hover:text-on-surface"
             >
-              <span className="material-symbols-outlined text-lg">close</span>
+              <span aria-hidden="true" className="material-symbols-outlined text-lg">close</span>
             </button>
           )}
         </div>
@@ -150,7 +150,7 @@ export default function AnnouncementList({ items }: { items: Announcement[] }) {
       {/* Table */}
       {filtered.length === 0 ? (
         <div className="text-center py-16 text-outline">
-          <span className="material-symbols-outlined text-5xl mb-4 block opacity-30">campaign</span>
+          <span aria-hidden="true" className="material-symbols-outlined text-5xl mb-4 block opacity-30">campaign</span>
           <p>{search || statusFilter !== "all" ? "Arama sonucu bulunamadı" : "Henüz duyuru yok"}</p>
         </div>
       ) : (
@@ -199,7 +199,7 @@ export default function AnnouncementList({ items }: { items: Announcement[] }) {
                           className="p-1.5 rounded-lg hover:bg-on-surface/10 text-outline hover:text-on-surface transition-all cursor-pointer"
                           title="Düzenle"
                         >
-                          <span className="material-symbols-outlined text-lg">edit</span>
+                          <span aria-hidden="true" className="material-symbols-outlined text-lg">edit</span>
                         </button>
                         <form action={toggleAnnouncementActive} className="inline-flex">
                           <input type="hidden" name="id" value={a.id} />
@@ -209,7 +209,7 @@ export default function AnnouncementList({ items }: { items: Announcement[] }) {
                             className="p-1.5 rounded-lg hover:bg-on-surface/10 text-outline hover:text-on-surface transition-all cursor-pointer"
                             title={a.active ? "Pasifleştir" : "Aktifleştir"}
                           >
-                            <span className="material-symbols-outlined text-lg">
+                            <span aria-hidden="true" className="material-symbols-outlined text-lg">
                               {a.active ? "toggle_on" : "toggle_off"}
                             </span>
                           </button>

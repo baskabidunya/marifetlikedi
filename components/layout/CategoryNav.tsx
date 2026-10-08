@@ -21,7 +21,7 @@ export default function CategoryNav() {
             href={cat.href}
             className="flex items-center gap-2 px-6 py-3 rounded-full text-on-surface-variant hover:bg-on-surface/5 hover:text-primary transition-all duration-300 whitespace-nowrap backdrop-blur-md"
           >
-            <span className="material-symbols-outlined text-[20px]">{cat.icon}</span>
+            <span aria-hidden="true" className="material-symbols-outlined text-[20px]">{cat.icon}</span>
             <span className="font-label-md text-sm">{cat.label}</span>
           </Link>
         ))}

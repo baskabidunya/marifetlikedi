@@ -83,7 +83,7 @@ export default function CompatibilityCalculator() {
           type="submit"
           className="w-full py-4 rounded-xl cta-glow text-on-primary font-bold flex items-center justify-center gap-2 cursor-pointer"
         >
-          <span className="material-symbols-outlined">favorite</span>
+          <span aria-hidden="true" className="material-symbols-outlined">favorite</span>
           Uyumumuzu Hesapla
         </button>
       </form>

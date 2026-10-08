@@ -26,7 +26,7 @@ export default async function AdminDashboard() {
         {statCards.map(s => (
           <div key={s.label} className="bg-surface-container/60 rounded-2xl p-4 flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
-              <span className={`material-symbols-outlined text-xl ${s.color}`}>{s.icon}</span>
+              <span aria-hidden="true" className={`material-symbols-outlined text-xl ${s.color}`}>{s.icon}</span>
             </div>
             <div>
               <p className="text-headline-sm font-headline-sm text-on-surface">{s.value}</p>
@@ -43,9 +43,9 @@ export default async function AdminDashboard() {
           {actions.map(a => (
             <Link key={a.href} href={a.href}
               className="flex items-center gap-3 px-4 py-3 rounded-xl bg-surface-container/40 hover:bg-primary/10 border border-on-surface/5 hover:border-primary/20 transition-all group">
-              <span className="material-symbols-outlined text-xl text-on-surface-variant group-hover:text-primary transition-colors">{a.icon}</span>
+              <span aria-hidden="true" className="material-symbols-outlined text-xl text-on-surface-variant group-hover:text-primary transition-colors">{a.icon}</span>
               <span className="text-label-md font-label-md text-on-surface-variant group-hover:text-on-surface transition-colors">{a.label}</span>
-              <span className="material-symbols-outlined text-sm text-outline ml-auto opacity-0 group-hover:opacity-100 transition-opacity">arrow_forward</span>
+              <span aria-hidden="true" className="material-symbols-outlined text-sm text-outline ml-auto opacity-0 group-hover:opacity-100 transition-opacity">arrow_forward</span>
             </Link>
           ))}
         </div>

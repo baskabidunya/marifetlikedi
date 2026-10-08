@@ -52,7 +52,7 @@ export default function ProfilePage() {
     return (
       <main className="min-h-screen pt-24 flex items-center justify-center">
         <div className="flex items-center gap-3">
-          <span className="material-symbols-outlined text-tertiary animate-spin">sync</span>
+          <span aria-hidden="true" className="material-symbols-outlined text-tertiary animate-spin">sync</span>
           <span className="text-on-surface-variant">Yükleniyor...</span>
         </div>
       </main>
@@ -85,7 +85,7 @@ export default function ProfilePage() {
             </h1>
             <div className="flex flex-wrap justify-center md:justify-start gap-4">
               <div className="flex items-center gap-2 px-4 py-2 rounded-full glass-card border-on-surface/10">
-                <span className="material-symbols-outlined text-on-surface-variant text-lg">calendar_month</span>
+                <span aria-hidden="true" className="material-symbols-outlined text-on-surface-variant text-lg">calendar_month</span>
                 <span className="font-label-md text-on-surface-variant">
                   Katılma: {new Date(user!.created_at).toLocaleDateString("tr-TR")}
                 </span>
@@ -97,7 +97,7 @@ export default function ProfilePage() {
               onClick={() => setEditing(!editing)}
               className="px-6 py-3 rounded-full bg-primary text-on-primary font-label-md hover:shadow-[0_0_20px_rgba(208,188,255,0.4)] transition-all flex items-center gap-2 cursor-pointer"
             >
-              <span className="material-symbols-outlined text-lg">{editing ? "close" : "edit"}</span>
+              <span aria-hidden="true" className="material-symbols-outlined text-lg">{editing ? "close" : "edit"}</span>
               {editing ? "Kapat" : "Profili Düzenle"}
             </button>
             <form action={signOut}>
@@ -105,14 +105,14 @@ export default function ProfilePage() {
                 type="submit"
                 className="px-6 py-3 rounded-full border border-error/30 text-error font-label-md hover:bg-error/10 transition-all flex items-center gap-2 cursor-pointer"
               >
-                <span className="material-symbols-outlined text-lg">logout</span>
+                <span aria-hidden="true" className="material-symbols-outlined text-lg">logout</span>
                 Çıkış Yap
               </button>
             </form>
           </div>
         </div>
         <div className="absolute top-0 right-0 p-8 opacity-10 pointer-events-none">
-          <span className="material-symbols-outlined text-[120px] text-primary">stars</span>
+          <span aria-hidden="true" className="material-symbols-outlined text-[120px] text-primary">stars</span>
         </div>
       </section>
 
@@ -255,7 +255,7 @@ export default function ProfilePage() {
                         style={{ transition: "stroke-dashoffset 1s ease" }}
                       />
                     </svg>
-                    <span className={`absolute text-lg material-symbols-outlined ${item.color}`}>{item.icon}</span>
+                    <span aria-hidden="true" className={`absolute text-lg material-symbols-outlined ${item.color}`}>{item.icon}</span>
                   </div>
                   <div>
                     <div className="font-label-md text-on-background">{item.label}</div>
@@ -292,7 +292,7 @@ export default function ProfilePage() {
           </div>
         </div>
         <div className="flex flex-col items-center justify-center py-12 text-center">
-          <span className="material-symbols-outlined text-5xl text-outline/40 mb-4">history</span>
+          <span aria-hidden="true" className="material-symbols-outlined text-5xl text-outline/40 mb-4">history</span>
           <p className="text-on-surface-variant">Henüz bir aktiviten bulunmuyor.</p>
           <p className="text-caption text-outline mt-1">
             Kehanet odasını ziyaret ederek başlayabilirsin.

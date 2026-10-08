@@ -23,7 +23,7 @@ export default async function HeroSection() {
       <div className="container mx-auto px-container-padding-mobile md:px-container-padding-desktop relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         <div className="space-y-8">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass text-tertiary border border-tertiary/20 animate-pulse">
-            <span className="material-symbols-outlined text-sm">auto_awesome</span>
+            <span aria-hidden="true" className="material-symbols-outlined text-sm">auto_awesome</span>
             <span className="text-label-md">{badge}</span>
           </div>
           <h1 className="font-sora text-display-lg text-on-surface leading-tight font-bold">

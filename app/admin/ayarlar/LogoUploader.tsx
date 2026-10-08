@@ -76,7 +76,7 @@ export default function LogoUploader({ currentValue }: { currentValue: string })
             disabled={uploading}
             className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-primary/20 text-primary text-caption font-label-md hover:bg-primary/30 transition-all disabled:opacity-50"
           >
-            <span className="material-symbols-outlined text-lg">
+            <span aria-hidden="true" className="material-symbols-outlined text-lg">
               {uploading ? "hourglass_top" : "upload"}
             </span>
             {uploading ? "Yükleniyor..." : "Bilgisayardan Ekle"}
@@ -87,7 +87,7 @@ export default function LogoUploader({ currentValue }: { currentValue: string })
               onClick={handleRemove}
               className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-red-500/10 text-red-400 text-caption font-label-md hover:bg-red-500/20 transition-all"
             >
-              <span className="material-symbols-outlined text-lg">delete</span>
+              <span aria-hidden="true" className="material-symbols-outlined text-lg">delete</span>
               Logoyu Kaldır
             </button>
           )}

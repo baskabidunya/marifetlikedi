@@ -93,7 +93,7 @@ export async function searchTrendArticles(query: string) {
     .from("trend_articles")
     .select("*")
     .eq("active", true)
-    .or(`title.ilike.${sanitized},summary.ilike.${sanitized},content.ilike.${sanitized}`)
+    .or(`title.ilike.${sanitized},excerpt.ilike.${sanitized},content.ilike.${sanitized}`)
     .order("created_at", { ascending: false })
     .limit(20);
   return data || [];

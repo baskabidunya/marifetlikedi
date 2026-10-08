@@ -57,13 +57,13 @@ export default async function Footer() {
           <h5 className="text-label-md text-on-surface">İletişim</h5>
           <ul className="space-y-2">
             <li className="flex items-center gap-2 text-on-surface-variant">
-              <span className="material-symbols-outlined text-sm">mail</span>
+              <span aria-hidden="true" className="material-symbols-outlined text-sm">mail</span>
               <a href="mailto:hello@marifetlikedi.com" className="hover:text-primary transition-colors">
                 hello@marifetlikedi.com
               </a>
             </li>
             <li className="flex items-center gap-2 text-on-surface-variant">
-              <span className="material-symbols-outlined text-sm">location_on</span> İstanbul, Türkiye
+              <span aria-hidden="true" className="material-symbols-outlined text-sm">location_on</span> İstanbul, Türkiye
             </li>
           </ul>
           <div className="flex items-center gap-3 pt-2">
@@ -90,7 +90,7 @@ export default async function Footer() {
       </div>
       <div className="text-center mt-3 px-container-padding-mobile md:px-container-padding-desktop">
         <p className="text-caption text-outline/70">
-          Marifetli Kedi, bir <span className="text-on-surface-variant">Başka bir Dünya</span> (baskabidunya.com) sitesidir.
+          Marifetli Kedi, Başka Bir Dünya (baskabidunya.com) sitesidir.
         </p>
       </div>
       <div className="text-center mt-4 px-container-padding-mobile md:px-container-padding-desktop max-w-4xl mx-auto">

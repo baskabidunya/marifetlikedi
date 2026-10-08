@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { searchPosts } from "@/lib/blog-public";
 import { searchTrendArticles } from "@/lib/public-queries";
+import { decodeEntities } from "@/lib/seo";
 import type { Metadata } from "next";
 import type { PostWithTags } from "@/lib/blog-public";
 
@@ -12,6 +13,7 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
   const { q } = await searchParams;
   return {
     title: q ? `${q} - Arama Sonuçları` : "Arama",
+    alternates: { canonical: "/ara" },
   };
 }
 
@@ -21,7 +23,7 @@ export default async function SearchPage({ searchParams }: Props) {
   if (!q?.trim()) {
     return (
       <main className="max-w-3xl mx-auto px-container-padding-mobile md:px-container-padding-desktop py-16 text-center">
-        <span className="material-symbols-outlined text-5xl text-outline mb-4">search</span>
+        <span aria-hidden="true" className="material-symbols-outlined text-5xl text-outline mb-4">search</span>
         <h1 className="text-headline-md font-headline-md text-on-surface mb-2">Arama</h1>
         <p className="text-body-md text-outline">Aramak için yukarıdaki arama kutusunu kullanın.</p>
       </main>
@@ -46,7 +48,7 @@ export default async function SearchPage({ searchParams }: Props) {
 
       {total === 0 && (
         <div className="text-center py-16">
-          <span className="material-symbols-outlined text-5xl text-outline mb-4">search_off</span>
+          <span aria-hidden="true" className="material-symbols-outlined text-5xl text-outline mb-4">search_off</span>
           <p className="text-body-md text-outline">Sonuç bulunamadı.</p>
           <p className="text-caption text-outline mt-1">Farklı bir kelimeyle tekrar deneyin.</p>
         </div>
@@ -55,7 +57,7 @@ export default async function SearchPage({ searchParams }: Props) {
       {blogResults.length > 0 && (
         <section className="mb-10">
           <h2 className="text-label-lg font-label-md text-primary mb-4 flex items-center gap-2">
-            <span className="material-symbols-outlined text-lg">article</span>
+            <span aria-hidden="true" className="material-symbols-outlined text-lg">article</span>
             Blog Yazıları ({blogResults.length})
           </h2>
           <div className="space-y-3">
@@ -65,9 +67,9 @@ export default async function SearchPage({ searchParams }: Props) {
                 href={`/blog/${post.slug}`}
                 className="block bg-surface-container/50 rounded-xl p-4 border border-on-surface/5 hover:bg-surface-container-high transition-colors"
               >
-                <h3 className="text-body-md font-label-md text-on-surface mb-1">{post.title}</h3>
+                <h3 className="text-body-md font-label-md text-on-surface mb-1">{decodeEntities(post.title)}</h3>
                 {post.excerpt && (
-                  <p className="text-caption text-outline line-clamp-2">{post.excerpt}</p>
+                  <p className="text-caption text-outline line-clamp-2">{decodeEntities(post.excerpt)}</p>
                 )}
                 <div className="flex items-center gap-2 mt-2">
                   <span className="text-caption text-outline bg-on-surface/5 px-2 py-0.5 rounded">{post.category}</span>
@@ -82,7 +84,7 @@ export default async function SearchPage({ searchParams }: Props) {
       {trendResults.length > 0 && (
         <section className="mb-10">
           <h2 className="text-label-lg font-label-md text-primary mb-4 flex items-center gap-2">
-            <span className="material-symbols-outlined text-lg">trending_up</span>
+            <span aria-hidden="true" className="material-symbols-outlined text-lg">trending_up</span>
             Trend İçerikler ({trendResults.length})
           </h2>
           <div className="space-y-3">
@@ -92,9 +94,9 @@ export default async function SearchPage({ searchParams }: Props) {
                 href={`/trend/${article.slug}`}
                 className="block bg-surface-container/50 rounded-xl p-4 border border-on-surface/5 hover:bg-surface-container-high transition-colors"
               >
-                <h3 className="text-body-md font-label-md text-on-surface mb-1">{article.title}</h3>
-                {article.summary && (
-                  <p className="text-caption text-outline line-clamp-2">{article.summary}</p>
+                <h3 className="text-body-md font-label-md text-on-surface mb-1">{decodeEntities(article.title)}</h3>
+                {article.excerpt && (
+                  <p className="text-caption text-outline line-clamp-2">{decodeEntities(article.excerpt)}</p>
                 )}
               </Link>
             ))}

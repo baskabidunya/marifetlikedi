@@ -2,7 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getAnnouncementById, getActiveAnnouncements } from "@/lib/public-queries";
 import AdSlot from "@/components/ads/AdSlot";
-import { ogMeta, breadcrumbLd, jsonLd } from "@/lib/seo";
+import { ogMeta, breadcrumbLd, jsonLd, decodeEntities } from "@/lib/seo";
 
 const TYPE_META: Record<string, { label: string; icon: string; cls: string; accent: string }> = {
   info: {
@@ -73,16 +73,16 @@ export default async function AnnouncementDetailPage({
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(breadcrumb)} />
       <nav className="flex items-center gap-2 text-caption text-outline mb-6 flex-wrap">
         <Link href="/" className="hover:text-on-surface transition-colors">Ana Sayfa</Link>
-        <span className="material-symbols-outlined text-xs">chevron_right</span>
+        <span aria-hidden="true" className="material-symbols-outlined text-xs">chevron_right</span>
         <Link href="/duyurular" className="hover:text-on-surface transition-colors">Duyurular</Link>
-        <span className="material-symbols-outlined text-xs">chevron_right</span>
-        <span className="text-on-surface-variant truncate max-w-[200px]">{announcement.title}</span>
+        <span aria-hidden="true" className="material-symbols-outlined text-xs">chevron_right</span>
+        <span className="text-on-surface-variant truncate max-w-[200px]">{decodeEntities(announcement.title)}</span>
       </nav>
       <Link
         href="/duyurular"
         className="inline-flex items-center gap-2 text-label-md text-outline hover:text-on-surface transition-colors mb-8 no-underline"
       >
-        <span className="material-symbols-outlined text-lg">arrow_back</span>
+        <span aria-hidden="true" className="material-symbols-outlined text-lg">arrow_back</span>
         Tüm Duyurular
       </Link>
 
@@ -93,18 +93,18 @@ export default async function AnnouncementDetailPage({
             <span
               className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-caption font-label-md border ${meta.cls}`}
             >
-              <span className="material-symbols-outlined text-base">{meta.icon}</span>
+              <span aria-hidden="true" className="material-symbols-outlined text-base">{meta.icon}</span>
               {meta.label}
             </span>
             <span className="text-caption text-outline">{rangeLabel(announcement)}</span>
           </div>
 
           <h1 className="font-sora text-headline-lg-mobile md:text-display-lg mb-6 gradient-text">
-            {announcement.title}
+            {decodeEntities(announcement.title)}
           </h1>
 
           <div className="flex items-start gap-3 mt-2 mb-6 text-outline">
-            <span className="material-symbols-outlined text-[18px] mt-0.5">campaign</span>
+            <span aria-hidden="true" className="material-symbols-outlined text-[18px] mt-0.5">campaign</span>
             <p className="text-body-lg text-on-surface-variant leading-relaxed whitespace-pre-wrap m-0">
               {announcement.message}
             </p>
@@ -134,13 +134,13 @@ export default async function AnnouncementDetailPage({
                     <span
                       className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-caption font-label-md border ${om.cls}`}
                     >
-                      <span className="material-symbols-outlined text-sm">{om.icon}</span>
+                      <span aria-hidden="true" className="material-symbols-outlined text-sm">{om.icon}</span>
                       {om.label}
                     </span>
                     <span className="text-caption text-outline">{rangeLabel(a)}</span>
                   </div>
                   <h3 className="font-sora text-headline-sm text-on-background group-hover:text-primary transition-colors">
-                    {a.title}
+                    {decodeEntities(a.title)}
                   </h3>
                 </Link>
               );

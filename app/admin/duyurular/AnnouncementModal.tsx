@@ -74,7 +74,7 @@ export default function AnnouncementModal({ open, onClose, announcement, aiData 
             {isEdit ? "Duyuruyu Düzenle" : "Yeni Duyuru"}
           </h2>
           <button onClick={onClose} className="text-outline hover:text-on-surface transition-colors">
-            <span className="material-symbols-outlined">close</span>
+            <span aria-hidden="true" className="material-symbols-outlined">close</span>
           </button>
         </div>
 

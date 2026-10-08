@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { getPublishedPosts } from "@/lib/blog-public";
+import { decodeEntities } from "@/lib/seo";
 
 export default async function FeaturedContent() {
   const posts = await getPublishedPosts();
@@ -40,17 +41,17 @@ export default async function FeaturedContent() {
                 </div>
               </div>
               <h4 className="font-sora text-headline-md text-on-surface group-hover:text-primary transition-colors font-semibold">
-                {a.title}
+                {decodeEntities(a.title)}
               </h4>
               <p className="text-body-md text-on-surface-variant mt-2 line-clamp-2">
-                {a.excerpt}
+                {decodeEntities(a.excerpt)}
               </p>
             </Link>
           ))}
         </div>
       ) : (
         <div className="text-center py-16 text-on-surface-variant">
-          <span className="material-symbols-outlined text-5xl mb-4 block">auto_stories</span>
+          <span aria-hidden="true" className="material-symbols-outlined text-5xl mb-4 block">auto_stories</span>
           <p className="text-body-lg">Henüz gök günlüğü yazısı yayınlanmamış</p>
         </div>
       )}

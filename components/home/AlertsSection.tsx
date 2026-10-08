@@ -3,7 +3,7 @@ export default function AlertsSection() {
     <section className="mb-section-gap">
       <div className="bg-gradient-to-r from-surface-container-high/50 to-primary/10 p-8 rounded-3xl border border-on-surface/5 relative overflow-hidden">
         <div className="absolute right-[-50px] top-[-50px] opacity-20">
-          <span className="material-symbols-outlined text-[200px] text-primary">
+          <span aria-hidden="true" className="material-symbols-outlined text-[200px] text-primary">
             rocket_launch
           </span>
         </div>
@@ -17,7 +17,7 @@ export default function AlertsSection() {
           <div className="flex flex-col md:flex-row gap-4">
             <div className="flex-1 flex items-center gap-4 bg-surface/50 backdrop-blur-md p-4 rounded-2xl border border-error/30">
               <div className="w-10 h-10 rounded-full bg-error/20 flex items-center justify-center">
-                <span className="material-symbols-outlined text-error">
+                <span aria-hidden="true" className="material-symbols-outlined text-error">
                   warning
                 </span>
               </div>
@@ -32,7 +32,7 @@ export default function AlertsSection() {
             </div>
             <div className="flex-1 flex items-center gap-4 bg-surface/50 backdrop-blur-md p-4 rounded-2xl border border-tertiary/30">
               <div className="w-10 h-10 rounded-full bg-tertiary/20 flex items-center justify-center">
-                <span className="material-symbols-outlined text-tertiary">
+                <span aria-hidden="true" className="material-symbols-outlined text-tertiary">
                   brightness_4
                 </span>
               </div>

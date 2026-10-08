@@ -158,7 +158,7 @@ export default function KozmikTakvim({
                   ? "bg-primary text-on-primary shadow-lg"
                   : "text-on-surface-variant hover:text-on-surface"
               }`}>
-              <span className="material-symbols-outlined text-[16px]">{PERIOD_ICONS[p]}</span>
+              <span aria-hidden="true" className="material-symbols-outlined text-[16px]">{PERIOD_ICONS[p]}</span>
               <span className="hidden sm:inline">{PERIOD_LABELS[p]}</span>
             </button>
           ))}
@@ -198,7 +198,7 @@ export default function KozmikTakvim({
             <div className="space-y-5">
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center">
-                  <span className="material-symbols-outlined text-on-surface">palette</span>
+                  <span aria-hidden="true" className="material-symbols-outlined text-on-surface">palette</span>
                 </div>
                 <div>
                   <p className="text-caption font-label-md text-on-surface-variant">Uğurlu Renk</p>
@@ -207,7 +207,7 @@ export default function KozmikTakvim({
               </div>
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center">
-                  <span className="material-symbols-outlined text-on-surface">diamond</span>
+                  <span aria-hidden="true" className="material-symbols-outlined text-on-surface">diamond</span>
                 </div>
                 <div>
                   <p className="text-caption font-label-md text-on-surface-variant">Değerli Taş</p>
@@ -216,7 +216,7 @@ export default function KozmikTakvim({
               </div>
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center">
-                  <span className="material-symbols-outlined text-on-surface">self_improvement</span>
+                  <span aria-hidden="true" className="material-symbols-outlined text-on-surface">self_improvement</span>
                 </div>
                 <div>
                   <p className="text-caption font-label-md text-on-surface-variant">Günün Aktivitesi</p>
@@ -228,7 +228,7 @@ export default function KozmikTakvim({
           <Link href="/burclar"
             className="mt-8 w-full py-4 rounded-2xl bg-gradient-to-r from-primary/20 to-secondary/20 border border-primary/10 text-primary font-label-md flex items-center justify-center gap-2 hover:from-primary/30 hover:to-secondary/30 transition-all">
             <span>Tüm Burçları Keşfet</span>
-            <span className="material-symbols-outlined text-lg">arrow_forward</span>
+            <span aria-hidden="true" className="material-symbols-outlined text-lg">arrow_forward</span>
           </Link>
         </div>
       </div>

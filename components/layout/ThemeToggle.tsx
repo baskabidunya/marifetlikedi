@@ -56,7 +56,7 @@ export default function ThemeToggle({ className = "" }: { className?: string }) 
       aria-label={theme === "dark" ? "Aydınlık moda geç" : "Karanlık moda geç"}
       title={theme === "dark" ? "Aydınlık mod" : "Karanlık mod"}
     >
-      <span className="material-symbols-outlined">
+      <span aria-hidden="true" className="material-symbols-outlined">
         {theme === "dark" ? "light_mode" : "dark_mode"}
       </span>
     </button>
