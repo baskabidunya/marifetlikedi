@@ -3,7 +3,7 @@ import { getActiveTrendArticles } from "@/lib/public-queries";
 import Pagination from "@/components/Pagination";
 import { decodeEntities, trendTagLabel } from "@/lib/seo";
 
-const PAGE_SIZE = 10;
+const PAGE_SIZE = 12;
 
 export default async function TrendingGrid({
   limit,

@@ -27,20 +27,20 @@
   --font-size-headline-sm-mobile: 20px;
 
   /* Core Colors — karanlık mod: daha açık zemin, daha belirgin katman farkı */
-  --color-surface: #101828;
-  --color-surface-dim: #0d1526;
-  --color-surface-bright: #3a4566;
-  --color-surface-container-lowest: #0a1120;
-  --color-surface-container-low: #151f38;
-  --color-surface-container: #1a2540;
-  --color-surface-container-high: #24304f;
-  --color-surface-container-highest: #2f3b5e;
-  --color-on-surface: #e6ecff;
-  --color-on-surface-variant: #c3cbe4;
-  --color-background: #101828;
-  --color-on-background: #e6ecff;
-  --color-outline: #98a2c0;
-  --color-outline-variant: #4a5578;
+  --color-surface: #16213c;
+  --color-surface-dim: #121b33;
+  --color-surface-bright: #46527a;
+  --color-surface-container-lowest: #0f1729;
+  --color-surface-container-low: #1b2645;
+  --color-surface-container: #212d4f;
+  --color-surface-container-high: #2b3a60;
+  --color-surface-container-highest: #364773;
+  --color-on-surface: #edf1ff;
+  --color-on-surface-variant: #cdd5ee;
+  --color-background: #16213c;
+  --color-on-background: #edf1ff;
+  --color-outline: #a3adcb;
+  --color-outline-variant: #556284;
 
   /* Primary (Purple) */
   --color-primary: #d3c2ff;
