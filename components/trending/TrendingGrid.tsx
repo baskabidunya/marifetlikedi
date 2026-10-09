@@ -1,5 +1,7 @@
 import Link from "next/link";
+import Image from "next/image";
 import { getActiveTrendArticles } from "@/lib/public-queries";
+import { canOptimizeImage } from "@/lib/images";
 import Pagination from "@/components/Pagination";
 import { decodeEntities, trendTagLabel } from "@/lib/seo";
 
@@ -41,7 +43,17 @@ export default async function TrendingGrid({
           >
             <div className="relative h-48 rounded-2xl overflow-hidden mb-4">
               {c.cover_image ? (
-                <img src={c.cover_image} alt={decodeEntities(c.title)} loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                canOptimizeImage(c.cover_image) ? (
+                  <Image
+                    src={c.cover_image}
+                    alt={decodeEntities(c.title)}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                ) : (
+                  <img src={c.cover_image} alt={decodeEntities(c.title)} loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                )
               ) : (
                 <div className="w-full h-full bg-surface-bright/20 flex items-center justify-center">
                   <span aria-hidden="true" className="material-symbols-outlined text-4xl text-outline/30">image</span>

@@ -1,14 +1,22 @@
 import Link from "next/link";
 import { getPublicNavLinks, getSiteSetting } from "@/lib/public-queries";
 import { createClient } from "@/lib/supabase/server";
+import { cookies } from "next/headers";
 import HeaderNav from "./HeaderNav";
 import SearchTrigger from "@/components/search/SearchTrigger";
 import ThemeToggle from "./ThemeToggle";
 
 export default async function Header() {
   const navLinks = await getPublicNavLinks("header");
-  const supabase = await createClient();
-  const { data: { user } } = await supabase.auth.getUser();
+  // Anonim ziyaretçilerde auth roundtrip'i atla (LCP için kritik).
+  const cookieStore = await cookies();
+  const hasAuthCookie = cookieStore.getAll().some((c) => c.name.includes("auth-token"));
+  let user: { id: string } | null = null;
+  if (hasAuthCookie) {
+    const supabase = await createClient();
+    const { data } = await supabase.auth.getUser();
+    user = data.user;
+  }
   const logo = await getSiteSetting("site_logo");
 
   return (

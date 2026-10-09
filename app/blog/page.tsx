@@ -1,6 +1,8 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import Image from "next/image";
 import { getPublishedPosts } from "@/lib/blog-public";
+import { canOptimizeImage } from "@/lib/images";
 import AdSlot from "@/components/ads/AdSlot";
 import { ogMeta, jsonLd, decodeEntities } from "@/lib/seo";
 import Pagination from "@/components/Pagination";
@@ -99,9 +101,19 @@ export default async function BlogPage({
         {pagePosts.map(p => (
           <article key={p.id} className="glass-card rounded-3xl overflow-hidden hover:-translate-y-1 transition-all group">
             {p.cover_image && (
-              <Link href={`/blog/${p.slug}`} className="block h-48 overflow-hidden">
-                <img src={p.cover_image} alt={decodeEntities(p.title)} loading="lazy"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              <Link href={`/blog/${p.slug}`} className="relative block h-48 overflow-hidden">
+                {canOptimizeImage(p.cover_image) ? (
+                  <Image
+                    src={p.cover_image}
+                    alt={decodeEntities(p.title)}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                ) : (
+                  <img src={p.cover_image} alt={decodeEntities(p.title)} loading="lazy"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                )}
               </Link>
             )}
             <div className="p-6 space-y-3">

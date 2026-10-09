@@ -1,5 +1,7 @@
 import Link from "next/link";
+import Image from "next/image";
 import { getPublishedPosts } from "@/lib/blog-public";
+import { canOptimizeImage } from "@/lib/images";
 import { decodeEntities } from "@/lib/seo";
 
 export default async function FeaturedContent() {
@@ -29,10 +31,20 @@ export default async function FeaturedContent() {
             <Link key={a.id} href={`/blog/${a.slug}`} className="group block">
               <div className="relative h-64 rounded-3xl overflow-hidden mb-6">
                 {a.cover_image ? (
-                  <div
-                    className="w-full h-full bg-cover bg-center group-hover:scale-110 transition-transform duration-500"
-                    style={{ backgroundImage: `url("${a.cover_image}")` }}
-                  />
+                  canOptimizeImage(a.cover_image) ? (
+                    <Image
+                      src={a.cover_image}
+                      alt=""
+                      fill
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                      className="object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                  ) : (
+                    <div
+                      className="w-full h-full bg-cover bg-center group-hover:scale-110 transition-transform duration-500"
+                      style={{ backgroundImage: `url("${a.cover_image}")` }}
+                    />
+                  )
                 ) : (
                   <div className="w-full h-full bg-gradient-to-br from-primary/30 to-secondary/30 group-hover:scale-110 transition-transform duration-500" />
                 )}

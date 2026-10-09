@@ -1,4 +1,5 @@
 import { createClient } from "@/lib/supabase/server";
+import { getCachedFunTestsMeta } from "@/lib/public-cache";
 import type { FunTest } from "@/lib/fun-tests";
 
 interface DbFunTest {
@@ -24,6 +25,18 @@ function rowToTest(row: DbFunTest): FunTest {
     questions,
     results,
   };
+}
+
+export type FunTestMeta = {
+  id: string;
+  title: string;
+  description: string;
+  icon: string;
+};
+
+// Liste görünümleri için cache'lenmiş hafif veri (soru/sonuç yüklemez).
+export async function getFunTestsMeta(): Promise<FunTestMeta[]> {
+  return getCachedFunTestsMeta();
 }
 
 export async function getFunTests(): Promise<FunTest[]> {

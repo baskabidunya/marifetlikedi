@@ -4,7 +4,7 @@ import TestCard from "@/components/funtests/TestCard";
 import AdSlot from "@/components/ads/AdSlot";
 import { ogMeta } from "@/lib/seo";
 import Pagination from "@/components/Pagination";
-import { getFunTests } from "@/lib/fun-tests-db";
+import { getFunTestsMeta } from "@/lib/fun-tests-db";
 
 const PAGE_SIZE = 10;
 
@@ -31,7 +31,7 @@ export default async function EglenceliTestlerPage({
   const { page } = await searchParams;
   const currentPage = Math.max(1, parseInt(page || "1", 10) || 1);
 
-  const tests = await getFunTests();
+  const tests = await getFunTestsMeta();
   const totalPages = Math.ceil(tests.length / PAGE_SIZE);
   const pageTests = tests.slice((currentPage - 1) * PAGE_SIZE, currentPage * PAGE_SIZE);
 

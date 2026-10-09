@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { getPublishedPosts } from "@/lib/blog-public";
 import { getActiveTrendArticles } from "@/lib/public-queries";
-import { getFunTests } from "@/lib/fun-tests-db";
+import { getFunTestsMeta } from "@/lib/fun-tests-db";
 import { SIGN_SLUGS } from "@/lib/sign-slugs";
 
 const SITE_URL = "https://www.marifetlikedi.com";
@@ -61,7 +61,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }
 
   try {
-    const tests = await getFunTests();
+    const tests = await getFunTestsMeta();
     testRoutes = tests.map((t) => ({
       url: `${SITE_URL}/eglenceli-testler/${t.id}`,
       lastModified: new Date(),

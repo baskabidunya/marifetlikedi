@@ -1,12 +1,14 @@
 "use server";
 
 import { createClient } from "@/lib/supabase/server";
+import {
+  getCachedNavLinks,
+  getCachedSiteSetting,
+  getCachedTrendArticles,
+} from "@/lib/public-cache";
 
 export async function getPublicNavLinks(position: "header" | "footer") {
-  const supabase = await createClient();
-  const { data } = await supabase.from("navigation_links")
-    .select("*").eq("active", true).eq("position", position).order("sort_order");
-  return data || [];
+  return getCachedNavLinks(position);
 }
 
 export async function getActiveAnnouncements() {
@@ -75,15 +77,11 @@ export async function getPublicTarotCards() {
 }
 
 export async function getActiveTrendArticles() {
-  const supabase = await createClient();
-  const { data } = await supabase.from("trend_articles").select("*").eq("active", true).order("created_at", { ascending: false });
-  return data || [];
+  return getCachedTrendArticles();
 }
 
 export async function getSiteSetting(key: string): Promise<string | null> {
-  const supabase = await createClient();
-  const { data } = await supabase.from("site_settings").select("value").eq("key", key).single();
-  return data?.value ?? null;
+  return getCachedSiteSetting(key);
 }
 
 export async function searchTrendArticles(query: string) {

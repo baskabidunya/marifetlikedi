@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import TestQuiz from "@/components/funtests/TestQuiz";
 import AdSlot from "@/components/ads/AdSlot";
 import { ogMeta, breadcrumbLd, jsonLd } from "@/lib/seo";
-import { getFunTestBySlug, getFunTests } from "@/lib/fun-tests-db";
+import { getFunTestBySlug, getFunTestsMeta } from "@/lib/fun-tests-db";
 import Link from "next/link";
 
 interface Props {
@@ -34,7 +34,7 @@ export default async function TestPage({ params }: Props) {
   const test = await getFunTestBySlug(id);
   if (!test) notFound();
 
-  const related = (await getFunTests())
+  const related = (await getFunTestsMeta())
     .filter((t) => t.id !== test.id)
     .slice(0, 3);
   const breadcrumb = breadcrumbLd([

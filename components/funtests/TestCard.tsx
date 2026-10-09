@@ -3,7 +3,7 @@
 import Link from "next/link";
 import type { FunTest } from "@/lib/fun-tests";
 
-export default function TestCard({ test }: { test: FunTest }) {
+export default function TestCard({ test }: { test: Pick<FunTest, "id" | "title" | "description" | "icon"> }) {
   return (
     <Link
       href={`/eglenceli-testler/${test.id}`}

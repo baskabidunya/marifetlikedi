@@ -1,6 +1,7 @@
 "use server";
 
 import { createClient } from "@/lib/supabase/server";
+import { getCachedPublishedPosts } from "@/lib/public-cache";
 
 export interface BlogTag {
   slug: string;
@@ -30,13 +31,7 @@ function mapTags(post: any): BlogTag[] {
 }
 
 export async function getPublishedPosts(): Promise<PostWithTags[]> {
-  const supabase = await createClient();
-  const { data } = await supabase
-    .from("blog_posts")
-    .select("*, blog_post_tags(tag:blog_tags(slug, name))")
-    .eq("published", true)
-    .order("created_at", { ascending: false });
-  return (data || []).map((p: any) => ({ ...p, tags: mapTags(p) }));
+  return getCachedPublishedPosts();
 }
 
 export async function getRelatedPosts(post: PostWithTags, limit = 3): Promise<PostWithTags[]> {

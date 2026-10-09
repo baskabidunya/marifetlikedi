@@ -10,7 +10,7 @@ export default function TestQuiz({
   related = [],
 }: {
   test: FunTest;
-  related?: FunTest[];
+  related?: Pick<FunTest, "id" | "title" | "icon">[];
 }) {
   const [current, setCurrent] = useState(0);
   const [answers, setAnswers] = useState<number[]>([]);

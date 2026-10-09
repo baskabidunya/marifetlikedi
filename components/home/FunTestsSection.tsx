@@ -1,8 +1,8 @@
 import Link from "next/link";
-import { getFunTests } from "@/lib/fun-tests-db";
+import { getFunTestsMeta } from "@/lib/fun-tests-db";
 
 export default async function FunTestsSection() {
-  const allTests = await getFunTests();
+  const allTests = await getFunTestsMeta();
   const latestTests = allTests.slice(0, 3);
 
   return (

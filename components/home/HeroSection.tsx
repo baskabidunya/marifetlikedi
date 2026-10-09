@@ -1,5 +1,7 @@
 import Link from "next/link";
+import Image from "next/image";
 import { getActiveSlides } from "@/lib/slides-public";
+import { canOptimizeImage } from "@/lib/images";
 
 export default async function HeroSection() {
   const slides = await getActiveSlides("home");
@@ -52,11 +54,23 @@ export default async function HeroSection() {
         </div>
         <div className="hidden lg:block relative group">
           <div className="absolute -inset-4 bg-tertiary/20 blur-3xl rounded-full opacity-30 group-hover:opacity-50 transition-opacity" />
-          <img
-            alt="" loading="eager" fetchPriority="high"
-            className="relative z-10 w-full drop-shadow-2xl animate-float"
-            src={heroImage}
-          />
+          {canOptimizeImage(heroImage) ? (
+            <Image
+              src={heroImage}
+              alt=""
+              width={2000}
+              height={2000}
+              priority
+              sizes="(max-width: 1023px) 1px, (max-width: 1280px) 45vw, 560px"
+              className="relative z-10 w-full h-auto drop-shadow-2xl animate-float"
+            />
+          ) : (
+            <img
+              alt="" loading="eager" fetchPriority="high" width={2000} height={2000}
+              className="relative z-10 w-full h-auto drop-shadow-2xl animate-float"
+              src={heroImage}
+            />
+          )}
         </div>
       </div>
     </section>
