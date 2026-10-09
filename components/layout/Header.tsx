@@ -1,9 +1,11 @@
 import Link from "next/link";
+import Image from "next/image";
 import { getPublicNavLinks, getSiteSetting } from "@/lib/public-queries";
 import HeaderNav from "./HeaderNav";
 import SearchTrigger from "@/components/search/SearchTrigger";
 import ThemeToggle from "./ThemeToggle";
 import { DesktopAuthArea, MobileProfileLink } from "./HeaderAuth";
+import { canOptimizeImage } from "@/lib/images";
 
 export default async function Header() {
   const navLinks = await getPublicNavLinks("header");
@@ -14,7 +16,17 @@ export default async function Header() {
       <nav className="flex items-center justify-between px-container-padding-mobile md:px-container-padding-desktop h-20 max-w-7xl mx-auto">
         <div className="cursor-pointer shrink-0">
           <Link href="/">
-            {logo ? (
+            {logo && canOptimizeImage(logo) ? (
+              <Image
+                src={logo}
+                alt="Marifetli Kedi"
+                width={451}
+                height={118}
+                priority
+                sizes="200px"
+                className="h-12 w-auto object-contain"
+              />
+            ) : logo ? (
               <img src={logo} alt="Marifetli Kedi" loading="eager" className="h-12 w-auto object-contain" />
             ) : (
               <span className="text-headline-sm md:text-headline-md tracking-tight text-primary">

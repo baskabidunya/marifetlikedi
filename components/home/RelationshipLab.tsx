@@ -1,15 +1,17 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function RelationshipLab() {
   return (
     <section className="relative py-section-gap overflow-hidden">
-      <div className="absolute inset-0 z-0">
-        <div
-          className="w-full h-full bg-cover bg-center opacity-40 grayscale-[20%]"
-          style={{
-            backgroundImage:
-              'url("https://lh3.googleusercontent.com/aida-public/AB6AXuCgB5QZkXrUQvA74_oow5BZ9Ax94CNRxjfrBzDUa00BQrZNlNCf0XmNepsPOB7qImo4HEMDYy7zinkf5mMLf20DbalqjK4oa1I1jhBkZCiwiGEdLniQaAKL1orhxRCR5uNMwJxbz36AwBL0RPg53S_20GPs5i8twhT0tt5ZkmuSFkmfrPRA2O31NlBB7VGnq7E-Lp8HiqvlmY8g8sudAU2_WWzeWFBk_m7cyf41b6WXquUEywdW5UYC")',
-          }}
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        <Image
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgB5QZkXrUQvA74_oow5BZ9Ax94CNRxjfrBzDUa00BQrZNlNCf0XmNepsPOB7qImo4HEMDYy7zinkf5mMLf20DbalqjK4oa1I1jhBkZCiwiGEdLniQaAKL1orhxRCR5uNMwJxbz36AwBL0RPg53S_20GPs5i8twhT0tt5ZkmuSFkmfrPRA2O31NlBB7VGnq7E-Lp8HiqvlmY8g8sudAU2_WWzeWFBk_m7cyf41b6WXquUEywdW5UYC"
+          alt=""
+          fill
+          sizes="100vw"
+          quality={60}
+          className="object-cover opacity-40 grayscale-[20%]"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-background via-background/40 to-transparent" />
       </div>
