@@ -1,6 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  experimental: {
+    // CSS'i HTML'e göm: render-blocking stylesheet isteği kalkar (FCP/LCP kazancı).
+    inlineCss: true,
+  },
   transpilePackages: ["quill"],
   images: {
     remotePatterns: [
