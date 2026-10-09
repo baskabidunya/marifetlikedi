@@ -26,33 +26,33 @@
   --font-size-headline-sm--line-height: 1.35;
   --font-size-headline-sm-mobile: 20px;
 
-  /* Core Colors — karanlık mod: daha açık zemin, daha belirgin katman farkı */
-  --color-surface: #254286;
-  --color-surface-dim: #1e3773;
-  --color-surface-bright: #5b7fcd;
-  --color-surface-container-lowest: #16295a;
-  --color-surface-container-low: #2a4a97;
-  --color-surface-container: #3055a5;
-  --color-surface-container-high: #3a60b3;
-  --color-surface-container-highest: #456cc0;
-  --color-on-surface: #f2f5ff;
-  --color-on-surface-variant: #dbe3f8;
-  --color-background: #254286;
-  --color-on-background: #f2f5ff;
-  --color-outline: #c5d1f0;
-  --color-outline-variant: #6b82b8;
+  /* Core Colors — kullanici paleti: #081849 zemin, #ECDFD2 metin, #213885 kartlar */
+  --color-surface: #081849;
+  --color-surface-dim: #06123a;
+  --color-surface-bright: #3a5cbf;
+  --color-surface-container-lowest: #040e2c;
+  --color-surface-container-low: #1a2f72;
+  --color-surface-container: #213885;
+  --color-surface-container-high: #294498;
+  --color-surface-container-highest: #3151ab;
+  --color-on-surface: #ECDFD2;
+  --color-on-surface-variant: #CCCACC;
+  --color-background: #081849;
+  --color-on-background: #ECDFD2;
+  --color-outline: #CCCACC;
+  --color-outline-variant: #47568f;
 
-  /* Primary (Purple) */
-  --color-primary: #d3c2ff;
-  --color-on-primary: #3c0091;
-  --color-primary-container: #8f66ff;
-  --color-on-primary-container: #340080;
+  /* Primary (Magenta / CTA) — #893172 */
+  --color-primary: #893172;
+  --color-on-primary: #ECDFD2;
+  --color-primary-container: #a13d8a;
+  --color-on-primary-container: #ECDFD2;
 
-  /* Secondary (Fuchsia) */
-  --color-secondary: #ffaef5;
-  --color-on-secondary: #580065;
-  --color-secondary-container: #bf0cd6;
-  --color-on-secondary-container: #ffd8fd;
+  /* Secondary (Eggplant) — #5F3475 */
+  --color-secondary: #5F3475;
+  --color-on-secondary: #ECDFD2;
+  --color-secondary-container: #7a4a9e;
+  --color-on-secondary-container: #ECDFD2;
 
   /* Tertiary (Gold) */
   --color-tertiary: #ffc845;
@@ -136,6 +136,13 @@ html.light {
 }
 
 @layer utilities {
+  /* Koyu zeminde okunabilirlik: vurgu renginin acik tonlari (yalniz karanlik mod) */
+  html:not(.light) .text-primary { color: #e8a8d8; }
+  html:not(.light) .text-secondary { color: #c3a0e8; }
+  html:not(.light) .text-primary\/80 { color: #dd9ecf; }
+  html:not(.light) .text-primary\/20 { color: rgb(232 168 216 / 0.2); }
+  html:not(.light) .hover\:text-primary\/80:hover { color: #d695c8; }
+
   .text-display-lg {
     font-size: 48px;
     line-height: 1.1;
