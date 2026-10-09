@@ -34,7 +34,7 @@ export default async function AdminSliderPage() {
       {/* BURCLAR SLIDER */}
       <div>
         <div className="flex items-center gap-2 mb-3 px-1">
-          <span aria-hidden="true" className="material-symbols-outlined text-lg text-primary">astrology</span>
+          <span aria-hidden="true" className="material-symbols-outlined text-lg text-primary">auto_awesome</span>
           <p className="text-caption text-outline uppercase tracking-wider">Burçlar Sayfası Slider</p>
           <span className="text-caption text-outline">({burclarSlides.length})</span>
         </div>
