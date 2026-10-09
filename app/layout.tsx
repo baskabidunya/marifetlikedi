@@ -13,13 +13,13 @@ import "@/styles/globals.css";
 const SITE_URL = "https://www.marifetlikedi.com";
 
 const sora = Sora({
-  subsets: ["latin"],
+  subsets: ["latin", "latin-ext"],
   variable: "--font-sora",
   display: "swap",
 });
 
 const inter = Inter({
-  subsets: ["latin"],
+  subsets: ["latin", "latin-ext"],
   variable: "--font-inter",
   display: "swap",
 });
