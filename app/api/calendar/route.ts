@@ -1,8 +1,14 @@
 import { NextResponse } from "next/server";
+import { unstable_cache } from "next/cache";
 import { computeMonthMoonPhases } from "@/lib/moon-phases";
 
-export const dynamic = "force-static";
-export const revalidate = 600;
+// Ay verisi y/m anahtarıyla cache'lenir; route handler kendisi dinamik kalır
+// (force-static/revalidate tek-entry sorununa yol açar).
+const getCachedMonth = unstable_cache(
+  async (y: number, m: number) => computeMonthMoonPhases(y, m),
+  ["calendar-month-phases"],
+  { revalidate: 3600 }
+);
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
@@ -16,5 +22,5 @@ export async function GET(request: Request) {
     return NextResponse.json({ error: "Geçersiz parametre" }, { status: 400 });
   }
 
-  return NextResponse.json({ days: computeMonthMoonPhases(y, m) });
+  return NextResponse.json({ days: await getCachedMonth(y, m) });
 }
