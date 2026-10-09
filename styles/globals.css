@@ -26,39 +26,40 @@
   --font-size-headline-sm--line-height: 1.35;
   --font-size-headline-sm-mobile: 20px;
 
-  /* Core Colors — kullanici paleti: #081849 zemin, #ECDFD2 metin, #213885 kartlar */
-  --color-surface: #081849;
-  --color-surface-dim: #06123a;
-  --color-surface-bright: #3a5cbf;
-  --color-surface-container-lowest: #040e2c;
-  --color-surface-container-low: #1a2f72;
-  --color-surface-container: #213885;
-  --color-surface-container-high: #294498;
-  --color-surface-container-highest: #3151ab;
-  --color-on-surface: #ECDFD2;
-  --color-on-surface-variant: #CCCACC;
-  --color-background: #081849;
-  --color-on-background: #ECDFD2;
-  --color-outline: #CCCACC;
-  --color-outline-variant: #47568f;
+  /* ── Karanlık mod (varsayılan): derin lacivert-slate zemin,
+       açık tonlu vurgular (M3 karanlık deseni) → her renk okunur ── */
+  --color-surface: #0e1322;
+  --color-surface-dim: #0b0f1c;
+  --color-surface-bright: #1e2740;
+  --color-surface-container-lowest: #090d18;
+  --color-surface-container-low: #141a2c;
+  --color-surface-container: #1a2136;
+  --color-surface-container-high: #212a44;
+  --color-surface-container-highest: #2a3554;
+  --color-on-surface: #e6e9f2;
+  --color-on-surface-variant: #9aa3b8;
+  --color-background: #0e1322;
+  --color-on-background: #e6e9f2;
+  --color-outline: #7b849e;
+  --color-outline-variant: #39425e;
 
-  /* Primary (Magenta / CTA) — #893172 */
-  --color-primary: #893172;
-  --color-on-primary: #ECDFD2;
-  --color-primary-container: #a13d8a;
-  --color-on-primary-container: #ECDFD2;
+  /* Primary — periwinkle mor (başlık, link, buton dolgusu) */
+  --color-primary: #b3a5ff;
+  --color-on-primary: #17103d;
+  --color-primary-container: #4b3fa8;
+  --color-on-primary-container: #dcd4ff;
 
-  /* Secondary (Eggplant) — #5F3475 */
-  --color-secondary: #5F3475;
-  --color-on-secondary: #ECDFD2;
-  --color-secondary-container: #7a4a9e;
-  --color-on-secondary-container: #ECDFD2;
+  /* Secondary — gül kurusu (ikinci vurgu, rozet, grafik çubuğu) */
+  --color-secondary: #f0a9c4;
+  --color-on-secondary: #4a1330;
+  --color-secondary-container: #7a3558;
+  --color-on-secondary-container: #ffd9e6;
 
-  /* Tertiary (Gold) */
+  /* Tertiary — altın sarısı (burç/astro vurguları) */
   --color-tertiary: #ffc845;
   --color-on-tertiary: #402d00;
-  --color-tertiary-container: #c99400;
-  --color-on-tertiary-container: #372700;
+  --color-tertiary-container: #6b4a00;
+  --color-on-tertiary-container: #ffdea1;
 
   /* Error */
   --color-error: #ffb4ab;
@@ -136,13 +137,6 @@ html.light {
 }
 
 @layer utilities {
-  /* Koyu zeminde okunabilirlik: vurgu renginin acik tonlari (yalniz karanlik mod) */
-  html:not(.light) .text-primary { color: #e8a8d8; }
-  html:not(.light) .text-secondary { color: #c3a0e8; }
-  html:not(.light) .text-primary\/80 { color: #dd9ecf; }
-  html:not(.light) .text-primary\/20 { color: rgb(232 168 216 / 0.2); }
-  html:not(.light) .hover\:text-primary\/80:hover { color: #d695c8; }
-
   .text-display-lg {
     font-size: 48px;
     line-height: 1.1;

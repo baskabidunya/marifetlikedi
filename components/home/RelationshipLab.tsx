@@ -28,7 +28,7 @@ export default function RelationshipLab() {
             </p>
             <Link
               href="/uyum"
-              className="block w-full py-4 text-center bg-gradient-to-r from-secondary-container to-primary-container text-white font-label-md rounded-xl hover:shadow-[0_0_20px_rgba(174,5,198,0.3)] transition-all cursor-pointer"
+              className="block w-full py-4 text-center bg-gradient-to-r from-secondary-container to-primary-container text-white font-label-md rounded-xl hover:shadow-[0_0_20px_rgba(240,169,196,0.3)] transition-all cursor-pointer"
             >
               Uyumumuzu Hesapla
             </Link>
