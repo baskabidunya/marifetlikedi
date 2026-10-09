@@ -128,6 +128,13 @@ export default async function RootLayout({
           }}
         />
         <link rel="preconnect" href="https://gbgsykjrozmpkpsqukcp.supabase.co" />
+        <link
+          rel="preload"
+          as="font"
+          type="font/woff2"
+          href="/fonts/material-symbols-outlined.woff2"
+          crossOrigin="anonymous"
+        />
       </head>
       <body className="bg-surface text-on-surface font-inter antialiased">
         <ConsentScripts />
