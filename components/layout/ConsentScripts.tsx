@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { ADS_ENABLED } from "@/lib/ads";
 
 const CONSENT_KEY = "marifetlikedi_cookie_consent";
 const ADSENSE_URL =
@@ -83,15 +84,24 @@ function grantAds() {
 export default function ConsentScripts() {
   useEffect(() => {
     initDataLayer();
-    loadScript(ADSENSE_URL);
-    initGA();
 
-    if (localStorage.getItem(CONSENT_KEY) === "accepted") {
-      grantAds();
+    // AdSense onaylı ve açık değilse script hiç yüklenmez (gereksiz 275 KB).
+    if (ADS_ENABLED) {
+      loadScript(ADSENSE_URL);
     }
 
-    window.addEventListener("consent-accepted", grantAds);
-    return () => window.removeEventListener("consent-accepted", grantAds);
+    // GA yalnızca kullanıcı çerez onayı verdikten sonra yüklenir.
+    const activate = () => {
+      grantAds();
+      initGA();
+    };
+
+    if (localStorage.getItem(CONSENT_KEY) === "accepted") {
+      activate();
+    }
+
+    window.addEventListener("consent-accepted", activate);
+    return () => window.removeEventListener("consent-accepted", activate);
   }, []);
 
   return null;

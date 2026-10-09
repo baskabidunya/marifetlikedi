@@ -1,9 +1,8 @@
 "use client";
 
 import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
-import { createClient } from "@/lib/supabase/client";
 
-type AuthUser = { id: string } | null;
+type AuthUser = { loggedIn: boolean } | null;
 
 const AuthContext = createContext<AuthUser>(null);
 
@@ -11,21 +10,33 @@ export function useAuthUser() {
   return useContext(AuthContext);
 }
 
-// Kullanıcı durumu istemci tarafında çözülür; böylece layout'ta cookies()
-// kullanılmaz ve public sayfalar statik/ISR olabilir.
+// Kullanıcı durumu istemci tarafında /api/me ile çözülür; böylece layout'ta
+// cookies() kullanılmaz, public sayfalar statik kalır ve supabase-js
+// (≈50 KB) ilk yükleme JavaScript'ine girmez.
 export default function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<AuthUser>(null);
 
   useEffect(() => {
-    const supabase = createClient();
-    supabase.auth
-      .getUser()
-      .then(({ data }) => setUser(data.user ?? null))
-      .catch(() => {});
-    const { data: sub } = supabase.auth.onAuthStateChange((_event, session) => {
-      setUser(session?.user ?? null);
-    });
-    return () => sub.subscription.unsubscribe();
+    let cancelled = false;
+
+    const sync = () => {
+      fetch("/api/me")
+        .then((r) => (r.ok ? r.json() : null))
+        .then((d) => {
+          if (!cancelled && d) {
+            setUser(d.loggedIn ? { loggedIn: true } : null);
+          }
+        })
+        .catch(() => {});
+    };
+
+    sync();
+    const onFocus = () => sync();
+    window.addEventListener("focus", onFocus);
+    return () => {
+      cancelled = true;
+      window.removeEventListener("focus", onFocus);
+    };
   }, []);
 
   return <AuthContext.Provider value={user}>{children}</AuthContext.Provider>;
