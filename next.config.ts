@@ -7,6 +7,8 @@ const nextConfig: NextConfig = {
   },
   transpilePackages: ["quill"],
   images: {
+    // Optimize edilmiş görseller uzun süre CDN'de kalsın (varsayılan 4 saatti).
+    minimumCacheTTL: 604800,
     remotePatterns: [
       { protocol: "https", hostname: "images.unsplash.com" },
       { protocol: "https", hostname: "gbgsykjrozmpkpsqukcp.supabase.co" },
