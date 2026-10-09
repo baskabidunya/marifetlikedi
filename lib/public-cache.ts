@@ -76,6 +76,51 @@ export const getCachedSlides = unstable_cache(
 );
 
 // Liste kartları için hafif test verisi (soru/sonuç JSON'u hariç).
+export const getCachedFaqItems = unstable_cache(
+  async () => {
+    const supabase = createPublicReadClient();
+    const { data } = await supabase
+      .from("faq")
+      .select("*")
+      .eq("active", true)
+      .order("sort_order");
+    return data || [];
+  },
+  ["public-faq-items"],
+  { revalidate: REVALIDATE }
+);
+
+export const getCachedPostBySlug = unstable_cache(
+  async (slug: string) => {
+    const supabase = createPublicReadClient();
+    const { data } = await supabase
+      .from("blog_posts")
+      .select("*, blog_post_tags(tag:blog_tags(slug, name))")
+      .eq("slug", slug)
+      .eq("published", true)
+      .single();
+    if (!data) return null;
+    return { ...data, tags: mapTags(data) };
+  },
+  ["public-post-by-slug"],
+  { revalidate: REVALIDATE }
+);
+
+export const getCachedTrendArticleBySlug = unstable_cache(
+  async (slug: string) => {
+    const supabase = createPublicReadClient();
+    const { data } = await supabase
+      .from("trend_articles")
+      .select("*")
+      .eq("slug", slug)
+      .eq("active", true)
+      .single();
+    return data || null;
+  },
+  ["public-trend-article-by-slug"],
+  { revalidate: REVALIDATE }
+);
+
 export const getCachedFunTestsMeta = unstable_cache(
   async () => {
     const supabase = createPublicReadClient();

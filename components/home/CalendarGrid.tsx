@@ -1,5 +1,10 @@
 import Link from "next/link";
-import { computeMonthMoonPhases, TURKISH_MONTHS, type MoonDay } from "@/lib/moon-phases";
+import type { MoonDay } from "@/lib/moon-phases";
+
+const TURKISH_MONTHS = [
+  "Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran",
+  "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık",
+];
 
 const dayHeaders = ["Pzt", "Sal", "Çar", "Per", "Cum", "Cmt", "Paz"];
 
@@ -12,15 +17,17 @@ const legend = [
   { key: "waning-crescent", label: "Sönen Hilal" },
 ] as const;
 
-export default function CelestialCalendar({
+// Sunum bileşeni: astronomy-engine içermez; istemci tarafında güvenle paketlenir.
+export default function CalendarGrid({
   year,
   month,
+  phases,
 }: {
   year: number;
   month: number;
+  phases: MoonDay[];
 }) {
   const today = new Date();
-  const phases = computeMonthMoonPhases(year, month);
 
   const firstWeekday = (new Date(year, month, 1).getDay() + 6) % 7;
   const daysInMonth = new Date(year, month + 1, 0).getDate();

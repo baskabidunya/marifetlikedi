@@ -5,6 +5,7 @@ import { createPortal } from "react-dom";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import ThemeToggle from "./ThemeToggle";
+import { useAuthUser } from "./AuthProvider";
 
 interface NavLink {
   id: string;
@@ -12,7 +13,8 @@ interface NavLink {
   url: string;
 }
 
-export default function HeaderNav({ links, isLoggedIn }: { links: NavLink[]; isLoggedIn: boolean }) {
+export default function HeaderNav({ links }: { links: NavLink[] }) {
+  const isLoggedIn = !!useAuthUser();
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const pathname = usePathname();

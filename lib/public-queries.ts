@@ -2,9 +2,11 @@
 
 import { createClient } from "@/lib/supabase/server";
 import {
+  getCachedFaqItems,
   getCachedNavLinks,
   getCachedSiteSetting,
   getCachedTrendArticles,
+  getCachedTrendArticleBySlug,
 } from "@/lib/public-cache";
 
 export async function getPublicNavLinks(position: "header" | "footer") {
@@ -53,9 +55,7 @@ export async function getAllAnnouncements() {
 }
 
 export async function getActiveFaqItems() {
-  const supabase = await createClient();
-  const { data } = await supabase.from("faq").select("*").eq("active", true).order("sort_order");
-  return data || [];
+  return getCachedFaqItems();
 }
 
 export async function getApprovedTestimonialsPublic() {
@@ -98,7 +98,5 @@ export async function searchTrendArticles(query: string) {
 }
 
 export async function getTrendArticleBySlug(slug: string) {
-  const supabase = await createClient();
-  const { data } = await supabase.from("trend_articles").select("*").eq("slug", slug).eq("active", true).single();
-  return data;
+  return getCachedTrendArticleBySlug(slug);
 }

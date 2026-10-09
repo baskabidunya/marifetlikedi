@@ -3,7 +3,7 @@ import HeroSection from "@/components/home/HeroSection";
 import DailyEnergy from "@/components/home/DailyEnergy";
 import ZodiacWheel from "@/components/home/ZodiacWheel";
 import DailyMessage from "@/components/home/DailyMessage";
-import CelestialCalendar from "@/components/home/CelestialCalendar";
+import CalendarSection from "@/components/home/CalendarSection";
 import TrendingContent from "@/components/home/TrendingContent";
 import RelationshipLab from "@/components/home/RelationshipLab";
 import PlanetTools from "@/components/home/PlanetTools";
@@ -11,31 +11,23 @@ import FeaturedContent from "@/components/home/FeaturedContent";
 import FunTestsSection from "@/components/home/FunTestsSection";
 import Newsletter from "@/components/home/Newsletter";
 import AdSlot from "@/components/ads/AdSlot";
+import { computeMonthMoonPhases } from "@/lib/moon-phases";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
 };
 
-export default async function Home({
-  searchParams,
-}: {
-  searchParams: Promise<{ km?: string; ky?: string }>;
-}) {
-  const sp = await searchParams;
+// Ana sayfa statik (ISR): takvim ?km/?ky istemci tarafında işlenir.
+export const revalidate = 600;
+
+export default function Home() {
   const now = new Date();
   const dayNumber = Math.floor(
     Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()) / 86400000
   );
-  const monthParam = sp.km !== undefined ? Number(sp.km) : NaN;
-  const yearParam = sp.ky !== undefined ? Number(sp.ky) : NaN;
-  const month =
-    Number.isInteger(monthParam) && monthParam >= 0 && monthParam <= 11
-      ? monthParam
-      : now.getMonth();
-  const year =
-    Number.isInteger(yearParam) && yearParam >= 1970 && yearParam <= 2100
-      ? yearParam
-      : now.getFullYear();
+  const year = now.getFullYear();
+  const month = now.getMonth();
+  const initialDays = computeMonthMoonPhases(year, month);
 
   return (
     <main className="top-clear">
@@ -47,7 +39,11 @@ export default async function Home({
       <DailyEnergy />
       <ZodiacWheel />
       <DailyMessage seed={dayNumber} />
-      <CelestialCalendar year={year} month={month} />
+      <CalendarSection
+        initialYear={year}
+        initialMonth={month}
+        initialDays={initialDays}
+      />
       <TrendingContent />
       <RelationshipLab />
       <PlanetTools />

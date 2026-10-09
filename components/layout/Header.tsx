@@ -1,22 +1,12 @@
 import Link from "next/link";
 import { getPublicNavLinks, getSiteSetting } from "@/lib/public-queries";
-import { createClient } from "@/lib/supabase/server";
-import { cookies } from "next/headers";
 import HeaderNav from "./HeaderNav";
 import SearchTrigger from "@/components/search/SearchTrigger";
 import ThemeToggle from "./ThemeToggle";
+import { DesktopAuthArea, MobileProfileLink } from "./HeaderAuth";
 
 export default async function Header() {
   const navLinks = await getPublicNavLinks("header");
-  // Anonim ziyaretçilerde auth roundtrip'i atla (LCP için kritik).
-  const cookieStore = await cookies();
-  const hasAuthCookie = cookieStore.getAll().some((c) => c.name.includes("auth-token"));
-  let user: { id: string } | null = null;
-  if (hasAuthCookie) {
-    const supabase = await createClient();
-    const { data } = await supabase.auth.getUser();
-    user = data.user;
-  }
   const logo = await getSiteSetting("site_logo");
 
   return (
@@ -36,15 +26,7 @@ export default async function Header() {
         <div className="md:hidden flex items-center gap-1">
           <ThemeToggle />
           <SearchTrigger />
-          {user && (
-            <Link
-              href="/profil"
-              className="flex items-center justify-center w-11 h-11 rounded-full bg-gradient-to-br from-primary-container to-secondary-container text-on-primary"
-              aria-label="Profilim"
-            >
-              <span aria-hidden="true" className="material-symbols-outlined">account_circle</span>
-            </Link>
-          )}
+          <MobileProfileLink />
         </div>
         <HeaderNav
           links={[
@@ -58,35 +40,11 @@ export default async function Header() {
               active: true,
             },
           ]}
-          isLoggedIn={!!user}
         />
         <div className="hidden md:flex items-center gap-1 md:gap-2">
           <ThemeToggle />
           <SearchTrigger />
-          {user ? (
-            <Link
-              href="/profil"
-              className="hidden md:flex items-center gap-2 bg-gradient-to-r from-primary-container to-secondary-container px-6 py-2.5 rounded-full text-on-primary font-label-md hover:scale-105 active:scale-95 transition-all shadow-lg shadow-primary/20"
-            >
-              <span aria-hidden="true" className="material-symbols-outlined text-lg">account_circle</span>
-              Profil
-            </Link>
-          ) : (
-            <>
-              <Link
-                href="/giris"
-                className="hidden md:flex px-5 py-2.5 rounded-full text-on-surface-variant border border-on-surface/15 hover:border-primary/40 font-label-md hover:bg-on-surface/5 transition-all"
-              >
-                Giriş Yap
-              </Link>
-              <Link
-                href="/kayit"
-                className="hidden md:flex bg-gradient-to-r from-primary-container to-secondary-container px-6 py-2.5 rounded-full text-on-primary font-label-md hover:scale-105 active:scale-95 transition-all shadow-lg shadow-primary/20"
-              >
-                Kaydol
-              </Link>
-            </>
-          )}
+          <DesktopAuthArea />
         </div>
       </nav>
     </header>

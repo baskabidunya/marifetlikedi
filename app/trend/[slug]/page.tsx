@@ -13,6 +13,14 @@ import {
   trendTagLabel,
 } from "@/lib/seo";
 import { findSignInText } from "@/lib/sign-slugs";
+export const revalidate = 300;
+export const dynamicParams = true;
+
+export async function generateStaticParams() {
+  const articles = await getActiveTrendArticles();
+  return articles.map((a) => ({ slug: a.slug }));
+}
+
 import AdSlot from "@/components/ads/AdSlot";
 import AuthorBox from "@/components/seo/AuthorBox";
 import ContentDisclaimer from "@/components/seo/ContentDisclaimer";

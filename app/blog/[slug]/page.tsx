@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { getPublishedPostBySlug } from "@/lib/blog-public";
+import { getPublishedPostBySlug, getPublishedPosts } from "@/lib/blog-public";
 import { renderMarkdown, extractFaqItems, extractTocItems } from "@/lib/markdown";
 import { getRelatedPosts } from "@/lib/blog-public";
 import { ogMeta, jsonLd, cleanDescription, decodeEntities, absoluteUrl } from "@/lib/seo";
@@ -11,6 +11,12 @@ import ContentDisclaimer from "@/components/seo/ContentDisclaimer";
 import SignCta from "@/components/seo/SignCta";
 
 export const revalidate = 300;
+export const dynamicParams = true;
+
+export async function generateStaticParams() {
+  const posts = await getPublishedPosts();
+  return posts.map((p) => ({ slug: p.slug }));
+}
 
 const AUTHOR = {
   name: "Başka bir Dünya Astroloji Ekibi",

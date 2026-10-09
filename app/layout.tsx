@@ -3,6 +3,7 @@ import { Sora, Inter } from "next/font/google";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import AdNetwork from "@/components/ads/AdNetwork";
+import AuthProvider from "@/components/layout/AuthProvider";
 import CookieConsent from "@/components/layout/CookieConsent";
 import ConsentScripts from "@/components/layout/ConsentScripts";
 import { getSiteSetting } from "@/lib/public-queries";
@@ -131,9 +132,11 @@ export default async function RootLayout({
       <body className="bg-surface text-on-surface font-inter antialiased">
         <ConsentScripts />
         <AdNetwork clientId={adsenseClient}>
-          <div className="fixed top-0 inset-x-0 z-50">
-            <Header />
-          </div>
+          <AuthProvider>
+            <div className="fixed top-0 inset-x-0 z-50">
+              <Header />
+            </div>
+          </AuthProvider>
           {children}
           <Footer />
         </AdNetwork>
