@@ -17,28 +17,13 @@ function applyTheme(theme: Theme) {
 }
 
 export default function ThemeToggle({ className = "" }: { className?: string }) {
-  const [theme, setTheme] = useState<Theme>("dark");
+  const [theme, setTheme] = useState<Theme>("light");
 
   useEffect(() => {
     const stored = localStorage.getItem(THEME_KEY);
-    const current: Theme =
-      stored === "dark" || stored === "light"
-        ? stored
-        : window.matchMedia("(prefers-color-scheme: light)").matches
-          ? "light"
-          : "dark";
+    const current: Theme = stored === "dark" || stored === "light" ? stored : "light";
     setTheme(current);
     applyTheme(current);
-
-    const mq = window.matchMedia("(prefers-color-scheme: light)");
-    const onChange = () => {
-      if (localStorage.getItem(THEME_KEY)) return;
-      const next: Theme = mq.matches ? "light" : "dark";
-      setTheme(next);
-      applyTheme(next);
-    };
-    mq.addEventListener("change", onChange);
-    return () => mq.removeEventListener("change", onChange);
   }, []);
 
   function toggle() {

@@ -65,7 +65,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#0e1322",
+  themeColor: "#f6f4fb",
 };
 
 export default async function RootLayout({
@@ -85,7 +85,7 @@ export default async function RootLayout({
       <head>
         <script
           dangerouslySetInnerHTML={{
-            __html: `(function(){try{var t=localStorage.getItem("marifetlikedi_theme");var m=t==="dark"||t==="light"?t:(window.matchMedia("(prefers-color-scheme: light)").matches?"light":"dark");var e=document.documentElement;e.classList.remove("dark","light");e.classList.add(m);}catch(e){}})();`,
+            __html: `(function(){try{var t=localStorage.getItem("marifetlikedi_theme");var m=t==="dark"||t==="light"?t:"light";var e=document.documentElement;e.classList.remove("dark","light");e.classList.add(m);}catch(e){}})();`,
           }}
         />
         <meta
