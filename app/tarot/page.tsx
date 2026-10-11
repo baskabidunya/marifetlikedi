@@ -5,12 +5,14 @@ import { getPublicTarotCards } from "@/lib/public-queries";
 import { ogMeta, jsonLd } from "@/lib/seo";
 
 export const metadata = {
-  title: "Tarot ve Kehanet Odası",
-  description: "Online tarot falı ile kartların rehberliğinde geleceğinize bakın. Major ve Minor Arkana kartlarının anlamları.",
+  title: "Tarot Falı Bak: Online Tarot Kartı Çek",
+  description:
+    "Online tarot falı bak, günün tarot kartı çek, evet hayır tarot ve kart anlamları. Major ve Minor Arkana kartlarının detaylı yorumları.",
   alternates: { canonical: "/tarot" },
   ...ogMeta({
-    title: "Tarot ve Kehanet Odası",
-    description: "Online tarot falı ile kartların rehberliğinde geleceğinize bakın. Major ve Minor Arkana kartlarının anlamları.",
+    title: "Tarot Falı Bak: Online Tarot Kartı Çek",
+    description:
+      "Online tarot falı bak, günün tarot kartı çek, evet hayır tarot ve kart anlamları. Major ve Minor Arkana kartlarının detaylı yorumları.",
     path: "/tarot",
   }),
 };
@@ -43,6 +45,9 @@ export default async function TarotPage() {
           <span aria-hidden="true" className="material-symbols-outlined text-xs">chevron_right</span>
           <span className="text-on-surface-variant">Tarot</span>
         </nav>
+        <h1 className="text-display-lg-mobile md:text-display-lg font-display-lg text-primary mb-8">
+          Tarot Falı Bak: Bugün İçin Tarot Kartı Çek
+        </h1>
       </div>
       <TarotTable deck={cards} />
       <div className="max-w-5xl mx-auto px-container-padding-mobile md:px-container-padding-desktop pb-16">

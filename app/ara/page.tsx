@@ -24,7 +24,7 @@ export default async function SearchPage({ searchParams }: Props) {
     return (
       <main className="max-w-3xl mx-auto px-container-padding-mobile md:px-container-padding-desktop py-16 text-center">
         <span aria-hidden="true" className="material-symbols-outlined text-5xl text-outline mb-4">search</span>
-        <h1 className="text-headline-md font-headline-md text-on-surface mb-2">Arama</h1>
+        <h2 className="text-headline-md font-headline-md text-on-surface mb-2">Arama</h2>
         <p className="text-body-md text-outline">Aramak için yukarıdaki arama kutusunu kullanın.</p>
       </main>
     );

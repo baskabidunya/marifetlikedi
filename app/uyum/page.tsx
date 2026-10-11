@@ -6,12 +6,14 @@ import { ogMeta } from "@/lib/seo";
 import Disclaimer from "@/components/layout/Disclaimer";
 
 export const metadata: Metadata = {
-  title: "Uyum Hesapla",
-  description: "İki doğum haritasını karşılaştırarak aşk ve uyum analizini keşfedin.",
+  title: "Burç Uyumu Hesapla | Aşk Uyumu ve Sinastri",
+  description:
+    "İki doğum haritasını karşılaştırarak burç uyumu, aşk uyumu ve sinastri analizini ücretsiz hesaplayın. Yükselen, ay ve venüs burçları.",
   alternates: { canonical: "/uyum" },
   ...ogMeta({
-    title: "Uyum Hesapla",
-    description: "İki doğum haritasını karşılaştırarak aşk ve uyum analizini keşfedin.",
+    title: "Burç Uyumu Hesapla | Aşk Uyumu ve Sinastri",
+    description:
+      "İki doğum haritasını karşılaştırarak burç uyumu, aşk uyumu ve sinastri analizini ücretsiz hesaplayın. Yükselen, ay ve venüs burçları.",
     path: "/uyum",
   }),
 };
@@ -30,7 +32,7 @@ export default function UyumPage() {
           <span className="text-label-md">İlişki Uyumu</span>
         </span>
         <h1 className="font-sora text-display-lg-mobile md:text-display-lg text-on-surface font-bold mt-4">
-          Uyumunuzu <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-tertiary">Hesaplayın</span>
+          Burç Uyumu <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-tertiary">Hesaplayın</span>
         </h1>
         <p className="text-body-lg text-on-surface-variant max-w-2xl mx-auto mt-4">
           Senin ve partnerinin doğum bilgilerini girerek güneş, ay ve yükselen burçlarınızın

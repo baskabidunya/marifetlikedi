@@ -5,12 +5,14 @@ import AdSlot from "@/components/ads/AdSlot";
 import { ogMeta } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Doğum Haritası Hesapla",
-  description: "Güneş, yükselen, ay ve venüs burcunuzu ücretsiz hesaplayın.",
+  title: "Doğum Haritası Hesapla: Yükselen, Ay, Venüs",
+  description:
+    "Doğum haritası çıkarma ücretsiz: güneş, yükselen, ay ve venüs burcunuzu hesaplayın. Doğum saati bilinmiyorsa nasıl hesaplanır.",
   alternates: { canonical: "/dogum-haritasi" },
   ...ogMeta({
-    title: "Doğum Haritası Hesapla",
-    description: "Güneş, yükselen, ay ve venüs burcunuzu ücretsiz hesaplayın.",
+    title: "Doğum Haritası Hesapla: Yükselen, Ay, Venüs",
+    description:
+      "Doğum haritası çıkarma ücretsiz: güneş, yükselen, ay ve venüs burcunuzu hesaplayın. Doğum saati bilinmiyorsa nasıl hesaplanır.",
     path: "/dogum-haritasi",
   }),
 };
@@ -35,7 +37,7 @@ export default async function DogumHaritasiPage({
           <span className="text-label-md">Ücretsiz Doğum Haritası</span>
         </span>
         <h1 className="font-sora text-display-lg-mobile md:text-display-lg text-on-surface font-bold mt-4">
-          Burçlarını <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-tertiary">Keşfet</span>
+          Doğum Haritasını <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-tertiary">Hesapla</span>
         </h1>
         <p className="text-body-lg text-on-surface-variant max-w-2xl mx-auto mt-4">
           Doğum bilgilerini girerek Güneş, Yükselen, Ay ve Venüs burcunu öğren. Her sonuç seni

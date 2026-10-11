@@ -42,14 +42,17 @@ export default async function EglenceliTestlerPage({
         <span aria-hidden="true" className="material-symbols-outlined text-xs">chevron_right</span>
         <span className="text-on-surface-variant">Eğlenceli Testler</span>
       </nav>
-      <div className="mb-section-gap">
-        <h1 className="text-3xl md:text-4xl font-bold text-on-surface mb-3">
-          Eğlenceli Testler
-        </h1>
-        <p className="text-on-surface-variant text-body-md max-w-2xl">
-          Kendini keşfetmeye hazır mısın? Aşağıdaki testleri çöz, içsel dünyanda
-          keyifli bir yolculuğa çık.
-        </p>
+      <div className="text-5xl mb-6 flex items-center gap-4">
+        <span aria-hidden="true" className="material-symbols-outlined text-primary">quiz</span>
+        <div>
+          <h1 className="text-3xl md:text-4xl font-bold text-on-surface mb-3">
+            Eğlenceli Testler
+          </h1>
+          <p className="text-on-surface-variant text-body-md max-w-2xl">
+            Kendini keşfetmeye hazır mısın? Aşağıdaki testleri çöz, içsel dünyanda
+            keyifli bir yolculuğa çık.
+          </p>
+        </div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">

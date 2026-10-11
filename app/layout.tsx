@@ -27,11 +27,11 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Marifetli Kedi — Kozmik Keşifler Portalı",
+    default: "Marifetli Kedi | Günlük Burç Yorumları, Tarot ve Doğum Haritası",
     template: "%s | Marifetli Kedi",
   },
   description:
-    "Astroloji, burç yorumları, tarot, doğum haritası ve uyum analizleriyle kozmik rehberlik sunan eğlence ve kişisel gelişim portalı.",
+    "Günlük burç yorumları, haftalık ve aylık fal, tarot falı bak, doğum haritası hesaplama ve burç uyumu. Astroloji, tarot ve kozmik rehberlik.",
   applicationName: "Marifetli Kedi",
   authors: [{ name: "Marifetli Kedi" }],
   openGraph: {
@@ -39,16 +39,16 @@ export const metadata: Metadata = {
     locale: "tr_TR",
     url: SITE_URL,
     siteName: "Marifetli Kedi",
-    title: "Marifetli Kedi — Kozmik Keşifler Portalı",
+    title: "Marifetli Kedi | Günlük Burç Yorumları, Tarot ve Doğum Haritası",
     description:
-      "Astroloji, burç yorumları, tarot ve doğum haritasıyla kozmik rehberlik portalı.",
+      "Günlük burç yorumları, haftalık ve aylık fal, tarot falı bak, doğum haritası hesaplama ve burç uyumu. Astroloji, tarot ve kozmik rehberlik.",
     images: [{ url: "/og-default.png", width: 1200, height: 630, alt: "Marifetli Kedi" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Marifetli Kedi — Kozmik Keşifler Portalı",
+    title: "Marifetli Kedi | Günlük Burç Yorumları, Tarot ve Doğum Haritası",
     description:
-      "Astroloji, burç yorumları, tarot ve doğum haritasıyla kozmik rehberlik portalı.",
+      "Günlük burç yorumları, haftalık ve aylık fal, tarot falı bak, doğum haritası hesaplama ve burç uyumu. Astroloji, tarot ve kozmik rehberlik.",
     images: ["/og-default.png"],
   },
   robots: {

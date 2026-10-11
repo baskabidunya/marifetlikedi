@@ -12,9 +12,19 @@ import FunTestsSection from "@/components/home/FunTestsSection";
 import Newsletter from "@/components/home/Newsletter";
 import AdSlot from "@/components/ads/AdSlot";
 import { computeMonthMoonPhases } from "@/lib/moon-phases";
+import { ogMeta } from "@/lib/seo";
 
 export const metadata: Metadata = {
+  title: "Günlük Burç Yorumları, Tarot ve Ay Falı",
+  description:
+    "Günlük burç yorumları, haftalık ve aylık fal, tarot falı bak, doğum haritası hesaplama ve burç uyumu. Astroloji, tarot ve kozmik rehberlik.",
   alternates: { canonical: "/" },
+  ...ogMeta({
+    title: "Günlük Burç Yorumları, Tarot ve Ay Falı",
+    description:
+      "Günlük burç yorumları, haftalık ve aylık fal, tarot falı bak, doğum haritası hesaplama ve burç uyumu. Astroloji, tarot ve kozmik rehberlik.",
+    path: "/",
+  }),
 };
 
 // Ana sayfa statik (ISR): takvim ?km/?ky istemci tarafında işlenir.

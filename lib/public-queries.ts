@@ -7,6 +7,7 @@ import {
   getCachedSiteSetting,
   getCachedTrendArticles,
   getCachedTrendArticleBySlug,
+  getCachedSignContentBySign,
 } from "@/lib/public-cache";
 
 export async function getPublicNavLinks(position: "header" | "footer") {
@@ -99,4 +100,8 @@ export async function searchTrendArticles(query: string) {
 
 export async function getTrendArticleBySlug(slug: string) {
   return getCachedTrendArticleBySlug(slug);
+}
+
+export async function getSignContentBySign(sign: string) {
+  return getCachedSignContentBySign(sign);
 }

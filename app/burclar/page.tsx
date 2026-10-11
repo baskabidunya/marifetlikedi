@@ -10,12 +10,14 @@ import Disclaimer from "@/components/layout/Disclaimer";
 import BurclarInteractive from "@/components/burclar/BurclarInteractive";
 
 export const metadata: Metadata = {
-  title: "Burçlar",
-  description: "Tüm burçlar hakkında detaylı bilgi, karakter analizi, element dağılımı ve ilişki uyumu.",
+  title: "Burçlar | Burç Özellikleri, Aşk ve Uyum",
+  description:
+    "12 burç özellikleri, aşk ve uyum, kariyer, kadın ve erkek burç yorumları. Günlük burç yorumları ve burç uyumu hesaplama.",
   alternates: { canonical: "/burclar" },
   ...ogMeta({
-    title: "Burçlar",
-    description: "Tüm burçlar hakkında detaylı bilgi, karakter analizi, element dağılımı ve ilişki uyumu.",
+    title: "Burçlar | Burç Özellikleri, Aşk ve Uyum",
+    description:
+      "12 burç özellikleri, aşk ve uyum, kariyer, kadın ve erkek burç yorumları. Günlük burç yorumları ve burç uyumu hesaplama.",
     path: "/burclar",
   }),
 };
@@ -97,6 +99,9 @@ export default function BurclarPage() {
       </div>
 
       <div className="max-w-7xl mx-auto px-container-padding-mobile md:px-container-padding-desktop pt-8">
+        <h1 className="text-display-lg-mobile md:text-display-lg font-display-lg text-primary mb-8">
+          Burçlar ve Özellikleri
+        </h1>
         <BurclarInteractive />
 
         {/* Tüm Burçlar Grid - Server-rendered for SEO */}

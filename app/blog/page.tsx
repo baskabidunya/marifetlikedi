@@ -10,12 +10,14 @@ import Pagination from "@/components/Pagination";
 const PAGE_SIZE = 12;
 
 export const metadata: Metadata = {
-  title: "Gök Günlüğü",
-  description: "Astroloji, burç yorumları, tarot ve kozmik rehberlik yazıları. Günlük burç, burç uyumu ve kişisel gelişim.",
+  title: "Gök Günlüğü | Astroloji ve Burç Yazıları",
+  description:
+    "Astroloji, burç yorumları, tarot ve kozmik rehberlik yazıları. Günlük burç, burç uyumu ve kişisel gelişim.",
   alternates: { canonical: "/blog" },
   ...ogMeta({
-    title: "Gök Günlüğü",
-    description: "Astroloji, burç yorumları, tarot ve kozmik rehberlik yazıları. Günlük burç, burç uyumu ve kişisel gelişim.",
+    title: "Gök Günlüğü | Astroloji ve Burç Yazıları",
+    description:
+      "Astroloji, burç yorumları, tarot ve kozmik rehberlik yazıları. Günlük burç, burç uyumu ve kişisel gelişim.",
     path: "/blog",
   }),
 };

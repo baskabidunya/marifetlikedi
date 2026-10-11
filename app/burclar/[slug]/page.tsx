@@ -6,6 +6,7 @@ import { ogMeta, breadcrumbLd, jsonLd } from "@/lib/seo";
 import { SIGN_GUIDES, SIGN_GUIDES_UPDATED } from "@/lib/sign-guides";
 import { SIGN_TRAITS } from "@/lib/astro-narratives";
 import { RISING_SIGNS } from "@/lib/astro-interpretations";
+import { getSignContentBySign } from "@/lib/public-queries";
 import KozmikTakvim from "@/components/profile/KozmikTakvim";
 import AdSlot from "@/components/ads/AdSlot";
 import AuthorBox from "@/components/seo/AuthorBox";
@@ -119,13 +120,13 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const sign = slugToSign(slug);
   if (!sign) return { title: "Burç" };
-  const description = `${sign} burcu hakkında detaylı bilgi, karakter analizi, günlük fal ve ilişki uyumu.`;
+  const description = `${sign} burcu özellikleri, aşkta ve kariyerde yorumları, kadın ve erkek ${sign}, uyumlu burçlar ve günlük fal.`;
   return {
-    title: `${sign} Burcu`,
+    title: `${sign} Burcu Özellikleri, Aşk ve Günlük Yorum`,
     description,
     alternates: { canonical: `/burclar/${slug}` },
     ...ogMeta({
-      title: `${sign} Burcu`,
+      title: `${sign} Burcu Özellikleri, Aşk ve Günlük Yorum`,
       description,
       path: `/burclar/${slug}`,
       type: "article",
@@ -150,6 +151,10 @@ export default async function Page({
   const prophecy = DAILY_PROPHECIES[s];
   const risingText = RISING_SIGNS[s];
   const guide = SIGN_GUIDES[s];
+  const signContent = await getSignContentBySign(s);
+
+  const loveText = signContent?.love_text || guide.love;
+  const careerText = signContent?.career_text || guide.career;
 
   const breadcrumb = breadcrumbLd([
     { name: "Ana Sayfa", path: "/" },
@@ -281,13 +286,13 @@ export default async function Page({
             <h2 className="text-headline-lg font-headline-lg text-primary mb-4">
               {s} Burcunda Aşk ve İlişkiler
             </h2>
-            <p className="text-body-lg font-body-lg text-on-surface-variant leading-relaxed">{guide.love}</p>
+            <p className="text-body-lg font-body-lg text-on-surface-variant leading-relaxed">{loveText}</p>
           </div>
           <div>
             <h2 className="text-headline-lg font-headline-lg text-primary mb-4">
               {s} Burcunda Kariyer ve Para
             </h2>
-            <p className="text-body-lg font-body-lg text-on-surface-variant leading-relaxed">{guide.career}</p>
+            <p className="text-body-lg font-body-lg text-on-surface-variant leading-relaxed">{careerText}</p>
           </div>
           <div>
             <h2 className="text-headline-lg font-headline-lg text-primary mb-4">
@@ -301,6 +306,22 @@ export default async function Page({
             </h2>
             <p className="text-body-lg font-body-lg text-on-surface-variant leading-relaxed">{guide.element}</p>
           </div>
+          {signContent?.woman_text && (
+            <div>
+              <h2 className="text-headline-lg font-headline-lg text-primary mb-4">
+                {s} Burcu Kadını
+              </h2>
+              <p className="text-body-lg font-body-lg text-on-surface-variant leading-relaxed">{signContent.woman_text}</p>
+            </div>
+          )}
+          {signContent?.man_text && (
+            <div>
+              <h2 className="text-headline-lg font-headline-lg text-primary mb-4">
+                {s} Burcu Erkeği
+              </h2>
+              <p className="text-body-lg font-body-lg text-on-surface-variant leading-relaxed">{signContent.man_text}</p>
+            </div>
+          )}
           <div className="glass-card p-6 rounded-3xl border border-primary/10">
             <h3 className="text-headline-md font-headline-md text-primary mb-3">Yükselen Burcunuz</h3>
             <p className="text-body-md font-body-md text-on-surface-variant leading-relaxed mb-3">{risingText}</p>
@@ -324,7 +345,12 @@ export default async function Page({
 
         {/* İlişki Uyumu */}
         <section className="mb-section-gap">
-          <h3 className="text-headline-lg font-headline-lg text-primary mb-8">{s} Burcu İlişki Uyumu</h3>
+          <h3 className="text-headline-lg font-headline-lg text-primary mb-4">{s} Burcu İlişki Uyumu</h3>
+          {signContent?.compatible_text && (
+            <p className="text-body-lg font-body-lg text-on-surface-variant leading-relaxed max-w-3xl mb-8">
+              {signContent.compatible_text}
+            </p>
+          )}
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
             {topSigns.map(target => {
               const score = getCompatScore(s, target);
