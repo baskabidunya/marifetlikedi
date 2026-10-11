@@ -140,6 +140,19 @@ export const getCachedFunTestsMeta = unstable_cache(
   { revalidate: REVALIDATE }
 );
 
+export const getCachedSignContentAll = unstable_cache(
+  async () => {
+    const supabase = createPublicReadClient();
+    const { data } = await supabase
+      .from("sign_content")
+      .select("sign, daily_prophecy, lucky_color, lucky_stone, lucky_activity")
+      .order("sign");
+    return data || [];
+  },
+  ["public-sign-content-all"],
+  { revalidate: REVALIDATE }
+);
+
 export const getCachedSignContentBySign = unstable_cache(
   async (sign: string) => {
     const supabase = createPublicReadClient();
