@@ -9,6 +9,7 @@ import { findSignInText } from "@/lib/sign-slugs";
 import AdSlot from "@/components/ads/AdSlot";
 import ContentDisclaimer from "@/components/seo/ContentDisclaimer";
 import SignCta from "@/components/seo/SignCta";
+import RelatedLinks from "@/components/seo/RelatedLinks";
 
 export const revalidate = 300;
 export const dynamicParams = true;
@@ -185,6 +186,8 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       <ContentDisclaimer />
 
       <SignCta signName={sign?.name} signSlug={sign?.slug} />
+
+      <RelatedLinks text={`${post.title} ${post.excerpt || ""} ${post.content || ""}`} />
 
       <div className="mt-12 rounded-2xl border border-on-surface/10 bg-surface-container/40 p-5 flex items-start gap-4">
         <span aria-hidden="true" className="material-symbols-outlined text-primary text-[28px]">auto_awesome</span>

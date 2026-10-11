@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import TrendingGrid from "@/components/trending/TrendingGrid";
 import AdSlot from "@/components/ads/AdSlot";
-import { ogMeta } from "@/lib/seo";
+import { ogMeta, breadcrumbLd, jsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Trend İçerikler | Eğlenceli Astroloji Rehberleri",
@@ -25,8 +25,14 @@ export default async function TrendPage({
   const { page } = await searchParams;
   const currentPage = Math.max(1, parseInt(page || "1", 10) || 1);
 
+  const breadcrumb = breadcrumbLd([
+    { name: "Ana Sayfa", path: "/" },
+    { name: "Trend İçerikler" },
+  ]);
+
   return (
     <main className="top-clear-2 pb-32">
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(breadcrumb)} />
       <div className="max-w-7xl mx-auto px-container-padding-mobile md:px-container-padding-desktop">
         <nav className="flex items-center gap-2 text-caption text-outline mb-6 flex-wrap">
           <Link href="/" className="hover:text-on-surface transition-colors">Ana Sayfa</Link>

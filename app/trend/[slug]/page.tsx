@@ -25,6 +25,7 @@ import AdSlot from "@/components/ads/AdSlot";
 import AuthorBox from "@/components/seo/AuthorBox";
 import ContentDisclaimer from "@/components/seo/ContentDisclaimer";
 import SignCta from "@/components/seo/SignCta";
+import RelatedLinks from "@/components/seo/RelatedLinks";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
@@ -149,6 +150,8 @@ export default async function TrendDetailPage({ params }: { params: Promise<{ sl
         <AdSlot name="content_inline" className="my-10" />
 
         <SignCta signName={sign?.name} signSlug={sign?.slug} />
+
+        <RelatedLinks text={`${article.title} ${article.excerpt || ""} ${article.content || ""}`} />
 
         {related.length > 0 && (
           <section className="mt-12">

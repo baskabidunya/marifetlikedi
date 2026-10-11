@@ -34,7 +34,7 @@ export default async function FeaturedContent() {
                   canOptimizeImage(a.cover_image) ? (
                     <Image
                       src={a.cover_image}
-                      alt=""
+                      alt={a.title}
                       fill
                       sizes="(max-width: 768px) 100vw, 33vw"
                       className="object-cover group-hover:scale-110 transition-transform duration-500"

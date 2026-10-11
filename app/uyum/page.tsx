@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import CompatibilityCalculator from "@/components/compatibility/CompatibilityCalculator";
 import AdSlot from "@/components/ads/AdSlot";
-import { ogMeta } from "@/lib/seo";
+import { ogMeta, breadcrumbLd, jsonLd } from "@/lib/seo";
 import Disclaimer from "@/components/layout/Disclaimer";
 
 export const metadata: Metadata = {
@@ -19,8 +19,14 @@ export const metadata: Metadata = {
 };
 
 export default function UyumPage() {
+  const breadcrumb = breadcrumbLd([
+    { name: "Ana Sayfa", path: "/" },
+    { name: "Burç Uyumu" },
+  ]);
+
   return (
     <main className="top-clear-2 pb-section-gap px-container-padding-mobile md:px-container-padding-desktop max-w-5xl mx-auto">
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(breadcrumb)} />
       <nav className="flex items-center gap-2 text-caption text-outline mb-6 flex-wrap">
         <Link href="/" className="hover:text-on-surface transition-colors">Ana Sayfa</Link>
         <span aria-hidden="true" className="material-symbols-outlined text-xs">chevron_right</span>
