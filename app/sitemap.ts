@@ -22,6 +22,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/gunluk-burc-yorumu",
     "/haftalik-burc-yorumu",
     "/aylik-burc-yorumu",
+    "/kozmik-takvim/merkur-retrosu",
     "/eglenceli-testler",
     "/sss",
     "/gizlilik-politikasi",

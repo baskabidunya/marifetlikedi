@@ -6,6 +6,11 @@ const TURKISH_MONTHS = [
   "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık",
 ];
 
+const MONTH_SLUGS = [
+  "ocak", "subat", "mart", "nisan", "mayis", "haziran",
+  "temmuz", "agustos", "eylul", "ekim", "kasim", "aralik",
+];
+
 const dayHeaders = ["Pzt", "Sal", "Çar", "Per", "Cum", "Cmt", "Paz"];
 
 const legend = [
@@ -47,6 +52,9 @@ export default function CalendarGrid({
 
   const nav = (m: number, y: number) =>
     `/?km=${m}&ky=${y}#celestial-calendar`;
+
+  const eventUrl = (kind: "new" | "full") =>
+    `/kozmik-takvim/${kind === "new" ? "yeni-ay" : "dolunay"}-${MONTH_SLUGS[month]}-${year}`;
 
   return (
     <section className="py-section-gap px-container-padding-mobile md:px-container-padding-desktop max-w-7xl mx-auto relative overflow-hidden" id="celestial-calendar">
@@ -114,13 +122,10 @@ export default function CalendarGrid({
               labelCls = "text-green-300";
             }
 
-            return (
-              <div
-                key={i}
-                className={`h-24 md:h-32 glass rounded-2xl ${borderCls} flex flex-col items-center justify-center gap-1 transition-all`}
-              >
+            const cellContent = (
+              <>
                 <span className={`text-caption font-bold ${labelCls}`}>{day}</span>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
+                {/* eslint-disable-next-line @next/n/no-img-element */}
                 <img
                   src={`/moon/${phase.phaseKey}.svg`}
                   alt={phase.name}
@@ -134,6 +139,27 @@ export default function CalendarGrid({
                     {phase.name}
                   </span>
                 )}
+              </>
+            );
+
+            if (phase?.isKey && (phase.kind === "new" || phase.kind === "full")) {
+              return (
+                <Link
+                  key={i}
+                  href={eventUrl(phase.kind)}
+                  className={`h-24 md:h-32 glass rounded-2xl ${borderCls} flex flex-col items-center justify-center gap-1 transition-all hover:-translate-y-1 hover:opacity-90`}
+                >
+                  {cellContent}
+                </Link>
+              );
+            }
+
+            return (
+              <div
+                key={i}
+                className={`h-24 md:h-32 glass rounded-2xl ${borderCls} flex flex-col items-center justify-center gap-1 transition-all`}
+              >
+                {cellContent}
               </div>
             );
           })}
