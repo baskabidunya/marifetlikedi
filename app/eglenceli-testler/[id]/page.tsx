@@ -66,12 +66,17 @@ export default async function TestPage({ params }: Props) {
       </div>
 
       <section className="mb-8 bg-surface/60 border border-outline/20 rounded-2xl p-6 md:p-8">
-        <h1 className="text-headline-sm font-headline-sm text-on-surface mb-4">
-          {test.title}
-        </h1>
-        <p className="text-body-md text-on-surface-variant leading-relaxed mb-4">
-          {test.description}
-        </p>
+        <div className="text-5xl mb-6 flex items-center gap-4">
+          <span aria-hidden="true" className="shrink-0">{test.icon || "📝"}</span>
+          <div>
+            <h1 className="text-headline-sm font-headline-sm text-on-surface mb-4">
+              {test.title}
+            </h1>
+            <p className="text-body-md text-on-surface-variant leading-relaxed mb-4">
+              {test.description}
+            </p>
+          </div>
+        </div>
       </section>
 
       <TestQuiz test={test} related={related} />
