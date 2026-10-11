@@ -5,12 +5,14 @@ import AdSlot from "@/components/ads/AdSlot";
 import { ogMeta } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Trend İçerikler",
-  description: "En çok okunan ve paylaşılan eğlenceli astroloji rehberleri.",
+  title: "Trend İçerikler | Eğlenceli Astroloji Rehberleri",
+  description:
+    "En çok okunan ve paylaşılan eğlenceli astroloji rehberleri: burçlar, tarot, doğum haritası ve kişilik testleri.",
   alternates: { canonical: "/trend" },
   ...ogMeta({
-    title: "Trend İçerikler",
-    description: "En çok okunan ve paylaşılan eğlenceli astroloji rehberleri.",
+    title: "Trend İçerikler | Eğlenceli Astroloji Rehberleri",
+    description:
+      "En çok okunan ve paylaşılan eğlenceli astroloji rehberleri: burçlar, tarot, doğum haritası ve kişilik testleri.",
     path: "/trend",
   }),
 };
