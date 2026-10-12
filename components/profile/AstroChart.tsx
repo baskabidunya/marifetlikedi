@@ -21,18 +21,18 @@ interface Props {
 }
 
 const ZODIAC_COLORS: Record<ZodiacSign, { bg: string; text: string; border: string }> = {
-  Koç: { bg: "bg-red-900/20", text: "text-red-400", border: "border-red-500/30" },
-  Boğa: { bg: "bg-emerald-900/20", text: "text-emerald-400", border: "border-emerald-500/30" },
-  İkizler: { bg: "bg-amber-900/20", text: "text-amber-400", border: "border-amber-500/30" },
-  Yengeç: { bg: "bg-sky-900/20", text: "text-sky-400", border: "border-sky-500/30" },
-  Aslan: { bg: "bg-orange-900/20", text: "text-orange-400", border: "border-orange-500/30" },
-  Başak: { bg: "bg-lime-900/20", text: "text-lime-400", border: "border-lime-500/30" },
-  Terazi: { bg: "bg-pink-900/20", text: "text-pink-400", border: "border-pink-500/30" },
-  Akrep: { bg: "bg-purple-900/20", text: "text-purple-400", border: "border-purple-500/30" },
-  Yay: { bg: "bg-indigo-900/20", text: "text-indigo-400", border: "border-indigo-500/30" },
-  Oğlak: { bg: "bg-teal-900/20", text: "text-teal-400", border: "border-teal-500/30" },
-  Kova: { bg: "bg-cyan-900/20", text: "text-cyan-400", border: "border-cyan-500/30" },
-  Balık: { bg: "bg-violet-900/20", text: "text-violet-400", border: "border-violet-500/30" },
+  Koç: { bg: "dark:bg-red-900/20 bg-red-500/10", text: "dark:text-red-400 text-red-700", border: "border-red-500/30" },
+  Boğa: { bg: "dark:bg-emerald-900/20 bg-emerald-500/10", text: "dark:text-emerald-400 text-emerald-700", border: "border-emerald-500/30" },
+  İkizler: { bg: "dark:bg-amber-900/20 bg-amber-500/10", text: "dark:text-amber-400 text-amber-700", border: "border-amber-500/30" },
+  Yengeç: { bg: "dark:bg-sky-900/20 bg-sky-500/10", text: "dark:text-sky-400 text-sky-700", border: "border-sky-500/30" },
+  Aslan: { bg: "dark:bg-orange-900/20 bg-orange-500/10", text: "dark:text-orange-400 text-orange-700", border: "border-orange-500/30" },
+  Başak: { bg: "dark:bg-lime-900/20 bg-lime-500/10", text: "dark:text-lime-400 text-lime-700", border: "border-lime-500/30" },
+  Terazi: { bg: "dark:bg-pink-900/20 bg-pink-500/10", text: "dark:text-pink-400 text-pink-700", border: "border-pink-500/30" },
+  Akrep: { bg: "dark:bg-purple-900/20 bg-purple-500/10", text: "dark:text-purple-400 text-purple-700", border: "border-purple-500/30" },
+  Yay: { bg: "dark:bg-indigo-900/20 bg-indigo-500/10", text: "dark:text-indigo-400 text-indigo-700", border: "border-indigo-500/30" },
+  Oğlak: { bg: "dark:bg-teal-900/20 bg-teal-500/10", text: "dark:text-teal-400 text-teal-700", border: "border-teal-500/30" },
+  Kova: { bg: "dark:bg-cyan-900/20 bg-cyan-500/10", text: "dark:text-cyan-400 text-cyan-700", border: "border-cyan-500/30" },
+  Balık: { bg: "dark:bg-violet-900/20 bg-violet-500/10", text: "dark:text-violet-400 text-violet-700", border: "border-violet-500/30" },
 };
 
 const ASPECT_COLORS: Record<string, string> = {
@@ -117,7 +117,7 @@ function PlanetCard({ planet, size = "md", onClick }: { planet: PlanetPosition; 
           <span aria-hidden="true" className={`material-symbols-outlined text-3xl ${clr.text}`}>{isRising ? "arrow_upward" : planet.icon}</span>
         </div>
         <div>
-          <div className="text-caption text-outline mb-0.5">{planet.name}</div>
+          <div className="text-caption text-on-surface-variant mb-0.5">{planet.name}</div>
           <div className={`font-sora text-headline-md font-bold ${clr.text}`}>{planet.sign}</div>
           <div className="font-label-md text-on-surface-variant">
             {planet.degree}° {planet.minute}&apos;
@@ -136,7 +136,7 @@ function PlanetCard({ planet, size = "md", onClick }: { planet: PlanetPosition; 
             <span className={`text-xs font-label-md ${clr.text}`}>{planet.sign}</span>
             {planet.isRetrograde && <span className="text-error text-caption">R</span>}
           </div>
-          <div className="text-caption text-outline">{planet.degree}° {planet.minute}&apos;</div>
+          <div className="text-caption text-on-surface-variant">{planet.degree}° {planet.minute}&apos;</div>
         </div>
         <span className="text-xl opacity-50">{zod.emoji}</span>
       </div>
@@ -152,7 +152,7 @@ export function HousesSection({ chart, setDetail }: { chart: AstroChartType; set
   return (
     <div>
       <h2 className="font-sora text-headline-md text-on-background mb-1 font-bold">Evler</h2>
-      <p className="text-outline text-body-md mb-6">Her ev, hayatının farklı bir temasını temsil eder.</p>
+      <p className="text-on-surface-variant text-body-md mb-6">Her ev, hayatının farklı bir temasını temsil eder.</p>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
         {Object.entries(HOUSE_MEANINGS).map(([num, h]) => {
           const sign = HOUSE_SIGNS[(parseInt(num) - 1) % 12] as ZodiacSign;
@@ -162,7 +162,7 @@ export function HousesSection({ chart, setDetail }: { chart: AstroChartType; set
               className={`rounded-xl p-4 ${clr.bg} border ${clr.border} text-left cursor-pointer hover:bg-on-surface/[0.06] hover:shadow-md transition-all`}>
               <div className="font-sora font-bold text-sm text-on-background">{h.title}</div>
               <div className={`text-xs font-label-md ${clr.text} mt-1`}>{sign}</div>
-              <div className="text-caption text-outline mt-1 line-clamp-2">{h.meaning.slice(0, 80)}...</div>
+              <div className="text-caption text-on-surface-variant mt-1 line-clamp-2">{h.meaning.slice(0, 80)}...</div>
             </button>
           );
         })}
@@ -175,7 +175,7 @@ export function PlanetsSection({ chart, setDetail }: { chart: AstroChartType; se
   return (
     <div className="glass-card rounded-xl p-8">
       <h2 className="font-sora text-headline-md text-on-background mb-1 font-bold">Gezegenler</h2>
-      <p className="text-outline text-body-md mb-6">Doğum anındaki gezegen konumlarının anlamlarını incele.</p>
+      <p className="text-on-surface-variant text-body-md mb-6">Doğum anındaki gezegen konumlarının anlamlarını incele.</p>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
         {chart.planets.map((p) => {
           const zod = ZODIAC_DATA[p.sign];
@@ -188,10 +188,10 @@ export function PlanetsSection({ chart, setDetail }: { chart: AstroChartType; se
                 <span className="font-sora font-bold text-sm text-on-background">{p.name}</span>
                 <span className={`text-xs font-label-md ${clr.text} ml-auto`}>{p.sign}</span>
               </div>
-              <div className="text-caption text-outline leading-relaxed">
+              <div className="text-caption text-on-surface-variant leading-relaxed">
                 {BODY_RULERSHIPS[p.name as keyof typeof BODY_RULERSHIPS]?.split(".")[0]}.
               </div>
-              <div className="text-caption text-outline/50 mt-1.5">{p.degree}°{p.minute}'</div>
+              <div className="text-caption text-on-surface-variant/50 mt-1.5">{p.degree}°{p.minute}'</div>
             </button>
           );
         })}
@@ -204,7 +204,7 @@ export function AspectsSection({ chart, setDetail }: { chart: AstroChartType; se
   return chart.aspects.length > 0 ? (
     <div className="glass-card rounded-xl p-8">
       <h2 className="font-sora text-headline-md text-on-background mb-1 font-bold">Açılar</h2>
-      <p className="text-outline text-body-md mb-6">Gezegenler arası etkileşimler ve enerji akışları</p>
+      <p className="text-on-surface-variant text-body-md mb-6">Gezegenler arası etkileşimler ve enerji akışları</p>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
         {chart.aspects.map((a, i) => {
           const ac = ASPECT_COLORS[a.type] || "border-on-surface/10 bg-on-surface/5";
@@ -216,7 +216,7 @@ export function AspectsSection({ chart, setDetail }: { chart: AstroChartType; se
                 {a.type}
               </span>
               <span className="font-label-md text-on-background">{a.planet2}</span>
-              <span className="text-caption text-outline ml-auto">{a.degree}°</span>
+              <span className="text-caption text-on-surface-variant ml-auto">{a.degree}°</span>
             </button>
           );
         })}
@@ -231,7 +231,7 @@ export function Big3Section({ chart, setDetail }: { chart: AstroChartType; setDe
   return (
     <div>
       <h2 className="font-sora text-headline-md text-on-background mb-1 font-bold">Büyük Üçlü</h2>
-      <p className="text-outline text-body-md mb-6">Haritanın en çok sözü geçen üçlüsü. Kişiliğinin temel taşlarını anlatır.</p>
+      <p className="text-on-surface-variant text-body-md mb-6">Haritanın en çok sözü geçen üçlüsü. Kişiliğinin temel taşlarını anlatır.</p>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <PlanetCard planet={chart.sun} size="lg" onClick={() => setDetail({ type: "planet", planet: chart.sun, house: 2 })} />
         <PlanetCard planet={chart.moon} size="lg" onClick={() => setDetail({ type: "planet", planet: chart.moon, house: 11 })} />
@@ -268,9 +268,9 @@ export default function AstroChart({ birthDate, birthTime, birthPlace, chart: pr
   if (!chart) {
     return (
       <section className="glass-card rounded-xl p-10 mb-section-gap text-center">
-        <span aria-hidden="true" className="material-symbols-outlined text-5xl text-outline/40 mb-4">auto_awesome</span>
+        <span aria-hidden="true" className="material-symbols-outlined text-5xl text-on-surface-variant/40 mb-4">auto_awesome</span>
         <h3 className="font-sora text-headline-md text-on-background font-bold mb-2">Kozmik Haritan Hazır Değil</h3>
-        <p className="text-outline text-body-md max-w-md mx-auto">Doğum bilgilerini profiline ekle, Kozmik Haritan burada görünsün.</p>
+        <p className="text-on-surface-variant text-body-md max-w-md mx-auto">Doğum bilgilerini profiline ekle, Kozmik Haritan burada görünsün.</p>
       </section>
     );
   }
@@ -281,7 +281,7 @@ export default function AstroChart({ birthDate, birthTime, birthPlace, chart: pr
       {/* Element Distribution */}
       <div className="glass-card rounded-xl p-8">
         <h3 className="font-sora text-headline-md text-on-background mb-1 font-bold">Element Dağılımı</h3>
-        <p className="text-outline text-body-md mb-6">En güçlü etkiyi Güneş, Ay ve Yükselen oluşturur (3'er puan). Kişisel gezegenler de ince dokunuşlarını ekler. Böylece toplam 14 puanlık bir uyum puanı ortaya çıkar.</p>
+        <p className="text-on-surface-variant text-body-md mb-6">En güçlü etkiyi Güneş, Ay ve Yükselen oluşturur (3'er puan). Kişisel gezegenler de ince dokunuşlarını ekler. Böylece toplam 14 puanlık bir uyum puanı ortaya çıkar.</p>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {(() => {
             const weights: Record<string, number> = {
@@ -314,10 +314,10 @@ export default function AstroChart({ birthDate, birthTime, birthPlace, chart: pr
             }
             const totalPoints = 14;
             const elements = [
-              { name: "Ateş", points: elementPoints.Ateş, bodies: elementBodies.Ateş, color: "from-orange-400 to-red-500", bg: "bg-orange-900/20", text: "text-orange-400", icon: "local_fire_department" },
-              { name: "Toprak", points: elementPoints.Toprak, bodies: elementBodies.Toprak, color: "from-emerald-400 to-green-600", bg: "bg-emerald-900/20", text: "text-emerald-400", icon: "landscape" },
-              { name: "Hava", points: elementPoints.Hava, bodies: elementBodies.Hava, color: "from-sky-400 to-blue-500", bg: "bg-sky-900/20", text: "text-sky-400", icon: "air" },
-              { name: "Su", points: elementPoints.Su, bodies: elementBodies.Su, color: "from-cyan-400 to-blue-600", bg: "bg-cyan-900/20", text: "text-cyan-400", icon: "water_drop" },
+              { name: "Ateş", points: elementPoints.Ateş, bodies: elementBodies.Ateş, color: "from-orange-400 to-red-500", bg: "dark:bg-orange-900/20 bg-orange-500/10", text: "dark:text-orange-400 text-orange-700", icon: "local_fire_department" },
+              { name: "Toprak", points: elementPoints.Toprak, bodies: elementBodies.Toprak, color: "from-emerald-400 to-green-600", bg: "dark:bg-emerald-900/20 bg-emerald-500/10", text: "dark:text-emerald-400 text-emerald-700", icon: "landscape" },
+              { name: "Hava", points: elementPoints.Hava, bodies: elementBodies.Hava, color: "from-sky-400 to-blue-500", bg: "dark:bg-sky-900/20 bg-sky-500/10", text: "dark:text-sky-400 text-sky-700", icon: "air" },
+              { name: "Su", points: elementPoints.Su, bodies: elementBodies.Su, color: "from-cyan-400 to-blue-600", bg: "dark:bg-cyan-900/20 bg-cyan-500/10", text: "dark:text-cyan-400 text-cyan-700", icon: "water_drop" },
             ];
             return elements.map((el) => {
               const pct = Math.round((el.points / totalPoints) * 100);
@@ -327,12 +327,12 @@ export default function AstroChart({ birthDate, birthTime, birthPlace, chart: pr
                   <span aria-hidden="true" className={`material-symbols-outlined text-3xl ${el.text} mb-2`}>{el.icon}</span>
                   <div className={`font-sora font-bold text-headline-md ${el.text}`}>{pct}%</div>
                   <div className="font-label-md text-on-background mt-1">{el.name}</div>
-                  <div className="text-caption text-outline mt-1">{el.points}/{totalPoints} puan</div>
+                  <div className="text-caption text-on-surface-variant mt-1">{el.points}/{totalPoints} puan</div>
                   <div className="mt-3 w-full h-2 rounded-full bg-on-surface/5 overflow-hidden">
                     <div className={`h-full rounded-full bg-gradient-to-r ${el.color} transition-all`} style={{ width: `${pct}%` }} />
                   </div>
                   {el.bodies.length > 0 && (
-                    <div className="mt-3 text-caption text-outline">
+                    <div className="mt-3 text-caption text-on-surface-variant">
                       {el.bodies.map(b => b.name).join(" · ")}
                     </div>
                   )}

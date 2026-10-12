@@ -145,7 +145,7 @@ export default async function HesaplaToolPage({ params }: { params: Promise<{ to
 
   const breadcrumb = breadcrumbLd([
     { name: "Ana Sayfa", path: "/" },
-    { name: "Hesaplama Araçları", path: "/dogum-haritasi" },
+    { name: "Hesaplama Araçları", path: "/hesaplama-araclari" },
     { name: t.h1 },
   ]);
 
@@ -167,7 +167,7 @@ export default async function HesaplaToolPage({ params }: { params: Promise<{ to
       <nav className="flex items-center gap-2 text-caption text-outline mb-6 flex-wrap">
         <Link href="/" className="hover:text-on-surface transition-colors">Ana Sayfa</Link>
         <span aria-hidden="true" className="material-symbols-outlined text-xs">chevron_right</span>
-        <Link href="/dogum-haritasi" className="hover:text-on-surface transition-colors">Hesaplama Araçları</Link>
+        <Link href="/hesaplama-araclari" className="hover:text-on-surface transition-colors">Hesaplama Araçları</Link>
         <span aria-hidden="true" className="material-symbols-outlined text-xs">chevron_right</span>
         <span className="text-on-surface-variant">{t.h1}</span>
       </nav>

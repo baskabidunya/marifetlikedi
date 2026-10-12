@@ -33,7 +33,7 @@ const ELEMENT_COLORS: Record<string, string> = {
   Ateş: "text-tertiary",
   Toprak: "text-secondary",
   Hava: "text-primary",
-  Su: "text-blue-400",
+  Su: "dark:text-blue-400 text-blue-700",
 };
 
 const ELEMENT_BG: Record<string, string> = {

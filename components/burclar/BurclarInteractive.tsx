@@ -38,7 +38,7 @@ const ELEMENT_COLORS: Record<string, string> = {
   Ateş: "text-tertiary",
   Toprak: "text-secondary",
   Hava: "text-primary",
-  Su: "text-blue-400",
+  Su: "dark:text-blue-400 text-blue-700",
 };
 
 const ELEMENT_ICONS: Record<string, string> = {
@@ -215,12 +215,12 @@ export default function BurclarInteractive() {
                   </div>
                   <div className="space-y-3">
                     <div className="flex items-center gap-2">
-                      <span aria-hidden="true" className="material-symbols-outlined text-sm" style={{ color: ELEMENT_COLORS[ZODIAC_DATA[sign1].element].replace("text-", "") }}>
+                      <span aria-hidden="true" className={`material-symbols-outlined text-sm ${ELEMENT_COLORS[ZODIAC_DATA[sign1].element]}`}>
                         {ELEMENT_ICONS[ZODIAC_DATA[sign1].element]}
                       </span>
                       <span className="text-caption text-on-surface-variant">{ZODIAC_DATA[sign1].element}</span>
                       <span className="text-outline">×</span>
-                      <span aria-hidden="true" className="material-symbols-outlined text-sm" style={{ color: ELEMENT_COLORS[ZODIAC_DATA[sign2].element].replace("text-", "") }}>
+                      <span aria-hidden="true" className={`material-symbols-outlined text-sm ${ELEMENT_COLORS[ZODIAC_DATA[sign2].element]}`}>
                         {ELEMENT_ICONS[ZODIAC_DATA[sign2].element]}
                       </span>
                       <span className="text-caption text-on-surface-variant">{ZODIAC_DATA[sign2].element}</span>

@@ -81,6 +81,10 @@ export default async function TestPage({ params }: Props) {
 
       <TestQuiz test={test} related={related} />
 
+      <p className="mt-8 p-4 rounded-2xl border border-on-surface/10 bg-surface-container-low/50 text-caption text-on-surface-variant leading-relaxed text-center" role="note">
+        Bu test eğlence ve kişisel farkındalık amacıyla hazırlanmıştır; bilimsel bir kişilik değerlendirmesi değildir.
+      </p>
+
       <AdSlot
         name="static_page"
         className="my-12 max-w-3xl mx-auto"

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import AdSlot from "@/components/ads/AdSlot";
 
 type SpreadType = "daily" | "three" | "love" | "career";
@@ -37,9 +37,21 @@ export default function TarotTable({ deck }: { deck: CardData[] }) {
 
   const activeSpreadData = spreads.find((s) => s.id === activeSpread);
   const allSelected = activeSpreadData ? selectedIndices.length >= activeSpreadData.cardCount : false;
+  const autoOpenedRef = useRef(false);
+
+  // Gerekli kartlar seçilince açılımı otomatik aç (kısa bir gecikmeyle,
+  // son seçimin onay animasyonu görülebilsin). Buton yedek olarak kalır.
+  useEffect(() => {
+    if (allSelected && !showModal && !autoOpenedRef.current) {
+      autoOpenedRef.current = true;
+      const t = setTimeout(() => setShowModal(true), 700);
+      return () => clearTimeout(t);
+    }
+  }, [allSelected, showModal]);
 
   function selectSpread(type: SpreadType) {
     if (deck.length === 0) return;
+    autoOpenedRef.current = false;
     setActiveSpread(type);
     setSelectedIndices([]);
     setShuffledDeck(shuffle(deck));
@@ -54,6 +66,7 @@ export default function TarotTable({ deck }: { deck: CardData[] }) {
   }
 
   function resetAll() {
+    autoOpenedRef.current = false;
     setActiveSpread(null);
     setSelectedIndices([]);
     setShuffledDeck([]);
@@ -120,6 +133,7 @@ export default function TarotTable({ deck }: { deck: CardData[] }) {
             <p className="text-sm text-on-surface-variant">
               Lütfen {activeSpreadData.cardCount} kart seçin
               {!allSelected && selectedIndices.length > 0 && ` — ${activeSpreadData.cardCount - selectedIndices.length} kart kaldı`}
+              {allSelected && " — açılımınız açılıyor..."}
             </p>
           </div>
         )}
