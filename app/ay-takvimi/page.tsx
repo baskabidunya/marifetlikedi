@@ -45,13 +45,20 @@ export default function AyTakvimiPage() {
           </h2>
           <p className="text-body-lg font-body-lg text-on-surface-variant leading-relaxed">
             Ay durakları, Ay'ın gökyüzündeki aylık yolculuğunun 28 eşit parçaya bölünmüş
-            halidir. Her durak yaklaşık 12°51' genişliğindedir ve Ay her birinde ortalama
+            halidir. Her durak yaklaşık 12°51'             genişliğindedir ve Ay her birinde ortalama
             bir gün kalır. Binlerce yıllık bu sistemde her durağın kendine özgü bir
             karakteri vardır; yukarıdaki takvim, her gün öğle saatinde Ay'ın hangi
             durakta olduğunu ve gün içinde durak değişimi olup olmadığını gösterir.
           </p>
         </div>
       </section>
+
+      <div className="rounded-2xl border border-tertiary/30 bg-tertiary/10 p-4 md:p-5 max-w-3xl mx-auto mb-8 text-body-sm text-on-surface-variant leading-relaxed">
+        <span aria-hidden="true" className="material-symbols-outlined text-tertiary text-base align-middle mr-2">info</span>
+        Buradaki notlar genel ve kısa takvim özetleridir. KENDİ HARİTANIZA ÖZEL ÖNGÖRÜLER için doğum
+        haritası analizi gereklidir; bu sayfa profesyonel danışmanlık yerine geçmez, eğlence ve
+        bilgilendirme amaçlıdır.
+      </div>
 
       <AdSlot name="content_inline" className="my-12 max-w-5xl mx-auto" />
     </main>

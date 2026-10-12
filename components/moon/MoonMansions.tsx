@@ -204,14 +204,6 @@ export default function MoonMansions() {
         ))}
       </div>
 
-      {/* Bilgi kutusu */}
-      <div className="rounded-2xl border border-tertiary/30 bg-tertiary/10 p-4 md:p-5 mb-8 text-body-sm text-on-surface-variant leading-relaxed">
-        <span aria-hidden="true" className="material-symbols-outlined text-tertiary text-base align-middle mr-2">info</span>
-        Buradaki notlar genel ve kısa takvim özetleridir. KENDİ HARİTANIZA ÖZEL ÖNGÖRÜLER için doğum
-        haritası analizi gereklidir; bu sayfa profesyonel danışmanlık yerine geçmez, eğlence ve
-        bilgilendirme amaçlıdır.
-      </div>
-
       {/* Veri tablosu */}
       <div className="glass rounded-3xl overflow-hidden border border-on-surface/10">
         <div className="overflow-x-auto">
