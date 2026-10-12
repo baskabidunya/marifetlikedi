@@ -248,6 +248,11 @@ export default function YeniAyDolunayTakvimiPage() {
       <section className="mb-section-gap">
         <h3 className="text-headline-lg font-headline-lg text-primary mb-6">Keşfetmeye Devam Et</h3>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <Link href="/retro-takvimi" className="glass-card p-6 rounded-3xl text-center hover:-translate-y-1 transition-all">
+            <span className="text-3xl mb-2 block">♄</span>
+            <p className="text-label-md font-label-md text-on-surface">Retro Takvimi</p>
+            <p className="text-caption text-outline mt-1">Tüm gezegenler</p>
+          </Link>
           <Link href="/kozmik-takvim/merkur-retrosu" className="glass-card p-6 rounded-3xl text-center hover:-translate-y-1 transition-all">
             <span className="text-3xl mb-2 block">☿</span>
             <p className="text-label-md font-label-md text-on-surface">Merkür Retrosu</p>
