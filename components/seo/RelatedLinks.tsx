@@ -39,7 +39,7 @@ export default function RelatedLinks({ text }: { text: string }) {
   return (
     <section className="mt-12">
       <h2 className="text-headline-md text-primary font-headline-md mb-6 flex items-center gap-2">
-        <span aria-hidden="true" className="material-symbols-outlined text-lg">link</span>
+        <span aria-hidden="true" className="material-symbols-outlined text-lg">auto_stories</span>
         İlgili İçerikler
       </h2>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">

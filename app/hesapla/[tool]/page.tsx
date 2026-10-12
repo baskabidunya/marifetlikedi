@@ -52,7 +52,7 @@ const TOOLS: Record<string, ToolContent> = {
     title: "Ay Burcu Hesaplama | Ay Burcu Ne Anlama Gelir?",
     description:
       "Ay burcunu ücretsiz hesapla: duygusal dünyan, içsel ihtiyaçların ve ruhsal dengeni anla. Ay burcu nasıl hesaplanır, ne anlama gelir öğren.",
-    h1: "Ay Burçu Hesaplama",
+    h1: "Ay Burcu Hesaplama",
     icon: "dark_mode",
     focus: "moon",
     intro:
@@ -72,18 +72,18 @@ const TOOLS: Record<string, ToolContent> = {
   },
   "venus-burcu": {
     slug: "venus-burcu",
-    title: "Venüs Burçu Hesaplama | Aşkta Ne Anlatır?",
+    title: "Venüs Burcu Hesaplama | Aşkta Ne Anlatır?",
     description:
       "Venüs burcunu ücretsiz hesapla: aşkta ne anlattığını, sevgi dilini ve ilişki tarzını öğren. Venüs burcu nasıl hesaplanır, aşk hayatını nasıl etkiler?",
-    h1: "Venüs Burçu Hesaplama",
+    h1: "Venüs Burcu Hesaplama",
     icon: "female",
     focus: "venus",
     intro:
       "Venüs burcu, doğum anında Venüs gezegeninin bulunduğu zodyak konumudur ve aşk hayatındaki en belirleyici göstergelerden biridir. Venüs sevgi dilinizi, romantik beklentilerinizi ve ilişkilerinizde neyin sizi mutlu ettiğini gösterir. Doğum bilgilerinizi girerek Venüs burcunuzu ücretsiz hesaplayın.",
-    howTitle: "Venüs Burçu Nasıl Hesaplanır?",
+    howTitle: "Venüs Burcu Nasıl Hesaplanır?",
     howText:
       "Venüs burcu, doğum tarihin ve doğum saatin üzerinden hesaplanır. Doğum anında Venüs'ün zodyakta bulunduğu burc, kişinin aşk dilini ve romantik doğasını gösterir. Hesaplama, astronomik ephemeris tablolarıyla Venüs'ün konumunu zar derecesine kadar belirler ve bunun hangi burca denk geldiğini tespit eder. Venüs güneşe yakın bir gezegen olduğundan, Venüs burcu genellikle güneş burcınızla aynı ya da bitişik bir burç olabilir. Burcumuzdaki hesaplama motoru, aynı astronomik verileri kullanarak Venüs burcunuzu hesaplar. Venüs'ün yörüngesi boyunca burç değişimleri yavaştır, bu nedenle doğum tarihi genelde Venüs burcu için yeterlidir; ancak güneş ile Venüs'ün aynı burca girdiği dönemlerde (örneğin güneş Dışarıda gibi kritik dönemler) saat bilgisi belirleyici olabilir.",
-    meaningTitle: "Venüs Burçu Aşkta Ne Anlatır?",
+    meaningTitle: "Venüs Burcu Aşkta Ne Anlatır?",
     meaningText:
       "Venüs burcu, aşk hayatının haritasıdır ve romantik ilişkilerinizin doğasını, sevgi ifade biçiminizi ve partnerinizden ne beklediğinizi gösterir. Venüs, aşkın ve güzelliğin gezegenidir; hangi burcuda olduğu, sevgiyi nasıl verdiğinizi ve aldığınızı yansıtır. Venüs burcu Koç'ta olan bir kişi aşkta çıkarcı ve açıktan ifade ederken, Terazi'de olan bir kişi uyum ve denge arar. Venüs aynı zamanda maddi konfor ve estetik zevkleri de yönetir; neyin güzel olduğuna dair algınızı ve romantik hayatınızda kalite beklentilerinizi etkiler. Astrolojide Venüs, erkek ve kadın arasındaki ceket dengesini de temsil eder. Venüs burcunuzu öğrenmek, neden bazı kişilerle anında bağlandığınızı ve bazılarıyla neden yıldızlarınızın uyuşmadığını anlamanızı sağlar. Uyum analizinde Venüs konumu, ilişkisel uyumun temel göstergelerinden biridir.",
     faqs: [

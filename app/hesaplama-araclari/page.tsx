@@ -104,7 +104,7 @@ export default function HesaplamaAraclariPage() {
 
       <div className="text-center mb-10">
         <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass text-tertiary border border-tertiary/20 mb-4">
-          <span aria-hidden="true" className="material-symbols-outlined text-sm">calculate</span>
+          <span aria-hidden="true" className="material-symbols-outlined text-sm">settings</span>
           <span className="text-label-md">Ücretsiz Astroloji Araçları</span>
         </span>
         <h1 className="font-sora text-display-lg-mobile md:text-display-lg text-on-surface font-bold">
