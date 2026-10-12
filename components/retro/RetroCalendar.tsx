@@ -47,6 +47,7 @@ export default function RetroCalendar() {
   const [year, setYear] = useState(() => Math.min(2030, Math.max(2025, thisYear)));
   const [winStart, setWinStart] = useState(2025);
   const [filter, setFilter] = useState<string>("all");
+  const [showDirect, setShowDirect] = useState(true);
 
   const periods = useMemo(() => retroPeriods(year), [year]);
 
@@ -108,17 +109,31 @@ export default function RetroCalendar() {
             ))}
           </div>
         )}
-        <div className="space-y-2 pt-4 border-t border-on-surface/10">
-          {status.direct.map(({ planet, next }) => (
-            <p key={planet.key} className="text-body-sm text-on-surface-variant">
-              <span className="text-xl align-middle mr-1">{planet.symbol}</span> {planet.name} şu an direkt.
-              {next ? (
-                <> Bir sonraki {planet.name} retrosu <strong className="text-on-surface">{fmtDate(next.start)} - {fmtDate(next.end)}</strong> arasında.</>
-              ) : (
-                <> Yakın dönemde retro öngörülmüyor.</>
-              )}
-            </p>
-          ))}
+        <div className="pt-4 border-t border-on-surface/10">
+          <button
+            onClick={() => setShowDirect((v) => !v)}
+            aria-expanded={showDirect}
+            className="w-full flex items-center justify-between py-1 text-label-md text-on-surface font-semibold cursor-pointer"
+          >
+            <span>Direkt Hareket Edenler ({status.direct.length})</span>
+            <span aria-hidden="true" className={`material-symbols-outlined transition-transform ${showDirect ? "rotate-180" : ""}`}>
+              expand_more
+            </span>
+          </button>
+          {showDirect && (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-1.5 mt-2">
+              {status.direct.map(({ planet, next }) => (
+                <p key={planet.key} className="text-caption text-on-surface-variant leading-snug">
+                  <span className="text-base align-middle mr-1">{planet.symbol}</span> {planet.name} şu an direkt.
+                  {next ? (
+                    <> Sonraki: <strong className="text-on-surface-variant">{fmtDate(next.start)} - {fmtDate(next.end)}</strong></>
+                  ) : (
+                    <> Yakın dönemde retro öngörülmüyor.</>
+                  )}
+                </p>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
