@@ -6,6 +6,7 @@ import { calculateBirthChart, type BirthResult } from "@/app/dogum-haritasi/acti
 import { signSlug } from "@/lib/sign-slugs";
 import { ZODIAC_UI, elementBadgeClass, SIGN_DESCRIPTIONS, RISING_DESCRIPTIONS } from "@/lib/zodiac-ui";
 import { TURKISH_CITIES } from "@/lib/cities";
+import { useAuthUser } from "@/components/layout/AuthProvider";
 
 interface CardDef {
   key: string;
@@ -18,6 +19,7 @@ interface CardDef {
 export default function BirthChartCalculator({ focus }: { focus?: string }) {
   const [state, action, pending] = useActionState(calculateBirthChart, undefined);
   const result = state?.result as BirthResult | undefined;
+  const authUser = useAuthUser();
 
   const cards: CardDef[] = result
     ? [
@@ -119,6 +121,33 @@ export default function BirthChartCalculator({ focus }: { focus?: string }) {
               );
             })}
           </div>
+          {authUser?.loggedIn !== true && (
+            <div className="glass p-6 md:p-8 rounded-3xl inner-glow border border-primary/20 text-center space-y-4">
+              <span aria-hidden="true" className="material-symbols-outlined text-4xl text-primary">auto_awesome</span>
+              <h3 className="font-sora text-headline-sm md:text-headline-md text-on-surface font-bold">
+                Detaylı Analiz İçin Üye Olun
+              </h3>
+              <p className="text-body-md text-on-surface-variant max-w-xl mx-auto">
+                Ücretsiz üyelikle doğum haritanı kaydet, günlük burç yorumlarını ve
+                gezegen geçişlerini takip et, uyum analizlerinin tamamını aç.
+              </p>
+              <div className="flex flex-wrap justify-center gap-3">
+                <Link
+                  href="/kayit"
+                  className="px-8 py-3 rounded-xl cta-glow text-on-primary font-bold inline-flex items-center gap-2"
+                >
+                  <span aria-hidden="true" className="material-symbols-outlined">person_add</span>
+                  Ücretsiz Üye Ol
+                </Link>
+                <Link
+                  href="/giris"
+                  className="px-8 py-3 rounded-xl glass text-on-surface font-label-md border border-on-surface/10 hover:bg-on-surface/10 inline-flex items-center gap-2"
+                >
+                  Giriş Yap
+                </Link>
+              </div>
+            </div>
+          )}
         </div>
       )}
     </div>
