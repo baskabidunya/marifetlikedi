@@ -83,7 +83,57 @@ export default function RetroCalendar() {
       {/* 1. Sekmeler */}
       <CalendarTabs active="retro" />
 
-      {/* 2. Anlık durum kutusu */}
+      {/* 2. Yıl seçim alanı */}
+      <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6 mb-6">
+        <div>
+          <p className="text-caption font-label-md tracking-[0.25em] text-tertiary mb-2">GEZEGEN DÖNGÜLERİ</p>
+          <h1 className="font-sora text-display-lg-mobile md:text-display-lg text-on-surface font-bold">
+            Retro Takvimi
+          </h1>
+          <p className="text-body-md text-on-surface-variant max-w-2xl mt-3">
+            Merkür, Venüs, Mars, Jüpiter, Satürn, Uranüs, Neptün ve Plüton retrolarının başlangıç ve direkt hareket tarihleri.
+          </p>
+        </div>
+        <div className="shrink-0">
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => shiftWin(-1)}
+              disabled={winStart <= MIN_YEAR}
+              aria-label="Önceki yıllar"
+              className="w-10 h-10 rounded-xl glass border border-on-surface/10 text-on-surface-variant hover:text-on-surface disabled:opacity-30 transition-all cursor-pointer flex items-center justify-center"
+            >
+              <span aria-hidden="true" className="material-symbols-outlined">chevron_left</span>
+            </button>
+            <div className="flex gap-2" role="group" aria-label="Yıl seçimi">
+              {visibleYears.map((y) => (
+                <button
+                  key={y}
+                  onClick={() => setYear(y)}
+                  aria-pressed={year === y}
+                  className={`px-4 py-2.5 rounded-xl font-label-md transition-all cursor-pointer ${
+                    year === y
+                      ? "cta-glow text-on-primary font-bold"
+                      : "glass text-on-surface-variant hover:text-on-surface border border-on-surface/10"
+                  }`}
+                >
+                  {y}
+                </button>
+              ))}
+            </div>
+            <button
+              onClick={() => shiftWin(1)}
+              disabled={winStart + 5 >= MAX_YEAR}
+              aria-label="Sonraki yıllar"
+              className="w-10 h-10 rounded-xl glass border border-on-surface/10 text-on-surface-variant hover:text-on-surface disabled:opacity-30 transition-all cursor-pointer flex items-center justify-center"
+            >
+              <span aria-hidden="true" className="material-symbols-outlined">chevron_right</span>
+            </button>
+          </div>
+          <p className="text-caption text-outline text-right mt-2">1900 - 2050</p>
+        </div>
+      </div>
+
+      {/* 3. Anlık durum kutusu */}
       <section className="glass-card p-6 md:p-8 rounded-3xl border border-primary/20 mb-10">
         <h2 className="font-sora text-headline-sm md:text-headline-md text-on-surface font-bold mb-1">
           Bugün Hangi Gezegenler Retro?
@@ -138,56 +188,6 @@ export default function RetroCalendar() {
           )}
         </div>
       </section>
-
-      {/* 3. Yıl seçim alanı */}
-      <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6 mb-6">
-        <div>
-          <p className="text-caption font-label-md tracking-[0.25em] text-tertiary mb-2">GEZEGEN DÖNGÜLERİ</p>
-          <h1 className="font-sora text-display-lg-mobile md:text-display-lg text-on-surface font-bold">
-            Retro Takvimi
-          </h1>
-          <p className="text-body-md text-on-surface-variant max-w-2xl mt-3">
-            Merkür, Venüs, Mars, Jüpiter, Satürn, Uranüs, Neptün ve Plüton retrolarının başlangıç ve direkt hareket tarihleri.
-          </p>
-        </div>
-        <div className="shrink-0">
-          <div className="flex items-center gap-2">
-            <button
-              onClick={() => shiftWin(-1)}
-              disabled={winStart <= MIN_YEAR}
-              aria-label="Önceki yıllar"
-              className="w-10 h-10 rounded-xl glass border border-on-surface/10 text-on-surface-variant hover:text-on-surface disabled:opacity-30 transition-all cursor-pointer flex items-center justify-center"
-            >
-              <span aria-hidden="true" className="material-symbols-outlined">chevron_left</span>
-            </button>
-            <div className="flex gap-2" role="group" aria-label="Yıl seçimi">
-              {visibleYears.map((y) => (
-                <button
-                  key={y}
-                  onClick={() => setYear(y)}
-                  aria-pressed={year === y}
-                  className={`px-4 py-2.5 rounded-xl font-label-md transition-all cursor-pointer ${
-                    year === y
-                      ? "cta-glow text-on-primary font-bold"
-                      : "glass text-on-surface-variant hover:text-on-surface border border-on-surface/10"
-                  }`}
-                >
-                  {y}
-                </button>
-              ))}
-            </div>
-            <button
-              onClick={() => shiftWin(1)}
-              disabled={winStart + 5 >= MAX_YEAR}
-              aria-label="Sonraki yıllar"
-              className="w-10 h-10 rounded-xl glass border border-on-surface/10 text-on-surface-variant hover:text-on-surface disabled:opacity-30 transition-all cursor-pointer flex items-center justify-center"
-            >
-              <span aria-hidden="true" className="material-symbols-outlined">chevron_right</span>
-            </button>
-          </div>
-          <p className="text-caption text-outline text-right mt-2">1900 - 2050</p>
-        </div>
-      </div>
 
       {/* 4. Gezegen filtreleri */}
       <div className="flex flex-wrap gap-2 mb-8" role="group" aria-label="Gezegen filtresi">
