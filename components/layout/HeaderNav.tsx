@@ -58,12 +58,12 @@ export default function HeaderNav({ links }: { links: NavLink[] }) {
       </button>
 
       {/* Desktop nav */}
-      <div className="hidden xl:flex gap-6 items-center">
+      <div className="hidden xl:flex gap-4 2xl:gap-5 items-center ml-6">
         {navLinks.map((link) => (
           <Link
             key={link.id}
             href={link.url}
-            className={`relative text-body-md font-medium whitespace-nowrap transition-colors ${
+            className={`relative text-sm font-medium whitespace-nowrap transition-colors ${
               isActive(link.url)
                 ? "text-on-surface"
                 : "text-on-surface-variant hover:text-on-surface"
