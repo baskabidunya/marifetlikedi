@@ -104,9 +104,11 @@ export default function RetroCalendar() {
               </strong>{" "}
               retro hareket ediyor.
             </p>
-            {status.active.map((p) => (
-              <ActiveRow key={p.planet.key} period={p} now={now} />
-            ))}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+              {status.active.map((p) => (
+                <ActiveRow key={p.planet.key} period={p} now={now} />
+              ))}
+            </div>
           </div>
         )}
         <div className="pt-4 border-t border-on-surface/10">
