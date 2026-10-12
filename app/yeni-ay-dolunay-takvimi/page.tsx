@@ -3,7 +3,6 @@ import Link from "next/link";
 import { computeMonthMoonPhases, TURKISH_MONTHS } from "@/lib/moon-phases";
 import { ogMeta, breadcrumbLd, jsonLd } from "@/lib/seo";
 import AdSlot from "@/components/ads/AdSlot";
-import Disclaimer from "@/components/layout/Disclaimer";
 
 export const metadata: Metadata = {
   title: "Yeni Ay ve Dolunay Takvimi | Ay Fazları ve Etkileri",
@@ -273,8 +272,6 @@ export default function YeniAyDolunayTakvimiPage() {
       </section>
 
       <AdSlot name="blog_listing" format="fluid" className="my-section-gap" />
-
-      <Disclaimer variant="box" />
     </main>
   );
 }

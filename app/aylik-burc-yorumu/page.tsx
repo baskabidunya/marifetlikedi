@@ -6,7 +6,6 @@ import { TURKISH_MONTHS } from "@/lib/moon-phases";
 import { ogMeta, breadcrumbLd, jsonLd } from "@/lib/seo";
 import { getSignContentAll } from "@/lib/public-queries";
 import AdSlot from "@/components/ads/AdSlot";
-import Disclaimer from "@/components/layout/Disclaimer";
 
 export const metadata: Metadata = {
   title: "Aylık Burç Yorumları | 12 Burç İçin Aylık Fal",
@@ -120,8 +119,6 @@ export default async function AylikBurcYorumuPage() {
       </section>
 
       <AdSlot name="blog_listing" format="fluid" className="my-section-gap" />
-
-      <Disclaimer variant="box" />
     </main>
   );
 }

@@ -5,7 +5,6 @@ import { signSlug } from "@/lib/sign-slugs";
 import { ogMeta, breadcrumbLd, jsonLd } from "@/lib/seo";
 import { getSignContentAll } from "@/lib/public-queries";
 import AdSlot from "@/components/ads/AdSlot";
-import Disclaimer from "@/components/layout/Disclaimer";
 
 export const metadata: Metadata = {
   title: "Günlük Burç Yorumları | 12 Burç İçin Günlük Fal",
@@ -98,8 +97,6 @@ export default async function GunlukBurcYorumuIndexPage() {
       </div>
 
       <AdSlot name="blog_listing" format="fluid" className="my-section-gap" />
-
-      <Disclaimer variant="box" />
     </main>
   );
 }

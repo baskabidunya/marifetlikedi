@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ogMeta, breadcrumbLd, jsonLd } from "@/lib/seo";
 import AdSlot from "@/components/ads/AdSlot";
-import Disclaimer from "@/components/layout/Disclaimer";
 
 export const metadata: Metadata = {
   title: "Hesaplama Araçları | Doğum Haritası, Burç ve Uyum",
@@ -163,8 +162,6 @@ export default function HesaplamaAraclariPage() {
       </section>
 
       <AdSlot name="content_inline" className="my-12 max-w-5xl mx-auto" />
-
-      <Disclaimer variant="box" />
     </main>
   );
 }

@@ -4,7 +4,6 @@ import { notFound } from "next/navigation";
 import { computeMonthMoonPhases, TURKISH_MONTHS } from "@/lib/moon-phases";
 import { ogMeta, breadcrumbLd, jsonLd } from "@/lib/seo";
 import AdSlot from "@/components/ads/AdSlot";
-import Disclaimer from "@/components/layout/Disclaimer";
 
 const MONTH_SLUGS = [
   "ocak", "subat", "mart", "nisan", "mayis", "haziran",
@@ -229,8 +228,6 @@ export default async function KozmikTakvimEventPage({ params }: { params: Promis
       </section>
 
       <AdSlot name="blog_listing" format="fluid" className="my-section-gap" />
-
-      <Disclaimer variant="box" />
     </main>
   );
 }

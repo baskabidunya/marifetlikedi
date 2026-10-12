@@ -7,7 +7,6 @@ import { TURKISH_MONTHS } from "@/lib/moon-phases";
 import { ogMeta, breadcrumbLd, jsonLd } from "@/lib/seo";
 import { getSignContentAll } from "@/lib/public-queries";
 import AdSlot from "@/components/ads/AdSlot";
-import Disclaimer from "@/components/layout/Disclaimer";
 
 const TURKISH_DAYS = ["Pazar", "Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi"];
 
@@ -174,8 +173,6 @@ export default async function GunlukBurcYorumuPage({ params }: { params: Promise
       </div>
 
       <AdSlot name="blog_listing" format="fluid" className="my-section-gap" />
-
-      <Disclaimer variant="box" />
     </main>
   );
 }

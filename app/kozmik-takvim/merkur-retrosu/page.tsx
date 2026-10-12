@@ -4,7 +4,6 @@ import * as Astronomy from "astronomy-engine";
 import { TURKISH_MONTHS } from "@/lib/moon-phases";
 import { ogMeta, breadcrumbLd, jsonLd } from "@/lib/seo";
 import AdSlot from "@/components/ads/AdSlot";
-import Disclaimer from "@/components/layout/Disclaimer";
 
 export const metadata: Metadata = {
   title: "Merkür Retrosu Ne zaman | Merkür Retrosu Burçlara Etkisi",
@@ -229,8 +228,6 @@ export default async function MerkurRetrosuPage() {
       </section>
 
       <AdSlot name="blog_listing" format="fluid" className="my-section-gap" />
-
-      <Disclaimer variant="box" />
     </main>
   );
 }

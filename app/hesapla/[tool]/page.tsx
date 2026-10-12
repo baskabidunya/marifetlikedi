@@ -4,7 +4,6 @@ import { notFound } from "next/navigation";
 import BirthChartCalculator from "@/components/birthchart/BirthChartCalculator";
 import CompatibilityCalculator from "@/components/compatibility/CompatibilityCalculator";
 import AdSlot from "@/components/ads/AdSlot";
-import Disclaimer from "@/components/layout/Disclaimer";
 import { ogMeta, breadcrumbLd, jsonLd } from "@/lib/seo";
 
 interface ToolContent {
@@ -261,8 +260,6 @@ export default async function HesaplaToolPage({ params }: { params: Promise<{ to
       </section>
 
       <AdSlot name="content_inline" className="my-12 max-w-5xl mx-auto" />
-
-      <Disclaimer variant="box" />
     </main>
   );
 }

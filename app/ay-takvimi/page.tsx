@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import MoonMansions from "@/components/moon/MoonMansions";
 import AdSlot from "@/components/ads/AdSlot";
-import Disclaimer from "@/components/layout/Disclaimer";
 import { ogMeta, breadcrumbLd, jsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = {
@@ -52,8 +51,6 @@ export default function AyTakvimiPage() {
       </section>
 
       <AdSlot name="content_inline" className="my-12 max-w-5xl mx-auto" />
-
-      <Disclaimer variant="box" />
     </main>
   );
 }
