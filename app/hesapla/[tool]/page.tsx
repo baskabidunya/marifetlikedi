@@ -206,7 +206,7 @@ export default async function HesaplaToolPage({ params }: { params: Promise<{ to
         </p>
       </div>
 
-      <section className="mb-section-gap max-w-3xl mx-auto space-y-10">
+      <section className="mb-section-gap max-w-3xl mx-auto space-y-8">
         <div>
           <h2 className="text-headline-lg font-headline-lg text-primary mb-4">
             {t.howTitle}

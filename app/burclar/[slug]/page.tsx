@@ -275,7 +275,7 @@ export default async function Page({
         </div>
 
         {/* Geniş İçerik — Güneş Burcu Analizi */}
-        <section className="mb-section-gap max-w-3xl mx-auto space-y-10">
+        <section className="mb-section-gap max-w-3xl mx-auto space-y-8">
           <div>
             <h2 className="text-headline-lg font-headline-lg text-primary mb-4">
               {s} Burcu Genel Karakteristik ve Temel Dinamikler

@@ -51,19 +51,19 @@ export default function HeaderNav({ links }: { links: NavLink[] }) {
       {/* Mobile toggle */}
       <button
         onClick={() => setOpen(true)}
-        className="md:hidden flex items-center justify-center w-11 h-11 rounded-xl bg-surface-container border border-on-surface/10 text-on-surface"
+        className="xl:hidden flex items-center justify-center w-11 h-11 rounded-xl bg-surface-container border border-on-surface/10 text-on-surface"
         aria-label="Menüyü aç"
       >
         <span aria-hidden="true" className="material-symbols-outlined">menu</span>
       </button>
 
       {/* Desktop nav */}
-      <div className="hidden md:flex gap-8 items-center">
+      <div className="hidden xl:flex gap-6 items-center">
         {navLinks.map((link) => (
           <Link
             key={link.id}
             href={link.url}
-            className={`relative text-body-md font-medium transition-colors ${
+            className={`relative text-body-md font-medium whitespace-nowrap transition-colors ${
               isActive(link.url)
                 ? "text-on-surface"
                 : "text-on-surface-variant hover:text-on-surface"
