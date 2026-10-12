@@ -154,11 +154,12 @@ export default function RetroCalendar() {
               </strong>{" "}
               retro hareket ediyor.
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
               {status.active.map((p) => (
                 <ActiveRow key={p.planet.key} period={p} now={now} />
               ))}
             </div>
+            <CombinedAdvice active={status.active} />
           </div>
         )}
         <div className="pt-4 border-t border-on-surface/10">
@@ -269,8 +270,25 @@ export default function RetroCalendar() {
   );
 }
 
-function ActiveRow({ period, now }: { period: RetroPeriod; now: Date }) {
-  const left = Math.max(0, Math.ceil((period.end.getTime() - now.getTime()) / 86400000));
+function CombinedAdvice({ active }: { active: RetroPeriod[] }) {
+  const frags = active.map((p) => p.planet.advice).filter(Boolean) as string[];
+  if (frags.length === 0) return null;
+  const body =
+    frags.length === 1
+      ? `${frags[0][0].toLocaleUpperCase("tr")}${frags[0].slice(1)}.`
+      : `${frags.slice(0, -1).join("; ")}; ve ${frags[frags.length - 1]}.`;
+  return (
+    <div className="mt-3 p-4 rounded-2xl bg-tertiary/10 border border-tertiary/25 flex items-start gap-3">
+      <span aria-hidden="true" className="material-symbols-outlined text-tertiary shrink-0 mt-0.5">auto_awesome</span>
+      <p className="text-body-sm text-on-surface-variant leading-relaxed">
+        <strong className="text-on-surface">Günün ortak tavsiyesi: </strong>
+        {body}
+      </p>
+    </div>
+  );
+}
+
+function ActiveRow({ period, now }: { period: RetroPeriod; now: Date }) {  const left = Math.max(0, Math.ceil((period.end.getTime() - now.getTime()) / 86400000));
   return (
     <div className="p-3 rounded-2xl bg-primary/10 border border-primary/20 text-body-sm text-on-surface-variant">
       <span aria-hidden="true" className="text-xl align-middle mr-2">{period.planet.symbol}</span>

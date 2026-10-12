@@ -15,6 +15,7 @@ export interface PlanetDef {
   name: string;
   symbol: string;
   theme: string;
+  advice?: string;
   el: { a: number; e: number; i: number; L: number; lp: number; om: number };
   rate: { a: number; e: number; i: number; L: number; lp: number; om: number };
 }
@@ -23,12 +24,14 @@ export const PLANETS: PlanetDef[] = [
   {
     key: "merkur", name: "Merkür", symbol: "☿",
     theme: "İletişim, teknoloji, anlaşmalar ve seyahatler gözden geçirilir.",
+    advice: "iletişimde yavaşla, mesajlarını göndermeden önce iki kez kontrol et",
     el: { a: 0.38709927, e: 0.20563593, i: 7.00497902, L: 252.2503235, lp: 77.45779628, om: 48.33076593 },
     rate: { a: 0.00000037, e: 0.00001906, i: -0.00594749, L: 149472.67411175, lp: 0.16047689, om: -0.12534081 },
   },
   {
     key: "venus", name: "Venüs", symbol: "♀",
     theme: "Aşk, ilişkiler, estetik ve maddi değerler yeniden değerlendirilir.",
+    advice: "ilişkilerde eski defterleri aceleye getirmeden gözden geçir",
     el: { a: 0.72333566, e: 0.00677672, i: 3.39467605, L: 181.9790995, lp: 131.60246718, om: 76.67984255 },
     rate: { a: 0.0000039, e: -0.00004107, i: -0.0007889, L: 58517.81538729, lp: 0.00268329, om: -0.27769418 },
   },
@@ -41,36 +44,42 @@ export const PLANETS: PlanetDef[] = [
   {
     key: "mars", name: "Mars", symbol: "♂",
     theme: "Enerji, motivasyon ve öfke kontrolü; girişimler yavaşlatılır.",
+    advice: "enerjini büyük çıkışlar yerine hazırlık ve plana yönlendir",
     el: { a: 1.52371034, e: 0.0933941, i: 1.84969142, L: -4.55343205, lp: -23.94368959, om: 49.55953891 },
     rate: { a: 0.00001847, e: 0.00007882, i: -0.00813131, L: 19140.30268499, lp: 0.44441088, om: -0.29257343 },
   },
   {
     key: "jupiter", name: "Jüpiter", symbol: "♃",
     theme: "Büyüme, inanç ve abartılar; şansın yönü içe döner.",
+    advice: "büyük sözler vermeden önce iç sesini dinle",
     el: { a: 5.202887, e: 0.04838624, i: 1.30439695, L: 34.39644051, lp: 14.72847983, om: 100.47390909 },
     rate: { a: -0.00011607, e: -0.00013253, i: -0.00183714, L: 3034.74612775, lp: 0.21252668, om: 0.20469106 },
   },
   {
     key: "saturn", name: "Satürn", symbol: "♄",
     theme: "Sorumluluk, sınırlar ve kariyer yapıları sağlamlaştırılır.",
+    advice: "sorumluluklarını sadeleştir ve sınırlarına sadık kal",
     el: { a: 9.53667594, e: 0.05386179, i: 2.48599187, L: 49.95424423, lp: 92.59887831, om: 113.66242448 },
     rate: { a: -0.0012506, e: -0.00050991, i: 0.00193609, L: 1222.49362201, lp: -0.41897216, om: -0.28867794 },
   },
   {
     key: "uranus", name: "Uranüs", symbol: "♅",
     theme: "Ani değişim, özgürlük arayışı ve uyanışlar hızlanır.",
+    advice: "ani değişikliklere direnmek yerine esnek kal",
     el: { a: 19.18916464, e: 0.04725744, i: 0.77263783, L: 313.23810451, lp: 170.9552763, om: 74.01692503 },
     rate: { a: -0.00196176, e: -0.00004397, i: -0.00242966, L: 428.48202785, lp: 0.40805281, om: 0.04240589 },
   },
   {
     key: "neptun", name: "Neptün", symbol: "♆",
     theme: "Hayaller, sezgiler ve sis perdesi; maneviyat derinleşir.",
+    advice: "hayallerle gerçekleri ayırt etmek için not tut",
     el: { a: 30.06992276, e: 0.00859048, i: 1.77004347, L: -55.12002969, lp: 44.96476227, om: 131.78422574 },
     rate: { a: 0.00026291, e: 0.00005105, i: 0.00035372, L: 218.45945325, lp: -0.32241464, om: -0.00508664 },
   },
   {
     key: "pluton", name: "Plüton", symbol: "♇",
     theme: "Dönüşüm, güç dengeleri ve gölgeyle yüzleşme öne çıkar.",
+    advice: "kontrol edemeyeceklerini bırakmaya odaklan",
     el: { a: 39.48211675, e: 0.2488273, i: 17.14175, L: 238.92903833, lp: 224.06891629, om: 110.30393684 },
     rate: { a: -0.00031596, e: 0.0000517, i: -0.00034388, L: 145.20780515, lp: -0.04062942, om: -0.01183482 },
   },
