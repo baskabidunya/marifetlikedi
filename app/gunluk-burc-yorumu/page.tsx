@@ -4,6 +4,7 @@ import { ZODIAC_SIGNS, ZODIAC_DATA } from "@/lib/astro-utils";
 import { signSlug } from "@/lib/sign-slugs";
 import { ogMeta, breadcrumbLd, jsonLd } from "@/lib/seo";
 import { getSignContentAll } from "@/lib/public-queries";
+import CalendarTabs from "@/components/moon/CalendarTabs";
 import AdSlot from "@/components/ads/AdSlot";
 
 export const metadata: Metadata = {
@@ -40,6 +41,8 @@ export default async function GunlukBurcYorumuIndexPage() {
         <span aria-hidden="true" className="material-symbols-outlined text-xs">chevron_right</span>
         <span className="text-on-surface-variant">Günlük Burç Yorumları</span>
       </nav>
+
+      <CalendarTabs active="gunluk" />
 
       <div className="text-center mb-10">
         <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass text-primary border border-primary/20 mb-4">

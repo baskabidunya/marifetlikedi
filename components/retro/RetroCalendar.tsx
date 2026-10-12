@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import Link from "next/link";
+import CalendarTabs from "@/components/moon/CalendarTabs";
 import { RETRO_PLANETS, retroPeriods, type RetroPeriod } from "./planets";
 
 const SIGNS_TR = ["Koç", "Boğa", "İkizler", "Yengeç", "Aslan", "Başak", "Terazi", "Akrep", "Yay", "Oğlak", "Kova", "Balık"];
@@ -80,20 +80,7 @@ export default function RetroCalendar() {
   return (
     <div>
       {/* 1. Sekmeler */}
-      <nav className="flex flex-wrap gap-2 mb-8" aria-label="Takvim sayfaları">
-        <Link href="/gunluk-burc-yorumu" className="px-4 py-2 rounded-xl glass text-on-surface-variant hover:text-on-surface border border-on-surface/10 text-label-md transition-all">
-          Günlük Rehber
-        </Link>
-        <Link href="/ay-takvimi" className="px-4 py-2 rounded-xl glass text-on-surface-variant hover:text-on-surface border border-on-surface/10 text-label-md transition-all">
-          Ay Takvimi
-        </Link>
-        <span aria-current="page" className="px-4 py-2 rounded-xl bg-primary text-on-primary text-label-md font-bold">
-          Retro Takvimi
-        </span>
-        <Link href="/yeni-ay-dolunay-takvimi" className="px-4 py-2 rounded-xl glass text-on-surface-variant hover:text-on-surface border border-on-surface/10 text-label-md transition-all">
-          Yeni Ay &amp; Dolunay
-        </Link>
-      </nav>
+      <CalendarTabs active="retro" />
 
       {/* 2. Anlık durum kutusu */}
       <section className="glass-card p-6 md:p-8 rounded-3xl border border-primary/20 mb-10">

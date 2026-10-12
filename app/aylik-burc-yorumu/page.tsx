@@ -55,7 +55,7 @@ export default async function AylikBurcYorumuPage() {
 
       <div className="text-center mb-10">
         <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass text-primary border border-primary/20 mb-4">
-          <span aria-hidden="true" className="material-symbols-outlined text-sm">calendar_view_month</span>
+          <span aria-hidden="true" className="material-symbols-outlined text-sm">calendar_month</span>
           <span className="text-label-md">{monthStr} Astroloji Rehberi</span>
         </span>
         <h1 className="font-sora text-display-lg-mobile md:text-display-lg text-on-surface font-bold">

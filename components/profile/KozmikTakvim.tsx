@@ -16,7 +16,7 @@ const PERIOD_ICONS: Record<Period, string> = {
   gunluk: "today",
   haftalik: "date_range",
   aylik: "calendar_month",
-  yillik: "calendar_view_month",
+  yillik: "calendar_month",
 };
 
 const WEEKLY: Record<string, string> = {

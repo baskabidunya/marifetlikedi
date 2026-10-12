@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { computeMonthMoonPhases, TURKISH_MONTHS } from "@/lib/moon-phases";
 import { ogMeta, breadcrumbLd, jsonLd } from "@/lib/seo";
+import CalendarTabs from "@/components/moon/CalendarTabs";
 import AdSlot from "@/components/ads/AdSlot";
 
 export const metadata: Metadata = {
@@ -108,6 +109,8 @@ export default function YeniAyDolunayTakvimiPage() {
         <span aria-hidden="true" className="material-symbols-outlined text-xs">chevron_right</span>
         <span className="text-on-surface-variant">Yeni Ay ve Dolunay Takvimi</span>
       </nav>
+
+      <CalendarTabs active="yeni-ay" />
 
       <div className="text-center mb-10">
         <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass text-tertiary border border-tertiary/20 mb-4">

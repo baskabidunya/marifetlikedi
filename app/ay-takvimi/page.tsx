@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import MoonMansions from "@/components/moon/MoonMansions";
+import CalendarTabs from "@/components/moon/CalendarTabs";
 import AdSlot from "@/components/ads/AdSlot";
 import { ogMeta, breadcrumbLd, jsonLd } from "@/lib/seo";
 
@@ -32,6 +33,8 @@ export default function AyTakvimiPage() {
         <span aria-hidden="true" className="material-symbols-outlined text-xs">chevron_right</span>
         <span className="text-on-surface-variant">Ay Takvimi</span>
       </nav>
+
+      <CalendarTabs active="ay" />
 
       <MoonMansions />
 
