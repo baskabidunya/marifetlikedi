@@ -220,7 +220,7 @@ export default async function Page({
         <AdSlot name="content_inline" className="mb-section-gap" />
 
         {/* 1. Satır — Burç Künyesi + Kozmik Takvim */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start mb-section-gap">
           <div className="lg:col-span-4 glass-card p-8 rounded-3xl space-y-6">
             <h2 className="text-headline-md font-headline-md text-primary flex items-center gap-2">
               <span aria-hidden="true" className="material-symbols-outlined">auto_awesome</span> Burç Künyesi

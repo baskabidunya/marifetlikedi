@@ -205,7 +205,7 @@ export default function KozmikTakvim({
   const scores = SCORE_DATA[period]?.[sign] || { ask: 50, kariyer: 50, saglik: 50 };
 
   return (
-    <section className="mb-section-gap">
+    <section>
       <div className="flex items-center justify-between mb-8">
         <h3 className="text-headline-lg font-headline-lg text-primary">Kozmik Takvim</h3>
         <div className="flex p-1 bg-surface-container rounded-2xl border border-on-surface/5">
