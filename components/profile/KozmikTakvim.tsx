@@ -123,18 +123,76 @@ const SCORE_DATA: Record<Period, Record<string, { ask: number; kariyer: number; 
   },
 };
 
+export function LuckyRitualsCard({
+  luckyColor,
+  luckyStone,
+  luckyActivity,
+  showLink = false,
+}: {
+  luckyColor: string;
+  luckyStone: string;
+  luckyActivity: string;
+  showLink?: boolean;
+}) {
+  return (
+    <div className="glass-card p-8 rounded-3xl flex flex-col justify-between h-full">
+      <div>
+        <h4 className="text-headline-md font-headline-md text-primary mb-6">Şanslı Ritüeller</h4>
+        <div className="space-y-5">
+          <div className="flex items-center gap-4">
+            <div className="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center">
+              <span aria-hidden="true" className="material-symbols-outlined text-on-surface">palette</span>
+            </div>
+            <div>
+              <p className="text-caption font-label-md text-on-surface-variant">Uğurlu Renk</p>
+              <p className="text-label-md font-label-md text-on-surface">{luckyColor}</p>
+            </div>
+          </div>
+          <div className="flex items-center gap-4">
+            <div className="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center">
+              <span aria-hidden="true" className="material-symbols-outlined text-on-surface">diamond</span>
+            </div>
+            <div>
+              <p className="text-caption font-label-md text-on-surface-variant">Değerli Taş</p>
+              <p className="text-label-md font-label-md text-on-surface">{luckyStone}</p>
+            </div>
+          </div>
+          <div className="flex items-center gap-4">
+            <div className="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center">
+              <span aria-hidden="true" className="material-symbols-outlined text-on-surface">self_improvement</span>
+            </div>
+            <div>
+              <p className="text-caption font-label-md text-on-surface-variant">Günün Aktivitesi</p>
+              <p className="text-label-md font-label-md text-on-surface">{luckyActivity}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      {showLink && (
+        <Link href="/burclar"
+          className="mt-8 w-full py-4 rounded-2xl bg-gradient-to-r from-primary/20 to-secondary/20 border border-primary/10 text-primary font-label-md flex items-center justify-center gap-2 hover:from-primary/30 hover:to-secondary/30 transition-all">
+          <span>Tüm Burçları Keşfet</span>
+          <span aria-hidden="true" className="material-symbols-outlined text-lg">arrow_forward</span>
+        </Link>
+      )}
+    </div>
+  );
+}
+
 export default function KozmikTakvim({
   sign,
   dailyProphecy,
   luckyColor,
   luckyStone,
   luckyActivity,
+  hideRituals = false,
 }: {
   sign: string;
   dailyProphecy: string;
   luckyColor: string;
   luckyStone: string;
   luckyActivity: string;
+  hideRituals?: boolean;
 }) {
   const [period, setPeriod] = useState<Period>("gunluk");
 
@@ -164,8 +222,8 @@ export default function KozmikTakvim({
           ))}
         </div>
       </div>
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <div className="lg:col-span-2 glass-card p-8 rounded-3xl space-y-6">
+      <div className={`grid grid-cols-1 gap-6 ${hideRituals ? "" : "lg:grid-cols-3"}`}>
+        <div className={`${hideRituals ? "" : "lg:col-span-2 "}glass-card p-8 rounded-3xl space-y-6`}>
           <div className="flex items-center justify-between border-b border-on-surface/10 pb-4">
             <span className="text-headline-md font-headline-md text-tertiary">{PERIOD_LABELS[period]} Kehanet</span>
             <span className="text-caption font-label-md opacity-60 text-outline">
@@ -192,45 +250,14 @@ export default function KozmikTakvim({
           </div>
         </div>
 
-        <div className="glass-card p-8 rounded-3xl flex flex-col justify-between">
-          <div>
-            <h4 className="text-headline-md font-headline-md text-primary mb-6">Şanslı Ritüeller</h4>
-            <div className="space-y-5">
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center">
-                  <span aria-hidden="true" className="material-symbols-outlined text-on-surface">palette</span>
-                </div>
-                <div>
-                  <p className="text-caption font-label-md text-on-surface-variant">Uğurlu Renk</p>
-                  <p className="text-label-md font-label-md text-on-surface">{luckyColor}</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center">
-                  <span aria-hidden="true" className="material-symbols-outlined text-on-surface">diamond</span>
-                </div>
-                <div>
-                  <p className="text-caption font-label-md text-on-surface-variant">Değerli Taş</p>
-                  <p className="text-label-md font-label-md text-on-surface">{luckyStone}</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center">
-                  <span aria-hidden="true" className="material-symbols-outlined text-on-surface">self_improvement</span>
-                </div>
-                <div>
-                  <p className="text-caption font-label-md text-on-surface-variant">Günün Aktivitesi</p>
-                  <p className="text-label-md font-label-md text-on-surface">{luckyActivity}</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <Link href="/burclar"
-            className="mt-8 w-full py-4 rounded-2xl bg-gradient-to-r from-primary/20 to-secondary/20 border border-primary/10 text-primary font-label-md flex items-center justify-center gap-2 hover:from-primary/30 hover:to-secondary/30 transition-all">
-            <span>Tüm Burçları Keşfet</span>
-            <span aria-hidden="true" className="material-symbols-outlined text-lg">arrow_forward</span>
-          </Link>
-        </div>
+        {!hideRituals && (
+          <LuckyRitualsCard
+            luckyColor={luckyColor}
+            luckyStone={luckyStone}
+            luckyActivity={luckyActivity}
+            showLink
+          />
+        )}
       </div>
     </section>
   );

@@ -7,7 +7,7 @@ import { SIGN_GUIDES, SIGN_GUIDES_UPDATED } from "@/lib/sign-guides";
 import { SIGN_TRAITS } from "@/lib/astro-narratives";
 import { RISING_SIGNS } from "@/lib/astro-interpretations";
 import { getSignContentBySign } from "@/lib/public-queries";
-import KozmikTakvim from "@/components/profile/KozmikTakvim";
+import KozmikTakvim, { LuckyRitualsCard } from "@/components/profile/KozmikTakvim";
 import AdSlot from "@/components/ads/AdSlot";
 import AuthorBox from "@/components/seo/AuthorBox";
 
@@ -219,12 +219,12 @@ export default async function Page({
 
         <AdSlot name="content_inline" className="mb-section-gap" />
 
-        {/* Bento Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 mb-section-gap">
-          <div className="md:col-span-4 glass-card p-8 rounded-3xl space-y-6">
-            <h3 className="text-headline-md font-headline-md text-primary flex items-center gap-2">
+        {/* 1. Satır — Burç Künyesi + Kozmik Takvim */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <div className="lg:col-span-4 glass-card p-8 rounded-3xl space-y-6">
+            <h2 className="text-headline-md font-headline-md text-primary flex items-center gap-2">
               <span aria-hidden="true" className="material-symbols-outlined">auto_awesome</span> Burç Künyesi
-            </h3>
+            </h2>
             <div className="space-y-4">
               <div className="flex items-center justify-between p-4 bg-surface-container-low/50 rounded-2xl">
                 <div className="flex items-center gap-3">
@@ -250,12 +250,46 @@ export default async function Page({
             </div>
           </div>
 
-          <div className="md:col-span-8 glass-card p-8 rounded-3xl relative overflow-hidden">
+          <div className="lg:col-span-8">
+            <KozmikTakvim
+              sign={s}
+              dailyProphecy={prophecy}
+              luckyColor={lucky.color}
+              luckyStone={lucky.stone}
+              luckyActivity={lucky.activity}
+              hideRituals
+            />
+          </div>
+        </div>
+
+        {/* 2. Satır — Yükselen Burcunuz + Şanslı Ritüeller */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-section-gap">
+          <div className="glass-card p-8 rounded-3xl border border-primary/10">
+            <h2 className="text-headline-md font-headline-md text-primary mb-3">Yükselen Burcunuz</h2>
+            <p className="text-body-md font-body-md text-on-surface-variant leading-relaxed mb-4">{risingText}</p>
+            <Link
+              href="/dogum-haritasi"
+              className="text-primary font-label-md hover:text-secondary inline-flex items-center gap-1"
+            >
+              Yükselen burcunu hesapla
+              <span aria-hidden="true" className="material-symbols-outlined text-sm">arrow_forward</span>
+            </Link>
+          </div>
+          <LuckyRitualsCard
+            luckyColor={lucky.color}
+            luckyStone={lucky.stone}
+            luckyActivity={lucky.activity}
+          />
+        </div>
+
+        {/* Karakter Analizi — tek sütun, tüm analiz yazıları içinde */}
+        <section className="mb-section-gap">
+          <div className="glass-card p-8 rounded-3xl relative overflow-hidden">
             <div className="absolute top-0 right-0 p-8 opacity-[0.04] pointer-events-none">
               <span aria-hidden="true" className="material-symbols-outlined text-[120px]">psychology</span>
             </div>
-            <h3 className="text-headline-md font-headline-md text-primary mb-6">Karakter Analizi</h3>
-            <div className="flex flex-wrap gap-2 mb-8">
+            <h2 className="text-headline-lg font-headline-lg text-primary mb-6">Karakter Analizi</h2>
+            <div className="flex flex-wrap gap-2 mb-6">
               {allTraits.map(t => {
                 const isPositive = positiveTraits.includes(t);
                 return (
@@ -268,90 +302,70 @@ export default async function Page({
                 );
               })}
             </div>
-            <p className="text-body-lg font-body-lg text-on-surface-variant leading-relaxed max-w-2xl">
+            <p className="text-body-lg font-body-lg text-on-surface-variant leading-relaxed max-w-2xl mb-8">
               {s} burcu {traits.nature} doğasıyla bilinir; {traits.positive} nitelikleri bu {info.element.toLowerCase()} elementinin enerjisiyle birleşir. Güneş burcunun karakterine dair derinlikli analiz aşağıda yer alır.
             </p>
-          </div>
-        </div>
-
-        {/* Geniş İçerik — Güneş Burcu Analizi */}
-        <section className="mb-section-gap max-w-3xl mx-auto space-y-8">
-          <div>
-            <h2 className="text-headline-lg font-headline-lg text-primary mb-4">
-              {s} Burcu Genel Karakteristik ve Temel Dinamikler
-            </h2>
-            <p className="text-body-lg font-body-lg text-on-surface-variant leading-relaxed">{guide.overview}</p>
-          </div>
-          <div>
-            <h2 className="text-headline-lg font-headline-lg text-primary mb-4">
-              {s} Burcunda Aşk ve İlişkiler
-            </h2>
-            <p className="text-body-lg font-body-lg text-on-surface-variant leading-relaxed">{loveText}</p>
-          </div>
-          <div>
-            <h2 className="text-headline-lg font-headline-lg text-primary mb-4">
-              {s} Burcunda Kariyer ve Para
-            </h2>
-            <p className="text-body-lg font-body-lg text-on-surface-variant leading-relaxed">{careerText}</p>
-          </div>
-          <div>
-            <h2 className="text-headline-lg font-headline-lg text-primary mb-4">
-              {s} Burcunun Güçlü ve Gelişime Açık Yönleri
-            </h2>
-            <p className="text-body-lg font-body-lg text-on-surface-variant leading-relaxed">{guide.strengths}</p>
-          </div>
-          <div>
-            <h2 className="text-headline-lg font-headline-lg text-primary mb-4">
-              {s} Burcunda Element ve Gezegen Etkisi
-            </h2>
-            <p className="text-body-lg font-body-lg text-on-surface-variant leading-relaxed">{guide.element}</p>
-          </div>
-          {signContent?.woman_text && (
-            <div>
-              <h2 className="text-headline-lg font-headline-lg text-primary mb-4">
-                {s} Burcu Kadını
-              </h2>
-              <p className="text-body-lg font-body-lg text-on-surface-variant leading-relaxed">{signContent.woman_text}</p>
+            <div className="space-y-8 max-w-3xl">
+              <div>
+                <h2 className="text-headline-md font-headline-md text-primary mb-3">
+                  {s} Burcu Genel Karakteristik ve Temel Dinamikler
+                </h2>
+                <p className="text-body-lg font-body-lg text-on-surface-variant leading-relaxed">{guide.overview}</p>
+              </div>
+              <div>
+                <h2 className="text-headline-md font-headline-md text-primary mb-3">
+                  {s} Burcunda Aşk ve İlişkiler
+                </h2>
+                <p className="text-body-lg font-body-lg text-on-surface-variant leading-relaxed">{loveText}</p>
+              </div>
+              <div>
+                <h2 className="text-headline-md font-headline-md text-primary mb-3">
+                  {s} Burcunda Kariyer ve Para
+                </h2>
+                <p className="text-body-lg font-body-lg text-on-surface-variant leading-relaxed">{careerText}</p>
+              </div>
+              {signContent?.woman_text && (
+                <div>
+                  <h2 className="text-headline-md font-headline-md text-primary mb-3">
+                    {s} Burcu Kadını
+                  </h2>
+                  <p className="text-body-lg font-body-lg text-on-surface-variant leading-relaxed">{signContent.woman_text}</p>
+                </div>
+              )}
+              {signContent?.man_text && (
+                <div>
+                  <h2 className="text-headline-md font-headline-md text-primary mb-3">
+                    {s} Burcu Erkeği
+                  </h2>
+                  <p className="text-body-lg font-body-lg text-on-surface-variant leading-relaxed">{signContent.man_text}</p>
+                </div>
+              )}
+              <div>
+                <h2 className="text-headline-md font-headline-md text-primary mb-3">
+                  {s} Burcunun Güçlü ve Gelişime Açık Yönleri
+                </h2>
+                <p className="text-body-lg font-body-lg text-on-surface-variant leading-relaxed">{guide.strengths}</p>
+              </div>
+              <div>
+                <h2 className="text-headline-md font-headline-md text-primary mb-3">
+                  {s} Burcunda Element ve Gezegen Etkisi
+                </h2>
+                <p className="text-body-lg font-body-lg text-on-surface-variant leading-relaxed">{guide.element}</p>
+              </div>
             </div>
-          )}
-          {signContent?.man_text && (
-            <div>
-              <h2 className="text-headline-lg font-headline-lg text-primary mb-4">
-                {s} Burcu Erkeği
-              </h2>
-              <p className="text-body-lg font-body-lg text-on-surface-variant leading-relaxed">{signContent.man_text}</p>
-            </div>
-          )}
-          <div className="glass-card p-6 rounded-3xl border border-primary/10">
-            <h3 className="text-headline-md font-headline-md text-primary mb-3">Yükselen Burcunuz</h3>
-            <p className="text-body-md font-body-md text-on-surface-variant leading-relaxed mb-3">{risingText}</p>
-            <Link
-              href="/dogum-haritasi"
-              className="text-primary font-label-md hover:text-secondary inline-flex items-center gap-1"
-            >
-              Yükselen burcunu hesapla
-              <span aria-hidden="true" className="material-symbols-outlined text-sm">arrow_forward</span>
-            </Link>
           </div>
         </section>
 
-        <KozmikTakvim
-          sign={s}
-          dailyProphecy={prophecy}
-          luckyColor={lucky.color}
-          luckyStone={lucky.stone}
-          luckyActivity={lucky.activity}
-        />
-
         {/* İlişki Uyumu */}
         <section className="mb-section-gap">
-          <h3 className="text-headline-lg font-headline-lg text-primary mb-4">{s} Burcu İlişki Uyumu</h3>
-          {signContent?.compatible_text && (
-            <p className="text-body-lg font-body-lg text-on-surface-variant leading-relaxed max-w-3xl mb-8">
-              {signContent.compatible_text}
-            </p>
-          )}
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
+          <div className="glass-card p-8 rounded-3xl">
+            <h2 className="text-headline-lg font-headline-lg text-primary mb-4">{s} Burcu İlişki Uyumu</h2>
+            {signContent?.compatible_text && (
+              <p className="text-body-lg font-body-lg text-on-surface-variant leading-relaxed max-w-3xl mb-8">
+                {signContent.compatible_text}
+              </p>
+            )}
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
             {topSigns.map(target => {
               const score = getCompatScore(s, target);
               const isHigh = score >= 75;
@@ -369,6 +383,7 @@ export default async function Page({
                 </Link>
               );
             })}
+          </div>
           </div>
         </section>
 
