@@ -31,9 +31,15 @@ export async function signUp(
 ) {
   const supabase = await createClient();
 
+  const h = await headers();
+  const origin = h.get("origin") || process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+
   const data = {
     email: formData.get("email") as string,
     password: formData.get("password") as string,
+    options: {
+      emailRedirectTo: `${origin}/auth/callback`,
+    },
   };
 
   const { error } = await supabase.auth.signUp(data);
