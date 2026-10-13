@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { computeMonthMoonPhases, TURKISH_MONTHS } from "@/lib/moon-phases";
+import { ZODIAC_SIGNS, ZODIAC_DATA } from "@/lib/astro-utils";
+import { signSlug } from "@/lib/sign-slugs";
+import { getEventMoonSign, interpret } from "@/lib/moon-events";
 import { ogMeta, breadcrumbLd, jsonLd } from "@/lib/seo";
 import AdSlot from "@/components/ads/AdSlot";
 
@@ -118,6 +121,12 @@ export default async function KozmikTakvimEventPage({ params }: { params: Promis
   const isNewMoon = parsed.kind === "yeni-ay";
   const content = isNewMoon ? NEW_MOON_CONTENT : FULL_MOON_CONTENT;
   const dateStr = `${eventInfo.day} ${monthName} ${parsed.year}`;
+  const moonSign = getEventMoonSign(parsed.year, parsed.month, eventInfo.day, parsed.kind);
+  const signCards = ZODIAC_SIGNS.map((s) => ({
+    sign: s,
+    emoji: ZODIAC_DATA[s]?.emoji || "✦",
+    ...interpret(parsed.kind, moonSign, s),
+  }));
 
   const breadcrumb = breadcrumbLd([
     { name: "Ana Sayfa", path: "/" },
@@ -168,11 +177,49 @@ export default async function KozmikTakvimEventPage({ params }: { params: Promis
           {content.title} {monthName} {parsed.year}
         </h1>
         <p className="text-body-lg text-on-surface-variant max-w-2xl mx-auto mt-4">
+          Bu {isNewMoon ? "yeni ay" : "dolunay"} <strong className="text-on-surface">{moonSign} burcunda</strong> gerçekleşiyor.{" "}
           {content.intro(monthName, parsed.year, eventInfo.day)}
         </p>
       </div>
 
       <AdSlot name="content_inline" className="mb-section-gap" />
+
+      <section className="mb-section-gap">
+        <h2 className="text-headline-lg font-headline-lg text-primary mb-2">
+          {moonSign} {isNewMoon ? "Yeni Ayı" : "Dolunayı"} Burçlara Ne Söylüyor?
+        </h2>
+        <p className="text-body-md text-on-surface-variant mb-8 max-w-3xl">
+          {dateStr} tarihli bu {isNewMoon ? "yeni ay" : "dolunay"} {moonSign} burcunda gerçekleşiyor.
+          Her burç bu gökyüzü olayını kendi haritasında farklı bir evde karşılar; aşağıda burcunu bul,
+          seni nelerin beklediğini oku.
+        </p>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {signCards.map((c) => (
+            <Link
+              key={c.sign}
+              href={`/burclar/${signSlug(c.sign)}`}
+              className="glass-card p-6 rounded-3xl hover:-translate-y-1 transition-all group"
+            >
+              <div className="flex items-center gap-3 mb-3">
+                <span className="text-4xl">{c.emoji}</span>
+                <div>
+                  <h3 className="font-sora text-headline-sm text-on-surface font-bold group-hover:text-primary transition-colors">
+                    {c.sign}
+                  </h3>
+                  <span className="inline-block mt-1 px-2 py-0.5 rounded-full bg-primary/15 text-primary text-caption font-label-md">
+                    {c.aspect.label} • {c.aspect.desc}
+                  </span>
+                </div>
+              </div>
+              <p className="text-body-sm text-on-surface-variant leading-relaxed">{c.text}</p>
+              <span className="inline-flex items-center gap-1 text-primary text-label-md mt-4">
+                {c.sign} burcunu incele
+                <span aria-hidden="true" className="material-symbols-outlined text-sm">arrow_forward</span>
+              </span>
+            </Link>
+          ))}
+        </div>
+      </section>
 
       <section className="mb-section-gap max-w-3xl mx-auto space-y-8">
         <div>
