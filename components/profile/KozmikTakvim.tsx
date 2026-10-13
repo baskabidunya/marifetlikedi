@@ -12,13 +12,6 @@ const PERIOD_LABELS: Record<Period, string> = {
   yillik: "Yıllık",
 };
 
-const PERIOD_ICONS: Record<Period, string> = {
-  gunluk: "today",
-  haftalik: "date_range",
-  aylik: "calendar_month",
-  yillik: "calendar_month",
-};
-
 const WEEKLY: Record<string, string> = {
   Koç: "Bu hafta Mars enerjiniz zirvede. Hafta başında yeni bir projeye başlamak için ideal. Çarşamba günü iletişim gezegeninizin desteğiyle önemli bir görüşme bekleyebilirsiniz. Hafta sonuna doğru finansal konularda sezgilerinize güvenin.",
   Boğa: "Venüs'ün etkisiyle ilişkilerinizde uyumlu bir hafta sizi bekliyor. Salı günü iş hayatında beklenmedik bir fırsatla karşılaşabilirsiniz. Perşembe ailevi konular gündeme gelebilir. Hafta sonu sanatsal aktiviteler için harika bir zaman.",
@@ -206,29 +199,23 @@ export default function KozmikTakvim({
 
   return (
     <section>
-      <div className="flex items-center justify-between mb-8">
-        <h3 className="text-headline-lg font-headline-lg text-primary">Kozmik Takvim</h3>
-        <div className="flex p-1 bg-surface-container rounded-2xl border border-on-surface/5">
-          {(Object.keys(PERIOD_LABELS) as Period[]).map(p => (
-            <button key={p} onClick={() => setPeriod(p)}
-              className={`px-4 md:px-6 py-2 rounded-xl text-label-md font-label-md flex items-center gap-1.5 transition-all ${
-                period === p
-                  ? "bg-primary text-on-primary shadow-lg"
-                  : "text-on-surface-variant hover:text-on-surface"
-              }`}>
-              <span aria-hidden="true" className="material-symbols-outlined text-[16px]">{PERIOD_ICONS[p]}</span>
-              <span className="hidden sm:inline">{PERIOD_LABELS[p]}</span>
-            </button>
-          ))}
-        </div>
-      </div>
-      <div className={`grid grid-cols-1 gap-6 ${hideRituals ? "" : "lg:grid-cols-3"}`}>
-        <div className={`${hideRituals ? "" : "lg:col-span-2 "}glass-card p-8 rounded-3xl space-y-6`}>
-          <div className="flex items-center justify-between border-b border-on-surface/10 pb-4">
+      <div className="grid grid-cols-1 gap-6">
+        <div className="glass-card p-8 rounded-3xl space-y-6">
+          <div className="flex items-center justify-between border-b border-on-surface/10 pb-4 gap-2 flex-wrap">
             <span className="text-headline-md font-headline-md text-tertiary">{PERIOD_LABELS[period]} Kehanet</span>
-            <span className="text-caption font-label-md opacity-60 text-outline">
-              {new Date().toLocaleDateString("tr-TR", { day: "numeric", month: "long", year: "numeric" })}
-            </span>
+            <div className="flex p-0.5 bg-surface-container rounded-xl border border-on-surface/5 shrink-0" role="group" aria-label="Dönem seçimi">
+              {(Object.keys(PERIOD_LABELS) as Period[]).map(p => (
+                <button key={p} onClick={() => setPeriod(p)}
+                  aria-pressed={period === p}
+                  className={`px-2.5 py-1 rounded-lg text-caption font-label-md transition-all cursor-pointer ${
+                    period === p
+                      ? "bg-primary text-on-primary"
+                      : "text-on-surface-variant hover:text-on-surface"
+                  }`}>
+                  {PERIOD_LABELS[p]}
+                </button>
+              ))}
+            </div>
           </div>
           <p className="text-body-lg font-body-lg text-on-surface-variant italic leading-relaxed">
             &ldquo;{prophecyText}&rdquo;
