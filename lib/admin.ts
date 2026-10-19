@@ -81,7 +81,30 @@ export async function getDashboardStats() {
     s.sign?.length > 0
   ).length || 0;
 
-  return { totalUsers, totalPartners, filledSigns, blogCount: blogCount || 0 };
+  const { count: testCount } = await supabase
+    .from("fun_tests").select("*", { count: "exact", head: true });
+
+  const { count: trendCount } = await supabase
+    .from("trend_articles").select("*", { count: "exact", head: true });
+
+  const { count: tarotCount } = await supabase
+    .from("tarot_cards").select("*", { count: "exact", head: true });
+
+  const { count: faqCount } = await supabase
+    .from("faq").select("*", { count: "exact", head: true });
+
+  const { count: announcementCount } = await supabase
+    .from("announcements").select("*", { count: "exact", head: true });
+
+  const { count: pageCount } = await supabase
+    .from("pages").select("*", { count: "exact", head: true });
+
+  return {
+    totalUsers, totalPartners, filledSigns, blogCount: blogCount || 0,
+    testCount: testCount || 0, trendCount: trendCount || 0, tarotCount: tarotCount || 0,
+    faqCount: faqCount || 0, announcementCount: announcementCount || 0,
+    pageCount: pageCount || 0,
+  };
 }
 
 // ── User Management ──

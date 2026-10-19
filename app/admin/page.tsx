@@ -7,7 +7,13 @@ export default async function AdminDashboard() {
   const statCards = [
     { label: "Kullanıcı", value: stats.totalUsers, icon: "group", color: "text-primary" },
     { label: "Blog Yazısı", value: stats.blogCount, icon: "article", color: "text-secondary" },
+    { label: "Trend İçerik", value: stats.trendCount, icon: "trending_up", color: "text-tertiary" },
+    { label: "Eğlenceli Test", value: stats.testCount, icon: "quiz", color: "text-primary" },
     { label: "Burç İçerik", value: `${stats.filledSigns}/12`, icon: "auto_awesome", color: "text-tertiary" },
+    { label: "Tarot Kartı", value: stats.tarotCount, icon: "style", color: "text-secondary" },
+    { label: "SSS Sorusu", value: stats.faqCount, icon: "help", color: "text-primary" },
+    { label: "Duyuru", value: stats.announcementCount, icon: "campaign", color: "text-tertiary" },
+    { label: "Statik Sayfa", value: stats.pageCount, icon: "description", color: "text-secondary" },
     { label: "Partner", value: stats.totalPartners, icon: "favorite", color: "text-tertiary" },
   ];
 
