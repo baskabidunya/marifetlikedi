@@ -135,6 +135,14 @@ export default async function RootLayout({
           href="/fonts/material-symbols-outlined.woff2"
           crossOrigin="anonymous"
         />
+        <script
+          src="https://www.baskabidunya.com/widget.js"
+          data-license="#BBD-2026-9812A"
+          data-company="DentElite Ağız ve Diş Polikliniği"
+          data-name="bi'Zeka Asistanı"
+          data-color="#8b5cf6"
+          async
+        />
       </head>
       <body className="bg-surface text-on-surface font-inter antialiased">
         <ConsentScripts />
