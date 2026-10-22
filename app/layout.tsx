@@ -151,8 +151,8 @@ export default async function RootLayout({
         <script
           src="https://www.baskabidunya.com/widget.js"
           data-license="#BBD-2026-9812A"
-          data-company="DentElite Ağız ve Diş Polikliniği"
-          data-name="bi'Zeka Asistanı"
+          data-company="Astroloji & Tarot "
+          data-name="Marifetli Kedi "
           data-color="#8b5cf6"
           async
         />
