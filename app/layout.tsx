@@ -6,6 +6,7 @@ import AdNetwork from "@/components/ads/AdNetwork";
 import AuthProvider from "@/components/layout/AuthProvider";
 import CookieConsent from "@/components/layout/CookieConsent";
 import ConsentScripts from "@/components/layout/ConsentScripts";
+import ChatWidget from "@/components/layout/ChatWidget";
 import { getSiteSetting } from "@/lib/public-queries";
 import { ADSENSE_CLIENT } from "@/lib/ads";
 import "@/styles/globals.css";
@@ -148,14 +149,7 @@ export default async function RootLayout({
           <Footer />
         </AdNetwork>
         <CookieConsent />
-        <script
-          src="https://www.baskabidunya.com/widget.js"
-          data-license="#BBD-2026-9812A"
-          data-company="Astroloji & Tarot "
-          data-name="Marifetli Kedi "
-          data-color="#8b5cf6"
-          async
-        />
+        <ChatWidget />
       </body>
     </html>
   );
